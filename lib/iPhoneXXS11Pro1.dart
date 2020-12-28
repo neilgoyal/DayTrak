@@ -2,19 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Calendar App',
-        debugShowCheckedModeBanner: false,
-        home: HomePage());
-  }
-}
-
-class HomePage extends StatelessWidget {
+// ignore: camel_case_types
+class iPhoneXXS11Pro1 extends StatelessWidget {
+  iPhoneXXS11Pro1({
+    Key key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
