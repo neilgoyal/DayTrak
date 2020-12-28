@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:adobe_xd/pinned.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,6 +14,10 @@ class MyApp extends StatelessWidget {
         home: HomePage());
   }
 }
+
+var dt = DateTime.now();
+String newDt = DateFormat.MMMMd().format(dt);
+String newDt1 = DateFormat.EEEE().format(dt);
 
 class HomePage extends StatelessWidget {
   @override
@@ -99,7 +104,7 @@ class HomePage extends StatelessWidget {
           Transform.translate(
             offset: Offset(22.0, 42.0),
             child: Text(
-              'Sunday 13',
+              newDt,
               style: TextStyle(
                 fontFamily: 'Protipo Compact',
                 fontSize: 37,
@@ -309,7 +314,7 @@ class HomePage extends StatelessWidget {
           Transform.translate(
             offset: Offset(22.0, 86.0),
             child: Text(
-              'Friday ',
+              newDt1,
               style: TextStyle(
                 fontFamily: 'Protipo Compact',
                 fontSize: 23,
