@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //     )
           //   ]
           // ),
-          margin: EdgeInsets.only(bottom: 20),
+          margin: EdgeInsets.only(bottom: 10),
           child: new TabBar(
             tabs: [
               Tab(
@@ -61,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 icon: SvgPicture.asset('assets/icons/icon_settings.svg'),
               ),
             ],
-            unselectedLabelColor: Colors.black,
-            labelColor: Colors.blue,
-            indicatorColor: Colors.transparent,
+            unselectedLabelColor: Colors.orange,
+            labelColor: Colors.black,
+            indicatorColor: Colors.indigo[300],
           ),
         ),
       ),

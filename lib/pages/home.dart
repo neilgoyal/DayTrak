@@ -5,17 +5,30 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildAppBar(),
-    );
-  }
-}
+// class _HomePageState extends State<HomePage> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         home: Scaffold(
+//             appBar: AppBar(
+//                 backgroundColor: Colors.white,
+//                 elevation: 0,
+//                 title: Text(
+//                   "Date",
+//                   style: TextStyle(
+//                     fontFamily: 'Protipo Compact',
+//                     fontSize: 40,
+//                     color: const Color(0xff9b8fb1),
+//                     fontWeight: FontWeight.w100,
+//                   ),
+//                   textAlign: TextAlign.left,
+//                 )
+//               )
+//             )
+//           );
+//   }
+// }
 
-AppBar buildAppBar() {
-  return AppBar(
-    backgroundColor: Colors.white,
-  );
-}
+class _HomePageState extends State<HomePage> {
+  
