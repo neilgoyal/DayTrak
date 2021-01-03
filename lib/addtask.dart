@@ -124,6 +124,7 @@ class _TodoListState extends State<TodoList> {
                         child: Text("Add"))
                   ],
                 );
+                // Navigator.of(context).pop();
               });
         },
         child: Icon(
@@ -145,55 +146,56 @@ class _TodoListState extends State<TodoList> {
     );
   }
 
-  void _addTodoItem(String title) {
-    // Wrapping it inside a set state will notify
-    // the app that the state has changed
-    setState(() {
-      _todoList.add(title);
-    });
-    _textFieldController.clear();
-  }
+//   void _addTodoItem(String title) {
+//     // Wrapping it inside a set state will notify
+//     // the app that the state has changed
+//     setState(() {
+//       _todoList.add(title);
+//     });
+//     _textFieldController.clear();
+//   }
 
-  // Generate list of item widgets
-  Widget _buildTodoItem(String title) {
-    return ListTile(title: Text(title));
-  }
+//   // Generate list of item widgets
+//   Widget _buildTodoItem(String title) {
+//     return ListTile(title: Text(title));
+//   }
 
-  // Generate a single item widget
-  Future<AlertDialog> _displayDialog(BuildContext context) async {
-    return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: const Text('Add a task to your list'),
-            content: TextField(
-              controller: _textFieldController,
-              decoration: const InputDecoration(hintText: 'Enter task here'),
-            ),
-            actions: <Widget>[
-              FlatButton(
-                child: const Text('ADD'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  _addTodoItem(_textFieldController.text);
-                },
-              ),
-              FlatButton(
-                child: const Text('CANCEL'),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              )
-            ],
-          );
-        });
-  }
+//   // Generate a single item widget
+//   Future<AlertDialog> _displayDialog(BuildContext context) async {
+//     return showDialog(
+//         context: context,
+//         builder: (BuildContext context) {
+//           return AlertDialog(
+//             title: const Text('Add a task to your list'),
+//             content: TextField(
+//               controller: _textFieldController,
+//               decoration: const InputDecoration(hintText: 'Enter task here'),
+//             ),
+//             actions: <Widget>[
+//               FlatButton(
+//                 child: const Text('ADD'),
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                   _addTodoItem(_textFieldController.text);
+//                 },
+//               ),
+//               FlatButton(
+//                 child: const Text('CANCEL'),
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                 },
+//               )
+//             ],
+//           );
+//         });
+//   }
 
-  List<Widget> _getItems() {
-    final List<Widget> _todoWidgets = <Widget>[];
-    for (String title in _todoList) {
-      _todoWidgets.add(_buildTodoItem(title));
-    }
-    return _todoWidgets;
-  }
+//   List<Widget> _getItems() {
+//     final List<Widget> _todoWidgets = <Widget>[];
+//     for (String title in _todoList) {
+//       _todoWidgets.add(_buildTodoItem(title));
+//     }
+//     return _todoWidgets;
+//   }
+// }
 }
