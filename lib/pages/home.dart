@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                             fontFamily: 'Protipo Compact',
                             fontSize: 40,
                             color: const Color(0xff9b8fb1),
-                            fontWeight: FontWeight.w100,
+                            fontWeight: FontWeight.w300,
                           ),
                         ),
                         Text("Day 1",
@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                               fontFamily: 'Protipo Compact',
                               fontSize: 40,
                               color: const Color(0xff9b8fb1),
-                              fontWeight: FontWeight.w100,
+                              fontWeight: FontWeight.w300,
                             ))
                       ]),
                   Row(

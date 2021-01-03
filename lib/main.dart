@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
           //     )
           //   ]
           // ),
-          margin: EdgeInsets.only(bottom: 10),
+          margin: EdgeInsets.only(bottom: 15),
           child: new TabBar(
             tabs: [
               Tab(
@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
             unselectedLabelColor: Colors.orange,
             labelColor: Colors.black,
-            indicatorColor: Colors.indigo[300],
+            indicatorColor: const Color(0xff9b8fb1),
           ),
         ),
       ),
