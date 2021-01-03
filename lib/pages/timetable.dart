@@ -9,7 +9,7 @@ class _TimetableState extends State<TimetablePage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
+      color: Colors.white,
     );
   }
 }
