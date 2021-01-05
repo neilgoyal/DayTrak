@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather/weather.dart';
 import 'dart:async';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
@@ -20,6 +21,7 @@ class Addtask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        color: Colors.white,
         debugShowCheckedModeBanner: false,
         title: 'To-Do List',
         home: TodoList());
@@ -108,6 +110,8 @@ class _TodoListState extends State<TodoList> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
                   title: Text("Add Task"),
                   content: TextField(
                     onChanged: (String value) {
@@ -120,6 +124,8 @@ class _TodoListState extends State<TodoList> {
                           setState(() {
                             todos.add(input);
                           });
+
+                          Navigator.of(context).pop();
                         },
                         child: Text("Add"))
                   ],
@@ -135,11 +141,19 @@ class _TodoListState extends State<TodoList> {
             return Dismissible(
                 key: Key(todos[index]),
                 child: Card(
+                  elevation: 4,
+                  margin: EdgeInsets.all(8),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
                   child: ListTile(
                     title: Text(todos[index]),
                     trailing: IconButton(
                         icon: Icon(Icons.delete, color: Colors.red),
-                        onPressed: () {}),
+                        onPressed: () {
+                          setState(() {
+                            todos.removeAt(index);
+                          });
+                        }),
                   ),
                 ));
           }),

@@ -13,7 +13,7 @@ class HomePage extends StatefulWidget {
 
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
-String newDt1 = DateFormat.E().format(dt);
+String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 100.0;
 String key = '77580a3797c4f2efd008403c9faf5e22';
 String cityName = 'Gurgaon';
