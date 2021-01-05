@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather/weather.dart';
-import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 var dt = DateTime.now();
+//date
 String newDt = DateFormat.MMMd().format(dt);
-String newDt1 = DateFormat.E().format(dt);
+String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 100.0;
+//weather
 String key = '77580a3797c4f2efd008403c9faf5e22';
 String cityName = 'Gurgaon';
 double lat = 28.466667;
 double lon = 77.033333;
 WeatherFactory wf = WeatherFactory(key);
-List<Weather> _data = [];
-double celsius = 0.0;
+double celsius = 0; //wf.temperature.celsius;
 const fiveSeconds = const Duration(seconds: 100);
 
+//weather end
 class Addtask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -34,18 +35,27 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  final List<String> _todoList = <String>[];
-  final TextEditingController _textFieldController = TextEditingController();
-  List todos = List();
-  String input = "";
+  String todoTitle = "";
 
-  @override
-  void initState() {
-    super.initState();
-    todos.add("Item1");
-    todos.add("Item2");
-    todos.add("Item3");
-    todos.add("Item4");
+  createTodos() {
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("MyTodos").doc(todoTitle);
+
+    //Map
+    Map<String, String> todos = {"todoTitle": todoTitle};
+
+    documentReference.set(todos).whenComplete(() {
+      print("$todoTitle created");
+    });
+  }
+
+  deleteTodos(item) {
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("MyTodos").doc(item);
+
+    documentReference.delete().whenComplete(() {
+      print("$item deleted");
+    });
   }
 
   @override
@@ -85,16 +95,16 @@ class _TodoListState extends State<TodoList> {
                     Text(newDt1,
                         style: TextStyle(
                           fontFamily: 'Protipo Compact',
-                          fontSize: 30,
-                          color: const Color(0xff9b8fb1),
-                          fontWeight: FontWeight.w100,
+                          fontSize: 35,
+                          color: const Color(0xffbadfca),
+                          fontWeight: FontWeight.w200,
                         )),
                     Text(celsius.toString() + ' °C',
                         style: TextStyle(
                           fontFamily: 'Protipo Compact',
-                          fontSize: 30,
-                          color: const Color(0xff9b8fb1),
-                          fontWeight: FontWeight.w100,
+                          fontSize: 35,
+                          color: const Color(0xffbadfca),
+                          fontWeight: FontWeight.w200,
                         ))
                   ],
                 )
@@ -115,15 +125,13 @@ class _TodoListState extends State<TodoList> {
                   title: Text("Add Task"),
                   content: TextField(
                     onChanged: (String value) {
-                      input = value;
+                      todoTitle = value;
                     },
                   ),
                   actions: <Widget>[
                     FlatButton(
                         onPressed: () {
-                          setState(() {
-                            todos.add(input);
-                          });
+                          createTodos();
 
                           Navigator.of(context).pop();
                         },
@@ -132,84 +140,51 @@ class _TodoListState extends State<TodoList> {
                 );
               });
         },
-        child: Icon(Icons.add, color: Colors.white),
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      body: ListView.builder(
-          itemCount: todos.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Dismissible(
-                key: Key(todos[index]),
-                child: Card(
-                  elevation: 4,
-                  margin: EdgeInsets.all(8),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  child: ListTile(
-                    title: Text(todos[index]),
-                    trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
-                        onPressed: () {
-                          setState(() {
-                            todos.removeAt(index);
-                          });
-                        }),
-                  ),
-                ));
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection("MyTodos").snapshots(),
+          builder: (context, snapshots) {
+            if (snapshots.hasData) {
+              return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: snapshots.data.documents.length,
+                  itemBuilder: (context, index) {
+                    DocumentSnapshot documentSnapshot =
+                        snapshots.data.documents[index];
+                    return Dismissible(
+                        onDismissed: (direction) {
+                          deleteTodos(documentSnapshot["todoTitle"]);
+                        },
+                        key: Key(documentSnapshot["todoTitle"]),
+                        child: Card(
+                          elevation: 4,
+                          margin: EdgeInsets.all(8),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
+                          child: ListTile(
+                            title: Text(documentSnapshot["todoTitle"]),
+                            trailing: IconButton(
+                                icon: Icon(
+                                  Icons.delete,
+                                  color: Colors.red,
+                                ),
+                                onPressed: () {
+                                  deleteTodos(documentSnapshot["todoTitle"]);
+                                }),
+                          ),
+                        ));
+                  });
+            } else {
+              return Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: CircularProgressIndicator(),
+              );
+            }
           }),
     );
   }
-
-//   void _addTodoItem(String title) {
-//     // Wrapping it inside a set state will notify
-//     // the app that the state has changed
-//     setState(() {
-//       _todoList.add(title);
-//     });
-//     _textFieldController.clear();
-//   }
-
-//   // Generate list of item widgets
-//   Widget _buildTodoItem(String title) {
-//     return ListTile(title: Text(title));
-//   }
-
-//   // Generate a single item widget
-//   Future<AlertDialog> _displayDialog(BuildContext context) async {
-//     return showDialog(
-//         context: context,
-//         builder: (BuildContext context) {
-//           return AlertDialog(
-//             title: const Text('Add a task to your list'),
-//             content: TextField(
-//               controller: _textFieldController,
-//               decoration: const InputDecoration(hintText: 'Enter task here'),
-//             ),
-//             actions: <Widget>[
-//               FlatButton(
-//                 child: const Text('ADD'),
-//                 onPressed: () {
-//                   Navigator.of(context).pop();
-//                   _addTodoItem(_textFieldController.text);
-//                 },
-//               ),
-//               FlatButton(
-//                 child: const Text('CANCEL'),
-//                 onPressed: () {
-//                   Navigator.of(context).pop();
-//                 },
-//               )
-//             ],
-//           );
-//         });
-//   }
-
-//   List<Widget> _getItems() {
-//     final List<Widget> _todoWidgets = <Widget>[];
-//     for (String title in _todoList) {
-//       _todoWidgets.add(_buildTodoItem(title));
-//     }
-//     return _todoWidgets;
-//   }
-// }
 }
