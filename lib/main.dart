@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ],
             unselectedLabelColor: Colors.orange,
             labelColor: Colors.black,
-            indicatorColor: const Color(0xff9b8fb1),
+            indicatorColor: Colors.amberAccent[700],
           ),
         ),
       ),

@@ -124,12 +124,9 @@ class _TodoListState extends State<TodoList> {
                         child: Text("Add"))
                   ],
                 );
-                // Navigator.of(context).pop();
               });
         },
-        child: Icon(
-          Icons.add,
-        ),
+        child: Icon(Icons.add, color: Colors.white),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: ListView.builder(
@@ -140,6 +137,9 @@ class _TodoListState extends State<TodoList> {
                 child: Card(
                   child: ListTile(
                     title: Text(todos[index]),
+                    trailing: IconButton(
+                        icon: Icon(Icons.delete, color: Colors.red),
+                        onPressed: () {}),
                   ),
                 ));
           }),
