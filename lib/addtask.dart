@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'dart:async';
+import 'dart:convert';
 import 'package:schoolcalendar/weather.dart';
 import 'package:http/http.dart' as http;
-import 'package:schoolcalendar/dbhelper.dart';
+
+Future<WeatherModel> getWeather() async {
+  final response = await http.get(
+      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric');
+
+  if (response.statusCode == 200) {
+    var result = json.decode(response.body);
+    var model = WeatherModel.fromJson(result);
+    return model;
+  } else
+    throw Exception('Failed to load Weather Information');
+}
 
 //date
 var dt = DateTime.now();
@@ -28,7 +41,7 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  final dbhelper = Databasehelper.instance;
+  // final dbhelper = Databasehelper.instance;
   final texteditingcontroller = TextEditingController();
   bool validated = true;
   String errtext = "";
@@ -137,7 +150,7 @@ class _TodoListState extends State<TodoList> {
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Color.fromRGBO(250, 250, 250, 1),
             elevation: 0,
             title: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,13 +185,13 @@ class _TodoListState extends State<TodoList> {
                           color: const Color(0xffbadfca),
                           fontWeight: FontWeight.w200,
                         )),
-                    // Text(celsius.toString() + ' °C',
+                    // Text('${model.main.temp} ˚C',
                     //     style: TextStyle(
                     //       fontFamily: 'Protipo Compact',
                     //       fontSize: 35,
                     //       color: const Color(0xffbadfca),
                     //       fontWeight: FontWeight.w200,
-                    // ))
+                    //     ))
                   ],
                 )
               ],
@@ -188,7 +201,7 @@ class _TodoListState extends State<TodoList> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            mycard("Fire Vinayak"),
+            mycard("Fire Vania"),
             mycard("Fire Vinayak"),
             mycard("Fire Vinayak"),
             mycard("Fire Vinayak"),
