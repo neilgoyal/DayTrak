@@ -5,15 +5,15 @@ import 'pages/timetable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-void main async() {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-
-// void main() {
+// void main async() {
+//   WidgetsFlutterBinding.ensureInitialized();
+//   await Firebase.initializeApp();
 //   runApp(MyApp());
 // }
+
+void main() {
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

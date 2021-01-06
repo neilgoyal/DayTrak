@@ -4,17 +4,15 @@ import 'package:weather/weather.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 var dt = DateTime.now();
+
 //date
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 100.0;
+//date end
+
 //weather
-String key = '77580a3797c4f2efd008403c9faf5e22';
-String cityName = 'Gurgaon';
-double lat = 28.466667;
-double lon = 77.033333;
-WeatherFactory wf = WeatherFactory(key);
-double celsius = 0; //wf.temperature.celsius;
+WeatherFactory wf = new WeatherFactory("77580a3797c4f2efd008403c9faf5e22");
 const fiveSeconds = const Duration(seconds: 100);
 
 //weather end
