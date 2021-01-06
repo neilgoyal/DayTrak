@@ -4,12 +4,6 @@ import 'pages/settings.dart';
 import 'pages/timetable.dart';
 import 'package:flutter_svg/svg.dart';
 
-// void main async() {
-//   WidgetsFlutterBinding.ensureInitialized();
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
