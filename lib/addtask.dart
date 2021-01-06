@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:weather/weather.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-var dt = DateTime.now();
+import 'package:schoolcalendar/weather.dart';
+import 'package:http/http.dart' as http;
+import 'package:schoolcalendar/dbhelper.dart';
 
 //date
+var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 100.0;
 //date end
 
-//weather
-WeatherFactory wf = new WeatherFactory("77580a3797c4f2efd008403c9faf5e22");
-const fiveSeconds = const Duration(seconds: 100);
-
-//weather end
 class Addtask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,32 +28,112 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  String todoTitle = "";
+  final dbhelper = Databasehelper.instance;
+  final texteditingcontroller = TextEditingController();
+  bool validated = true;
+  String errtext = "";
 
-  createTodos() {
-    DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("MyTodos").doc(todoTitle);
-
-    //Map
-    Map<String, String> todos = {"todoTitle": todoTitle};
-
-    documentReference.set(todos).whenComplete(() {
-      print("$todoTitle created");
-    });
+  void showalertdialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              title: Text(
+                "Add Task",
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  TextField(
+                    controller: texteditingcontroller,
+                    autofocus: true,
+                    style: TextStyle(
+                      fontSize: 18.0,
+                      fontFamily: "Raleway",
+                    ),
+                    decoration: InputDecoration(
+                      errorText: validated ? null : errtext,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 10.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        RaisedButton(
+                          onPressed: () {
+                            if (texteditingcontroller.text.isEmpty) {
+                              setState(() {
+                                errtext = "Can't Be Empty";
+                                validated = false;
+                              });
+                            } else if (texteditingcontroller.text.length >
+                                512) {
+                              setState(() {
+                                errtext = "Too Many Characters";
+                                validated = false;
+                              });
+                            }
+                          },
+                          child: Text("ADD",
+                              style: TextStyle(
+                                color: Colors.purple,
+                                fontSize: 18.0,
+                                fontFamily: "Raleway",
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          });
+        });
   }
 
-  deleteTodos(item) {
-    DocumentReference documentReference =
-        FirebaseFirestore.instance.collection("MyTodos").doc(item);
-
-    documentReference.delete().whenComplete(() {
-      print("$item deleted");
-    });
+  Widget mycard(String task) {
+    return Card(
+      elevation: 5.0,
+      margin: EdgeInsets.symmetric(
+        horizontal: 10.0,
+        vertical: 5.0,
+      ),
+      child: Container(
+        padding: EdgeInsets.all(5.0),
+        child: ListTile(
+          title: Text(
+            "$task",
+            style: TextStyle(
+              fontSize: 18.0,
+              fontFamily: "Raleway",
+            ),
+          ),
+          onLongPress: () {
+            print("Delete");
+          },
+        ),
+      ),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: showalertdialog,
+        child: Icon(
+          Icons.add,
+          color: Colors.white,
+        ),
+        backgroundColor: Colors.purple,
+      ),
       appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
@@ -97,92 +172,103 @@ class _TodoListState extends State<TodoList> {
                           color: const Color(0xffbadfca),
                           fontWeight: FontWeight.w200,
                         )),
-                    Text(celsius.toString() + ' °C',
-                        style: TextStyle(
-                          fontFamily: 'Protipo Compact',
-                          fontSize: 35,
-                          color: const Color(0xffbadfca),
-                          fontWeight: FontWeight.w200,
-                        ))
+                    // Text(celsius.toString() + ' °C',
+                    //     style: TextStyle(
+                    //       fontFamily: 'Protipo Compact',
+                    //       fontSize: 35,
+                    //       color: const Color(0xffbadfca),
+                    //       fontWeight: FontWeight.w200,
+                    // ))
                   ],
                 )
               ],
             ),
             toolbarHeight: toolbarHeight,
           )),
-      floatingActionButton: FloatingActionButton(
-        elevation: 0,
-        backgroundColor: Colors.amberAccent[700],
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  title: Text("Add Task"),
-                  content: TextField(
-                    onChanged: (String value) {
-                      todoTitle = value;
-                    },
-                  ),
-                  actions: <Widget>[
-                    FlatButton(
-                        onPressed: () {
-                          createTodos();
-
-                          Navigator.of(context).pop();
-                        },
-                        child: Text("Add"))
-                  ],
-                );
-              });
-        },
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            mycard("Fire Vinayak"),
+            mycard("Fire Vinayak"),
+            mycard("Fire Vinayak"),
+            mycard("Fire Vinayak"),
+          ],
         ),
       ),
-      body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection("MyTodos").snapshots(),
-          builder: (context, snapshots) {
-            if (snapshots.hasData) {
-              return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: snapshots.data.documents.length,
-                  itemBuilder: (context, index) {
-                    DocumentSnapshot documentSnapshot =
-                        snapshots.data.documents[index];
-                    return Dismissible(
-                        onDismissed: (direction) {
-                          deleteTodos(documentSnapshot["todoTitle"]);
-                        },
-                        key: Key(documentSnapshot["todoTitle"]),
-                        child: Card(
-                          elevation: 4,
-                          margin: EdgeInsets.all(8),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8)),
-                          child: ListTile(
-                            title: Text(documentSnapshot["todoTitle"]),
-                            trailing: IconButton(
-                                icon: Icon(
-                                  Icons.delete,
-                                  color: Colors.red,
-                                ),
-                                onPressed: () {
-                                  deleteTodos(documentSnapshot["todoTitle"]);
-                                }),
-                          ),
-                        ));
-                  });
-            } else {
-              return Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: CircularProgressIndicator(),
-              );
-            }
-          }),
     );
   }
 }
+
+// floatingActionButton: FloatingActionButton(
+//   elevation: 0,
+//   backgroundColor: Colors.amberAccent[700],
+//   onPressed: () {
+//     showDialog(
+//         context: context,
+//         builder: (BuildContext context) {
+//           return AlertDialog(
+//             shape: RoundedRectangleBorder(
+//                 borderRadius: BorderRadius.circular(8)),
+//             title: Text("Add Task"),
+//             content: TextField(
+//               onChanged: (String value) {
+//                 todoTitle = value;
+//               },
+//             ),
+//             actions: <Widget>[
+//               FlatButton(
+//                   onPressed: () {
+//                     createTodos();
+
+//                     Navigator.of(context).pop();
+//                   },
+//                   child: Text("Add"))
+//             ],
+//           );
+//         });
+//   },
+//   child: Icon(
+//     Icons.add,
+//     color: Colors.white,
+//   ),
+// ),
+// body: StreamBuilder(
+//     stream: FirebaseFirestore.instance.collection("MyTodos").snapshots(),
+//     builder: (context, snapshots) {
+//       if (snapshots.hasData) {
+//         return ListView.builder(
+//             shrinkWrap: true,
+//             itemCount: snapshots.data.documents.length,
+//             itemBuilder: (context, index) {
+//               DocumentSnapshot documentSnapshot =
+//                   snapshots.data.documents[index];
+//               return Dismissible(
+//                   onDismissed: (direction) {
+//                     deleteTodos(documentSnapshot["todoTitle"]);
+//                   },
+//                   key: Key(documentSnapshot["todoTitle"]),
+//                   child: Card(
+//                     elevation: 4,
+//                     margin: EdgeInsets.all(8),
+//                     shape: RoundedRectangleBorder(
+//                         borderRadius: BorderRadius.circular(8)),
+//                     child: ListTile(
+//                       title: Text(documentSnapshot["todoTitle"]),
+//                       trailing: IconButton(
+//                           icon: Icon(
+//                             Icons.delete,
+//                             color: Colors.red,
+//                           ),
+//                           onPressed: () {
+//                             deleteTodos(documentSnapshot["todoTitle"]);
+//                           }),
+//                     ),
+//                   ));
+//             });
+//       } else {
+//         return Align(
+//           alignment: FractionalOffset.bottomCenter,
+//           child: CircularProgressIndicator(),
+//         );
+//       }
+//     }),
