@@ -8,6 +8,7 @@ var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 100.0;
+
 //date end
 
 class Addtask extends StatelessWidget {

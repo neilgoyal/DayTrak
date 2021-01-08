@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Coord {
   final double lon;
@@ -153,10 +154,11 @@ class WeatherModel {
 Future<WeatherModel> getWeather() async {
   final response = await http.get(
       'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric');
-
+  SharedPreferences prefs = await SharedPreferences.getInstance();
   if (response.statusCode == 200) {
     var result = json.decode(response.body);
     var model = WeatherModel.fromJson(result);
+    prefs.setDouble('temp', model.main.temp);
     return model;
   } else
     throw Exception('Failed to load Weather Information');
