@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: pages,
         ),
         bottomNavigationBar: Container(
+          color: Colors.white,
           // decoration: BoxDecoration(
           //   boxShadow: [
           //     BoxShadow(

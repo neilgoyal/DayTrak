@@ -1,21 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'dart:async';
-import 'dart:convert';
 import 'package:schoolcalendar/weather.dart';
-import 'package:http/http.dart' as http;
-
-Future<WeatherModel> getWeather() async {
-  final response = await http.get(
-      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric');
-
-  if (response.statusCode == 200) {
-    var result = json.decode(response.body);
-    var model = WeatherModel.fromJson(result);
-    return model;
-  } else
-    throw Exception('Failed to load Weather Information');
-}
+import 'package:schoolcalendar/dbhelper.dart';
 
 //date
 var dt = DateTime.now();
@@ -41,12 +27,63 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
-  // final dbhelper = Databasehelper.instance;
+  final dbhelper = Databasehelper.instance;
   final texteditingcontroller = TextEditingController();
   bool validated = true;
   String errtext = "";
+  String todoedited = "";
+  List myitems = [];
+  List<Widget> children = [];
+
+  void addtodo() async {
+    Map<String, dynamic> row = {
+      Databasehelper.columnName: todoedited,
+    };
+    final id = await dbhelper.insert(row);
+    print(id);
+    Navigator.pop(context);
+    todoedited = "";
+    setState(() {
+      validated = true;
+      errtext = "";
+    });
+  }
+
+  Future<bool> query() async {
+    myitems = [];
+    children = [];
+    var allrows = await dbhelper.queryall();
+    allrows.forEach((row) {
+      myitems.add(row.toString());
+      children.add(Card(
+        elevation: 5.0,
+        margin: EdgeInsets.symmetric(
+          horizontal: 10.0,
+          vertical: 5.0,
+        ),
+        child: Container(
+          padding: EdgeInsets.all(5.0),
+          child: ListTile(
+            title: Text(
+              row['todo'],
+              style: TextStyle(
+                fontSize: 18.0,
+                fontFamily: "Raleway",
+              ),
+            ),
+            onLongPress: () {
+              dbhelper.deletedata(row['id']);
+              setState(() {});
+            },
+          ),
+        ),
+      ));
+    });
+    return Future.value(true);
+  }
 
   void showalertdialog() {
+    texteditingcontroller.text = "";
     showDialog(
         context: context,
         builder: (context) {
@@ -64,6 +101,9 @@ class _TodoListState extends State<TodoList> {
                   TextField(
                     controller: texteditingcontroller,
                     autofocus: true,
+                    onChanged: (_val) {
+                      todoedited = _val;
+                    },
                     style: TextStyle(
                       fontSize: 18.0,
                       fontFamily: "Raleway",
@@ -89,14 +129,16 @@ class _TodoListState extends State<TodoList> {
                             } else if (texteditingcontroller.text.length >
                                 512) {
                               setState(() {
-                                errtext = "Too Many Characters";
+                                errtext = "Too may Chanracters";
                                 validated = false;
                               });
+                            } else {
+                              addtodo();
                             }
                           },
+                          color: Colors.amberAccent[700],
                           child: Text("ADD",
                               style: TextStyle(
-                                color: Colors.purple,
                                 fontSize: 18.0,
                                 fontFamily: "Raleway",
                               )),
@@ -111,177 +153,220 @@ class _TodoListState extends State<TodoList> {
         });
   }
 
-  Widget mycard(String task) {
-    return Card(
-      elevation: 5.0,
-      margin: EdgeInsets.symmetric(
-        horizontal: 10.0,
-        vertical: 5.0,
-      ),
-      child: Container(
-        padding: EdgeInsets.all(5.0),
-        child: ListTile(
-          title: Text(
-            "$task",
-            style: TextStyle(
-              fontSize: 18.0,
-              fontFamily: "Raleway",
-            ),
-          ),
-          onLongPress: () {
-            print("Delete");
-          },
-        ),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: showalertdialog,
-        child: Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-        backgroundColor: Colors.purple,
-      ),
-      appBar: PreferredSize(
-          preferredSize: Size.fromHeight(100.0),
-          child: AppBar(
-            backgroundColor: Color.fromRGBO(250, 250, 250, 1),
-            elevation: 0,
-            title: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        newDt,
-                        style: TextStyle(
-                          fontFamily: 'Protipo Compact',
-                          fontSize: 40,
-                          color: const Color(0xff9b8fb1),
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                      Text("Day 1",
-                          style: TextStyle(
-                            fontFamily: 'Protipo Compact',
-                            fontSize: 40,
-                            color: const Color(0xff9b8fb1),
-                            fontWeight: FontWeight.w300,
-                          ))
-                    ]),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(newDt1,
-                        style: TextStyle(
-                          fontFamily: 'Protipo Compact',
-                          fontSize: 35,
-                          color: const Color(0xffbadfca),
-                          fontWeight: FontWeight.w200,
-                        )),
-                    // Text('${model.main.temp} ˚C',
-                    //     style: TextStyle(
-                    //       fontFamily: 'Protipo Compact',
-                    //       fontSize: 35,
-                    //       color: const Color(0xffbadfca),
-                    //       fontWeight: FontWeight.w200,
-                    //     ))
-                  ],
-                )
-              ],
+    return FutureBuilder(
+      builder: (context, snap) {
+        if (snap.hasData == null) {
+          return Center(
+            child: Text(
+              "No Data",
             ),
-            toolbarHeight: toolbarHeight,
-          )),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            mycard("Fire Vania"),
-            mycard("Fire Vinayak"),
-            mycard("Fire Vinayak"),
-            mycard("Fire Vinayak"),
-          ],
-        ),
-      ),
+          );
+        } else {
+          if (myitems.length == 0) {
+            return Scaffold(
+              floatingActionButton: FloatingActionButton(
+                onPressed: showalertdialog,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                backgroundColor: Colors.amberAccent[700],
+                elevation: 5,
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
+              appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(100.0),
+                  child: AppBar(
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+                    title: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                newDt,
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 40,
+                                  color: const Color(0xff9b8fb1),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              Text("Day 1",
+                                  style: TextStyle(
+                                    fontFamily: 'Protipo Compact',
+                                    fontSize: 40,
+                                    color: const Color(0xff9b8fb1),
+                                    fontWeight: FontWeight.w300,
+                                  ))
+                            ]),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(newDt1,
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 35,
+                                  color: const Color(0xffbadfca),
+                                  fontWeight: FontWeight.w200,
+                                )),
+                            Container(
+                              child: FutureBuilder<WeatherModel>(
+                                future: getWeather(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    WeatherModel model = snapshot.data;
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          '${model.main.temp.round()} ˚C',
+                                          style: TextStyle(
+                                            fontFamily: 'Protipo Compact',
+                                            fontSize: 35,
+                                            color: const Color(0xffbadfca),
+                                            fontWeight: FontWeight.w200,
+                                          ),
+                                        )
+                                      ],
+                                    );
+                                  } else if (snapshot.hasError)
+                                    return Text(
+                                      '${snapshot.error}',
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          color: Colors.red,
+                                          fontFamily: 'Protipo Compact'),
+                                    );
+                                  return CircularProgressIndicator();
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    toolbarHeight: toolbarHeight,
+                  )),
+              backgroundColor: Colors.white,
+              body: Center(
+                child: Text(
+                  "No Tasks Added",
+                  style: TextStyle(fontFamily: "Raleway", fontSize: 20.0),
+                ),
+              ),
+            );
+          } else {
+            return Scaffold(
+              floatingActionButton: FloatingActionButton(
+                onPressed: showalertdialog,
+                child: Icon(
+                  Icons.add,
+                  color: Colors.white,
+                ),
+                backgroundColor: Colors.amberAccent[700],
+                elevation: 5,
+              ),
+              floatingActionButtonLocation:
+                  FloatingActionButtonLocation.centerFloat,
+              appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(100.0),
+                  child: AppBar(
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+                    title: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                newDt,
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 40,
+                                  color: const Color(0xff9b8fb1),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              Text("Day 1",
+                                  style: TextStyle(
+                                    fontFamily: 'Protipo Compact',
+                                    fontSize: 40,
+                                    color: const Color(0xff9b8fb1),
+                                    fontWeight: FontWeight.w300,
+                                  ))
+                            ]),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(newDt1,
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 35,
+                                  color: const Color(0xffbadfca),
+                                  fontWeight: FontWeight.w200,
+                                )),
+                            Container(
+                              child: FutureBuilder<WeatherModel>(
+                                future: getWeather(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    WeatherModel model = snapshot.data;
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          '${model.main.temp.round()} ˚C',
+                                          style: TextStyle(
+                                            fontFamily: 'Protipo Compact',
+                                            fontSize: 35,
+                                            color: const Color(0xffbadfca),
+                                            fontWeight: FontWeight.w200,
+                                          ),
+                                        )
+                                      ],
+                                    );
+                                  } else if (snapshot.hasError)
+                                    return Text(
+                                      '${snapshot.error}',
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          color: Colors.red,
+                                          fontFamily: 'Protipo Compact'),
+                                    );
+                                  return CircularProgressIndicator(
+                                      // valueColor:
+                                      //     new AlwaysStoppedAnimation<Color>(
+                                      //         Colors.white),
+                                      );
+                                },
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    toolbarHeight: toolbarHeight,
+                  )),
+              backgroundColor: Colors.white,
+              body: SingleChildScrollView(
+                child: Column(
+                  children: children,
+                ),
+              ),
+            );
+          }
+        }
+      },
+      future: query(),
     );
   }
 }
-
-// floatingActionButton: FloatingActionButton(
-//   elevation: 0,
-//   backgroundColor: Colors.amberAccent[700],
-//   onPressed: () {
-//     showDialog(
-//         context: context,
-//         builder: (BuildContext context) {
-//           return AlertDialog(
-//             shape: RoundedRectangleBorder(
-//                 borderRadius: BorderRadius.circular(8)),
-//             title: Text("Add Task"),
-//             content: TextField(
-//               onChanged: (String value) {
-//                 todoTitle = value;
-//               },
-//             ),
-//             actions: <Widget>[
-//               FlatButton(
-//                   onPressed: () {
-//                     createTodos();
-
-//                     Navigator.of(context).pop();
-//                   },
-//                   child: Text("Add"))
-//             ],
-//           );
-//         });
-//   },
-//   child: Icon(
-//     Icons.add,
-//     color: Colors.white,
-//   ),
-// ),
-// body: StreamBuilder(
-//     stream: FirebaseFirestore.instance.collection("MyTodos").snapshots(),
-//     builder: (context, snapshots) {
-//       if (snapshots.hasData) {
-//         return ListView.builder(
-//             shrinkWrap: true,
-//             itemCount: snapshots.data.documents.length,
-//             itemBuilder: (context, index) {
-//               DocumentSnapshot documentSnapshot =
-//                   snapshots.data.documents[index];
-//               return Dismissible(
-//                   onDismissed: (direction) {
-//                     deleteTodos(documentSnapshot["todoTitle"]);
-//                   },
-//                   key: Key(documentSnapshot["todoTitle"]),
-//                   child: Card(
-//                     elevation: 4,
-//                     margin: EdgeInsets.all(8),
-//                     shape: RoundedRectangleBorder(
-//                         borderRadius: BorderRadius.circular(8)),
-//                     child: ListTile(
-//                       title: Text(documentSnapshot["todoTitle"]),
-//                       trailing: IconButton(
-//                           icon: Icon(
-//                             Icons.delete,
-//                             color: Colors.red,
-//                           ),
-//                           onPressed: () {
-//                             deleteTodos(documentSnapshot["todoTitle"]);
-//                           }),
-//                     ),
-//                   ));
-//             });
-//       } else {
-//         return Align(
-//           alignment: FractionalOffset.bottomCenter,
-//           child: CircularProgressIndicator(),
-//         );
-//       }
-//     }),
