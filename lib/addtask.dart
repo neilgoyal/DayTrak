@@ -32,8 +32,10 @@ class _TodoListState extends State<TodoList> {
   bool validated = true;
   String errtext = "";
   String todoedited = "";
-  List myitems = [];
-  List<Widget> children = [];
+  // ignore: deprecated_member_use
+  var myitems = List();
+  // ignore: deprecated_member_use
+  List<Widget> children = new List<Widget>();
 
   void addtodo() async {
     Map<String, dynamic> row = {
@@ -41,7 +43,7 @@ class _TodoListState extends State<TodoList> {
     };
     final id = await dbhelper.insert(row);
     print(id);
-    Navigator.pop(context);
+    Navigator.of(context, rootNavigator: true).pop();
     todoedited = "";
     setState(() {
       validated = true;
