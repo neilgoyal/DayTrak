@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/weather.dart';
 import 'package:schoolcalendar/dbhelper.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 //date
 var dt = DateTime.now();
@@ -37,6 +38,7 @@ class _TodoListState extends State<TodoList> {
   var myitems = List();
   // ignore: deprecated_member_use
   List<Widget> children = new List<Widget>();
+  SlidableController slidableController;
 
   void addtodo() async {
     Map<String, dynamic> row = {
@@ -55,32 +57,65 @@ class _TodoListState extends State<TodoList> {
   Future<bool> query() async {
     myitems = [];
     children = [];
+
     var allrows = await dbhelper.queryall();
+
     allrows.forEach((row) {
       myitems.add(row.toString());
       children.add(Card(
-        elevation: 5.0,
-        margin: EdgeInsets.symmetric(
-          horizontal: 10.0,
-          vertical: 5.0,
-        ),
-        child: Container(
-          padding: EdgeInsets.all(5.0),
-          child: ListTile(
-            title: Text(
-              row['todo'],
-              style: TextStyle(
-                fontSize: 18.0,
-                fontFamily: "Raleway",
+          elevation: 5.0,
+          margin: EdgeInsets.symmetric(
+            horizontal: 10.0,
+            vertical: 5.0,
+          ),
+          child: Slidable(
+            actionPane: SlidableDrawerActionPane(),
+            actionExtentRatio: 0.25,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              child: ListTile(
+                title: Text(
+                  row['todo'],
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontFamily: "Raleway",
+                  ),
+                ),
+                onLongPress: () {
+                  dbhelper.deletedata(row['id']);
+                  setState(() {});
+                },
               ),
             ),
-            onLongPress: () {
-              dbhelper.deletedata(row['id']);
-              setState(() {});
-            },
-          ),
-        ),
-      ));
+            actions: <Widget>[
+              IconSlideAction(
+                caption: 'Archive',
+                color: Colors.blue,
+                icon: Icons.archive,
+                onTap: () => {},
+              ),
+              IconSlideAction(
+                caption: 'Share',
+                color: Colors.indigo,
+                icon: Icons.share,
+                onTap: () => {},
+              ),
+            ],
+            secondaryActions: <Widget>[
+              IconSlideAction(
+                caption: 'More',
+                color: Colors.black45,
+                icon: Icons.more_horiz,
+                onTap: () => {},
+              ),
+              IconSlideAction(
+                caption: 'Delete',
+                color: Colors.red,
+                icon: Icons.delete,
+                onTap: () => {},
+              ),
+            ],
+          )));
     });
     return Future.value(true);
   }
