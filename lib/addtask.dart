@@ -129,7 +129,7 @@ class _TodoListState extends State<TodoList> {
                             } else if (texteditingcontroller.text.length >
                                 512) {
                               setState(() {
-                                errtext = "Too may Chanracters";
+                                errtext = "Too many Chanracters";
                                 validated = false;
                               });
                             } else {
@@ -244,7 +244,10 @@ class _TodoListState extends State<TodoList> {
                                           color: Colors.red,
                                           fontFamily: 'Protipo Compact'),
                                     );
-                                  return CircularProgressIndicator();
+                                  return CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  );
                                 },
                               ),
                             ),
