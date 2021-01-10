@@ -8,7 +8,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
-final double toolbarHeight = 100.0;
+final double toolbarHeight = 190.0;
 
 //date end
 
@@ -45,6 +45,19 @@ class _TodoListState extends State<TodoList> {
       Databasehelper.columnName: todoedited,
     };
     final id = await dbhelper.insert(row);
+    Navigator.of(context, rootNavigator: true).pop();
+    todoedited = "";
+    setState(() {
+      validated = true;
+      errtext = "";
+    });
+  }
+
+  void updatetodo() async {
+    Map<String, dynamic> row = {
+      Databasehelper.columnName: todoedited,
+    };
+    final id = row["id"];
     print(id);
     Navigator.of(context, rootNavigator: true).pop();
     todoedited = "";
@@ -63,56 +76,35 @@ class _TodoListState extends State<TodoList> {
     allrows.forEach((row) {
       myitems.add(row.toString());
       children.add(Card(
-          elevation: 5.0,
+          elevation: 5,
           margin: EdgeInsets.symmetric(
             horizontal: 10.0,
             vertical: 5.0,
           ),
-          child: Slidable(
-            actionPane: SlidableDrawerActionPane(),
-            actionExtentRatio: 0.25,
-            child: Container(
-              padding: EdgeInsets.all(5.0),
-              child: ListTile(
-                title: Text(
-                  row['todo'],
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    fontFamily: "Raleway",
+                    color: const Color(0xbfd270aa),
+                    fontSize: 24,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w200,
                   ),
                 ),
-                onLongPress: () {
+              ),
+            ),
+            actions: <Widget>[],
+            secondaryActions: <Widget>[
+              IconSlideAction(
+                caption: 'Edit',
+                color: Colors.grey[300],
+                icon: Icons.edit_outlined,
+                onTap: showalertdialog1,
+              ),
+              IconSlideAction(
+                caption: 'Completed',
+                color: Colors.lightGreenAccent[700],
+                icon: Icons.check,
+                onTap: () {
                   dbhelper.deletedata(row['id']);
                   setState(() {});
                 },
-              ),
-            ),
-            actions: <Widget>[
-              IconSlideAction(
-                caption: 'Archive',
-                color: Colors.blue,
-                icon: Icons.archive,
-                onTap: () => {},
-              ),
-              IconSlideAction(
-                caption: 'Share',
-                color: Colors.indigo,
-                icon: Icons.share,
-                onTap: () => {},
-              ),
-            ],
-            secondaryActions: <Widget>[
-              IconSlideAction(
-                caption: 'More',
-                color: Colors.black45,
-                icon: Icons.more_horiz,
-                onTap: () => {},
-              ),
-              IconSlideAction(
-                caption: 'Delete',
-                color: Colors.red,
-                icon: Icons.delete,
-                onTap: () => {},
               ),
             ],
           )));
@@ -143,8 +135,10 @@ class _TodoListState extends State<TodoList> {
                       todoedited = _val;
                     },
                     style: TextStyle(
-                      fontSize: 18.0,
-                      fontFamily: "Raleway",
+                      fontFamily: 'Protipo Compact',
+                      fontSize: 27,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w100,
                     ),
                     decoration: InputDecoration(
                       errorText: validated ? null : errtext,
@@ -167,7 +161,7 @@ class _TodoListState extends State<TodoList> {
                             } else if (texteditingcontroller.text.length >
                                 512) {
                               setState(() {
-                                errtext = "Too many Chanracters";
+                                errtext = "Too many Characters";
                                 validated = false;
                               });
                             } else {
@@ -177,8 +171,85 @@ class _TodoListState extends State<TodoList> {
                           color: Colors.amberAccent[700],
                           child: Text("ADD",
                               style: TextStyle(
-                                fontSize: 18.0,
-                                fontFamily: "Raleway",
+                                fontFamily: 'Protipo Compact',
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w300,
+                              )),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            );
+          });
+        });
+  }
+
+  void showalertdialog1() {
+    texteditingcontroller.text = "";
+    showDialog(
+        context: context,
+        builder: (context) {
+          return StatefulBuilder(builder: (context, setState) {
+            return AlertDialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15.0),
+              ),
+              title: Text(
+                "Update Task",
+              ),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: <Widget>[
+                  TextField(
+                    controller: texteditingcontroller,
+                    autofocus: true,
+                    onChanged: (_val) {
+                      todoedited = _val;
+                    },
+                    style: TextStyle(
+                      fontFamily: 'Protipo Compact',
+                      fontSize: 27,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w100,
+                    ),
+                    decoration: InputDecoration(
+                      errorText: validated ? null : errtext,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 10.0,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        RaisedButton(
+                          onPressed: () {
+                            if (texteditingcontroller.text.isEmpty) {
+                              setState(() {
+                                errtext = "Can't Be Empty";
+                                validated = false;
+                              });
+                            } else if (texteditingcontroller.text.length >
+                                512) {
+                              setState(() {
+                                errtext = "Too many Characters";
+                                validated = false;
+                              });
+                            } else {
+                              updatetodo();
+                            }
+                          },
+                          color: Colors.amberAccent[700],
+                          child: Text("UPDATE",
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                fontSize: 15,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w300,
                               )),
                         )
                       ],
@@ -215,8 +286,10 @@ class _TodoListState extends State<TodoList> {
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
+//APPBAR 1
+
               appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(100.0),
+                  preferredSize: Size.fromHeight(190),
                   child: AppBar(
                     backgroundColor: Colors.white,
                     elevation: 0,
@@ -290,6 +363,25 @@ class _TodoListState extends State<TodoList> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Upcoming Tasks',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 34,
+                                  color: const Color(0xff9b8fb1),
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              )
+                            ]),
+                        SizedBox(
+                          height: 20,
                         )
                       ],
                     ),
@@ -316,8 +408,10 @@ class _TodoListState extends State<TodoList> {
               ),
               floatingActionButtonLocation:
                   FloatingActionButtonLocation.centerFloat,
+//APPBAR 2
+
               appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(100.0),
+                  preferredSize: Size.fromHeight(190.0),
                   child: AppBar(
                     backgroundColor: Colors.white,
                     elevation: 0,
@@ -365,7 +459,7 @@ class _TodoListState extends State<TodoList> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          '${model.main.temp} ˚C',
+                                          '${model.main.temp.round()} ˚C',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: 35,
@@ -391,6 +485,25 @@ class _TodoListState extends State<TodoList> {
                               ),
                             ),
                           ],
+                        ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Upcoming Tasks',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 34,
+                                  color: const Color(0xff9b8fb1),
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              )
+                            ]),
+                        SizedBox(
+                          height: 20,
                         )
                       ],
                     ),

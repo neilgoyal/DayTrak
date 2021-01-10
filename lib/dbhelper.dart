@@ -1,7 +1,5 @@
 import 'dart:io';
 import 'package:path/path.dart';
-// should install these
-// refer description for more
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -57,6 +55,13 @@ class Databasehelper {
   Future<int> insert(Map<String, dynamic> row) async {
     Database db = await instance.databse;
     return await db.insert(table, row);
+  }
+
+  Future<int> update(Map<String, dynamic> row) async {
+    Database db = await instance.databse;
+    var res =
+        await db.update(table, row, where: "id = ?", whereArgs: [row["id"]]);
+    return res;
   }
 
   // function to query all the rows
