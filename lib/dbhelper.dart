@@ -2,24 +2,16 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
+import 'Todo.dart';
 
-// the database helper class
 class Databasehelper {
-  // database name
   static final _databasename = "todo.db";
   static final _databaseversion = 1;
-
-  // the table name
   static final table = "my_table";
-
-  // column names
   static final columnID = 'id';
   static final columnName = "todo";
-
-  // a database
+  static final columnDate = "date";
   static Database _database;
-
-  // privateconstructor
   Databasehelper._privateConstructor();
   static final Databasehelper instance = Databasehelper._privateConstructor();
 
@@ -40,13 +32,12 @@ class Databasehelper {
         version: _databaseversion, onCreate: _onCreate);
   }
 
-  // create a database since it doesn't exist
   Future _onCreate(Database db, int version) async {
-    // sql code
     await db.execute('''
       CREATE TABLE $table (
         $columnID INTEGER PRIMARY KEY,
         $columnName TEXT NOT NULL
+        $columnDate TEXT NOT NULL
       );
       ''');
   }
@@ -57,10 +48,9 @@ class Databasehelper {
     return await db.insert(table, row);
   }
 
-  Future<int> update(Map<String, dynamic> row) async {
+  Future<int> update(Map<String, dynamic> row, int id) async {
     Database db = await instance.databse;
-    var res =
-        await db.update(table, row, where: "id = ?", whereArgs: [row["id"]]);
+    var res = await db.update(table, row, where: "id = ?", whereArgs: [id]);
     return res;
   }
 

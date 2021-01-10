@@ -42,13 +42,6 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         bottomNavigationBar: Container(
           color: Colors.white,
-          // decoration: BoxDecoration(
-          //   boxShadow: [
-          //     BoxShadow(
-          //       offset: Offset(10, 10)
-          //     )
-          //   ]
-          // ),
           margin: EdgeInsets.only(bottom: 15),
           child: new TabBar(
             tabs: [

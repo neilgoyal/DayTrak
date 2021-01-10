@@ -3,14 +3,14 @@ import 'package:intl/intl.dart';
 import 'package:schoolcalendar/weather.dart';
 import 'package:schoolcalendar/dbhelper.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:schoolcalendar/custom_date_time_picker.dart';
 
-//date
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 190.0;
-
-//date end
+var id2 = 0;
+var row2 = {Databasehelper.columnName: ""};
 
 class Addtask extends StatelessWidget {
   @override
@@ -29,22 +29,34 @@ class TodoList extends StatefulWidget {
 }
 
 class _TodoListState extends State<TodoList> {
+  DateTime _selectedDate = DateTime.now();
   final dbhelper = Databasehelper.instance;
   final texteditingcontroller = TextEditingController();
   bool validated = true;
   String errtext = "";
   String todoedited = "";
-  // ignore: deprecated_member_use
-  var myitems = List();
-  // ignore: deprecated_member_use
-  List<Widget> children = new List<Widget>();
+  List myitems;
+  List<Widget> children;
   SlidableController slidableController;
+
+  Future _pickDate() async {
+    DateTime datepick = await showDatePicker(
+        context: context,
+        initialDate: new DateTime.now(),
+        firstDate: new DateTime.now().add(Duration(days: -365)),
+        lastDate: new DateTime.now().add(Duration(days: 365)));
+    if (datepick != null)
+      setState(() {
+        _selectedDate = datepick;
+      });
+  }
 
   void addtodo() async {
     Map<String, dynamic> row = {
       Databasehelper.columnName: todoedited,
+      Databasehelper.columnDate: _selectedDate,
     };
-    final id = await dbhelper.insert(row);
+    await dbhelper.insert(row);
     Navigator.of(context, rootNavigator: true).pop();
     todoedited = "";
     setState(() {
@@ -54,11 +66,10 @@ class _TodoListState extends State<TodoList> {
   }
 
   void updatetodo() async {
-    Map<String, dynamic> row = {
+    Map<String, dynamic> row2 = {
       Databasehelper.columnName: todoedited,
     };
-    final id = row["id"];
-    print(id);
+    await dbhelper.update(row2, id2);
     Navigator.of(context, rootNavigator: true).pop();
     todoedited = "";
     setState(() {
@@ -81,22 +92,47 @@ class _TodoListState extends State<TodoList> {
             horizontal: 10.0,
             vertical: 5.0,
           ),
-                    color: const Color(0xbfd270aa),
-                    fontSize: 24,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w200,
+          child: Slidable(
+            actionPane: SlidableDrawerActionPane(),
+            actionExtentRatio: 0.25,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              child: ListTile(
+                  title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    row['todo'],
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: "Protipo Compact",
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
-                ),
-              ),
+                  Text(
+                    row['date'],
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontFamily: "Protipo Compact",
+                      color: Colors.black,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                ],
+              )),
             ),
             actions: <Widget>[],
             secondaryActions: <Widget>[
               IconSlideAction(
-                caption: 'Edit',
-                color: Colors.grey[300],
-                icon: Icons.edit_outlined,
-                onTap: showalertdialog1,
-              ),
+                  caption: 'Edit',
+                  color: Colors.grey[300],
+                  icon: Icons.edit_outlined,
+                  onTap: () {
+                    showalertdialog1();
+                    id2 = row["id"];
+                    row2 = row;
+                  }),
               IconSlideAction(
                 caption: 'Completed',
                 color: Colors.lightGreenAccent[700],
@@ -120,7 +156,7 @@ class _TodoListState extends State<TodoList> {
           return StatefulBuilder(builder: (context, setState) {
             return AlertDialog(
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(12.0),
               ),
               title: Text(
                 "Add Task",
@@ -143,6 +179,11 @@ class _TodoListState extends State<TodoList> {
                     decoration: InputDecoration(
                       errorText: validated ? null : errtext,
                     ),
+                  ),
+                  CustomDateTimePicker(
+                    icon: Icons.date_range,
+                    onPressed: _pickDate,
+                    value: new DateFormat("dd-MM-yyyy").format(_selectedDate),
                   ),
                   Padding(
                     padding: EdgeInsets.only(

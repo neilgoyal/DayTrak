@@ -35,6 +35,7 @@ dependencies:
   path_provider: ^1.6.24
   shared_preferences: ^0.5.12+4
   flutter_slidable: ^0.5.7
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:
