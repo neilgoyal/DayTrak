@@ -365,7 +365,7 @@ class _TodoListState extends State<TodoList> {
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          '${model.main.temp.round()} ˚C',
+                                          '${model.main.temp} ˚C',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: 35,
@@ -384,10 +384,9 @@ class _TodoListState extends State<TodoList> {
                                           fontFamily: 'Protipo Compact'),
                                     );
                                   return CircularProgressIndicator(
-                                      // valueColor:
-                                      //     new AlwaysStoppedAnimation<Color>(
-                                      //         Colors.white),
-                                      );
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  );
                                 },
                               ),
                             ),
