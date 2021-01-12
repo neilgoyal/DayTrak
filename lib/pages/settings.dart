@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -34,20 +35,40 @@ class _SettingsState extends State<SettingsPage> {
 
   Company _selectedCompany;
 
-  String selection = "";
+  String data = "";
+  String nameKey;
 
   @override
   void initState() {
     _dropdownMenuItems = buildDropdownMenuItems(_companies);
     _selectedCompany = _dropdownMenuItems[0].value;
-    getData();
     super.initState();
+    const MethodChannel('plugins.flutter.io/shared_prefrences')
+        .setMockMethodCallHandler(
+      (MethodCall methodcall) async {
+        if (methodcall.method == 'getAll') {
+          return {"flutter." + nameKey: "No Grade Selected"};
+        }
+        return null;
+      },
+    );
+    setData();
   }
 
-  getData() async {
+  Future saveData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      selection = prefs.getString('selection');
+    return await prefs.setString('nameKey', _selectedCompany.name);
+  }
+
+  Future<String> loadData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String nameKey = prefs.getString('nameKey');
+    return nameKey;
+  }
+
+  setData() {
+    loadData().then((value) {
+      data = value;
     });
   }
 
@@ -84,17 +105,19 @@ class _SettingsState extends State<SettingsPage> {
               title: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      Text(
-                        'Settings',
-                        style: TextStyle(
-                          fontFamily: 'Protipo Compact',
-                          fontSize: 40,
-                          color: const Color(0xff9b8fb1),
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ])
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Settings',
+                            style: TextStyle(
+                              fontFamily: 'Protipo Compact',
+                              fontSize: 40,
+                              color: const Color(0xff9b8fb1),
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ])
                   ]),
               toolbarHeight: toolbarHeight,
             )),
@@ -112,12 +135,16 @@ class _SettingsState extends State<SettingsPage> {
                     value: _selectedCompany,
                     items: _dropdownMenuItems,
                     onChanged: onChangeDropdownItem,
+                    onTap: () {
+                      saveData();
+                      loadData();
+                    },
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   Text(
-                    'Selected: $selection',
+                    'Selected: $nameKey',
                   )
                 ]),
           ),
