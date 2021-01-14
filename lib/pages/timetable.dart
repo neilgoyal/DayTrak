@@ -8,7 +8,8 @@ class TimetablePage extends StatefulWidget {
 
 final double toolbarHeight = 100.0;
 var dt = DateTime.now();
-String newDay = Jiffy(dt).format("EEEE do");
+String newDay = Jiffy(dt).format("EEEE");
+String newDay1 = Jiffy(dt).format("do");
 
 class _TimetableState extends State<TimetablePage> {
   @override
@@ -28,7 +29,7 @@ class _TimetableState extends State<TimetablePage> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              newDay,
+                              newDay + ' ' + newDay1,
                               style: TextStyle(
                                 fontSize: 40,
                                 color: const Color(0xff9b8fb1),
