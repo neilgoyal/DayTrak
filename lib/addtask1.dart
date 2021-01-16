@@ -1,3 +1,5 @@
+import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/models/todo.dart';
 import 'package:schoolcalendar/services/todo_service.dart';
@@ -10,6 +12,10 @@ var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
 final double toolbarHeight = 190.0;
+BorderRadiusGeometry radius = BorderRadius.only(
+  topLeft: Radius.circular(35.0),
+  topRight: Radius.circular(35.0),
+);
 
 class Addtask1 extends StatelessWidget {
   @override
@@ -76,137 +82,164 @@ class _TodoListState1 extends State<TodoList1> {
     }
   }
 
+  Widget _floatingPanel() {
+    return Container(
+      // margin: const EdgeInsets.all(20.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(35)),
+      ),
+      margin: const EdgeInsets.all(20.0),
+      padding: EdgeInsets.all(20.0),
+      child: Column(
+        children: <Widget>[
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('Add Task',
+                style: TextStyle(
+                  fontFamily: 'Protipo Compact',
+                  fontSize: 30,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w300,
+                )),
+          ]),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('',
+                style: TextStyle(
+                  fontFamily: 'Protipo Compact',
+                  fontSize: 10,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w300,
+                )),
+          ]),
+          TextField(
+              // textInputAction: TextInputAction.next,
+              cursorColor: Colors.black54,
+              controller: _todoTitleController,
+              decoration: InputDecoration(
+                labelText: "Create a new task",
+                labelStyle: TextStyle(color: Colors.black54),
+                fillColor: Colors.white,
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(color: Colors.black54, width: 2),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                  borderSide: BorderSide(
+                      color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+                ),
+              )),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('',
+                style: TextStyle(
+                  fontFamily: 'Protipo Compact',
+                  fontSize: 10,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w300,
+                )),
+          ]),
+          TextField(
+            cursorColor: Colors.black54,
+            controller: _todoDateController,
+            textInputAction: TextInputAction.done,
+            onSubmitted: (term) async {
+              _addbutton();
+            },
+            decoration: InputDecoration(
+              labelText: "Select a date",
+              labelStyle: TextStyle(color: Colors.black54),
+              fillColor: Colors.white,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 2),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ),
+              prefixIcon: InkWell(
+                onTap: () {
+                  _selectedTodoDate(context);
+                  getAllTodos();
+                },
+                child: Icon(CupertinoIcons.calendar, color: Colors.black54),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          RaisedButton(
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+            onPressed: () async {
+              _addbutton();
+            },
+            color: Color.fromRGBO(119, 227, 134, 1),
+            child: Text('Add',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontFamily: 'Protipo Compact',
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _floatingCollasped() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(185, 143, 163, 1),
+        borderRadius: radius,
+      ),
+      child: Center(
+        child: Text(
+          "Add Task",
+          style: TextStyle(
+              color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  _addbutton() async {
+    getAllTodos();
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    var todoObject = Todo();
+    todoObject.title = _todoTitleController.text;
+    todoObject.isFinished = 0;
+    todoObject.todoDate = _todoDateController.text;
+    var _todoService = TodoService();
+    var result = await _todoService.saveTodo(todoObject);
+    if (result > 0) {
+      getAllTodos();
+      _todoTitleController.text = "";
+      _todoDateController.text = "";
+    }
+    print(result);
+    panelController.close();
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
       child: SlidingUpPanel(
-        margin: const EdgeInsets.all(20.0),
+        backdropTapClosesPanel: true,
+        backdropEnabled: true,
         renderPanelSheet: false,
+        color: Colors.white,
+        margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
         controller: panelController,
-        minHeight: 45,
-        panel: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Column(
-            children: <Widget>[
-              TextField(
-                controller: _todoTitleController,
-                decoration: InputDecoration(
-                    labelText: 'Title', hintText: 'Write Todo Title'),
-              ),
-              TextField(
-                controller: _todoDateController,
-                decoration: InputDecoration(
-                  labelText: 'Date',
-                  hintText: 'Pick a Date',
-                  prefixIcon: InkWell(
-                    onTap: () {
-                      _selectedTodoDate(context);
-                      getAllTodos();
-                    },
-                    child: Icon(Icons.calendar_today),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              RaisedButton(
-                onPressed: () async {
-                  getAllTodos();
-                  var todoObject = Todo();
-                  todoObject.title = _todoTitleController.text;
-                  todoObject.isFinished = 0;
-                  todoObject.todoDate = _todoDateController.text;
-                  var _todoService = TodoService();
-                  var result = await _todoService.saveTodo(todoObject);
-                  if (result > 0) {
-                    getAllTodos();
-                    _todoTitleController.text = "";
-                    _todoDateController.text = "";
-                  }
-                  print(result);
-                  panelController.close();
-                },
-                color: Colors.blue,
-                child: Text(
-                  'Save',
-                  style: TextStyle(color: Colors.white),
-                ),
-              )
-            ],
-          ),
-        ),
-        collapsed: Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(185, 143, 163, 1),
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(250.0),
-                topRight: Radius.circular(250.0)),
-          ),
-          child: Center(
-            child: Text(
-              "Add Task",
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ),
-        body: ListView.builder(
-            itemCount: _todoList.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                  padding: EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
-                  child: Card(
-                    elevation: 8,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0)),
-                    child: Slidable(
-                      actionPane: SlidableDrawerActionPane(),
-                      actionExtentRatio: 0.25,
-                      child: Container(
-                        padding: EdgeInsets.all(5.0),
-                        child: ListTile(
-                          title: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: <Widget>[
-                              Text(_todoList[index].title ?? 'No Title')
-                            ],
-                          ),
-                          trailing:
-                              Text(_todoList[index].todoDate ?? 'No Date'),
-                        ),
-                      ),
-                      actions: <Widget>[],
-                      secondaryActions: <Widget>[
-                        // IconSlideAction(
-                        //     caption: 'Edit',
-                        //     color: Colors.grey[300],
-                        //     icon: Icons.edit_outlined,
-                        //     onTap: () {
-                        //       update = true;
-                        //       _todoTitleController.text =
-                        //           _todoList[index].title;
-                        //       _todoDateController.text =
-                        //           _todoList[index].todoDate;
-                        //       panelController.open();
-                        //     }),
-                        IconSlideAction(
-                          caption: 'Completed',
-                          color: Colors.lightGreenAccent[700],
-                          icon: Icons.check,
-                          onTap: () async {
-                            var _todoService = TodoService();
-                            var result = await _todoService
-                                .deleteTodo(_todoList[index].id);
-                            setState(() {});
-                            if (result > 0) {
-                              getAllTodos();
-                            }
-                          },
-                        ),
-                      ],
-                    ),
-                  ));
-            }),
+        borderRadius: radius,
+        minHeight: 55,
+        maxHeight: 330,
+        panel: _floatingPanel(),
+        collapsed: _floatingCollasped(),
         body: Scaffold(
           key: _globalKey,
           appBar: PreferredSize(
@@ -307,8 +340,77 @@ class _TodoListState1 extends State<TodoList1> {
                 ),
                 toolbarHeight: toolbarHeight,
               )),
+          body: ListView.builder(
+              itemCount: _todoList.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                    padding: EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
+                    child: Card(
+                      color: Color.fromRGBO(211, 223, 229, 1),
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(25)),
+                      child: Slidable(
+                        actionPane: SlidableDrawerActionPane(),
+                        actionExtentRatio: 0.25,
+                        child: Container(
+                          padding: EdgeInsets.all(5.0),
+                          child: ListTile(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(_todoList[index].title ?? 'No Title')
+                              ],
+                            ),
+                            trailing:
+                                Text(_todoList[index].todoDate ?? 'No Date'),
+                          ),
+                        ),
+                        actions: <Widget>[],
+                        secondaryActions: <Widget>[
+                          SlideAction(
+                              color: Color.fromRGBO(0, 0, 0, 0),
+                              child: Container(
+                                height: 100.0,
+                                width: 100.0,
+                                decoration: BoxDecoration(
+                                  color: Color.fromRGBO(119, 227, 134, 1),
+                                  borderRadius: BorderRadius.only(
+                                    topRight: const Radius.circular(25.0),
+                                    bottomRight: const Radius.circular(25.0),
+                                  ),
+                                ),
+                                child: Icon(Icons.check, color: Colors.black),
+                              ),
+                              onTap: () async {
+                                var _todoService = TodoService();
+                                var result = await _todoService
+                                    .deleteTodo(_todoList[index].id);
+                                setState(() {});
+                                if (result > 0) {
+                                  getAllTodos();
+                                }
+                              }),
+                        ],
+                      ),
+                    ));
+              }),
         ),
       ),
+      borderRadius: radius,
     );
   }
 }
+
+// caption: 'Completed',
+// // color: Colors.black38,
+// color: Color.fromRGBO(119, 227, 134, 1),
+// foregroundColor: Colors.black54,
+// icon: Icons.check,
+// onTap: () async {
+//   var _todoService = TodoService();
+//   var result = await _todoService
+//       .deleteTodo(_todoList[index].id);
+//   setState(() {});
+//   if (result > 0) {
+//     getAllTodos();

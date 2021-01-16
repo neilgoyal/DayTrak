@@ -29,23 +29,23 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   MotionTabController _tabController;
+  PageController _controller = PageController(
+    initialPage: 0,
+  );
   @override
   void initState() {
     super.initState();
-    _tabController = MotionTabController(initialIndex: 0, vsync: this);
+    _tabController =
+        new MotionTabController(initialIndex: 0, length: 3, vsync: this);
   }
 
   @override
   void dispose() {
     super.dispose();
+    _controller.dispose();
     _tabController.dispose();
   }
 
-  List<Widget> pages = [
-    HomePage(),
-    TimetablePage(),
-    SettingsPage(),
-  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,26 +55,36 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           tabIconColor: Colors.black,
           tabSelectedColor: Color.fromRGBO(223, 164, 160, 1),
           onTabItemSelected: (int value) {
-            print(value);
             setState(() {
               _tabController.index = value;
             });
           },
-          icons: [Icons.home_filled, Icons.access_time, Icons.settings],
+          icons: [(Icons.home_filled), (Icons.access_time), (Icons.settings)],
           textStyle: TextStyle(color: Colors.black),
         ),
-        body: MotionTabBarView(
-          controller: _tabController,
+        body: new Stack(
           children: <Widget>[
-            Container(
-              child: Center(child: HomePage()),
+            MotionTabBarView(
+              controller: _tabController,
+              children: <Widget>[
+                Container(
+                  child: Center(child: HomePage()),
+                ),
+                Container(
+                  child: Center(child: TimetablePage()),
+                ),
+                Container(
+                  child: Center(child: SettingsPage()),
+                ),
+              ],
             ),
-            Container(
-              child: Center(child: TimetablePage()),
-            ),
-            Container(
-              child: Center(child: SettingsPage()),
-            ),
+            PageView(
+              children: [
+                HomePage(),
+                TimetablePage(),
+                SettingsPage(),
+              ],
+            )
           ],
         ));
   }
