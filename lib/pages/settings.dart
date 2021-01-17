@@ -100,7 +100,7 @@ class _SettingsState extends State<SettingsPage> {
         appBar: PreferredSize(
             preferredSize: Size.fromHeight(190),
             child: AppBar(
-              backgroundColor: Colors.white,
+              backgroundColor: Color.fromRGBO(250, 250, 250, 1),
               elevation: 0,
               title: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
