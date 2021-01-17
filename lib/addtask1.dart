@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:schoolcalendar/weather.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
@@ -61,23 +62,50 @@ class _TodoListState1 extends State<TodoList1> {
         model.id = todo['id'];
         model.title = todo['title'];
         model.todoDate = todo['todoDate'];
-        model.isFinished = todo['isFinished'];
         _todoList.add(model);
       });
     });
   }
 
   _selectedTodoDate(BuildContext context) async {
-    var _pickedDate = await showDatePicker(
-        context: context,
-        initialDate: _dateTime,
-        firstDate: DateTime(2000),
-        lastDate: DateTime(2100));
+    var _pickedDate = await showRoundedDatePicker(
+      context: context,
+      initialDate: _dateTime,
+      firstDate: DateTime(DateTime.now().year - 1),
+      lastDate: DateTime(DateTime.now().year + 1),
+      borderRadius: 25,
+      theme: ThemeData(
+        primaryColor: Color.fromRGBO(2, 163, 160, 1),
+        accentColor: Color.fromRGBO(185, 225, 203, 1),
+        dialogBackgroundColor: Colors.white,
+        textTheme: TextTheme(
+          bodyText1:
+              TextStyle(color: Colors.black54, fontFamily: 'Protipo Compact'),
+          caption: TextStyle(
+              color: Color.fromRGBO(224, 163, 160, 1),
+              fontFamily: 'Protipo Compact'),
+        ),
+        accentTextTheme: TextTheme(
+          bodyText2: TextStyle(
+              color: Colors.green[200], fontFamily: 'Protipo Compact'),
+        ),
+      ),
+      customWeekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+      styleDatePicker: MaterialRoundedDatePickerStyle(
+        paddingMonthHeader: EdgeInsets.all(12),
+        textStyleButtonNegative:
+            TextStyle(fontSize: 15, color: Color.fromRGBO(2, 163, 160, 1)),
+        textStyleButtonPositive: TextStyle(
+          fontSize: 15,
+          color: Color.fromRGBO(2, 163, 160, 1),
+        ),
+      ),
+    );
 
     if (_pickedDate != null) {
       setState(() {
         _dateTime = _pickedDate;
-        _todoDateController.text = DateFormat('EEEE').format(_pickedDate);
+        _todoDateController.text = DateFormat('yMd').format(_pickedDate);
       });
     }
   }
@@ -170,13 +198,18 @@ class _TodoListState1 extends State<TodoList1> {
           SizedBox(
             height: 20,
           ),
-          RaisedButton(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(7)),
+          ElevatedButton(
             onPressed: () async {
               _addbutton();
+              _dateTime = DateTime.now();
             },
-            color: Color.fromRGBO(119, 227, 134, 1),
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromRGBO(119, 227, 134, 1),
+              shadowColor: Color.fromRGBO(223, 164, 160, 1),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+            ),
             child: Text('Add',
                 style: TextStyle(
                   color: Colors.black54,
@@ -209,7 +242,6 @@ class _TodoListState1 extends State<TodoList1> {
     FocusScopeNode currentFocus = FocusScope.of(context);
     var todoObject = Todo();
     todoObject.title = _todoTitleController.text;
-    todoObject.isFinished = 0;
     todoObject.todoDate = _todoDateController.text;
     var _todoService = TodoService();
     var result = await _todoService.saveTodo(todoObject);
@@ -354,43 +386,53 @@ class _TodoListState1 extends State<TodoList1> {
                         actionPane: SlidableDrawerActionPane(),
                         actionExtentRatio: 0.25,
                         child: Container(
-                          padding: EdgeInsets.all(5.0),
-                          child: ListTile(
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
-                                Text(_todoList[index].title ?? 'No Title')
-                              ],
-                            ),
-                            trailing:
-                                Text(_todoList[index].todoDate ?? 'No Date'),
-                          ),
-                        ),
+                            padding: EdgeInsets.all(5.0),
+                            child: Expanded(
+                              child: ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Expanded(
+                                        child: Container(
+                                      child: Text(
+                                          _todoList[index].title ?? 'No Title'),
+                                    ))
+                                  ],
+                                ),
+                                trailing: Text(DateFormat('E, d MMM').format(
+                                        DateFormat("yMd").parse(
+                                            _todoList[index].todoDate)) ??
+                                    'No Date'),
+                              ),
+                            )),
                         actions: <Widget>[],
                         secondaryActions: <Widget>[
-                          SlideAction(
-                              color: Color.fromRGBO(0, 0, 0, 0),
-                              child: Container(
-                                height: 100.0,
-                                width: 100.0,
-                                decoration: BoxDecoration(
-                                  color: Color.fromRGBO(119, 227, 134, 1),
-                                  borderRadius: BorderRadius.only(
-                                    topRight: const Radius.circular(25.0),
-                                    bottomRight: const Radius.circular(25.0),
+                          Expanded(
+                            child: SlideAction(
+                                color: Color.fromRGBO(0, 0, 0, 0),
+                                child: Container(
+                                  height: 100000000000.0,
+                                  width: 100000000000.0,
+                                  decoration: BoxDecoration(
+                                    color: Color.fromRGBO(119, 227, 134, 1),
+                                    borderRadius: BorderRadius.only(
+                                      topRight: const Radius.circular(25.0),
+                                      bottomRight: const Radius.circular(25.0),
+                                    ),
                                   ),
+                                  child: Icon(Icons.check, color: Colors.black),
                                 ),
-                                child: Icon(Icons.check, color: Colors.black),
-                              ),
-                              onTap: () async {
-                                var _todoService = TodoService();
-                                var result = await _todoService
-                                    .deleteTodo(_todoList[index].id);
-                                setState(() {});
-                                if (result > 0) {
-                                  getAllTodos();
-                                }
-                              }),
+                                onTap: () async {
+                                  var _todoService = TodoService();
+                                  var result = await _todoService
+                                      .deleteTodo(_todoList[index].id);
+                                  setState(() {});
+                                  if (result > 0) {
+                                    getAllTodos();
+                                  }
+                                }),
+                          )
                         ],
                       ),
                     ));

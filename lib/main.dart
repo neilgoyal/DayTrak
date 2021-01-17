@@ -23,27 +23,25 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key key}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  MotionTabController _tabController;
-  PageController _controller = PageController(
-    initialPage: 0,
-  );
+  MotionTabController tabController;
+
   @override
   void initState() {
     super.initState();
-    _tabController =
-        new MotionTabController(initialIndex: 0, length: 3, vsync: this);
+    tabController =
+        MotionTabController(initialIndex: 0, length: 3, vsync: this);
   }
 
   @override
   void dispose() {
+    tabController.dispose();
     super.dispose();
-    _controller.dispose();
-    _tabController.dispose();
   }
 
   @override
@@ -56,36 +54,39 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           tabSelectedColor: Color.fromRGBO(223, 164, 160, 1),
           onTabItemSelected: (int value) {
             setState(() {
-              _tabController.index = value;
+              tabController.index = value;
             });
           },
           icons: [(Icons.home_filled), (Icons.access_time), (Icons.settings)],
           textStyle: TextStyle(color: Colors.black),
         ),
-        body: new Stack(
-          children: <Widget>[
-            MotionTabBarView(
-              controller: _tabController,
-              children: <Widget>[
-                Container(
-                  child: Center(child: HomePage()),
-                ),
-                Container(
-                  child: Center(child: TimetablePage()),
-                ),
-                Container(
-                  child: Center(child: SettingsPage()),
-                ),
-              ],
-            ),
-            PageView(
-              children: [
-                HomePage(),
-                TimetablePage(),
-                SettingsPage(),
-              ],
-            )
-          ],
+        body: GestureDetector(
+          onHorizontalDragEnd: (drawEndDetails) {
+            print(drawEndDetails);
+            if (drawEndDetails.primaryVelocity > 0.0 &&
+                tabController.index > 0) {
+              setState(() {
+                tabController.animateTo(tabController.index - 1);
+                DefaultTabController.of(context)
+                    .animateTo(tabController.index - 1);
+              });
+            } else if (drawEndDetails.primaryVelocity < 0.0 &&
+                tabController.index < 2) {
+              setState(() {
+                tabController.animateTo(tabController.index + 1);
+                DefaultTabController.of(context)
+                    .animateTo(tabController.index + 1);
+              });
+            }
+          },
+          child: MotionTabBarView(
+            controller: tabController,
+            children: <Widget>[
+              HomePage(),
+              TimetablePage(),
+              SettingsPage(),
+            ],
+          ),
         ));
   }
 }
