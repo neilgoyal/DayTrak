@@ -1,10 +1,11 @@
 import 'package:motion_tab_bar/MotionTabBarView.dart';
 import 'package:motion_tab_bar/MotionTabController.dart';
-import 'package:motion_tab_bar/motiontabbar.dart';
+import 'package:schoolcalendar/motiontabbar.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
+import 'globals.dart' as globals;
 
 void main() => runApp(MyApp());
 
@@ -44,6 +45,19 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  showcorrect(int value) {
+    setState(() {
+      tabController.index = value;
+      if (tabController.index == 0) {
+        globals.selectedTab = "Home";
+      } else if (tabController.index == 1) {
+        globals.selectedTab = "TimeTable";
+      } else if (tabController.index == 2) {
+        globals.selectedTab = "Settings";
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,9 +67,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
           tabIconColor: Colors.black,
           tabSelectedColor: Color.fromRGBO(223, 164, 160, 1),
           onTabItemSelected: (int value) {
-            setState(() {
-              tabController.index = value;
-            });
+            showcorrect(value);
           },
           icons: [(Icons.home_filled), (Icons.access_time), (Icons.settings)],
           textStyle: TextStyle(color: Colors.black),
@@ -65,18 +77,10 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             print(drawEndDetails);
             if (drawEndDetails.primaryVelocity > 0.0 &&
                 tabController.index > 0) {
-              setState(() {
-                tabController.animateTo(tabController.index - 1);
-                DefaultTabController.of(context)
-                    .animateTo(tabController.index - 1);
-              });
+              showcorrect(tabController.index - 1);
             } else if (drawEndDetails.primaryVelocity < 0.0 &&
                 tabController.index < 2) {
-              setState(() {
-                tabController.animateTo(tabController.index + 1);
-                DefaultTabController.of(context)
-                    .animateTo(tabController.index + 1);
-              });
+              showcorrect(tabController.index + 1);
             }
           },
           child: MotionTabBarView(
