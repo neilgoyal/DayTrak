@@ -341,8 +341,8 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontFamily: 'Protipo Compact'),
                                 );
                               return CircularProgressIndicator(
-                                valueColor:
-                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                                valueColor: AlwaysStoppedAnimation<Color>(
+                                    Color.fromRGBO(250, 250, 250, 1)),
                               );
                             },
                           ),
