@@ -1,6 +1,3 @@
-import 'package:schoolcalendar/MotionTabBarView.dart';
-import 'package:schoolcalendar/MotionTabController.dart';
-import 'package:schoolcalendar/motiontabbar.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
@@ -47,6 +44,16 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   showcorrect(int value) {
     setState(() {
       tabController.index = value;
+      // if (tabController.index == 0) {
+      //   globals.selectedTab = "Home";
+      //   globals.activeIcon = globals.icons[globals.selectedTab];
+      // } else if (tabController.index == 1) {
+      //   globals.selectedTab = "TimeTable";
+      //   globals.activeIcon = globals.icons[globals.selectedTab];
+      // } else if (tabController.index == 2) {
+      //   globals.selectedTab = "Settings";
+      //   globals.activeIcon = globals.icons[globals.selectedTab];
+      // }
     });
   }
 
