@@ -243,6 +243,10 @@ class _TodoListState1 extends State<TodoList1> {
               if (_todoTitleController.text.isEmpty &&
                   _todoDateController.text.isEmpty) {
                 setState(() {
+                  errtext1 = "";
+                  errtext2 = "";
+                  validated1 = true;
+                  validated2 = true;
                   errtext1 = "Can't Be Empty";
                   validated1 = false;
                   errtext2 = "Can't Be Empty";
@@ -250,11 +254,19 @@ class _TodoListState1 extends State<TodoList1> {
                 });
               } else if (_todoTitleController.text.isEmpty) {
                 setState(() {
+                  errtext1 = "";
+                  errtext2 = "";
+                  validated1 = true;
+                  validated2 = true;
                   errtext1 = "Can't Be Empty";
                   validated1 = false;
                 });
               } else if (_todoDateController.text.isEmpty) {
                 setState(() {
+                  errtext1 = "";
+                  errtext2 = "";
+                  validated1 = true;
+                  validated2 = true;
                   errtext2 = "Can't Be Empty";
                   validated2 = false;
                 });
