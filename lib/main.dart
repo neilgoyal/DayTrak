@@ -1,6 +1,6 @@
-import 'package:motion_tab_bar/MotionTabBarView.dart';
-import 'package:motion_tab_bar/MotionTabController.dart';
-import 'package:motion_tab_bar/motiontabbar.dart';
+import 'package:schoolcalendar/MotionTabBarView.dart';
+import 'package:schoolcalendar/MotionTabController.dart';
+import 'package:schoolcalendar/motiontabbar.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
