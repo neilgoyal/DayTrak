@@ -40,10 +40,6 @@ class _TodoListState1 extends State<TodoList1> {
   final panelController = PanelController();
   var _todoTitleController = TextEditingController();
   var _todoDateController = TextEditingController();
-  String errtext1 = "";
-  String errtext2 = "";
-  bool validated1 = true;
-  bool validated2 = true;
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   DateTime _dateTime = DateTime.now();
 
@@ -143,22 +139,11 @@ class _TodoListState1 extends State<TodoList1> {
                   fontWeight: FontWeight.w300,
                 )),
           ]),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('',
-                style: TextStyle(
-                  fontFamily: 'Protipo Compact',
-                  fontSize: 10,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w300,
-                )),
-          ]),
           TextField(
               // textInputAction: TextInputAction.next,
               cursorColor: Colors.black54,
-              autofocus: true,
               controller: _todoTitleController,
               decoration: InputDecoration(
-                errorText: validated1 ? null : errtext1,
                 labelText: "Create a new task",
                 labelStyle: TextStyle(color: Colors.black54),
                 fillColor: Colors.white,
@@ -181,15 +166,6 @@ class _TodoListState1 extends State<TodoList1> {
                   fontWeight: FontWeight.w300,
                 )),
           ]),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('',
-                style: TextStyle(
-                  fontFamily: 'Protipo Compact',
-                  fontSize: 10,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w300,
-                )),
-          ]),
           TextField(
             cursorColor: Colors.black54,
             controller: _todoDateController,
@@ -200,7 +176,6 @@ class _TodoListState1 extends State<TodoList1> {
             decoration: InputDecoration(
               labelText: "Select a date",
               labelStyle: TextStyle(color: Colors.black54),
-              errorText: validated2 ? null : errtext2,
               fillColor: Colors.white,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -225,26 +200,8 @@ class _TodoListState1 extends State<TodoList1> {
           ),
           ElevatedButton(
             onPressed: () async {
-              if (_todoTitleController.text.isEmpty &&
-                  _todoDateController.text.isEmpty) {
-                errtext2 = "Can't Be Empty";
-                validated2 = false;
-                errtext1 = "Can't Be Empty";
-                validated1 = false;
-              } else if (_todoTitleController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "Can't Be Empty";
-                  validated1 = false;
-                });
-              } else if (_todoDateController.text.isEmpty) {
-                setState(() {
-                  errtext2 = "Can't Be Empty";
-                  validated2 = false;
-                });
-              } else {
-                _addbutton();
-                _dateTime = DateTime.now();
-              }
+              _addbutton();
+              _dateTime = DateTime.now();
             },
             style: ElevatedButton.styleFrom(
               primary: Color.fromRGBO(119, 227, 134, 1),
@@ -292,12 +249,6 @@ class _TodoListState1 extends State<TodoList1> {
       getAllTodos();
       _todoTitleController.text = "";
       _todoDateController.text = "";
-      setState(() {
-        validated1 = true;
-        validated2 = true;
-        errtext1 = "";
-        errtext2 = "";
-      });
     }
     print(result);
     panelController.close();
@@ -318,7 +269,7 @@ class _TodoListState1 extends State<TodoList1> {
         controller: panelController,
         borderRadius: radius,
         minHeight: 55,
-        maxHeight: 394,
+        maxHeight: 330,
         panel: _floatingPanel(),
         collapsed: _floatingCollasped(),
         body: Scaffold(
