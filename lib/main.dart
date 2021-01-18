@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/rendering.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
@@ -20,76 +23,97 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key}) : super(key: key);
+  MyHomePage({Key key}) : super(key: key);
+  final titles = ['Home', 'TimeTable', 'Settings'];
+  final colors = [
+    Colors.black,
+    Colors.black,
+    Colors.black,
+  ];
+  final icons = [Icons.home_filled, Icons.access_time, Icons.settings];
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  MotionTabController tabController;
+class _MyHomePageState extends State<MyHomePage> {
+  PageController _pageController;
+  MenuPositionController _menuPositionController;
+  bool userPageDragging = false;
 
   @override
   void initState() {
+    _menuPositionController = MenuPositionController(initPosition: 0);
+    _pageController =
+        PageController(initialPage: 0, keepPage: false, viewportFraction: 1.0);
+    _pageController.addListener(handlePageChange);
     super.initState();
-    tabController =
-        MotionTabController(initialIndex: 0, length: 3, vsync: this);
   }
 
-  @override
-  void dispose() {
-    tabController.dispose();
-    super.dispose();
+  void handlePageChange() {
+    _menuPositionController.absolutePosition = _pageController.page;
   }
 
-  showcorrect(int value) {
-    setState(() {
-      tabController.index = value;
-      // if (tabController.index == 0) {
-      //   globals.selectedTab = "Home";
-      //   globals.activeIcon = globals.icons[globals.selectedTab];
-      // } else if (tabController.index == 1) {
-      //   globals.selectedTab = "TimeTable";
-      //   globals.activeIcon = globals.icons[globals.selectedTab];
-      // } else if (tabController.index == 2) {
-      //   globals.selectedTab = "Settings";
-      //   globals.activeIcon = globals.icons[globals.selectedTab];
-      // }
-    });
+  void checkUserDragging(ScrollNotification scrollNotification) {
+    if (scrollNotification is UserScrollNotification &&
+        scrollNotification.direction != ScrollDirection.idle) {
+      userPageDragging = true;
+    } else if (scrollNotification is ScrollEndNotification) {
+      userPageDragging = false;
+    }
+    if (userPageDragging) {
+      _menuPositionController.findNearestTarget(_pageController.page);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        bottomNavigationBar: MotionTabBar(
-          labels: ["Home", "TimeTable", "Settings"],
-          initialSelectedTab: "Home",
-          tabIconColor: Colors.black,
-          tabSelectedColor: Color.fromRGBO(223, 164, 160, 1),
-          onTabItemSelected: (int value) {
-            showcorrect(value);
+        body: NotificationListener<ScrollNotification>(
+          // ignore: missing_return
+          onNotification: (scrollNotification) {
+            checkUserDragging(scrollNotification);
           },
-          icons: [(Icons.home_filled), (Icons.access_time), (Icons.settings)],
-          textStyle: TextStyle(color: Colors.black),
-        ),
-        body: GestureDetector(
-          onHorizontalDragEnd: (drawEndDetails) {
-            print(drawEndDetails);
-            if (drawEndDetails.primaryVelocity > 0.0 &&
-                tabController.index > 0) {
-              showcorrect(tabController.index - 1);
-            } else if (drawEndDetails.primaryVelocity < 0.0 &&
-                tabController.index < 2) {
-              showcorrect(tabController.index + 1);
-            }
-          },
-          child: MotionTabBarView(
-            controller: tabController,
+          child: PageView(
+            controller: _pageController,
             children: <Widget>[
               HomePage(),
               TimetablePage(),
               SettingsPage(),
             ],
           ),
+        ),
+        bottomNavigationBar: BubbledNavigationBar(
+          animationCurve: Curves.bounceIn,
+          animationDuration: Duration(milliseconds: 800),
+          controller: _menuPositionController,
+          initialIndex: 0,
+          itemMargin: EdgeInsets.symmetric(horizontal: 8),
+          backgroundColor: Colors.white,
+          defaultBubbleColor: Color.fromRGBO(224, 163, 160, 1),
+          onTap: (index) {
+            _pageController.animateToPage(index,
+                curve: Curves.easeInOutQuad,
+                duration: Duration(milliseconds: 800));
+          },
+          items: widget.titles.map((title) {
+            var index = widget.titles.indexOf(title);
+            var color = widget.colors[index];
+            return BubbledNavigationBarItem(
+              icon: getIcon(index, color),
+              activeIcon: getIcon(index, Colors.white),
+              title: Text(
+                title,
+                style: TextStyle(color: Colors.white, fontSize: 12),
+              ),
+            );
+          }).toList(),
         ));
+  }
+
+  Padding getIcon(int index, Color color) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 3),
+      child: Icon(widget.icons[index], size: 30, color: color),
+    );
   }
 }

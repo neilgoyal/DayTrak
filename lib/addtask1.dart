@@ -386,53 +386,55 @@ class _TodoListState1 extends State<TodoList1> {
                         actionPane: SlidableDrawerActionPane(),
                         actionExtentRatio: 0.25,
                         child: Container(
-                            padding: EdgeInsets.all(5.0),
-                            child: Expanded(
-                              child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Expanded(
-                                        child: Container(
-                                      child: Text(
-                                          _todoList[index].title ?? 'No Title'),
-                                    ))
-                                  ],
-                                ),
-                                trailing: Text(DateFormat('E, d MMM').format(
-                                        DateFormat("yMd").parse(
-                                            _todoList[index].todoDate)) ??
-                                    'No Date'),
-                              ),
-                            )),
+                          padding: EdgeInsets.all(5.0),
+                          child: ListTile(
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Expanded(
+                                    child: Container(
+                                  child: Text(
+                                      _todoList[index].title ?? 'No Title'),
+                                ))
+                              ],
+                            ),
+                            trailing: Text(DateFormat('E, d MMM').format(
+                                    DateFormat("yMd")
+                                        .parse(_todoList[index].todoDate)) ??
+                                'No Date'),
+                          ),
+                        ),
                         actions: <Widget>[],
                         secondaryActions: <Widget>[
-                          Expanded(
-                            child: SlideAction(
-                                color: Color.fromRGBO(0, 0, 0, 0),
-                                child: Container(
-                                  height: 100000000000.0,
-                                  width: 100000000000.0,
-                                  decoration: BoxDecoration(
-                                    color: Color.fromRGBO(119, 227, 134, 1),
-                                    borderRadius: BorderRadius.only(
-                                      topRight: const Radius.circular(25.0),
-                                      bottomRight: const Radius.circular(25.0),
+                          Column(children: [
+                            Expanded(
+                              child: SlideAction(
+                                  color: Color.fromRGBO(0, 0, 0, 0),
+                                  child: Container(
+                                    height: 100000000000.0,
+                                    width: 100000000000.0,
+                                    decoration: BoxDecoration(
+                                      color: Color.fromRGBO(119, 227, 134, 1),
+                                      borderRadius: BorderRadius.only(
+                                        topRight: const Radius.circular(25.0),
+                                        bottomRight:
+                                            const Radius.circular(25.0),
+                                      ),
                                     ),
+                                    child:
+                                        Icon(Icons.check, color: Colors.black),
                                   ),
-                                  child: Icon(Icons.check, color: Colors.black),
-                                ),
-                                onTap: () async {
-                                  var _todoService = TodoService();
-                                  var result = await _todoService
-                                      .deleteTodo(_todoList[index].id);
-                                  setState(() {});
-                                  if (result > 0) {
-                                    getAllTodos();
-                                  }
-                                }),
-                          )
+                                  onTap: () async {
+                                    var _todoService = TodoService();
+                                    var result = await _todoService
+                                        .deleteTodo(_todoList[index].id);
+                                    setState(() {});
+                                    if (result > 0) {
+                                      getAllTodos();
+                                    }
+                                  }),
+                            )
+                          ])
                         ],
                       ),
                     ));
@@ -443,16 +445,3 @@ class _TodoListState1 extends State<TodoList1> {
     );
   }
 }
-
-// caption: 'Completed',
-// // color: Colors.black38,
-// color: Color.fromRGBO(119, 227, 134, 1),
-// foregroundColor: Colors.black54,
-// icon: Icons.check,
-// onTap: () async {
-//   var _todoService = TodoService();
-//   var result = await _todoService
-//       .deleteTodo(_todoList[index].id);
-//   setState(() {});
-//   if (result > 0) {
-//     getAllTodos();

@@ -38,8 +38,8 @@ dependencies:
   provider: ^4.3.2+2
   jiffy: ^3.0.1
   sliding_up_panel: ^1.0.2
-  vector_math: ^2.0.8
   flutter_rounded_date_picker: ^1.0.0
+  bubbled_navigation_bar: ^0.0.4
 
 dev_dependencies:
   flutter_test:
