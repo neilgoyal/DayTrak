@@ -40,6 +40,10 @@ class _TodoListState1 extends State<TodoList1> {
   final panelController = PanelController();
   var _todoTitleController = TextEditingController();
   var _todoDateController = TextEditingController();
+  String errtext1 = "";
+  String errtext2 = "";
+  bool validated1 = true;
+  bool validated2 = true;
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   DateTime _dateTime = DateTime.now();
 
@@ -139,11 +143,22 @@ class _TodoListState1 extends State<TodoList1> {
                   fontWeight: FontWeight.w300,
                 )),
           ]),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('',
+                style: TextStyle(
+                  fontFamily: 'Protipo Compact',
+                  fontSize: 10,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w300,
+                )),
+          ]),
           TextField(
               // textInputAction: TextInputAction.next,
               cursorColor: Colors.black54,
+              autofocus: true,
               controller: _todoTitleController,
               decoration: InputDecoration(
+                errorText: validated1 ? null : errtext1,
                 labelText: "Create a new task",
                 labelStyle: TextStyle(color: Colors.black54),
                 fillColor: Colors.white,
@@ -166,6 +181,15 @@ class _TodoListState1 extends State<TodoList1> {
                   fontWeight: FontWeight.w300,
                 )),
           ]),
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            Text('',
+                style: TextStyle(
+                  fontFamily: 'Protipo Compact',
+                  fontSize: 10,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.w300,
+                )),
+          ]),
           TextField(
             cursorColor: Colors.black54,
             controller: _todoDateController,
@@ -176,6 +200,7 @@ class _TodoListState1 extends State<TodoList1> {
             decoration: InputDecoration(
               labelText: "Select a date",
               labelStyle: TextStyle(color: Colors.black54),
+              errorText: validated2 ? null : errtext2,
               fillColor: Colors.white,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -187,78 +212,6 @@ class _TodoListState1 extends State<TodoList1> {
                     color: Color.fromRGBO(224, 163, 160, 1), width: 2),
               ),
               prefixIcon: InkWell(
-                onTap: () {
-                  _selectedTodoDate(context);
-                  getAllTodos();
-                },
-                child: Icon(CupertinoIcons.calendar, color: Colors.black54),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              _addbutton();
-              _dateTime = DateTime.now();
-            },
-            style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(119, 227, 134, 1),
-              shadowColor: Color.fromRGBO(223, 164, 160, 1),
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7)),
-            ),
-            child: Text('Add',
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontFamily: 'Protipo Compact',
-                )),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget _floatingCollasped() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color.fromRGBO(185, 143, 163, 1),
-        borderRadius: radius,
-      ),
-      child: Center(
-        child: Text(
-          "Add Task",
-          style: TextStyle(
-              color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 20),
-        ),
-      ),
-    );
-  }
-
-  _addbutton() async {
-    getAllTodos();
-    FocusScopeNode currentFocus = FocusScope.of(context);
-    var todoObject = Todo();
-    todoObject.title = _todoTitleController.text;
-    todoObject.todoDate = _todoDateController.text;
-    var _todoService = TodoService();
-    var result = await _todoService.saveTodo(todoObject);
-    if (result > 0) {
-      getAllTodos();
-      _todoTitleController.text = "";
-      _todoDateController.text = "";
-    }
-    print(result);
-    panelController.close();
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
     return Material(
       child: SlidingUpPanel(
         backdropTapClosesPanel: true,
@@ -269,7 +222,7 @@ class _TodoListState1 extends State<TodoList1> {
         controller: panelController,
         borderRadius: radius,
         minHeight: 55,
-        maxHeight: 330,
+        maxHeight: 394,
         panel: _floatingPanel(),
         collapsed: _floatingCollasped(),
         body: Scaffold(

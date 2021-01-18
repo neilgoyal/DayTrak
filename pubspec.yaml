@@ -40,6 +40,7 @@ dependencies:
   sliding_up_panel: ^1.0.2
   flutter_rounded_date_picker: ^1.0.0
   bubbled_navigation_bar: ^0.0.4
+  csv: ^4.1.0
 
 dev_dependencies:
   flutter_test:
