@@ -40,6 +40,10 @@ class _TodoListState1 extends State<TodoList1> {
   final panelController = PanelController();
   var _todoTitleController = TextEditingController();
   var _todoDateController = TextEditingController();
+  String errtext1 = "";
+  String errtext2 = "";
+  bool validated1 = true;
+  bool validated2 = true;
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   DateTime _dateTime = DateTime.now();
 
@@ -144,6 +148,7 @@ class _TodoListState1 extends State<TodoList1> {
               cursorColor: Colors.black54,
               controller: _todoTitleController,
               decoration: InputDecoration(
+                errorText: validated1 ? null : errtext1,
                 labelText: "Create a new task",
                 labelStyle: TextStyle(color: Colors.black54),
                 fillColor: Colors.white,
@@ -169,11 +174,46 @@ class _TodoListState1 extends State<TodoList1> {
           TextField(
             cursorColor: Colors.black54,
             controller: _todoDateController,
+            readOnly: true,
             textInputAction: TextInputAction.done,
             onSubmitted: (term) async {
-              _addbutton();
+              if (_todoTitleController.text.isEmpty &&
+                  _todoDateController.text.isEmpty) {
+                setState(() {
+                  errtext1 = "";
+                  errtext2 = "";
+                  validated1 = true;
+                  validated2 = true;
+                  errtext1 = "Can't Be Empty";
+                  validated1 = false;
+                  errtext2 = "Can't Be Empty";
+                  validated2 = false;
+                });
+              } else if (_todoTitleController.text.isEmpty) {
+                setState(() {
+                  errtext1 = "";
+                  errtext2 = "";
+                  validated1 = true;
+                  validated2 = true;
+                  errtext1 = "Can't Be Empty";
+                  validated1 = false;
+                });
+              } else if (_todoDateController.text.isEmpty) {
+                setState(() {
+                  errtext1 = "";
+                  errtext2 = "";
+                  validated1 = true;
+                  validated2 = true;
+                  errtext2 = "Can't Be Empty";
+                  validated2 = false;
+                });
+              } else {
+                _addbutton();
+                _dateTime = DateTime.now();
+              }
             },
             decoration: InputDecoration(
+              errorText: validated2 ? null : errtext2,
               labelText: "Select a date",
               labelStyle: TextStyle(color: Colors.black54),
               fillColor: Colors.white,
@@ -200,8 +240,28 @@ class _TodoListState1 extends State<TodoList1> {
           ),
           ElevatedButton(
             onPressed: () async {
-              _addbutton();
-              _dateTime = DateTime.now();
+              if (_todoTitleController.text.isEmpty &&
+                  _todoDateController.text.isEmpty) {
+                setState(() {
+                  errtext1 = "Can't Be Empty";
+                  validated1 = false;
+                  errtext2 = "Can't Be Empty";
+                  validated2 = false;
+                });
+              } else if (_todoTitleController.text.isEmpty) {
+                setState(() {
+                  errtext1 = "Can't Be Empty";
+                  validated1 = false;
+                });
+              } else if (_todoDateController.text.isEmpty) {
+                setState(() {
+                  errtext2 = "Can't Be Empty";
+                  validated2 = false;
+                });
+              } else {
+                _addbutton();
+                _dateTime = DateTime.now();
+              }
             },
             style: ElevatedButton.styleFrom(
               primary: Color.fromRGBO(119, 227, 134, 1),
@@ -250,6 +310,12 @@ class _TodoListState1 extends State<TodoList1> {
       _todoTitleController.text = "";
       _todoDateController.text = "";
     }
+    setState(() {
+      validated1 = true;
+      errtext1 = "";
+      validated2 = true;
+      errtext2 = "";
+    });
     print(result);
     panelController.close();
     if (!currentFocus.hasPrimaryFocus) {
@@ -269,7 +335,7 @@ class _TodoListState1 extends State<TodoList1> {
         controller: panelController,
         borderRadius: radius,
         minHeight: 55,
-        maxHeight: 330,
+        maxHeight: 394,
         panel: _floatingPanel(),
         collapsed: _floatingCollasped(),
         body: Scaffold(
