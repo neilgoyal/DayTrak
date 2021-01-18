@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           controller: _menuPositionController,
           initialIndex: 0,
           itemMargin: EdgeInsets.symmetric(horizontal: 8),
-          backgroundColor: Color.fromRGBO(235, 235, 235, 1),
+          backgroundColor: Color.fromRGBO(230, 230, 230, 1),
           defaultBubbleColor: Color.fromRGBO(224, 163, 160, 1),
           onTap: (index) {
             _pageController.animateToPage(index,
@@ -113,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Padding getIcon(int index, Color color) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 3),
-      child: Icon(widget.icons[index], size: 30, color: color),
+      child: Icon(widget.icons[index], size: 33, color: color),
     );
   }
 }
