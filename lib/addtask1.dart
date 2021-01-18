@@ -212,6 +212,102 @@ class _TodoListState1 extends State<TodoList1> {
                     color: Color.fromRGBO(224, 163, 160, 1), width: 2),
               ),
               prefixIcon: InkWell(
+                onTap: () {
+                  _selectedTodoDate(context);
+                  getAllTodos();
+                },
+                child: Icon(CupertinoIcons.calendar, color: Colors.black54),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              if (_todoTitleController.text.isEmpty &&
+                  _todoDateController.text.isEmpty) {
+                errtext2 = "Can't Be Empty";
+                validated2 = false;
+                errtext1 = "Can't Be Empty";
+                validated1 = false;
+              } else if (_todoTitleController.text.isEmpty) {
+                setState(() {
+                  errtext1 = "Can't Be Empty";
+                  validated1 = false;
+                });
+              } else if (_todoDateController.text.isEmpty) {
+                setState(() {
+                  errtext2 = "Can't Be Empty";
+                  validated2 = false;
+                });
+              } else {
+                _addbutton();
+                _dateTime = DateTime.now();
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromRGBO(119, 227, 134, 1),
+              shadowColor: Color.fromRGBO(223, 164, 160, 1),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+            ),
+            child: Text('Add',
+                style: TextStyle(
+                  color: Colors.black54,
+                  fontFamily: 'Protipo Compact',
+                )),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget _floatingCollasped() {
+    return Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(185, 143, 163, 1),
+        borderRadius: radius,
+      ),
+      child: Center(
+        child: Text(
+          "Add Task",
+          style: TextStyle(
+              color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 20),
+        ),
+      ),
+    );
+  }
+
+  _addbutton() async {
+    getAllTodos();
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    var todoObject = Todo();
+    todoObject.title = _todoTitleController.text;
+    todoObject.todoDate = _todoDateController.text;
+    var _todoService = TodoService();
+    var result = await _todoService.saveTodo(todoObject);
+    if (result > 0) {
+      getAllTodos();
+      _todoTitleController.text = "";
+      _todoDateController.text = "";
+      setState(() {
+        validated1 = true;
+        validated2 = true;
+        errtext1 = "";
+        errtext2 = "";
+      });
+    }
+    print(result);
+    panelController.close();
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Material(
       child: SlidingUpPanel(
         backdropTapClosesPanel: true,
