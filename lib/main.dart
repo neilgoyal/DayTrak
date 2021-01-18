@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
           controller: _menuPositionController,
           initialIndex: 0,
           itemMargin: EdgeInsets.symmetric(horizontal: 8),
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(235, 235, 235, 1),
           defaultBubbleColor: Color.fromRGBO(224, 163, 160, 1),
           onTap: (index) {
             _pageController.animateToPage(index,
