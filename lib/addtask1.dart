@@ -231,7 +231,10 @@ class _TodoListState1 extends State<TodoList1> {
                   _selectedTodoDate(context);
                   getAllTodos();
                 },
-                child: Icon(CupertinoIcons.calendar, color: Colors.black54),
+                child: Icon(
+                  CupertinoIcons.calendar,
+                  color: Colors.black54,
+                ),
               ),
             ),
           ),
@@ -347,7 +350,7 @@ class _TodoListState1 extends State<TodoList1> {
         controller: panelController,
         borderRadius: radius,
         minHeight: 55,
-        maxHeight: 394,
+        maxHeight: 370,
         panel: _floatingPanel(),
         collapsed: _floatingCollasped(),
         body: Scaffold(
