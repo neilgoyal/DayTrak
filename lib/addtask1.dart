@@ -116,7 +116,6 @@ class _TodoListState1 extends State<TodoList1> {
 
   Widget _floatingPanel() {
     return Container(
-      // margin: const EdgeInsets.all(20.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(35)),
@@ -342,186 +341,199 @@ class _TodoListState1 extends State<TodoList1> {
   Widget build(BuildContext context) {
     return Material(
       child: SlidingUpPanel(
-        backdropTapClosesPanel: true,
-        backdropEnabled: true,
-        renderPanelSheet: false,
-        color: Colors.white,
-        margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-        controller: panelController,
-        borderRadius: radius,
-        minHeight: 55,
-        maxHeight: 370,
-        panel: _floatingPanel(),
-        collapsed: _floatingCollasped(),
-        body: Scaffold(
-          key: _globalKey,
-          appBar: PreferredSize(
-              preferredSize: Size.fromHeight(190),
-              child: AppBar(
-                backgroundColor: Color.fromRGBO(250, 250, 250, 1),
-                elevation: 0,
-                title: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            newDt,
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: 40,
-                              color: const Color(0xff9b8fb1),
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                          Text("Day 1",
-                              style: TextStyle(
-                                fontFamily: 'Protipo Compact',
-                                fontSize: 40,
-                                color: const Color(0xff9b8fb1),
-                                fontWeight: FontWeight.w300,
-                              ))
-                        ]),
-                    Row(
+          backdropTapClosesPanel: true,
+          backdropEnabled: true,
+          renderPanelSheet: false,
+          color: Colors.white,
+          margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+          controller: panelController,
+          borderRadius: radius,
+          minHeight: 55,
+          maxHeight: 370,
+          panel: _floatingPanel(),
+          collapsed: _floatingCollasped(),
+          body: GestureDetector(
+            onTap: () {
+              FocusScopeNode currentFocus = FocusScope.of(context);
+
+              if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
+            },
+            child: Scaffold(
+              key: _globalKey,
+              appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(190),
+                  child: AppBar(
+                    backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                    elevation: 0,
+                    title: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(newDt1,
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: 35,
-                              color: const Color(0xffbadfca),
-                              fontWeight: FontWeight.w200,
-                            )),
-                        Container(
-                          child: FutureBuilder<WeatherModel>(
-                            future: getWeather(),
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                WeatherModel model = snapshot.data;
-                                return Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: <Widget>[
-                                    Text(
-                                      '${model.main.temp.round()} ˚C',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: 35,
-                                        color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w200,
-                                      ),
-                                    )
-                                  ],
-                                );
-                              } else if (snapshot.hasError)
-                                return Text(
-                                  '${snapshot.error}',
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                newDt,
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 40,
+                                  color: const Color(0xff9b8fb1),
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              Text("Day 1",
                                   style: TextStyle(
-                                      fontSize: 30,
-                                      color: Colors.red,
-                                      fontFamily: 'Protipo Compact'),
-                                );
-                              return CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                    Color.fromRGBO(250, 250, 250, 1)),
-                              );
-                            },
-                          ),
+                                    fontFamily: 'Protipo Compact',
+                                    fontSize: 40,
+                                    color: const Color(0xff9b8fb1),
+                                    fontWeight: FontWeight.w300,
+                                  ))
+                            ]),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(newDt1,
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 35,
+                                  color: const Color(0xffbadfca),
+                                  fontWeight: FontWeight.w200,
+                                )),
+                            Container(
+                              child: FutureBuilder<WeatherModel>(
+                                future: getWeather(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    WeatherModel model = snapshot.data;
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          '${model.main.temp.round()} ˚C',
+                                          style: TextStyle(
+                                            fontFamily: 'Protipo Compact',
+                                            fontSize: 35,
+                                            color: const Color(0xffbadfca),
+                                            fontWeight: FontWeight.w200,
+                                          ),
+                                        )
+                                      ],
+                                    );
+                                  } else if (snapshot.hasError)
+                                    return Text(
+                                      '${snapshot.error}',
+                                      style: TextStyle(
+                                          fontSize: 30,
+                                          color: Colors.red,
+                                          fontFamily: 'Protipo Compact'),
+                                    );
+                                  return CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Color.fromRGBO(250, 250, 250, 1)),
+                                  );
+                                },
+                              ),
+                            ),
+                          ],
                         ),
+                        SizedBox(
+                          height: 25,
+                        ),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                'Upcoming Tasks',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 34,
+                                  color: const Color(0xff9b8fb1),
+                                  fontWeight: FontWeight.w200,
+                                ),
+                              )
+                            ]),
+                        SizedBox(
+                          height: 20,
+                        )
                       ],
                     ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            'Upcoming Tasks',
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: 34,
-                              color: const Color(0xff9b8fb1),
-                              fontWeight: FontWeight.w200,
+                    toolbarHeight: toolbarHeight,
+                  )),
+              body: ListView.builder(
+                  itemCount: _todoList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                        padding:
+                            EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
+                        child: Card(
+                          color: Color.fromRGBO(211, 223, 229, 1),
+                          elevation: 5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25)),
+                          child: Slidable(
+                            actionPane: SlidableDrawerActionPane(),
+                            actionExtentRatio: 0.25,
+                            child: Container(
+                              padding: EdgeInsets.all(5.0),
+                              child: ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Expanded(
+                                        child: Container(
+                                      child: Text(
+                                          _todoList[index].title ?? 'No Title'),
+                                    ))
+                                  ],
+                                ),
+                                trailing: Text(DateFormat('E, d MMM').format(
+                                        DateFormat("yMd").parse(
+                                            _todoList[index].todoDate)) ??
+                                    'No Date'),
+                              ),
                             ),
-                          )
-                        ]),
-                    SizedBox(
-                      height: 20,
-                    )
-                  ],
-                ),
-                toolbarHeight: toolbarHeight,
-              )),
-          body: ListView.builder(
-              itemCount: _todoList.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                    padding: EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
-                    child: Card(
-                      color: Color.fromRGBO(211, 223, 229, 1),
-                      elevation: 5,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Slidable(
-                        actionPane: SlidableDrawerActionPane(),
-                        actionExtentRatio: 0.25,
-                        child: Container(
-                          padding: EdgeInsets.all(5.0),
-                          child: ListTile(
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: <Widget>[
+                            actions: <Widget>[],
+                            secondaryActions: <Widget>[
+                              Column(children: [
                                 Expanded(
-                                    child: Container(
-                                  child: Text(
-                                      _todoList[index].title ?? 'No Title'),
-                                ))
-                              ],
-                            ),
-                            trailing: Text(DateFormat('E, d MMM').format(
-                                    DateFormat("yMd")
-                                        .parse(_todoList[index].todoDate)) ??
-                                'No Date'),
-                          ),
-                        ),
-                        actions: <Widget>[],
-                        secondaryActions: <Widget>[
-                          Column(children: [
-                            Expanded(
-                              child: SlideAction(
-                                  color: Color.fromRGBO(0, 0, 0, 0),
-                                  child: Container(
-                                    height: 100000000000.0,
-                                    width: 100000000000.0,
-                                    decoration: BoxDecoration(
-                                      color: Color.fromRGBO(119, 227, 134, 1),
-                                      borderRadius: BorderRadius.only(
-                                        topRight: const Radius.circular(25.0),
-                                        bottomRight:
-                                            const Radius.circular(25.0),
+                                  child: SlideAction(
+                                      color: Color.fromRGBO(0, 0, 0, 0),
+                                      child: Container(
+                                        height: 100000000000.0,
+                                        width: 100000000000.0,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              Color.fromRGBO(119, 227, 134, 1),
+                                          borderRadius: BorderRadius.only(
+                                            topRight:
+                                                const Radius.circular(25.0),
+                                            bottomRight:
+                                                const Radius.circular(25.0),
+                                          ),
+                                        ),
+                                        child: Icon(Icons.check,
+                                            color: Colors.black),
                                       ),
-                                    ),
-                                    child:
-                                        Icon(Icons.check, color: Colors.black),
-                                  ),
-                                  onTap: () async {
-                                    var _todoService = TodoService();
-                                    var result = await _todoService
-                                        .deleteTodo(_todoList[index].id);
-                                    setState(() {});
-                                    if (result > 0) {
-                                      getAllTodos();
-                                    }
-                                  }),
-                            )
-                          ])
-                        ],
-                      ),
-                    ));
-              }),
-        ),
-      ),
+                                      onTap: () async {
+                                        var _todoService = TodoService();
+                                        var result = await _todoService
+                                            .deleteTodo(_todoList[index].id);
+                                        setState(() {});
+                                        if (result > 0) {
+                                          getAllTodos();
+                                        }
+                                      }),
+                                )
+                              ])
+                            ],
+                          ),
+                        ));
+                  }),
+            ),
+          )),
       borderRadius: radius,
     );
   }
