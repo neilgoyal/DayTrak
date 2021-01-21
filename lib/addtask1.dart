@@ -17,6 +17,7 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
 );
+Future<Day> futureDay;
 
 class Addtask1 extends StatelessWidget {
   @override
@@ -51,6 +52,7 @@ class _TodoListState1 extends State<TodoList1> {
   initState() {
     super.initState();
     getAllTodos();
+    futureDay = fetchDay();
   }
 
   getAllTodos() async {
@@ -337,6 +339,8 @@ class _TodoListState1 extends State<TodoList1> {
     }
   }
 
+  showconcisedate(index) {}
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -371,25 +375,56 @@ class _TodoListState1 extends State<TodoList1> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                newDt,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(newDt,
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
                                   fontSize: 40,
                                   color: const Color(0xff9b8fb1),
                                   fontWeight: FontWeight.w300,
-                                ),
+                                )),
+                            Container(
+                              child: FutureBuilder<Day>(
+                                future: futureDay,
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    var result =
+                                        ((snapshot.data.day1).toString());
+                                    return Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        Text(
+                                          'Day $result',
+                                          style: TextStyle(
+                                            fontFamily: 'Protipo Compact',
+                                            fontSize: 40,
+                                            color: const Color(0xff9b8fb1),
+                                            fontWeight: FontWeight.w300,
+                                          ),
+                                        )
+                                      ],
+                                    );
+                                  } else if (snapshot.hasError)
+                                    return Text(
+                                      "Error",
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 25,
+                                        color: Colors.deepOrange,
+                                        fontWeight: FontWeight.w300,
+                                      ),
+                                    );
+                                  return CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Color.fromRGBO(250, 250, 250, 1)),
+                                  );
+                                },
                               ),
-                              Text("Day 1",
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: 40,
-                                    color: const Color(0xff9b8fb1),
-                                    fontWeight: FontWeight.w300,
-                                  ))
-                            ]),
+                            ),
+                          ],
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -405,13 +440,13 @@ class _TodoListState1 extends State<TodoList1> {
                                 future: getWeather(),
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    WeatherModel model = snapshot.data;
+                                    WeatherModel model1 = snapshot.data;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          '${model.main.temp.round()} ˚C',
+                                          '${model1.main.temp.round()} ˚C',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: 35,
@@ -502,8 +537,8 @@ class _TodoListState1 extends State<TodoList1> {
                                   child: SlideAction(
                                       color: Color.fromRGBO(0, 0, 0, 0),
                                       child: Container(
-                                        height: 100000000000.0,
-                                        width: 100000000000.0,
+                                        height: 10000000.0,
+                                        width: 10000000.0,
                                         decoration: BoxDecoration(
                                           color:
                                               Color.fromRGBO(119, 227, 134, 1),
