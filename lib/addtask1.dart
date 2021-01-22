@@ -18,6 +18,9 @@ String newDt_ = DateFormat.yMd().format(dt);
 DateTime tomorrow = dt.add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
 
+DateTime yesterday = dt.add(new Duration(days: -1));
+String newDtyes = DateFormat.yMd().format(tomorrow);
+
 final double toolbarHeight = 190.0;
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
@@ -159,10 +162,13 @@ class _TodoListState1 extends State<TodoList1> {
   concisedate(index) {
     String concise;
     String newDttom = DateFormat.yMd().format(tomorrow);
+    String newDtyes = DateFormat.yMd().format(yesterday);
     if (_todoList[index].todoDate == newDt_) {
       concise = 'Today';
     } else if (_todoList[index].todoDate == newDttom) {
       concise = 'Tomorrow';
+    } else if (_todoList[index].todoDate == newDtyes) {
+      concise = 'Yesterday';
     } else {
       concise = DateFormat('E, d MMM')
               .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
