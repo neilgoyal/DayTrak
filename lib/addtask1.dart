@@ -163,6 +163,7 @@ class _TodoListState1 extends State<TodoList1> {
     dt = DateTime.now();
     DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
+    // ignore: non_constant_identifier_names
     Color late_ = Colors.black;
     String newDttom = DateFormat.yMd().format(tomorrow);
     String newDtyes = DateFormat.yMd().format(yesterday);
@@ -181,6 +182,19 @@ class _TodoListState1 extends State<TodoList1> {
           'No Date';
     }
     return [concise, late_];
+  }
+
+  showcorrectday(result) {
+    if (result == '7') {
+      result = 'Break';
+    } else if (result == '8') {
+      result = 'Error';
+    } else {
+      // ignore: unnecessary_brace_in_string_interps
+      result = "Day ${result}";
+    }
+
+    return result;
   }
 
   Widget _floatingPanel() {
@@ -393,17 +407,12 @@ class _TodoListState1 extends State<TodoList1> {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
-                                    String result1 = result;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
-                                        if (result == '7')
-                                          result1 = 'break'
-                                        else if (result == '8')
-                                          result1 = 'error',
                                         Text(
-                                          'Day $result1',
+                                          '${showcorrectday(result)}',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: 40,
