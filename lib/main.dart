@@ -38,6 +38,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       // extendBody for floating bar get better perfomance
+      body: PageView(
+        children: <Widget>[
+          HomePage(),
+          TimetablePage(),
+          SettingsPage(),
+        ],
+      ),
       extendBody: true,
       backgroundColor: Colors.white,
       bottomNavigationBar: _buildBottomNavigationBar(),
@@ -74,7 +81,6 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: (index) {
         setState(() {
           _currentIndex = index;
-         
         });
       },
     );
