@@ -60,10 +60,11 @@ class _SettingsState extends State<SettingsPage> {
                   toolbarHeight: toolbarHeight,
                 )),
             body: new Container(
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+                child: Center(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
                   DropdownButton(
                       value: _value,
                       items: [
@@ -82,6 +83,34 @@ class _SettingsState extends State<SettingsPage> {
                           addIntToSF();
                         });
                       }),
-                ]))));
+                  Column(
+                    children: [
+                      (_value == 7)
+                          ? Column(
+                              children: [
+                                TextFormField(
+                                    decoration:
+                                        InputDecoration(labelText: 'Block 1')),
+                                TextFormField(
+                                    decoration:
+                                        InputDecoration(labelText: 'Block 2')),
+                                TextFormField(
+                                    decoration:
+                                        InputDecoration(labelText: 'Block 3')),
+                                TextFormField(
+                                    decoration:
+                                        InputDecoration(labelText: 'Block 4')),
+                                TextFormField(
+                                    decoration:
+                                        InputDecoration(labelText: 'Block 5')),
+                                TextFormField(
+                                    decoration:
+                                        InputDecoration(labelText: 'Block 6'))
+                              ],
+                            )
+                          : Text('')
+                    ],
+                  )
+                ])))));
   }
 }
