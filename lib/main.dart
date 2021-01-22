@@ -1,119 +1,175 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:bubbled_navigation_bar/bubbled_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/rendering.dart';
-import 'pages/home.dart';
-import 'pages/settings.dart';
-import 'pages/timetable.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:badges/badges.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(TabPage());
 
-class MyApp extends StatelessWidget {
+class TabPage extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'School planner',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
-    );
-  }
+  _TabPageState createState() => _TabPageState();
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key}) : super(key: key);
-  final titles = ['Home', 'TimeTable', 'Settings'];
-  final colors = [
-    Colors.black,
-    Colors.black,
-    Colors.black,
+class _TabPageState extends State<TabPage> {
+  int selectedIndex = 0;
+  int badge = 0;
+  var padding = EdgeInsets.symmetric(horizontal: 18, vertical: 5);
+  double gap = 10;
+
+  PageController controller = PageController();
+
+  List<Color> colors = [
+    Colors.purple,
+    Colors.pink,
+    Colors.amber[600],
+    Colors.teal
   ];
-  final icons = [Icons.home_filled, Icons.access_time, Icons.settings];
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  PageController _pageController;
-  MenuPositionController _menuPositionController;
-  bool userPageDragging = false;
 
   @override
   void initState() {
-    _menuPositionController = MenuPositionController(initPosition: 0);
-    _pageController =
-        PageController(initialPage: 0, keepPage: false, viewportFraction: 1.0);
-    _pageController.addListener(handlePageChange);
     super.initState();
-  }
 
-  void handlePageChange() {
-    _menuPositionController.absolutePosition = _pageController.page;
-  }
-
-  void checkUserDragging(ScrollNotification scrollNotification) {
-    if (scrollNotification is UserScrollNotification &&
-        scrollNotification.direction != ScrollDirection.idle) {
-      userPageDragging = true;
-    } else if (scrollNotification is ScrollEndNotification) {
-      userPageDragging = false;
-    }
-    if (userPageDragging) {
-      _menuPositionController.findNearestTarget(_pageController.page);
-    }
+    var padding = EdgeInsets.symmetric(horizontal: 18, vertical: 5);
+    double gap = 10;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: NotificationListener<ScrollNotification>(
-          // ignore: missing_return
-          onNotification: (scrollNotification) {
-            checkUserDragging(scrollNotification);
+    return MaterialApp(
+      home: Scaffold(
+        extendBody: true,
+        appBar: AppBar(
+          brightness: Brightness.light,
+          title: Text(
+            'GoogleNavBar',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white,
+        ),
+        body: PageView.builder(
+          onPageChanged: (page) {
+            setState(() {
+              selectedIndex = page;
+              badge = badge + 1;
+            });
           },
-          child: PageView(
-            controller: _pageController,
-            children: <Widget>[
-              HomePage(),
-              TimetablePage(),
-              SettingsPage(),
-            ],
+          controller: controller,
+          itemBuilder: (context, position) {
+            return Container(
+              color: colors[position],
+            );
+          },
+          itemCount: 4, // Can be null
+        ),
+        // backgroundColor: Colors.green,
+        // body: Container(color: Colors.red,),
+        bottomNavigationBar: SafeArea(
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(100)),
+                boxShadow: [
+                  BoxShadow(
+                      spreadRadius: -10,
+                      blurRadius: 60,
+                      color: Colors.black.withOpacity(.4),
+                      offset: Offset(0, 25))
+                ]),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 3.0, vertical: 3),
+              child: GNav(
+                  curve: Curves.easeOutExpo,
+                  duration: Duration(milliseconds: 900),
+                  tabs: [
+                    GButton(
+                      gap: gap,
+                      iconActiveColor: Colors.purple,
+                      iconColor: Colors.black,
+                      textColor: Colors.purple,
+                      backgroundColor: Colors.purple.withOpacity(.2),
+                      iconSize: 24,
+                      padding: padding,
+                      icon: LineIcons.home,
+                      // textStyle: t.textStyle,
+                      text: 'Home',
+                    ),
+                    GButton(
+                      gap: gap,
+                      iconActiveColor: Colors.pink,
+                      iconColor: Colors.black,
+                      textColor: Colors.pink,
+                      backgroundColor: Colors.pink.withOpacity(.2),
+                      iconSize: 24,
+                      padding: padding,
+                      icon: LineIcons.heart_o,
+                      leading: selectedIndex == 1 || badge == 0
+                          ? null
+                          : Badge(
+                              badgeColor: Colors.red.shade100,
+                              elevation: 0,
+                              position:
+                                  BadgePosition(top: -12, start: -12),
+                              badgeContent: Text(
+                                badge.toString(),
+                                style: TextStyle(color: Colors.red.shade900),
+                              ),
+                              child: Icon(
+                                LineIcons.heart_o,
+                                color: selectedIndex == 1
+                                    ? Colors.pink
+                                    : Colors.black,
+                              )),
+
+// textStyle: t.textStyle,
+                      text: 'Likes',
+                    ),
+                    GButton(
+                      gap: gap,
+                      iconActiveColor: Colors.amber[600],
+                      iconColor: Colors.black,
+                      textColor: Colors.amber[600],
+                      backgroundColor: Colors.amber[600].withOpacity(.2),
+                      iconSize: 24,
+                      padding: padding,
+                      icon: LineIcons.search,
+// textStyle: t.textStyle,
+                      text: 'Search',
+                    ),
+                    GButton(
+                      gap: gap,
+                      iconActiveColor: Colors.teal,
+                      iconColor: Colors.black,
+                      textColor: Colors.teal,
+                      backgroundColor: Colors.teal.withOpacity(.2),
+                      iconSize: 24,
+                      padding: padding,
+                      icon: LineIcons.user,
+                      leading: CircleAvatar(
+                          radius: 12,
+                          backgroundImage: NetworkImage(
+                              "https://sooxt98.space/content/images/size/w100/2019/01/profile.png")),
+// textStyle: t.textStyle,
+                      text: 'Sheldon',
+                    )
+                  ],
+                  selectedIndex: selectedIndex,
+                  onTabChange: (index) {
+                    // _debouncer.run(() {
+
+                    print(index);
+                    setState(() {
+                      selectedIndex = index;
+                      // badge = badge + 1;
+                    });
+                    controller.jumpToPage(index);
+                    // });
+                  }),
+            ),
           ),
         ),
-        bottomNavigationBar: BubbledNavigationBar(
-          animationCurve: Curves.bounceIn,
-          animationDuration: Duration(milliseconds: 800),
-          controller: _menuPositionController,
-          initialIndex: 0,
-          itemMargin: EdgeInsets.symmetric(horizontal: 8),
-          backgroundColor: Color.fromRGBO(230, 230, 230, 1),
-          defaultBubbleColor: Color.fromRGBO(224, 163, 160, 1),
-          onTap: (index) {
-            _pageController.animateToPage(index,
-                curve: Curves.easeInOutQuad,
-                duration: Duration(milliseconds: 800));
-          },
-          items: widget.titles.map((title) {
-            var index = widget.titles.indexOf(title);
-            var color = widget.colors[index];
-            return BubbledNavigationBarItem(
-              icon: getIcon(index, color),
-              activeIcon: getIcon(index, Colors.white),
-              title: Text(
-                title,
-                style: TextStyle(color: Colors.white, fontSize: 12),
-              ),
-            );
-          }).toList(),
-        ));
-  }
-
-  Padding getIcon(int index, Color color) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 3),
-      child: Icon(widget.icons[index], size: 33, color: color),
+      ),
     );
   }
 }
