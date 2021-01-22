@@ -160,9 +160,15 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   concisedate(index) {
+    dt = DateTime.now();
+    DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
+    Color late_ = Colors.black;
     String newDttom = DateFormat.yMd().format(tomorrow);
     String newDtyes = DateFormat.yMd().format(yesterday);
+    if (setDate.difference(dt) < Duration(days: 0)) {
+      late_ = Colors.red;
+    }
     if (_todoList[index].todoDate == newDt_) {
       concise = 'Today';
     } else if (_todoList[index].todoDate == newDttom) {
@@ -174,7 +180,7 @@ class _TodoListState1 extends State<TodoList1> {
               .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
           'No Date';
     }
-    return concise;
+    return [concise, late_];
   }
 
   Widget _floatingPanel() {
@@ -520,7 +526,11 @@ class _TodoListState1 extends State<TodoList1> {
                                       ))
                                     ],
                                   ),
-                                  trailing: Text('${concisedate(index)}')),
+                                  trailing: Text(
+                                    '${concisedate(index)[0]}',
+                                    style:
+                                        TextStyle(color: concisedate(index)[1]),
+                                  )),
                             ),
                             actions: <Widget>[],
                             secondaryActions: <Widget>[
