@@ -324,6 +324,14 @@ class _TodoListState1 extends State<TodoList1> {
     }
   }
 
+  closekeyboard() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -339,13 +347,12 @@ class _TodoListState1 extends State<TodoList1> {
           maxHeight: 370,
           panel: _floatingPanel(),
           collapsed: _floatingCollasped(),
+          onPanelClosed: () {
+            closekeyboard();
+          },
           body: GestureDetector(
             onTap: () {
-              FocusScopeNode currentFocus = FocusScope.of(context);
-
-              if (!currentFocus.hasPrimaryFocus) {
-                currentFocus.unfocus();
-              }
+              closekeyboard();
             },
             child: Scaffold(
               key: _globalKey,
