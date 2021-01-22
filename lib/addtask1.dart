@@ -59,9 +59,7 @@ class _TodoListState1 extends State<TodoList1> {
     _todoService = TodoService();
     // ignore: deprecated_member_use
     _todoList = List<Todo>();
-
     var todos = await _todoService.readTodos();
-
     todos.forEach((todo) {
       setState(() {
         var model = Todo();
@@ -116,6 +114,42 @@ class _TodoListState1 extends State<TodoList1> {
     }
   }
 
+  addatask() {
+    if (_todoTitleController.text.isEmpty && _todoDateController.text.isEmpty) {
+      setState(() {
+        errtext1 = "";
+        errtext2 = "";
+        validated1 = true;
+        validated2 = true;
+        errtext1 = "Can't Be Empty";
+        validated1 = false;
+        errtext2 = "Can't Be Empty";
+        validated2 = false;
+      });
+    } else if (_todoTitleController.text.isEmpty) {
+      setState(() {
+        errtext1 = "";
+        errtext2 = "";
+        validated1 = true;
+        validated2 = true;
+        errtext1 = "Can't Be Empty";
+        validated1 = false;
+      });
+    } else if (_todoDateController.text.isEmpty) {
+      setState(() {
+        errtext1 = "";
+        errtext2 = "";
+        validated1 = true;
+        validated2 = true;
+        errtext2 = "Can't Be Empty";
+        validated2 = false;
+      });
+    } else {
+      _addbutton();
+      _dateTime = DateTime.now();
+    }
+  }
+
   Widget _floatingPanel() {
     return Container(
       decoration: BoxDecoration(
@@ -145,7 +179,6 @@ class _TodoListState1 extends State<TodoList1> {
                 )),
           ]),
           TextField(
-              // textInputAction: TextInputAction.next,
               cursorColor: Colors.black54,
               controller: _todoTitleController,
               decoration: InputDecoration(
@@ -178,40 +211,7 @@ class _TodoListState1 extends State<TodoList1> {
             readOnly: true,
             textInputAction: TextInputAction.done,
             onSubmitted: (term) async {
-              if (_todoTitleController.text.isEmpty &&
-                  _todoDateController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "";
-                  errtext2 = "";
-                  validated1 = true;
-                  validated2 = true;
-                  errtext1 = "Can't Be Empty";
-                  validated1 = false;
-                  errtext2 = "Can't Be Empty";
-                  validated2 = false;
-                });
-              } else if (_todoTitleController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "";
-                  errtext2 = "";
-                  validated1 = true;
-                  validated2 = true;
-                  errtext1 = "Can't Be Empty";
-                  validated1 = false;
-                });
-              } else if (_todoDateController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "";
-                  errtext2 = "";
-                  validated1 = true;
-                  validated2 = true;
-                  errtext2 = "Can't Be Empty";
-                  validated2 = false;
-                });
-              } else {
-                _addbutton();
-                _dateTime = DateTime.now();
-              }
+              Addtask1();
             },
             decoration: InputDecoration(
               errorText: validated2 ? null : errtext2,
@@ -230,7 +230,6 @@ class _TodoListState1 extends State<TodoList1> {
               prefixIcon: InkWell(
                 onTap: () {
                   _selectedTodoDate(context);
-                  getAllTodos();
                 },
                 child: Icon(
                   CupertinoIcons.calendar,
@@ -244,40 +243,7 @@ class _TodoListState1 extends State<TodoList1> {
           ),
           ElevatedButton(
             onPressed: () async {
-              if (_todoTitleController.text.isEmpty &&
-                  _todoDateController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "";
-                  errtext2 = "";
-                  validated1 = true;
-                  validated2 = true;
-                  errtext1 = "Can't Be Empty";
-                  validated1 = false;
-                  errtext2 = "Can't Be Empty";
-                  validated2 = false;
-                });
-              } else if (_todoTitleController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "";
-                  errtext2 = "";
-                  validated1 = true;
-                  validated2 = true;
-                  errtext1 = "Can't Be Empty";
-                  validated1 = false;
-                });
-              } else if (_todoDateController.text.isEmpty) {
-                setState(() {
-                  errtext1 = "";
-                  errtext2 = "";
-                  validated1 = true;
-                  validated2 = true;
-                  errtext2 = "Can't Be Empty";
-                  validated2 = false;
-                });
-              } else {
-                _addbutton();
-                _dateTime = DateTime.now();
-              }
+              addatask();
             },
             style: ElevatedButton.styleFrom(
               primary: Color.fromRGBO(119, 227, 134, 1),
@@ -314,7 +280,6 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   _addbutton() async {
-    getAllTodos();
     FocusScopeNode currentFocus = FocusScope.of(context);
     var todoObject = Todo();
     todoObject.title = _todoTitleController.text;
@@ -338,8 +303,6 @@ class _TodoListState1 extends State<TodoList1> {
       currentFocus.unfocus();
     }
   }
-
-  showconcisedate(index) {}
 
   @override
   Widget build(BuildContext context) {
