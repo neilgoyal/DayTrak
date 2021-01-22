@@ -166,7 +166,7 @@ class _TodoListState1 extends State<TodoList1> {
     Color late_ = Colors.black;
     String newDttom = DateFormat.yMd().format(tomorrow);
     String newDtyes = DateFormat.yMd().format(yesterday);
-    if (setDate.difference(dt) < Duration(days: 0)) {
+    if (setDate.difference(dt) < Duration(days: -1)) {
       late_ = Colors.red;
     }
     if (_todoList[index].todoDate == newDt_) {
@@ -393,17 +393,15 @@ class _TodoListState1 extends State<TodoList1> {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
-                                    Text result1;
+                                    String result1 = result;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         if (result == '7')
-                                          result1 = 'break' as Text
+                                          result1 = 'break'
                                         else if (result == '8')
-                                          result1 = 'error' as Text
-                                        else
-                                          result1 = result as Text,
+                                          result1 = 'error',
                                         Text(
                                           'Day $result1',
                                           style: TextStyle(
