@@ -409,16 +409,17 @@ class _TodoListState1 extends State<TodoList1> {
                                         )
                                       ],
                                     );
-                                  } else if (snapshot.hasError)
-                                    return Text(
-                                      "Error",
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
-                                        color: const Color(0xff9b8fb1),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    );
+                                  } else 
+                                  // if (snapshot.hasError)
+                                  //   return Text(
+                                  //     "Error",
+                                  //     style: TextStyle(
+                                  //       fontFamily: 'Protipo Compact',
+                                  //       fontSize: 40,
+                                  //       color: const Color(0xff9b8fb1),
+                                  //       fontWeight: FontWeight.w300,
+                                  //     ),
+                                  //   );
                                   return Text(
                                     '${showcorrectday(dayOrder)}',
                                     style: TextStyle(
@@ -465,14 +466,15 @@ class _TodoListState1 extends State<TodoList1> {
                                         )
                                       ],
                                     );
-                                  } else if (snapshot.hasError)
-                                    return Text(
-                                      '${snapshot.error}',
-                                      style: TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.red,
-                                          fontFamily: 'Protipo Compact'),
-                                    );
+                                  } else 
+                                  // if (snapshot.hasError)
+                                  //   return Text(
+                                  //     '${snapshot.error}',
+                                  //     style: TextStyle(
+                                  //         fontSize: 30,
+                                  //         color: Colors.red,
+                                  //         fontFamily: 'Protipo Compact'),
+                                  //   );
                                   return Text(
                                     '$weatherorder ˚C',
                                     style: TextStyle(
