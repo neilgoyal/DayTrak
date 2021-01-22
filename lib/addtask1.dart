@@ -130,9 +130,9 @@ class _TodoListState1 extends State<TodoList1> {
         errtext2 = "";
         validated1 = true;
         validated2 = true;
-        errtext1 = "Can't Be Empty";
+        errtext1 = "Add a Task";
         validated1 = false;
-        errtext2 = "Can't Be Empty";
+        errtext2 = "Select a Date";
         validated2 = false;
       });
     } else if (_todoTitleController.text.isEmpty) {
@@ -216,15 +216,9 @@ class _TodoListState1 extends State<TodoList1> {
                   fontWeight: FontWeight.w300,
                 )),
           ]),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('',
-                style: TextStyle(
-                  fontFamily: 'Protipo Compact',
-                  fontSize: 10,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w300,
-                )),
-          ]),
+          SizedBox(
+            height: 15,
+          ),
           TextField(
               cursorColor: Colors.black54,
               controller: _todoTitleController,
@@ -243,15 +237,9 @@ class _TodoListState1 extends State<TodoList1> {
                       color: Color.fromRGBO(224, 163, 160, 1), width: 2),
                 ),
               )),
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('',
-                style: TextStyle(
-                  fontFamily: 'Protipo Compact',
-                  fontSize: 10,
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w300,
-                )),
-          ]),
+          SizedBox(
+            height: 15,
+          ),
           TextField(
             cursorColor: Colors.black54,
             controller: _todoDateController,
