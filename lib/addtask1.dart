@@ -358,7 +358,7 @@ class _TodoListState1 extends State<TodoList1> {
           controller: panelController,
           borderRadius: radius,
           minHeight: 55,
-          maxHeight: 370,
+          maxHeight: 380,
           panel: _floatingPanel(),
           collapsed: _floatingCollasped(),
           onPanelClosed: () {
