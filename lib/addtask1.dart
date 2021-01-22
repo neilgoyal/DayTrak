@@ -327,12 +327,18 @@ class _TodoListState1 extends State<TodoList1> {
         color: Color.fromRGBO(185, 143, 163, 1),
         borderRadius: radius,
       ),
-      child: Center(
-        child: Text(
+      child:
+      Column( 
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 10,
+          ),
+         Text(
           "Add Task",
           style: TextStyle(
-              color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 20),
-        ),
+              color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 27),
+        ),]
       ),
     );
   }
@@ -355,8 +361,8 @@ class _TodoListState1 extends State<TodoList1> {
           margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
           controller: panelController,
           borderRadius: radius,
-          minHeight: 55,
-          maxHeight: 380,
+          minHeight: 150,
+          maxHeight: 400,
           panel: _floatingPanel(),
           collapsed: _floatingCollasped(),
           onPanelClosed: () {

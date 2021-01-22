@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _buildBorderRadiusDesign() {
     return CustomNavigationBar(
-      isFloating: true,
+      isFloating: false,
       scaleFactor: 0.3,
       iconSize: 30.0,
       elevation: 3,
