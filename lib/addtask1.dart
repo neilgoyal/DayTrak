@@ -12,6 +12,12 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
+// ignore: non_constant_identifier_names
+String newDt_ = DateFormat.yMd().format(dt);
+
+DateTime tomorrow = dt.add(new Duration(days: 1));
+String newDttom = DateFormat.yMd().format(tomorrow);
+
 final double toolbarHeight = 190.0;
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
@@ -148,6 +154,21 @@ class _TodoListState1 extends State<TodoList1> {
       _addbutton();
       _dateTime = DateTime.now();
     }
+  }
+
+  concisedate(index) {
+    String concise;
+    String newDttom = DateFormat.yMd().format(tomorrow);
+    if (_todoList[index].todoDate == newDt_) {
+      concise = 'Today';
+    } else if (_todoList[index].todoDate == newDttom) {
+      concise = 'Tomorrow';
+    } else {
+      concise = DateFormat('E, d MMM')
+              .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
+          'No Date';
+    }
+    return concise;
   }
 
   Widget _floatingPanel() {
@@ -297,7 +318,6 @@ class _TodoListState1 extends State<TodoList1> {
       validated2 = true;
       errtext2 = "";
     });
-    print(result);
     panelController.close();
     if (!currentFocus.hasPrimaryFocus) {
       currentFocus.unfocus();
@@ -476,22 +496,18 @@ class _TodoListState1 extends State<TodoList1> {
                             child: Container(
                               padding: EdgeInsets.all(5.0),
                               child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    Expanded(
-                                        child: Container(
-                                      child: Text(
-                                          _todoList[index].title ?? 'No Title'),
-                                    ))
-                                  ],
-                                ),
-                                trailing: Text(DateFormat('E, d MMM').format(
-                                        DateFormat("yMd").parse(
-                                            _todoList[index].todoDate)) ??
-                                    'No Date'),
-                              ),
+                                  title: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: <Widget>[
+                                      Expanded(
+                                          child: Container(
+                                        child: Text(_todoList[index].title ??
+                                            'No Title'),
+                                      ))
+                                    ],
+                                  ),
+                                  trailing: Text('${concisedate(index)}')),
                             ),
                             actions: <Widget>[],
                             secondaryActions: <Widget>[
