@@ -141,7 +141,7 @@ class _TodoListState1 extends State<TodoList1> {
         errtext2 = "";
         validated1 = true;
         validated2 = true;
-        errtext1 = "Can't Be Empty";
+        errtext1 = "Add a Task";
         validated1 = false;
       });
     } else if (_todoDateController.text.isEmpty) {
@@ -150,7 +150,7 @@ class _TodoListState1 extends State<TodoList1> {
         errtext2 = "";
         validated1 = true;
         validated2 = true;
-        errtext2 = "Can't Be Empty";
+        errtext2 = "Select a Date";
         validated2 = false;
       });
     } else {
