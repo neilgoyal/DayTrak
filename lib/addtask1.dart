@@ -387,12 +387,19 @@ class _TodoListState1 extends State<TodoList1> {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
+                                    Text result1;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
+                                        if (result == '7')
+                                          result1 = 'break' as Text
+                                        else if (result == '8')
+                                          result1 = 'error' as Text
+                                        else
+                                          result1 = result as Text,
                                         Text(
-                                          'Day $result',
+                                          'Day $result1',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: 40,
