@@ -427,8 +427,8 @@ class _TodoListState1 extends State<TodoList1> {
                                       "Error",
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 25,
-                                        color: Colors.deepOrange,
+                                        fontSize: 40,
+                                        color: const Color(0xff9b8fb1),
                                         fontWeight: FontWeight.w300,
                                       ),
                                     );
