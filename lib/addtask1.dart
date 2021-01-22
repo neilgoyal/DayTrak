@@ -24,6 +24,8 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topRight: Radius.circular(35.0),
 );
 Future<Day> futureDay;
+String dayOrder = "-";
+int weatherorder = 0;
 
 class Addtask1 extends StatelessWidget {
   @override
@@ -215,7 +217,6 @@ class _TodoListState1 extends State<TodoList1> {
       // ignore: unnecessary_brace_in_string_interps
       result = "Day ${result}";
     }
-
     return result;
   }
 
@@ -392,6 +393,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
+                                    dayOrder = result;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -417,9 +419,14 @@ class _TodoListState1 extends State<TodoList1> {
                                         fontWeight: FontWeight.w300,
                                       ),
                                     );
-                                  return CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Color.fromRGBO(250, 250, 250, 1)),
+                                  return Text(
+                                    '${showcorrectday(dayOrder)}',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 40,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
                                   );
                                 },
                               ),
@@ -442,6 +449,7 @@ class _TodoListState1 extends State<TodoList1> {
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     WeatherModel model1 = snapshot.data;
+                                    weatherorder = model1.main.temp.round();
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -465,9 +473,14 @@ class _TodoListState1 extends State<TodoList1> {
                                           color: Colors.red,
                                           fontFamily: 'Protipo Compact'),
                                     );
-                                  return CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Color.fromRGBO(250, 250, 250, 1)),
+                                  return Text(
+                                    '$weatherorder ˚C',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 35,
+                                      color: const Color(0xffbadfca),
+                                      fontWeight: FontWeight.w200,
+                                    ),
                                   );
                                 },
                               ),
