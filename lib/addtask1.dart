@@ -14,13 +14,10 @@ String newDt = DateFormat.MMMd().format(dt);
 String newDt1 = DateFormat.EEEE().format(dt);
 // ignore: non_constant_identifier_names
 String newDt_ = DateFormat.yMd().format(dt);
-
 DateTime tomorrow = dt.add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
-
 DateTime yesterday = dt.add(new Duration(days: -1));
 String newDtyes = DateFormat.yMd().format(tomorrow);
-
 final double toolbarHeight = 190.0;
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
@@ -57,11 +54,97 @@ class _TodoListState1 extends State<TodoList1> {
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   DateTime _dateTime = DateTime.now();
 
-  @override
-  initState() {
-    super.initState();
-    getAllTodos();
-    futureDay = fetchDay();
+  addatask() {
+    if (_todoTitleController.text.isEmpty && _todoDateController.text.isEmpty) {
+      setState(() {
+        errtext1 = "";
+        errtext2 = "";
+        validated1 = true;
+        validated2 = true;
+        errtext1 = "Add a Task";
+        validated1 = false;
+        errtext2 = "Select a Date";
+        validated2 = false;
+      });
+    } else if (_todoTitleController.text.isEmpty) {
+      setState(() {
+        errtext1 = "";
+        errtext2 = "";
+        validated1 = true;
+        validated2 = true;
+        errtext1 = "Add a Task";
+        validated1 = false;
+      });
+    } else if (_todoDateController.text.isEmpty) {
+      setState(() {
+        errtext1 = "";
+        errtext2 = "";
+        validated1 = true;
+        validated2 = true;
+        errtext2 = "Select a Date";
+        validated2 = false;
+      });
+    } else {
+      _addbutton();
+      _dateTime = DateTime.now();
+    }
+  }
+
+  _addbutton() async {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+    var todoObject = Todo();
+    todoObject.title = _todoTitleController.text;
+    todoObject.todoDate = _todoDateController.text;
+    var _todoService = TodoService();
+    var result = await _todoService.saveTodo(todoObject);
+    if (result > 0) {
+      getAllTodos();
+      _todoTitleController.text = "";
+      _todoDateController.text = "";
+    }
+    setState(() {
+      validated1 = true;
+      errtext1 = "";
+      validated2 = true;
+      errtext2 = "";
+    });
+    panelController.close();
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
+  closekeyboard() {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
+  }
+
+  concisedate(index) {
+    dt = DateTime.now();
+    DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
+    String concise;
+    // ignore: non_constant_identifier_names
+    Color late_ = Colors.black;
+    String newDttom = DateFormat.yMd().format(tomorrow);
+    String newDtyes = DateFormat.yMd().format(yesterday);
+    if (setDate.difference(dt) < Duration(days: -1)) {
+      late_ = Colors.red;
+    }
+    if (_todoList[index].todoDate == newDt_) {
+      concise = 'Today';
+    } else if (_todoList[index].todoDate == newDttom) {
+      concise = 'Tomorrow';
+    } else if (_todoList[index].todoDate == newDtyes) {
+      concise = 'Yesterday';
+    } else {
+      concise = DateFormat('E, d MMM')
+              .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
+          'No Date';
+    }
+    return [concise, late_];
   }
 
   getAllTodos() async {
@@ -121,67 +204,6 @@ class _TodoListState1 extends State<TodoList1> {
         _todoDateController.text = DateFormat('yMd').format(_pickedDate);
       });
     }
-  }
-
-  addatask() {
-    if (_todoTitleController.text.isEmpty && _todoDateController.text.isEmpty) {
-      setState(() {
-        errtext1 = "";
-        errtext2 = "";
-        validated1 = true;
-        validated2 = true;
-        errtext1 = "Add a Task";
-        validated1 = false;
-        errtext2 = "Select a Date";
-        validated2 = false;
-      });
-    } else if (_todoTitleController.text.isEmpty) {
-      setState(() {
-        errtext1 = "";
-        errtext2 = "";
-        validated1 = true;
-        validated2 = true;
-        errtext1 = "Add a Task";
-        validated1 = false;
-      });
-    } else if (_todoDateController.text.isEmpty) {
-      setState(() {
-        errtext1 = "";
-        errtext2 = "";
-        validated1 = true;
-        validated2 = true;
-        errtext2 = "Select a Date";
-        validated2 = false;
-      });
-    } else {
-      _addbutton();
-      _dateTime = DateTime.now();
-    }
-  }
-
-  concisedate(index) {
-    dt = DateTime.now();
-    DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
-    String concise;
-    // ignore: non_constant_identifier_names
-    Color late_ = Colors.black;
-    String newDttom = DateFormat.yMd().format(tomorrow);
-    String newDtyes = DateFormat.yMd().format(yesterday);
-    if (setDate.difference(dt) < Duration(days: -1)) {
-      late_ = Colors.red;
-    }
-    if (_todoList[index].todoDate == newDt_) {
-      concise = 'Today';
-    } else if (_todoList[index].todoDate == newDttom) {
-      concise = 'Tomorrow';
-    } else if (_todoList[index].todoDate == newDtyes) {
-      concise = 'Yesterday';
-    } else {
-      concise = DateFormat('E, d MMM')
-              .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
-          'No Date';
-    }
-    return [concise, late_];
   }
 
   showcorrectday(result) {
@@ -314,36 +336,11 @@ class _TodoListState1 extends State<TodoList1> {
     );
   }
 
-  _addbutton() async {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-    var todoObject = Todo();
-    todoObject.title = _todoTitleController.text;
-    todoObject.todoDate = _todoDateController.text;
-    var _todoService = TodoService();
-    var result = await _todoService.saveTodo(todoObject);
-    if (result > 0) {
-      getAllTodos();
-      _todoTitleController.text = "";
-      _todoDateController.text = "";
-    }
-    setState(() {
-      validated1 = true;
-      errtext1 = "";
-      validated2 = true;
-      errtext2 = "";
-    });
-    panelController.close();
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
-  }
-
-  closekeyboard() {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
-    }
+  @override
+  initState() {
+    super.initState();
+    getAllTodos();
+    futureDay = fetchDay();
   }
 
   @override
