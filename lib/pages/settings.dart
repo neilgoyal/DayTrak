@@ -62,7 +62,7 @@ class _SettingsState extends State<SettingsPage> {
             body: new Container(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                   DropdownButton(
                       value: _value,
