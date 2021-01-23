@@ -39,9 +39,8 @@ dependencies:
   jiffy: ^3.0.1
   sliding_up_panel: ^1.0.2
   flutter_rounded_date_picker: ^1.0.0
-  csv: ^4.1.0
   flutter_icons: ^1.1.0
-  custom_navigation_bar: ^0.7.1
+  bubbled_navigation_bar: ^0.0.4
 
 dev_dependencies:
   flutter_test:
