@@ -41,7 +41,7 @@ dependencies:
   flutter_rounded_date_picker: ^1.0.0
   csv: ^4.1.0
   flutter_icons: ^1.1.0
-  motion_tab_bar: ^0.1.5
+  custom_navigation_bar: ^0.7.1
 
 dev_dependencies:
   flutter_test:
