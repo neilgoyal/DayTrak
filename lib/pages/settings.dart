@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:schoolcalendar/Timetables/blocks.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -118,7 +119,16 @@ class _SettingsState extends State<SettingsPage> {
                               borderRadius: const BorderRadius.all(Radius.circular(25.0))),
                             ),
                             child: DropdownButtonHideUnderline(
-                              child: DropdownButton(
+                              child: 
+                              DropdownButton(
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w300,
+                                  fontSize: 15,
+                                  fontFamily: 'Protipo Compact'
+
+                                ),
+                                elevation: 1,
                                   isExpanded: true,
                                   isDense:
                                       true, // Reduces the dropdowns height by +/- 50%
