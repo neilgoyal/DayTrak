@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:custom_navigation_bar/custom_navigation_bar.dart';
-import 'package:schoolcalendar/addtask1.dart';
+import 'package:schoolcalendar/custom_navigation_bar.dart';
 import 'package:schoolcalendar/pages/home.dart';
 import 'package:schoolcalendar/pages/settings.dart';
 import 'package:schoolcalendar/pages/timetable.dart';
@@ -8,45 +7,56 @@ import 'package:schoolcalendar/pages/timetable.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Custom Navigation Bar Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Example'),
+      home: MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
+  MyHomePage({Key key}) : super(key: key);
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   int _currentIndex = 0;
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = new TabController(initialIndex: 0, vsync: this, length: 3);
+    _tabController.addListener(() {
+      setState(() {
+        _currentIndex = _tabController.index;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBody for floating bar get better perfomance
-      body: PageView(
-        children: <Widget>[
+      body: TabBarView(
+        controller: _tabController,
+        children: [
           HomePage(),
           TimetablePage(),
           SettingsPage(),
         ],
       ),
-      extendBody: true,
-      backgroundColor: Colors.white,
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
@@ -63,6 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
       elevation: 3,
       selectedColor: Colors.amber,
       strokeColor: Colors.white,
+      // bubbleCurve: Curves.easeOutExpo,
+      // scaleCurve: Curves.easeOutExpo,
       unSelectedColor: Color(0xff6c788a),
       backgroundColor: Colors.white,
       borderRadius: Radius.circular(17),
@@ -81,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
       onTap: (index) {
         setState(() {
           _currentIndex = index;
+          _tabController.index = _currentIndex;
         });
       },
     );
