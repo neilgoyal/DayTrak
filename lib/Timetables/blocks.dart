@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-
-
 grade12() {
   return Column(children: [
     TextFormField(decoration: InputDecoration(labelText: 'Block 1')),
@@ -10,10 +8,6 @@ grade12() {
     TextFormField(decoration: InputDecoration(labelText: 'Block 4')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 5')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 6')),
-    TextFormField(decoration: InputDecoration(labelText: 'Block 7')),
-    TextFormField(decoration: InputDecoration(labelText: 'Block 8')),
-    TextFormField(decoration: InputDecoration(labelText: 'Block 9')),
-    TextFormField(decoration: InputDecoration(labelText: 'Block 10')),
   ]);
 }
 
@@ -43,7 +37,7 @@ grade10() {
   ]);
 }
 
-grade9(){
+grade9() {
   return Column(children: [
     TextFormField(decoration: InputDecoration(labelText: 'Block 1')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 2')),
@@ -58,7 +52,7 @@ grade9(){
   ]);
 }
 
-grade8(){
+grade8() {
   return Column(children: [
     TextFormField(decoration: InputDecoration(labelText: 'Block 1')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 2')),
@@ -73,7 +67,7 @@ grade8(){
   ]);
 }
 
-grade7(){
+grade7() {
   return Column(children: [
     TextFormField(decoration: InputDecoration(labelText: 'Block 1')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 2')),
@@ -88,7 +82,7 @@ grade7(){
   ]);
 }
 
-grade6(){
+grade6() {
   return Column(children: [
     TextFormField(decoration: InputDecoration(labelText: 'Block 1')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 2')),
@@ -103,7 +97,7 @@ grade6(){
   ]);
 }
 
-grade5(){
+grade5() {
   return Column(children: [
     TextFormField(decoration: InputDecoration(labelText: 'Block 1')),
     TextFormField(decoration: InputDecoration(labelText: 'Block 2')),
