@@ -57,16 +57,7 @@ class _MyHomePageState extends State<MyHomePage>
           SettingsPage(),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(),
-    );
-  }
-
-  Widget _buildBottomNavigationBar() {
-    return _buildBorderRadiusDesign();
-  }
-
-  Widget _buildBorderRadiusDesign() {
-    return CustomNavigationBar(
+      bottomNavigationBar: CustomNavigationBar(
       isFloating: false,
       scaleFactor: 0.3,
       iconSize: 30.0,
@@ -96,6 +87,11 @@ class _MyHomePageState extends State<MyHomePage>
           _tabController.index = _currentIndex;
         });
       },
+    )
     );
   }
+
+ 
+
+  
 }

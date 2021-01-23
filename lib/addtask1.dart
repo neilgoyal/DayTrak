@@ -339,6 +339,7 @@ class _TodoListState1 extends State<TodoList1> {
           style: TextStyle(
               color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 27),
         ),]
+        
       ),
     );
   }
@@ -361,7 +362,7 @@ class _TodoListState1 extends State<TodoList1> {
           margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
           controller: panelController,
           borderRadius: radius,
-          minHeight: 150,
+          minHeight: 60,
           maxHeight: 400,
           panel: _floatingPanel(),
           collapsed: _floatingCollasped(),
