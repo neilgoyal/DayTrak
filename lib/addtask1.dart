@@ -409,6 +409,9 @@ class _TodoListState1 extends State<TodoList1> {
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
+                                    print(snapshot.data.day1);
+                                    print(snapshot.data.day2);
+                                    print(snapshot.data.day3);
                                     // ignore: unused_local_variable
                                     var result =
                                         ((snapshot.data.day1).toString());

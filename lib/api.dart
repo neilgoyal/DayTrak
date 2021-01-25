@@ -2,6 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:encrypt/encrypt.dart';
+
+final key = Key.fromUtf8('wsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
+final b64key = Key.fromUtf8(base64Url.encode(key.bytes));
+final fernet = Fernet(b64key);
+final encrypter = Encrypter(fernet);
 
 class Main {
   final double temp;
@@ -59,6 +65,9 @@ class Day {
   Day({this.day1, this.day2, this.day3});
 
   factory Day.fromJson(Map<String, dynamic> json) {
-    return Day(day1: json['hummer'], day2: json['tomato'], day3: json['pudding']);
+    return Day(
+        day1: int.parse(encrypter.decrypt(json["hummer"])),
+        day2: int.parse(encrypter.decrypt(json["pudding"])),
+        day3: int.parse(encrypter.decrypt(json["tomato"])));
   }
 }
