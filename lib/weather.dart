@@ -59,6 +59,6 @@ class Day {
   Day({this.day1, this.day2, this.day3});
 
   factory Day.fromJson(Map<String, dynamic> json) {
-    return Day(day1: json['Day_order'], day2: json['Day_order1'], day3: json['Day_order2']);
+    return Day(day1: json['hummer'], day2: json['tomato'], day3: json['pudding']);
   }
 }
