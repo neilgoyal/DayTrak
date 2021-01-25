@@ -53,8 +53,10 @@ Future<Day> fetchDay() async {
 
 class Day {
   final int day1;
+  final int day2;
+  final int day3;
 
-  Day({this.day1});
+  Day({this.day1, this.day2, this.day3});
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(day1: json['Day_order']);
