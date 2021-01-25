@@ -150,7 +150,7 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   days(){
-    
+
   }
 
   getAllTodos() async {
@@ -407,6 +407,7 @@ class _TodoListState1 extends State<TodoList1> {
                                         children: [
                                           ElevatedButton(
                                               style: ButtonStyle(
+                                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),),
                                                 shadowColor: MaterialStateProperty.all<Color>(Color.fromRGBO(1, 1, 1, 0)),
                                                 backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(1, 1, 1, 0))
                                               ),
