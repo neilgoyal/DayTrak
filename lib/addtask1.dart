@@ -152,9 +152,8 @@ class _TodoListState1 extends State<TodoList1> {
     return [concise, late_];
   }
 
-  Widget days() {
-    
-  }
+  // ignore: missing_return
+  Widget days() {}
 
   getAllTodos() async {
     _todoService = TodoService();
@@ -352,7 +351,6 @@ class _TodoListState1 extends State<TodoList1> {
     super.initState();
     getAllTodos();
     futureDay = fetchDay();
-    
   }
 
   void onClickMenu(MenuItemProvider item) {
@@ -439,7 +437,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                           Color.fromRGBO(
                                                               1, 1, 1, 0))),
                                               onPressed: () {},
-                                              onLongPress: days(),
+                                              //   onLongPress: days(),
                                               child: Text(
                                                 '${showcorrectday(result)}',
                                                 style: TextStyle(

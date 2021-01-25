@@ -40,7 +40,7 @@ dependencies:
   sliding_up_panel: ^1.0.2
   flutter_rounded_date_picker: ^1.0.0
   flutter_icons: ^1.1.0
-  bubbled_navigation_bar: ^0.0.4
+  flutter_snake_navigationbar: ^0.4.4
   popup_menu: ^1.0.5
 
 dev_dependencies:
