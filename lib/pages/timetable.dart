@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
 
-import '../weather.dart';
+import '../api.dart';
 
 class TimetablePage extends StatefulWidget {
   @override
