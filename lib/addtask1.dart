@@ -8,6 +8,7 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:schoolcalendar/weather.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
+import 'package:popup_menu/popup_menu.dart';
 
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
@@ -24,7 +25,8 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topRight: Radius.circular(35.0),
 );
 Future<Day> futureDay;
-String dayOrder = "-";
+String dayOrder, nextDay, dayAfter = "-";
+
 int weatherorder = 0;
 
 class Addtask1 extends StatelessWidget {
@@ -44,6 +46,7 @@ class TodoList1 extends StatefulWidget {
 }
 
 class _TodoListState1 extends State<TodoList1> {
+  PopupMenu menu;
   TodoService _todoService;
   List<Todo> _todoList;
   final panelController = PanelController();
@@ -149,8 +152,8 @@ class _TodoListState1 extends State<TodoList1> {
     return [concise, late_];
   }
 
-  days(){
-
+  Widget days() {
+    
   }
 
   getAllTodos() async {
@@ -349,10 +352,20 @@ class _TodoListState1 extends State<TodoList1> {
     super.initState();
     getAllTodos();
     futureDay = fetchDay();
+    
+  }
+
+  void onClickMenu(MenuItemProvider item) {
+    print('Click menu -> ${item.menuTitle}');
+  }
+
+  void onDismiss() {
+    print('Menu is dismiss');
   }
 
   @override
   Widget build(BuildContext context) {
+    PopupMenu.context = context;
     return Material(
       child: SlidingUpPanel(
           backdropTapClosesPanel: true,
@@ -398,6 +411,7 @@ class _TodoListState1 extends State<TodoList1> {
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
+                                    // ignore: unused_local_variable
                                     var result =
                                         ((snapshot.data.day1).toString());
                                     dayOrder = result;
@@ -407,10 +421,23 @@ class _TodoListState1 extends State<TodoList1> {
                                         children: [
                                           ElevatedButton(
                                               style: ButtonStyle(
-                                                padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),),
-                                                shadowColor: MaterialStateProperty.all<Color>(Color.fromRGBO(1, 1, 1, 0)),
-                                                backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(1, 1, 1, 0))
-                                              ),
+                                                  padding: MaterialStateProperty
+                                                      .all<EdgeInsetsGeometry>(
+                                                    EdgeInsets.only(
+                                                        top: 0.0,
+                                                        left: 0.0,
+                                                        right: 0.0),
+                                                  ),
+                                                  shadowColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          Color.fromRGBO(
+                                                              1, 1, 1, 0)),
+                                                  backgroundColor:
+                                                      MaterialStateProperty.all<
+                                                              Color>(
+                                                          Color.fromRGBO(
+                                                              1, 1, 1, 0))),
                                               onPressed: () {},
                                               onLongPress: days(),
                                               child: Text(
