@@ -149,6 +149,10 @@ class _TodoListState1 extends State<TodoList1> {
     return [concise, late_];
   }
 
+  days(){
+    
+  }
+
   getAllTodos() async {
     _todoService = TodoService();
     // ignore: deprecated_member_use
@@ -327,20 +331,16 @@ class _TodoListState1 extends State<TodoList1> {
         color: Color.fromRGBO(185, 143, 163, 1),
         borderRadius: radius,
       ),
-      child:
-      Column( 
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 10,
-          ),
-         Text(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+        SizedBox(
+          height: 10,
+        ),
+        Text(
           "Add Task",
           style: TextStyle(
               color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 27),
-        ),]
-        
-      ),
+        ),
+      ]),
     );
   }
 
@@ -402,30 +402,37 @@ class _TodoListState1 extends State<TodoList1> {
                                         ((snapshot.data.day1).toString());
                                     dayOrder = result;
                                     return Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(
-                                          '${showcorrectday(result)}',
-                                          style: TextStyle(
-                                            fontFamily: 'Protipo Compact',
-                                            fontSize: 40,
-                                            color: const Color(0xff9b8fb1),
-                                            fontWeight: FontWeight.w300,
-                                          ),
-                                        )
-                                      ],
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ElevatedButton(
+                                              style: ButtonStyle(
+                                                shadowColor: MaterialStateProperty.all<Color>(Color.fromRGBO(1, 1, 1, 0)),
+                                                backgroundColor: MaterialStateProperty.all<Color>(Color.fromRGBO(1, 1, 1, 0))
+                                              ),
+                                              onPressed: () {},
+                                              onLongPress: days(),
+                                              child: Text(
+                                                '${showcorrectday(result)}',
+                                                style: TextStyle(
+                                                  fontFamily: 'Protipo Compact',
+                                                  fontSize: 40,
+                                                  color:
+                                                      const Color(0xff9b8fb1),
+                                                  fontWeight: FontWeight.w300,
+                                                ),
+                                              )),
+                                        ]);
+                                  } else
+                                    return Text(
+                                      '${showcorrectday(dayOrder)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 40,
+                                        color: const Color(0xff9b8fb1),
+                                        fontWeight: FontWeight.w300,
+                                      ),
                                     );
-                                  } else 
-                                  return Text(
-                                    '${showcorrectday(dayOrder)}',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: 40,
-                                      color: const Color(0xff9b8fb1),
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  );
                                 },
                               ),
                             ),
@@ -463,24 +470,16 @@ class _TodoListState1 extends State<TodoList1> {
                                         )
                                       ],
                                     );
-                                  } else 
-                                  // if (snapshot.hasError)
-                                  //   return Text(
-                                  //     '${snapshot.error}',
-                                  //     style: TextStyle(
-                                  //         fontSize: 30,
-                                  //         color: Colors.red,
-                                  //         fontFamily: 'Protipo Compact'),
-                                  //   );
-                                  return Text(
-                                    '$weatherorder ˚C',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: 35,
-                                      color: const Color(0xffbadfca),
-                                      fontWeight: FontWeight.w200,
-                                    ),
-                                  );
+                                  } else
+                                    return Text(
+                                      '$weatherorder ˚C',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 35,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w200,
+                                      ),
+                                    );
                                 },
                               ),
                             ),
