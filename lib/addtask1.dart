@@ -24,7 +24,7 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
 );
-Future<DayDecrypted> futureDay;
+Future<Day> futureDay;
 String dayOrder, nextDay, dayAfter = "-";
 
 int weatherorder = 0;
@@ -482,7 +482,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   fontWeight: FontWeight.w300,
                                 )),
                             Container(
-                              child: FutureBuilder<DayDecrypted>(
+                              child: FutureBuilder<Day>(
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {

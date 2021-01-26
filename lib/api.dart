@@ -5,8 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart';
 
 final key = Key.fromUtf8('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
-final b64key = Key.fromUtf8(base64Url.encode(key.bytes));
-final fernet = Fernet(b64key);
+final fernet = Fernet(key);
 final encrypter = Encrypter(fernet);
 
 class Main {
@@ -50,15 +49,18 @@ Future<WeatherModel> getWeather() async {
     throw Exception('Failed to load Weather Information');
 }
 
-Future<DayDecrypted> fetchDay() async {
+Future<Day> fetchDay() async {
   final response1 =
       await http.get('https://tumulrankypanky.pythonanywhere.com');
   var result = Day.fromJson(jsonDecode(response1.body));
   var q = DayDecrypted();
-  q.day1 = int.parse(encrypter.decrypt64(result.day1));
-  q.day2 = int.parse(encrypter.decrypt64(result.day2));
-  q.day3 = int.parse(encrypter.decrypt64(result.day3));
-  return q;
+  q.day1 =
+      int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  q.day2 =
+      int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  q.day3 =
+      int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  return result;
 }
 
 class Day {

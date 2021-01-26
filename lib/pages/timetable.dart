@@ -12,7 +12,7 @@ final double toolbarHeight = 100.0;
 var dt = DateTime.now();
 String newDay = Jiffy(dt).format("EEEE");
 String newDay1 = Jiffy(dt).format("do");
-Future<DayDecrypted> futureDay;
+Future<Day> futureDay;
 String dayOrder = "-";
 
 showcorrectday(result) {

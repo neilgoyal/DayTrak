@@ -1714,9 +1714,6 @@ class _SettingsState extends State<SettingsPage> {
                                       )),
                                 ],
                               ),
-                              SizedBox(
-                                height: 25,
-                              ),
                               Container(
                                   child: Center(
                                       child: Column(children: <Widget>[
