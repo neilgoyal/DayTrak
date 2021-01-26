@@ -51,11 +51,11 @@ class _TimetableState extends State<TimetablePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                height: 10,
+                                height: 15,
                               ),
                               Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.center,
                                   children: [
                                     Text(newDay,
                                         style: TextStyle(
@@ -63,8 +63,9 @@ class _TimetableState extends State<TimetablePage> {
                                           color: const Color(0xff9b8fb1),
                                           fontWeight: FontWeight.w300,
                                         )),
-                                    Container(
-                                      child: FutureBuilder<Day>(
+                                  ]),
+                                  Container(
+                                      child: FutureBuilder<DayDecrypted>(
                                         future: futureDay,
                                         builder: (context, snapshot) {
                                           if (snapshot.hasData) {
@@ -99,9 +100,7 @@ class _TimetableState extends State<TimetablePage> {
                                               ),
                                             );
                                         },
-                                      ),
-                                    ),
-                                  ])
+                                      ),)
                             ]))),
                 toolbarHeight: toolbarHeight,
               )),
