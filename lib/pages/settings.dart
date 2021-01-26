@@ -280,10 +280,38 @@ class _SettingsState extends State<SettingsPage> {
     ]);
   }
 
+  defaultsvals() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (_value == 11 || _value == 12) {
+      setState(() {
+        myController.text = prefs.getString('B1') ?? "";
+        myController2.text = prefs.getString('B2') ?? "";
+        myController3.text = prefs.getString('B3') ?? "";
+        myController4.text = prefs.getString('B4') ?? "";
+        myController5.text = prefs.getString('B5') ?? "";
+        myController6.text = prefs.getString('B6') ?? "";
+      });
+    } else {
+      setState(() {
+        myController.text = prefs.getString('B1') ?? "";
+        myController2.text = prefs.getString('B2') ?? "";
+        myController3.text = prefs.getString('B3') ?? "";
+        myController4.text = prefs.getString('B4') ?? "";
+        myController5.text = prefs.getString('B5') ?? "";
+        myController6.text = prefs.getString('B6') ?? "";
+        myController7.text = prefs.getString('B7') ?? "";
+        myController8.text = prefs.getString('B8') ?? "";
+        myController9.text = prefs.getString('B9') ?? "";
+        myController10.text = prefs.getString('B10') ?? "";
+      });
+    }
+  }
+
   @override
   void initState() {
     super.initState();
     getIntValuesSF();
+    defaultsvals();
   }
 
   chooser() {
@@ -304,6 +332,22 @@ class _SettingsState extends State<SettingsPage> {
     } else if (_value == 1) {
       return grade5();
     }
+  }
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    myController2.dispose();
+    myController3.dispose();
+    myController4.dispose();
+    myController5.dispose();
+    myController6.dispose();
+    myController7.dispose();
+    myController8.dispose();
+    myController9.dispose();
+    myController10.dispose();
+    super.dispose();
   }
 
   addIntToSF() async {
@@ -370,9 +414,6 @@ class _SettingsState extends State<SettingsPage> {
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
-                              ),
-                              SizedBox(
-                                height: 25,
                               ),
                               Container(
                                   child: Center(
@@ -442,7 +483,46 @@ class _SettingsState extends State<SettingsPage> {
                                     ),
                                     SizedBox(height: 30),
                                     ElevatedButton(
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        SharedPreferences prefs =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        if (_value == 11 || _value == 12) {
+                                          prefs.setString(
+                                              'B1', myController.text);
+                                          prefs.setString(
+                                              'B2', myController2.text);
+                                          prefs.setString(
+                                              'B3', myController3.text);
+                                          prefs.setString(
+                                              'B4', myController4.text);
+                                          prefs.setString(
+                                              'B5', myController5.text);
+                                          prefs.setString(
+                                              'B6', myController6.text);
+                                        } else {
+                                          prefs.setString(
+                                              'B1', myController.text);
+                                          prefs.setString(
+                                              'B2', myController2.text);
+                                          prefs.setString(
+                                              'B3', myController3.text);
+                                          prefs.setString(
+                                              'B4', myController4.text);
+                                          prefs.setString(
+                                              'B5', myController5.text);
+                                          prefs.setString(
+                                              'B6', myController6.text);
+                                          prefs.setString(
+                                              'B7', myController7.text);
+                                          prefs.setString(
+                                              'B8', myController8.text);
+                                          prefs.setString(
+                                              'B9', myController9.text);
+                                          prefs.setString(
+                                              'B10', myController10.text);
+                                        }
+                                      },
                                       child: const Text('Enabled Button',
                                           style: TextStyle(fontSize: 20)),
                                     ),
