@@ -50,15 +50,15 @@ Future<WeatherModel> getWeather() async {
     throw Exception('Failed to load Weather Information');
 }
 
-Future<Day> fetchDay() async {
+Future<DayDecrypted> fetchDay() async {
   final response1 =
       await http.get('https://tumulrankypanky.pythonanywhere.com');
   var result = Day.fromJson(jsonDecode(response1.body));
-  //var q = DayDecrypted();
-  // q.day1 = int.parse(encrypter.decrypt(result.day1));
-  // q.day2 = int.parse(encrypter.decrypt(result.day2));
-  // q.day3 = int.parse(encrypter.decrypt(result.day3));
-  return result;
+  var q = DayDecrypted();
+  q.day1 = int.parse(encrypter.decrypt64(result.day1));
+  q.day2 = int.parse(encrypter.decrypt64(result.day2));
+  q.day3 = int.parse(encrypter.decrypt64(result.day3));
+  return q;
 }
 
 class Day {
