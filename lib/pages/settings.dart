@@ -523,7 +523,7 @@ class _SettingsState extends State<SettingsPage> {
                                               'B10', myController10.text);
                                         }
                                       },
-                                      child: const Text('Enabled Button',
+                                      child: const Text('Save',
                                           style: TextStyle(fontSize: 20)),
                                     ),
                                   ]))),
