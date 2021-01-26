@@ -12,7 +12,7 @@ final double toolbarHeight = 100.0;
 var dt = DateTime.now();
 String newDay = Jiffy(dt).format("EEEE");
 String newDay1 = Jiffy(dt).format("do");
-Future<DayDecrypted> futureDay;
+Future<Day> futureDay;
 String dayOrder = "-";
 
 showcorrectday(result) {
@@ -64,7 +64,7 @@ class _TimetableState extends State<TimetablePage> {
                                           fontWeight: FontWeight.w300,
                                         )),
                                     Container(
-                                      child: FutureBuilder<DayDecrypted>(
+                                      child: FutureBuilder<Day>(
                                         future: futureDay,
                                         builder: (context, snapshot) {
                                           if (snapshot.hasData) {
