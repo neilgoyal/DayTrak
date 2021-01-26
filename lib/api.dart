@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart';
 
-final key = Key.fromUtf8('wsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
+final key = Key.fromUtf8('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
 final b64key = Key.fromUtf8(base64Url.encode(key.bytes));
 final fernet = Fernet(b64key);
 final encrypter = Encrypter(fernet);
@@ -54,20 +54,29 @@ Future<Day> fetchDay() async {
   final response1 =
       await http.get('https://tumulrankypanky.pythonanywhere.com');
   var result = Day.fromJson(jsonDecode(response1.body));
+  //var q = DayDecrypted();
+  // q.day1 = int.parse(encrypter.decrypt(result.day1));
+  // q.day2 = int.parse(encrypter.decrypt(result.day2));
+  // q.day3 = int.parse(encrypter.decrypt(result.day3));
   return result;
 }
 
 class Day {
-  final int day1;
-  final int day2;
-  final int day3;
+  final String day1;
+  final String day2;
+  final String day3;
 
   Day({this.day1, this.day2, this.day3});
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
-        day1: int.parse(encrypter.decrypt(json["hummer"])),
-        day2: int.parse(encrypter.decrypt(json["pudding"])),
-        day3: int.parse(encrypter.decrypt(json["tomato"])));
+        day1: json["hummer"], day2: json["pudding"], day3: json["tomato"]);
   }
+}
+
+class DayDecrypted {
+  int day1;
+  int day2;
+  int day3;
+  DayDecrypted({this.day1, this.day2, this.day3});
 }
