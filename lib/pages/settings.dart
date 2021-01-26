@@ -372,6 +372,9 @@ class _SettingsState extends State<SettingsPage> {
                                       )),
                                 ],
                               ),
+                              SizedBox(
+                                height: 25,
+                              ),
                               Container(
                                   child: Center(
                                       child: Column(
@@ -439,7 +442,7 @@ class _SettingsState extends State<SettingsPage> {
                                       children: [chooser()],
                                     ),
                                     SizedBox(height: 30),
-                                    RaisedButton(
+                                    ElevatedButton(
                                       onPressed: () {},
                                       child: const Text('Enabled Button',
                                           style: TextStyle(fontSize: 20)),
