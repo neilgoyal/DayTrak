@@ -26,257 +26,1553 @@ class _SettingsState extends State<SettingsPage> {
 
   grade12() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade11() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade10() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController7,
-          decoration: InputDecoration(labelText: 'Block 7')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 7',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController8,
-          decoration: InputDecoration(labelText: 'Block 8')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 8',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController9,
-          decoration: InputDecoration(labelText: 'Block 9')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 9',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController10,
-          decoration: InputDecoration(labelText: 'Block 10')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 10',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade9() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController7,
-          decoration: InputDecoration(labelText: 'Block 7')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 7',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController8,
-          decoration: InputDecoration(labelText: 'Block 8')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 8',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController9,
-          decoration: InputDecoration(labelText: 'Block 9')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 9',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController10,
-          decoration: InputDecoration(labelText: 'Block 10')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 10',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade8() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController7,
-          decoration: InputDecoration(labelText: 'Block 7')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 7',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController8,
-          decoration: InputDecoration(labelText: 'Block 8')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 8',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController9,
-          decoration: InputDecoration(labelText: 'Block 9')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 9',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController10,
-          decoration: InputDecoration(labelText: 'Block 10')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 10',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade7() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController7,
-          decoration: InputDecoration(labelText: 'Block 7')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 7',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController8,
-          decoration: InputDecoration(labelText: 'Block 8')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 8',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController9,
-          decoration: InputDecoration(labelText: 'Block 9')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 9',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController10,
-          decoration: InputDecoration(labelText: 'Block 10')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 10',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade6() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController7,
-          decoration: InputDecoration(labelText: 'Block 7')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 7',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController8,
-          decoration: InputDecoration(labelText: 'Block 8')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 8',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController9,
-          decoration: InputDecoration(labelText: 'Block 9')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 9',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController10,
-          decoration: InputDecoration(labelText: 'Block 10')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 10',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
   grade5() {
     return Column(children: [
+      SizedBox(
+        height: 20,
+      ),
       TextFormField(
+          autofocus: false,
+          keyboardType: TextInputType.text,
           controller: myController,
-          decoration: InputDecoration(labelText: 'Block 1')),
+          decoration: InputDecoration(
+              labelText: 'Block 1',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController2,
-          decoration: InputDecoration(labelText: 'Block 2')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 2',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController3,
-          decoration: InputDecoration(labelText: 'Block 3')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 3',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController4,
-          decoration: InputDecoration(labelText: 'Block 4')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 4',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController5,
-          decoration: InputDecoration(labelText: 'Block 5')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 5',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController6,
-          decoration: InputDecoration(labelText: 'Block 6')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 6',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController7,
-          decoration: InputDecoration(labelText: 'Block 7')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 7',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController8,
-          decoration: InputDecoration(labelText: 'Block 8')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 8',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController9,
-          decoration: InputDecoration(labelText: 'Block 9')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 9',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
+      SizedBox(
+        height: 10,
+      ),
       TextFormField(
-          controller: myController10,
-          decoration: InputDecoration(labelText: 'Block 10')),
+          autofocus: false,
+          keyboardType: TextInputType.text,
+          controller: myController,
+          decoration: InputDecoration(
+              labelText: 'Block 10',
+              labelStyle: TextStyle(
+                color: Colors.black54,
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(color: Colors.black54, width: 1),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                borderSide: BorderSide(
+                    color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+              ))),
     ]);
   }
 
@@ -402,11 +1698,14 @@ class _SettingsState extends State<SettingsPage> {
                         child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
+                              SizedBox(
+                                height: 25,
+                              ),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Text('Choose Grade:',
+                                  Text('Choose Grade',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: 30,
@@ -420,116 +1719,122 @@ class _SettingsState extends State<SettingsPage> {
                               ),
                               Container(
                                   child: Center(
-                                      child: Column(
-                                          // mainAxisAlignment: MainAxisAlignment.center,
-                                          children: <Widget>[
-                                    InputDecorator(
-                                        decoration: InputDecoration(
-                                          labelText: 'Select Grade',
-                                          labelStyle: Theme.of(context)
-                                              .primaryTextTheme
-                                              .caption
-                                              .copyWith(color: Colors.black),
-                                          border: const OutlineInputBorder(
-                                              gapPadding: 0,
-                                              borderSide:
-                                                  const BorderSide(width: 1),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(25.0))),
-                                        ),
-                                        child: DropdownButtonHideUnderline(
-                                          child: DropdownButton(
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w300,
-                                                  fontSize: 15,
-                                                  fontFamily:
-                                                      'Protipo Compact'),
-                                              elevation: 1,
-                                              isExpanded: true,
-                                              isDense:
-                                                  true, // Reduces the dropdowns height by +/- 50%
-                                              icon: Icon(
-                                                  Icons.keyboard_arrow_down),
-                                              value: _value,
-                                              items: [
-                                                DropdownMenuItem(
-                                                    child: Text("5"), value: 1),
-                                                DropdownMenuItem(
-                                                    child: Text("6"), value: 2),
-                                                DropdownMenuItem(
-                                                    child: Text("7"), value: 3),
-                                                DropdownMenuItem(
-                                                    child: Text("8"), value: 4),
-                                                DropdownMenuItem(
-                                                    child: Text("9"), value: 5),
-                                                DropdownMenuItem(
-                                                    child: Text("10"),
-                                                    value: 6),
-                                                DropdownMenuItem(
-                                                    child: Text("11"),
-                                                    value: 7),
-                                                DropdownMenuItem(
-                                                    child: Text("12"),
-                                                    value: 8),
-                                              ],
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  _value = value;
-                                                  addIntToSF();
-                                                });
-                                              }),
+                                      child: Column(children: <Widget>[
+                                InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText: 'Select Grade',
+                                      labelStyle: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption
+                                          .copyWith(color: Colors.black),
+                                      border: const OutlineInputBorder(
+                                          gapPadding: 0,
+                                          borderSide:
+                                              const BorderSide(width: 1),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(25.0))),
+                                    ),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton(
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 15,
+                                              fontFamily: 'Protipo Compact'),
+                                          elevation: 1,
+                                          isExpanded: true,
+                                          isDense:
+                                              true, // Reduces the dropdowns height by +/- 50%
+                                          icon: Icon(Icons.keyboard_arrow_down),
+                                          value: _value,
+                                          items: [
+                                            DropdownMenuItem(
+                                                child: Text("5"), value: 1),
+                                            DropdownMenuItem(
+                                                child: Text("6"), value: 2),
+                                            DropdownMenuItem(
+                                                child: Text("7"), value: 3),
+                                            DropdownMenuItem(
+                                                child: Text("8"), value: 4),
+                                            DropdownMenuItem(
+                                                child: Text("9"), value: 5),
+                                            DropdownMenuItem(
+                                                child: Text("10"), value: 6),
+                                            DropdownMenuItem(
+                                                child: Text("11"), value: 7),
+                                            DropdownMenuItem(
+                                                child: Text("12"), value: 8),
+                                          ],
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _value = value;
+                                              addIntToSF();
+                                            });
+                                          }),
+                                    )),
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Add subjects',
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: 30,
+                                          color: const Color(0xffbadfca),
+                                          fontWeight: FontWeight.w300,
                                         )),
-                                    Column(
-                                      children: [chooser()],
-                                    ),
-                                    SizedBox(height: 30),
-                                    ElevatedButton(
-                                      onPressed: () async {
-                                        SharedPreferences prefs =
-                                            await SharedPreferences
-                                                .getInstance();
-                                        if (_value == 11 || _value == 12) {
-                                          prefs.setString(
-                                              'B1', myController.text);
-                                          prefs.setString(
-                                              'B2', myController2.text);
-                                          prefs.setString(
-                                              'B3', myController3.text);
-                                          prefs.setString(
-                                              'B4', myController4.text);
-                                          prefs.setString(
-                                              'B5', myController5.text);
-                                          prefs.setString(
-                                              'B6', myController6.text);
-                                        } else {
-                                          prefs.setString(
-                                              'B1', myController.text);
-                                          prefs.setString(
-                                              'B2', myController2.text);
-                                          prefs.setString(
-                                              'B3', myController3.text);
-                                          prefs.setString(
-                                              'B4', myController4.text);
-                                          prefs.setString(
-                                              'B5', myController5.text);
-                                          prefs.setString(
-                                              'B6', myController6.text);
-                                          prefs.setString(
-                                              'B7', myController7.text);
-                                          prefs.setString(
-                                              'B8', myController8.text);
-                                          prefs.setString(
-                                              'B9', myController9.text);
-                                          prefs.setString(
-                                              'B10', myController10.text);
-                                        }
-                                      },
-                                      child: const Text('Save',
-                                          style: TextStyle(fontSize: 20)),
-                                    ),
-                                  ]))),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Column(
+                                  children: [chooser()],
+                                ),
+                                SizedBox(height: 30),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    SharedPreferences prefs =
+                                        await SharedPreferences.getInstance();
+                                    if (_value == 11 || _value == 12) {
+                                      prefs.setString('B1', myController.text);
+                                      prefs.setString('B2', myController2.text);
+                                      prefs.setString('B3', myController3.text);
+                                      prefs.setString('B4', myController4.text);
+                                      prefs.setString('B5', myController5.text);
+                                      prefs.setString('B6', myController6.text);
+                                    } else {
+                                      prefs.setString('B1', myController.text);
+                                      prefs.setString('B2', myController2.text);
+                                      prefs.setString('B3', myController3.text);
+                                      prefs.setString('B4', myController4.text);
+                                      prefs.setString('B5', myController5.text);
+                                      prefs.setString('B6', myController6.text);
+                                      prefs.setString('B7', myController7.text);
+                                      prefs.setString('B8', myController8.text);
+                                      prefs.setString('B9', myController9.text);
+                                      prefs.setString(
+                                          'B10', myController10.text);
+                                    }
+                                  },
+                                  child: const Text('Save',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontFamily: 'Protipo Compact',
+                                      )),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color.fromRGBO(119, 227, 134, 1),
+                                    shadowColor:
+                                        Color.fromRGBO(223, 164, 160, 1),
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(7)),
+                                  ),
+                                )
+                              ]))),
                             ]))))));
   }
 }
