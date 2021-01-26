@@ -4,8 +4,9 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart';
 
-final key = Key.fromUtf8('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
-final fernet = Fernet(key);
+final b64key = Key.fromUtf8('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
+final fernet = Fernet(b64key);
+
 final encrypter = Encrypter(fernet);
 
 class Main {
@@ -54,17 +55,18 @@ Future<Day> fetchDay() async {
       await http.get('https://tumulrankypanky.pythonanywhere.com');
   var result = Day.fromJson(jsonDecode(response1.body));
   var q = DayDecrypted();
-  q.day1 =
-      int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
-  q.day2 =
-      int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
-  q.day3 =
-      int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  //q.day1 =
+  //   int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  //q.day2 =
+  //   int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  //q.day3 =
+  //   int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
+  //result.day1 = encrypter.decrypt64(result.day1);
   return result;
 }
 
 class Day {
-  final String day1;
+  String day1;
   final String day2;
   final String day3;
 
