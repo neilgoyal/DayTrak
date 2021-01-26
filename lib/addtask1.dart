@@ -328,21 +328,87 @@ class _TodoListState1 extends State<TodoList1> {
     showDialog(
         context: context,
         builder: (context) {
-          return Material(
-              child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-               ListTile(
-                title:  Text('Music'),
+          return Dialog(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0)), //this right here
+            child: Container(
+              height: 150,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              '  Today:  ',
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                fontSize: 30,
+                                color: const Color(0xff9b8fb1),
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                            Text('Day 6',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 30,
+                                  color: const Color(0xffbadfca),
+                                  fontWeight: FontWeight.w300,
+                                )),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '  Tomorrow:  ',
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                fontSize: 30,
+                                color: const Color(0xff9b8fb1),
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                            Text('Day 1',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 30,
+                                  color: const Color(0xffbadfca),
+                                  fontWeight: FontWeight.w300,
+                                )),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              '  Day After:  ',
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                fontSize: 30,
+                                color: const Color(0xff9b8fb1),
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                            Text('Day 2',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: 30,
+                                  color: const Color(0xffbadfca),
+                                  fontWeight: FontWeight.w300,
+                                )),
+                          ],
+                        )
+                      ],
+                    )
+                  ],
+                ),
               ),
-               ListTile(
-                title:  Text('Music'),
-              ),
-               ListTile(
-                title: Text('Video'),
-              ),
-            ],
-          ));
+            ),
+          );
         });
   }
 
@@ -450,10 +516,10 @@ class _TodoListState1 extends State<TodoList1> {
                                                             Color>(
                                                         Color.fromRGBO(
                                                             1, 1, 1, 0))),
-                                            onPressed: () {
+                                            onPressed: () {},
+                                            onLongPress: () {
                                               days();
                                             },
-                                            // onLongPress: days(),
                                             child: Text(
                                               '${showcorrectday(result)}',
                                               style: TextStyle(
@@ -489,7 +555,8 @@ class _TodoListState1 extends State<TodoList1> {
                                                               Color>(
                                                           Color.fromRGBO(
                                                               1, 1, 1, 0))),
-                                              onPressed: () {
+                                              onPressed: () {},
+                                              onLongPress: () {
                                                 days();
                                               },
                                               child: Text(
