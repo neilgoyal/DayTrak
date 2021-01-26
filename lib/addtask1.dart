@@ -46,7 +46,6 @@ class TodoList1 extends StatefulWidget {
 }
 
 class _TodoListState1 extends State<TodoList1> {
-  PopupMenu menu;
   TodoService _todoService;
   List<Todo> _todoList;
   final panelController = PanelController();
@@ -151,9 +150,6 @@ class _TodoListState1 extends State<TodoList1> {
     }
     return [concise, late_];
   }
-
-  // ignore: missing_return
-  Widget days() {}
 
   getAllTodos() async {
     _todoService = TodoService();
@@ -327,6 +323,29 @@ class _TodoListState1 extends State<TodoList1> {
     );
   }
 
+  // ignore: missing_return
+  Widget days() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Material(
+              child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+               ListTile(
+                title:  Text('Music'),
+              ),
+               ListTile(
+                title:  Text('Music'),
+              ),
+               ListTile(
+                title: Text('Video'),
+              ),
+            ],
+          ));
+        });
+  }
+
   Widget _floatingCollasped() {
     return Container(
       decoration: BoxDecoration(
@@ -351,14 +370,6 @@ class _TodoListState1 extends State<TodoList1> {
     super.initState();
     getAllTodos();
     futureDay = fetchDay();
-  }
-
-  void onClickMenu(MenuItemProvider item) {
-    print('Click menu -> ${item.menuTitle}');
-  }
-
-  void onDismiss() {
-    print('Menu is dismiss');
   }
 
   @override
@@ -421,6 +432,45 @@ class _TodoListState1 extends State<TodoList1> {
                                             MainAxisAlignment.center,
                                         children: [
                                           ElevatedButton(
+                                            style: ButtonStyle(
+                                                padding: MaterialStateProperty
+                                                    .all<EdgeInsetsGeometry>(
+                                                  EdgeInsets.only(
+                                                      top: 0.0,
+                                                      left: 0.0,
+                                                      right: 0.0),
+                                                ),
+                                                shadowColor:
+                                                    MaterialStateProperty.all<
+                                                            Color>(
+                                                        Color.fromRGBO(
+                                                            1, 1, 1, 0)),
+                                                backgroundColor:
+                                                    MaterialStateProperty.all<
+                                                            Color>(
+                                                        Color.fromRGBO(
+                                                            1, 1, 1, 0))),
+                                            onPressed: () {
+                                              days();
+                                            },
+                                            // onLongPress: days(),
+                                            child: Text(
+                                              '${showcorrectday(result)}',
+                                              style: TextStyle(
+                                                fontFamily: 'Protipo Compact',
+                                                fontSize: 40,
+                                                color: const Color(0xff9b8fb1),
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                            ),
+                                          )
+                                        ]);
+                                  } else
+                                    return Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ElevatedButton(
                                               style: ButtonStyle(
                                                   padding: MaterialStateProperty
                                                       .all<EdgeInsetsGeometry>(
@@ -439,10 +489,11 @@ class _TodoListState1 extends State<TodoList1> {
                                                               Color>(
                                                           Color.fromRGBO(
                                                               1, 1, 1, 0))),
-                                              onPressed: () {},
-                                              //   onLongPress: days(),
+                                              onPressed: () {
+                                                days();
+                                              },
                                               child: Text(
-                                                '${showcorrectday(result)}',
+                                                '${showcorrectday(dayOrder)}',
                                                 style: TextStyle(
                                                   fontFamily: 'Protipo Compact',
                                                   fontSize: 40,
@@ -450,18 +501,8 @@ class _TodoListState1 extends State<TodoList1> {
                                                       const Color(0xff9b8fb1),
                                                   fontWeight: FontWeight.w300,
                                                 ),
-                                              )),
+                                              ))
                                         ]);
-                                  } else
-                                    return Text(
-                                      '${showcorrectday(dayOrder)}',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
-                                        color: const Color(0xff9b8fb1),
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    );
                                 },
                               ),
                             ),
