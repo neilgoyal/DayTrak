@@ -31,6 +31,7 @@ class _SettingsState extends State<SettingsPage> {
       ),
       TextFormField(
           autofocus: false,
+          cursorColor: Colors.black54,
           keyboardType: TextInputType.text,
           controller: myController,
           decoration: InputDecoration(
@@ -51,6 +52,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -72,6 +74,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -93,6 +96,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -114,6 +118,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -135,6 +140,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -161,6 +167,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -182,6 +189,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -203,6 +211,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -224,6 +233,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -245,6 +255,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -266,6 +277,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -292,6 +304,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -313,6 +326,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -334,6 +348,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -355,6 +370,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -376,6 +392,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -397,6 +414,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -418,6 +436,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -439,6 +458,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -460,6 +480,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -481,6 +502,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -507,6 +529,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -528,6 +551,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -549,6 +573,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -570,6 +595,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -591,6 +617,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -612,6 +639,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -633,6 +661,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -654,6 +683,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -675,6 +705,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -696,6 +727,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -722,6 +754,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -743,6 +776,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -764,6 +798,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -785,6 +820,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -806,6 +842,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -827,6 +864,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -848,6 +886,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -869,6 +908,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -890,6 +930,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -911,6 +952,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -937,6 +979,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -958,6 +1001,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -979,6 +1023,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1000,6 +1045,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1021,6 +1067,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1042,6 +1089,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1063,6 +1111,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1084,6 +1133,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1105,6 +1155,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1126,6 +1177,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1152,6 +1204,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1173,6 +1226,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1194,6 +1248,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1215,6 +1270,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1236,6 +1292,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1257,6 +1314,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1278,6 +1336,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1299,6 +1358,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1320,6 +1380,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1341,6 +1402,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1367,6 +1429,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 20,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1388,6 +1451,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1409,6 +1473,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1430,6 +1495,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1451,6 +1517,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1472,6 +1539,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1493,6 +1561,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1514,6 +1583,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1535,6 +1605,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
@@ -1556,6 +1627,7 @@ class _SettingsState extends State<SettingsPage> {
         height: 10,
       ),
       TextFormField(
+          cursorColor: Colors.black54,
           autofocus: false,
           keyboardType: TextInputType.text,
           controller: myController,
