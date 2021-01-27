@@ -1704,7 +1704,6 @@ class _SettingsState extends State<SettingsPage> {
 
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     myController.dispose();
     myController2.dispose();
     myController3.dispose();
@@ -1762,150 +1761,152 @@ class _SettingsState extends State<SettingsPage> {
                       ]),
                   toolbarHeight: toolbarHeight,
                 )),
-            body:  ListView(
-                              shrinkWrap: true,
-                              children: [
-            Container(
-                child: Padding(
-                    padding: EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            body: SingleChildScrollView(
+                child: Container(
+                    child: Padding(
+                        padding:
+                            EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Text('Choose Grade',
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: 30,
-                                    color: const Color(0xffbadfca),
-                                    fontWeight: FontWeight.w300,
-                                  )),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Container(
-                              child: Center(
-                                  child: Column(children: <Widget>[
-                            InputDecorator(
-                                decoration: InputDecoration(
-                                  labelText: 'Select Grade',
-                                  labelStyle: Theme.of(context)
-                                      .primaryTextTheme
-                                      .caption
-                                      .copyWith(color: Colors.black),
-                                  border: const OutlineInputBorder(
-                                      gapPadding: 0,
-                                      borderSide: const BorderSide(width: 1),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(25.0))),
-                                ),
-                                child: DropdownButtonHideUnderline(
-                                  child: DropdownButton(
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 15,
-                                          fontFamily: 'Protipo Compact'),
-                                      elevation: 1,
-                                      isExpanded: true,
-                                      isDense:
-                                          true, // Reduces the dropdowns height by +/- 50%
-                                      icon: Icon(Icons.keyboard_arrow_down),
-                                      value: _value,
-                                      items: [
-                                        DropdownMenuItem(
-                                            child: Text("5"), value: 1),
-                                        DropdownMenuItem(
-                                            child: Text("6"), value: 2),
-                                        DropdownMenuItem(
-                                            child: Text("7"), value: 3),
-                                        DropdownMenuItem(
-                                            child: Text("8"), value: 4),
-                                        DropdownMenuItem(
-                                            child: Text("9"), value: 5),
-                                        DropdownMenuItem(
-                                            child: Text("10"), value: 6),
-                                        DropdownMenuItem(
-                                            child: Text("11"), value: 7),
-                                        DropdownMenuItem(
-                                            child: Text("12"), value: 8),
-                                      ],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _value = value;
-                                          addIntToSF();
-                                        });
-                                      }),
-                                )),
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Add subjects',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
-                                      color: const Color(0xffbadfca),
-                                      fontWeight: FontWeight.w300,
-                                    )),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Column(
-                              children:  <Widget>[ 
-                                   chooser()
-                              ],
-                            ),
-                            SizedBox(height: 30,),
-                            ElevatedButton(
-                              onPressed: () async {
-                                SharedPreferences prefs =
-                                    await SharedPreferences.getInstance();
-                                if (_value == 11 || _value == 12) {
-                                  prefs.setString('B1', myController.text);
-                                  prefs.setString('B2', myController2.text);
-                                  prefs.setString('B3', myController3.text);
-                                  prefs.setString('B4', myController4.text);
-                                  prefs.setString('B5', myController5.text);
-                                  prefs.setString('B6', myController6.text);
-                                } else {
-                                  prefs.setString('B1', myController.text);
-                                  prefs.setString('B2', myController2.text);
-                                  prefs.setString('B3', myController3.text);
-                                  prefs.setString('B4', myController4.text);
-                                  prefs.setString('B5', myController5.text);
-                                  prefs.setString('B6', myController6.text);
-                                  prefs.setString('B7', myController7.text);
-                                  prefs.setString('B8', myController8.text);
-                                  prefs.setString('B9', myController9.text);
-                                  prefs.setString('B10', myController10.text);
-                                }
-                              },
-                              child: const Text('Save',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 22,
-                                    fontFamily: 'Protipo Compact',
-                                  )),
-                              style: ElevatedButton.styleFrom(
-                                primary: Color.fromRGBO(119, 227, 134, 1),
-                                shadowColor: Color.fromRGBO(223, 164, 160, 1),
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(7)),
+                              SizedBox(
+                                height: 25,
                               ),
-                            ),
-                          ]))),
-                        ])))])));
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text('Choose Grade',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 25,
+                              ),
+                              Container(
+                                  child: Center(
+                                      child: Column(children: <Widget>[
+                                InputDecorator(
+                                    decoration: InputDecoration(
+                                      labelText: 'Select Grade',
+                                      labelStyle: Theme.of(context)
+                                          .primaryTextTheme
+                                          .caption
+                                          .copyWith(color: Colors.black),
+                                      border: const OutlineInputBorder(
+                                          gapPadding: 0,
+                                          borderSide:
+                                              const BorderSide(width: 1),
+                                          borderRadius: const BorderRadius.all(
+                                              Radius.circular(25.0))),
+                                    ),
+                                    child: DropdownButtonHideUnderline(
+                                      child: DropdownButton(
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w300,
+                                              fontSize: 15,
+                                              fontFamily: 'Protipo Compact'),
+                                          elevation: 1,
+                                          isExpanded: true,
+                                          isDense: true,
+                                          icon: Icon(Icons.keyboard_arrow_down),
+                                          value: _value,
+                                          items: [
+                                            DropdownMenuItem(
+                                                child: Text("5"), value: 1),
+                                            DropdownMenuItem(
+                                                child: Text("6"), value: 2),
+                                            DropdownMenuItem(
+                                                child: Text("7"), value: 3),
+                                            DropdownMenuItem(
+                                                child: Text("8"), value: 4),
+                                            DropdownMenuItem(
+                                                child: Text("9"), value: 5),
+                                            DropdownMenuItem(
+                                                child: Text("10"), value: 6),
+                                            DropdownMenuItem(
+                                                child: Text("11"), value: 7),
+                                            DropdownMenuItem(
+                                                child: Text("12"), value: 8),
+                                          ],
+                                          onChanged: (value) {
+                                            setState(() {
+                                              _value = value;
+                                              addIntToSF();
+                                            });
+                                          }),
+                                    )),
+                                SizedBox(
+                                  height: 25,
+                                ),
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text('Add subjects',
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: 30,
+                                          color: const Color(0xffbadfca),
+                                          fontWeight: FontWeight.w300,
+                                        )),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Column(
+                                  children: <Widget>[chooser()],
+                                ),
+                                SizedBox(
+                                  height: 30,
+                                ),
+                                ElevatedButton(
+                                  onPressed: () async {
+                                    SharedPreferences prefs =
+                                        await SharedPreferences.getInstance();
+                                    if (_value == 11 || _value == 12) {
+                                      prefs.setString('B1', myController.text);
+                                      prefs.setString('B2', myController2.text);
+                                      prefs.setString('B3', myController3.text);
+                                      prefs.setString('B4', myController4.text);
+                                      prefs.setString('B5', myController5.text);
+                                      prefs.setString('B6', myController6.text);
+                                    } else {
+                                      prefs.setString('B1', myController.text);
+                                      prefs.setString('B2', myController2.text);
+                                      prefs.setString('B3', myController3.text);
+                                      prefs.setString('B4', myController4.text);
+                                      prefs.setString('B5', myController5.text);
+                                      prefs.setString('B6', myController6.text);
+                                      prefs.setString('B7', myController7.text);
+                                      prefs.setString('B8', myController8.text);
+                                      prefs.setString('B9', myController9.text);
+                                      prefs.setString(
+                                          'B10', myController10.text);
+                                    }
+                                  },
+                                  child: const Text('Save',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 22,
+                                        fontFamily: 'Protipo Compact',
+                                      )),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: Color.fromRGBO(119, 227, 134, 1),
+                                    shadowColor:
+                                        Color.fromRGBO(223, 164, 160, 1),
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(7)),
+                                  ),
+                                ),
+                              ]))),
+                            ]))))));
   }
 }
