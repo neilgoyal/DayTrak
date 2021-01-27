@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart';
 
-final b64key = Key.fromUtf8('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
+final b64key = Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
 final fernet = Fernet(b64key);
 
 final encrypter = Encrypter(fernet);
@@ -50,19 +50,15 @@ Future<WeatherModel> getWeather() async {
     throw Exception('Failed to load Weather Information');
 }
 
-Future<Day> fetchDay() async {
+Future<DayDecrypted> fetchDay() async {
   final response1 =
       await http.get('https://tumulrankypanky.pythonanywhere.com');
   var result = Day.fromJson(jsonDecode(response1.body));
   var q = DayDecrypted();
-  //q.day1 =
-  //   int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
-  //q.day2 =
-  //   int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
-  //q.day3 =
-  //   int.parse(encrypter.decrypt64(base64.encode(utf8.encode(result.day1))));
-  //result.day1 = encrypter.decrypt64(result.day1);
-  return result;
+  q.day1 = int.parse((encrypter.decrypt(Encrypted.fromBase64(result.day1))));
+  q.day2 = int.parse((encrypter.decrypt(Encrypted.fromBase64(result.day2))));
+  q.day3 = int.parse((encrypter.decrypt(Encrypted.fromBase64(result.day3))));
+  return q;
 }
 
 class Day {

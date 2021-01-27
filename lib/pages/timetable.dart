@@ -12,7 +12,7 @@ final double toolbarHeight = 100.0;
 var dt = DateTime.now();
 String newDay = Jiffy(dt).format("EEEE");
 String newDay1 = Jiffy(dt).format("do");
-Future<Day> futureDay;
+Future<DayDecrypted> futureDay;
 String dayOrder = "-";
 
 showcorrectday(result) {
@@ -54,8 +54,7 @@ class _TimetableState extends State<TimetablePage> {
                                 height: 15,
                               ),
                               Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(newDay,
                                         style: TextStyle(
@@ -64,43 +63,42 @@ class _TimetableState extends State<TimetablePage> {
                                           fontWeight: FontWeight.w300,
                                         )),
                                   ]),
-                                  Container(
-                                      child: FutureBuilder<DayDecrypted>(
-                                        // future: futureDay,
-                                        builder: (context, snapshot) {
-                                          if (snapshot.hasData) {
-                                            var result = ((snapshot.data.day1)
-                                                .toString());
-                                            dayOrder = result;
-                                            return Column(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                Text(
-                                                  '${showcorrectday(result)}',
-                                                  style: TextStyle(
-                                                    fontFamily:
-                                                        'Protipo Compact',
-                                                    fontSize: 40,
-                                                    color:
-                                                        const Color(0xff9b8fb1),
-                                                    fontWeight: FontWeight.w300,
-                                                  ),
-                                                )
-                                              ],
-                                            );
-                                          } else
-                                            return Text(
-                                              '${showcorrectday(dayOrder)}',
-                                              style: TextStyle(
-                                                fontFamily: 'Protipo Compact',
-                                                fontSize: 40,
-                                                color: const Color(0xff9b8fb1),
-                                                fontWeight: FontWeight.w300,
-                                              ),
-                                            );
-                                        },
-                                      ),)
+                              Container(
+                                child: FutureBuilder<DayDecrypted>(
+                                  // future: futureDay,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      var result =
+                                          ((snapshot.data.day1).toString());
+                                      dayOrder = result;
+                                      return Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: <Widget>[
+                                          Text(
+                                            '${showcorrectday(result)}',
+                                            style: TextStyle(
+                                              fontFamily: 'Protipo Compact',
+                                              fontSize: 40,
+                                              color: const Color(0xff9b8fb1),
+                                              fontWeight: FontWeight.w300,
+                                            ),
+                                          )
+                                        ],
+                                      );
+                                    } else
+                                      return Text(
+                                        '${showcorrectday(dayOrder)}',
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: 40,
+                                          color: const Color(0xff9b8fb1),
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      );
+                                  },
+                                ),
+                              )
                             ]))),
                 toolbarHeight: toolbarHeight,
               )),
