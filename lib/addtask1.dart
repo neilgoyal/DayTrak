@@ -9,6 +9,7 @@ import 'package:schoolcalendar/api.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:popup_menu/popup_menu.dart';
+import 'globals.dart' as globals;
 
 var dt = DateTime.now();
 String newDt = DateFormat.MMMd().format(dt);
@@ -25,7 +26,9 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topRight: Radius.circular(35.0),
 );
 Future<DayDecrypted> futureDay;
-String dayOrder, nextDay, dayAfter = "-";
+
+String nextDay = "-";
+String dayAfter = "-";
 
 int weatherorder = 0;
 
@@ -437,7 +440,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(dayOrder)}',
+                                  Text('${showcorrectday(globals.dayOrder)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: 30,
@@ -572,10 +575,9 @@ class _TodoListState1 extends State<TodoList1> {
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    // ignore: unused_local_variable
                                     var result =
                                         ((snapshot.data.day1).toString());
-                                    dayOrder = result;
+                                    globals.dayOrder = result;
                                     return Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -643,7 +645,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                 days();
                                               },
                                               child: Text(
-                                                '${showcorrectday(dayOrder)}',
+                                                '${showcorrectday(globals.dayOrder)}',
                                                 style: TextStyle(
                                                   fontFamily: 'Protipo Compact',
                                                   fontSize: 40,

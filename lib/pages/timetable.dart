@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
-
+import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 
 class TimetablePage extends StatefulWidget {
@@ -13,7 +13,6 @@ var dt = DateTime.now();
 String newDay = Jiffy(dt).format("EEEE");
 String newDay1 = Jiffy(dt).format("do");
 Future<DayDecrypted> futureDay;
-String dayOrder = "-";
 
 showcorrectday(result) {
   if (result == '7') {
@@ -70,7 +69,7 @@ class _TimetableState extends State<TimetablePage> {
                                     if (snapshot.hasData) {
                                       var result =
                                           ((snapshot.data.day1).toString());
-                                      dayOrder = result;
+                                      globals.dayOrder = result;
                                       return Column(
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
@@ -88,7 +87,7 @@ class _TimetableState extends State<TimetablePage> {
                                       );
                                     } else
                                       return Text(
-                                        '${showcorrectday(dayOrder)}',
+                                        '${showcorrectday(globals.dayOrder)}',
                                         style: TextStyle(
                                           fontFamily: 'Protipo Compact',
                                           fontSize: 40,
