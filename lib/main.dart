@@ -4,8 +4,6 @@ import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
 
-
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -26,6 +24,7 @@ class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
+
 class CircleTabIndicator extends Decoration {
   final BoxPainter _painter;
 
@@ -62,42 +61,46 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      
       length: 3,
       initialIndex: 0,
       child: Scaffold(
-        
         body: TabBarView(
-          
           children: pages,
         ),
-        bottomNavigationBar: 
-        Container( 
+        bottomNavigationBar: Container(
           decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: Colors.white,
-
-                        ),
+            borderRadius: BorderRadius.circular(50),
+            color: Colors.white,
+          ),
           margin: EdgeInsets.only(bottom: 15),
           child: new TabBar(
             tabs: [
               Tab(
-                icon: Icon(CupertinoIcons.house, size: 35,),
+                icon: Icon(
+                  CupertinoIcons.house,
+                  size: 35,
+                ),
               ),
               Tab(
-                icon: Icon(CupertinoIcons.list_dash, size: 35,),
+                icon: Icon(
+                  CupertinoIcons.list_dash,
+                  size: 35,
+                ),
               ),
               Tab(
-                icon: Icon(CupertinoIcons.settings_solid, size: 35,),
+                icon: Icon(
+                  CupertinoIcons.settings_solid,
+                  size: 35,
+                ),
               ),
-            ], 
+            ],
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,
             labelColor: Colors.black,
             // indicator: CircleTabIndicator(color: const Color(0xffbadfca), radius: 3.5),
-            indicator: CircleTabIndicator(color: Colors.transparent, radius: 3.5),
+            indicator:
+                CircleTabIndicator(color: Colors.transparent, radius: 3.5),
             enableFeedback: true,
-            
           ),
         ),
       ),
