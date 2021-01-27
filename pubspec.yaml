@@ -42,7 +42,6 @@ dependencies:
   flutter_icons: ^1.1.0
   popup_menu: ^1.0.5
   encrypt: ^4.1.0
-  direct_select_flutter: ^1.0.7
 
 dev_dependencies:
   flutter_test:
