@@ -554,8 +554,7 @@ class _SettingsState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return new MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: new Scaffold(
-            resizeToAvoidBottomInset: true,
+        home: Scaffold(
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(100),
                 child: AppBar(
@@ -583,14 +582,15 @@ class _SettingsState extends State<SettingsPage> {
                       ]),
                   toolbarHeight: toolbarHeight,
                 )),
+            resizeToAvoidBottomInset: false,
             body: SingleChildScrollView(
+                reverse: true,
                 child: Container(
                     child: Padding(
                         padding:
                             EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
                         child: Column(
-                            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               SizedBox(
                                 height: 25,
