@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+
 class SettingsPage extends StatefulWidget {
   SettingsPage() : super();
   final String title = "Settings";
