@@ -8,15 +8,8 @@ class TimetablePage extends StatefulWidget {
   _TimetableState createState() => _TimetableState();
 }
 
-<<<<<<< HEAD
 final double toolbarHeight = 100.0;
 String newDay1 = Jiffy(globals.dt).format("do");
-=======
-final double toolbarHeight = 110.0;
-var dt = DateTime.now();
-String newDay = Jiffy(dt).format("EEEE");
-String newDay1 = Jiffy(dt).format("do");
->>>>>>> 77f71fcd187837e8a58aceba0416fb432ac73dea
 Future<DayDecrypted> futureDay;
 
 showcorrectday(result) {
