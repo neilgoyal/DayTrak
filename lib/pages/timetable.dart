@@ -65,7 +65,7 @@ class _TimetableState extends State<TimetablePage> {
                                   ]),
                               Container(
                                 child: FutureBuilder<DayDecrypted>(
-                                  // future: futureDay,
+                                  future: futureDay,
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
                                       var result =
