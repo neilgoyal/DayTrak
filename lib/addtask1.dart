@@ -11,14 +11,12 @@ import 'package:flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'globals.dart' as globals;
 
-var dt = DateTime.now();
-String newDt = DateFormat.MMMd().format(dt);
-String newDt1 = DateFormat.EEEE().format(dt);
+String newDt = DateFormat.MMMd().format(globals.dt);
 // ignore: non_constant_identifier_names
-String newDt_ = DateFormat.yMd().format(dt);
-DateTime tomorrow = dt.add(new Duration(days: 1));
+String newDt_ = DateFormat.yMd().format(globals.dt);
+DateTime tomorrow = globals.dt.add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
-DateTime yesterday = dt.add(new Duration(days: -1));
+DateTime yesterday = globals.dt.add(new Duration(days: -1));
 String newDtyes = DateFormat.yMd().format(tomorrow);
 final double toolbarHeight = 190.0;
 BorderRadiusGeometry radius = BorderRadius.only(
@@ -130,14 +128,14 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   concisedate(index) {
-    dt = DateTime.now();
+    globals.dt = DateTime.now();
     DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
     // ignore: non_constant_identifier_names
     Color late_ = Colors.black;
     String newDttom = DateFormat.yMd().format(tomorrow);
     String newDtyes = DateFormat.yMd().format(yesterday);
-    if (setDate.difference(dt) < Duration(days: -1)) {
+    if (setDate.difference(globals.dt) < Duration(days: -1)) {
       late_ = Colors.red;
     }
     if (_todoList[index].todoDate == newDt_) {
@@ -663,7 +661,7 @@ class _TodoListState1 extends State<TodoList1> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(newDt1,
+                            Text(globals.newDt1,
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
                                   fontSize: 35,

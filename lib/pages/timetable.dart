@@ -9,9 +9,7 @@ class TimetablePage extends StatefulWidget {
 }
 
 final double toolbarHeight = 100.0;
-var dt = DateTime.now();
-String newDay = Jiffy(dt).format("EEEE");
-String newDay1 = Jiffy(dt).format("do");
+String newDay1 = Jiffy(globals.dt).format("do");
 Future<DayDecrypted> futureDay;
 
 showcorrectday(result) {
@@ -55,7 +53,7 @@ class _TimetableState extends State<TimetablePage> {
                               Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text(newDay,
+                                    Text(globals.newDt1,
                                         style: TextStyle(
                                           fontSize: 40,
                                           color: const Color(0xff9b8fb1),
