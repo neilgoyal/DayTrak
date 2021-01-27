@@ -85,6 +85,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  direct_select_flutter:
+    dependency: "direct main"
+    description:
+      name: direct_select_flutter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.7"
   encrypt:
     dependency: "direct main"
     description:
@@ -146,13 +153,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.5.7"
-  flutter_snake_navigationbar:
-    dependency: "direct main"
-    description:
-      name: flutter_snake_navigationbar
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.4.4"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -345,6 +345,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.3.2+4"
+  rect_getter:
+    dependency: transitive
+    description:
+      name: rect_getter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   shared_preferences:
     dependency: "direct main"
     description:
