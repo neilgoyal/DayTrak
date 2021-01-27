@@ -333,79 +333,165 @@ class _TodoListState1 extends State<TodoList1> {
                 borderRadius: BorderRadius.circular(20.0)), //this right here
             child: Container(
               height: 150,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Row(
-                          children: [
-                            Text(
-                              '  Today:  ',
-                              style: TextStyle(
-                                fontFamily: 'Protipo Compact',
-                                fontSize: 30,
-                                color: const Color(0xff9b8fb1),
-                                fontWeight: FontWeight.w300,
+              child: FutureBuilder<DayDecrypted>(
+                future: futureDay,
+                builder: (context, snapshot) {
+                  var resultdaytod = ((snapshot.data.day1).toString());
+                  var resultdaytom = ((snapshot.data.day2).toString());
+                  var resultdaytom2 = ((snapshot.data.day3).toString());
+                  nextDay = resultdaytom;
+                  dayAfter = resultdaytom2;
+                  if (snapshot.hasData) {
+                    return Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    '  Today:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 30,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(resultdaytod)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
                               ),
-                            ),
-                            Text('Day 6',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: 30,
-                                  color: const Color(0xffbadfca),
-                                  fontWeight: FontWeight.w300,
-                                )),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '  Tomorrow:  ',
-                              style: TextStyle(
-                                fontFamily: 'Protipo Compact',
-                                fontSize: 30,
-                                color: const Color(0xff9b8fb1),
-                                fontWeight: FontWeight.w300,
+                              Row(
+                                children: [
+                                  Text(
+                                    '  Tomorrow:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 30,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(resultdaytom)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
                               ),
-                            ),
-                            Text('Day 1',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: 30,
-                                  color: const Color(0xffbadfca),
-                                  fontWeight: FontWeight.w300,
-                                )),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Text(
-                              '  Day After:  ',
-                              style: TextStyle(
-                                fontFamily: 'Protipo Compact',
-                                fontSize: 30,
-                                color: const Color(0xff9b8fb1),
-                                fontWeight: FontWeight.w300,
+                              Row(
+                                children: [
+                                  Text(
+                                    '  Day After:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 30,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(resultdaytom2)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                  } else
+                    return Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    '  Today:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 30,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(dayOrder)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
                               ),
-                            ),
-                            Text('Day 2',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: 30,
-                                  color: const Color(0xffbadfca),
-                                  fontWeight: FontWeight.w300,
-                                )),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '  Tomorrow:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 30,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(nextDay)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    '  Day After:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 30,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(dayAfter)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: 30,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                },
               ),
             ),
           );

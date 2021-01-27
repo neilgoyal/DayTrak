@@ -70,7 +70,7 @@ class Day {
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
-        day1: json["hummer"], day2: json["pudding"], day3: json["tomato"]);
+        day1: json["hummer"], day3: json["pudding"], day2: json["tomato"]);
   }
 }
 
