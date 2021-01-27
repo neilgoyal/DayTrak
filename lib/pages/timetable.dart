@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jiffy/jiffy.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 
@@ -9,7 +8,6 @@ class TimetablePage extends StatefulWidget {
 }
 
 final double toolbarHeight = 100.0;
-String newDay1 = Jiffy(globals.dt).format("do");
 Future<DayDecrypted> futureDay;
 
 showcorrectday(result) {
