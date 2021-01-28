@@ -56,7 +56,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController2,
               decoration: InputDecoration(
                   labelText: 'Block 2',
                   labelStyle: TextStyle(
@@ -78,7 +78,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController3,
               decoration: InputDecoration(
                   labelText: 'Block 3',
                   labelStyle: TextStyle(
@@ -100,7 +100,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController4,
               decoration: InputDecoration(
                   labelText: 'Block 4',
                   labelStyle: TextStyle(
@@ -122,7 +122,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController5,
               decoration: InputDecoration(
                   labelText: 'Block 5',
                   labelStyle: TextStyle(
@@ -144,7 +144,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController6,
               decoration: InputDecoration(
                   labelText: 'Block 6',
                   labelStyle: TextStyle(
@@ -165,25 +165,12 @@ class _SettingsState extends State<SettingsPage> {
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              if (_value == 11 || _value == 12) {
-                prefs.setString('B1', myController.text);
-                prefs.setString('B2', myController2.text);
-                prefs.setString('B3', myController3.text);
-                prefs.setString('B4', myController4.text);
-                prefs.setString('B5', myController5.text);
-                prefs.setString('B6', myController6.text);
-              } else {
-                prefs.setString('B1', myController.text);
-                prefs.setString('B2', myController2.text);
-                prefs.setString('B3', myController3.text);
-                prefs.setString('B4', myController4.text);
-                prefs.setString('B5', myController5.text);
-                prefs.setString('B6', myController6.text);
-                prefs.setString('B7', myController7.text);
-                prefs.setString('B8', myController8.text);
-                prefs.setString('B9', myController9.text);
-                prefs.setString('B10', myController10.text);
-              }
+              prefs.setString('B1', myController.text);
+              prefs.setString('B2', myController2.text);
+              prefs.setString('B3', myController3.text);
+              prefs.setString('B4', myController4.text);
+              prefs.setString('B5', myController5.text);
+              prefs.setString('B6', myController6.text);
             },
             child: const Text('Save',
                 style: TextStyle(
@@ -240,7 +227,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController2,
               decoration: InputDecoration(
                   labelText: 'Block 2',
                   labelStyle: TextStyle(
@@ -262,7 +249,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController3,
               decoration: InputDecoration(
                   labelText: 'Block 3',
                   labelStyle: TextStyle(
@@ -284,7 +271,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController4,
               decoration: InputDecoration(
                   labelText: 'Block 4',
                   labelStyle: TextStyle(
@@ -306,7 +293,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController5,
               decoration: InputDecoration(
                   labelText: 'Block 5',
                   labelStyle: TextStyle(
@@ -328,7 +315,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController6,
               decoration: InputDecoration(
                   labelText: 'Block 6',
                   labelStyle: TextStyle(
@@ -350,7 +337,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController7,
               decoration: InputDecoration(
                   labelText: 'Block 7',
                   labelStyle: TextStyle(
@@ -372,7 +359,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController8,
               decoration: InputDecoration(
                   labelText: 'Block 8',
                   labelStyle: TextStyle(
@@ -394,7 +381,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController9,
               decoration: InputDecoration(
                   labelText: 'Block 9',
                   labelStyle: TextStyle(
@@ -416,7 +403,7 @@ class _SettingsState extends State<SettingsPage> {
               cursorColor: Colors.black54,
               autofocus: false,
               keyboardType: TextInputType.text,
-              controller: myController,
+              controller: myController10,
               decoration: InputDecoration(
                   labelText: 'Block 10',
                   labelStyle: TextStyle(
@@ -437,25 +424,16 @@ class _SettingsState extends State<SettingsPage> {
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              if (_value == 11 || _value == 12) {
-                prefs.setString('B1', myController.text);
-                prefs.setString('B2', myController2.text);
-                prefs.setString('B3', myController3.text);
-                prefs.setString('B4', myController4.text);
-                prefs.setString('B5', myController5.text);
-                prefs.setString('B6', myController6.text);
-              } else {
-                prefs.setString('B1', myController.text);
-                prefs.setString('B2', myController2.text);
-                prefs.setString('B3', myController3.text);
-                prefs.setString('B4', myController4.text);
-                prefs.setString('B5', myController5.text);
-                prefs.setString('B6', myController6.text);
-                prefs.setString('B7', myController7.text);
-                prefs.setString('B8', myController8.text);
-                prefs.setString('B9', myController9.text);
-                prefs.setString('B10', myController10.text);
-              }
+              prefs.setString('B1', myController.text);
+              prefs.setString('B2', myController2.text);
+              prefs.setString('B3', myController3.text);
+              prefs.setString('B4', myController4.text);
+              prefs.setString('B5', myController5.text);
+              prefs.setString('B6', myController6.text);
+              prefs.setString('B7', myController7.text);
+              prefs.setString('B8', myController8.text);
+              prefs.setString('B9', myController9.text);
+              prefs.setString('B10', myController10.text);
             },
             child: const Text('Save',
                 style: TextStyle(
