@@ -575,6 +575,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
+                                    print(snapshot.data.timetable[0]);
                                     globals.dayOrder = result;
                                     return Column(
                                         mainAxisAlignment:
