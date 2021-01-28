@@ -657,6 +657,9 @@ class _SettingsState extends State<SettingsPage> {
                                               ],
                                               onChanged: (value) {
                                                 setState(() {
+                                                  FocusScope.of(context)
+                                                      .requestFocus(
+                                                          FocusNode());
                                                   _value = value;
                                                   addIntToSF();
                                                 });
