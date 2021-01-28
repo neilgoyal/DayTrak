@@ -26,7 +26,7 @@ class _SettingsState extends State<SettingsPage> {
   grade12() {
     return Form(
         key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(
             height: 20,
           ),
@@ -159,6 +159,7 @@ class _SettingsState extends State<SettingsPage> {
                     borderSide: BorderSide(
                         color: Color.fromRGBO(224, 163, 160, 1), width: 2),
                   ))),
+                  SizedBox(height: 15,),
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -207,7 +208,7 @@ class _SettingsState extends State<SettingsPage> {
   grade10() {
     return Form(
         key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(
             height: 20,
           ),
@@ -428,6 +429,7 @@ class _SettingsState extends State<SettingsPage> {
                     borderSide: BorderSide(
                         color: Color.fromRGBO(224, 163, 160, 1), width: 2),
                   ))),
+                  SizedBox(height: 15,),
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
