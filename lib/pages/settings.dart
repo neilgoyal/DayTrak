@@ -31,9 +31,8 @@ class _SettingsState extends State<SettingsPage> {
             height: 20,
           ),
           TextFormField(
-              autofocus: false,
+              focusNode: FocusNode(canRequestFocus: false),
               cursorColor: Colors.black54,
-              keyboardType: TextInputType.text,
               controller: myController,
               decoration: InputDecoration(
                   labelText: 'Block 1',
@@ -54,8 +53,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController2,
               decoration: InputDecoration(
                   labelText: 'Block 2',
@@ -76,8 +74,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController3,
               decoration: InputDecoration(
                   labelText: 'Block 3',
@@ -98,8 +95,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController4,
               decoration: InputDecoration(
                   labelText: 'Block 4',
@@ -120,8 +116,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController5,
               decoration: InputDecoration(
                   labelText: 'Block 5',
@@ -142,8 +137,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController6,
               decoration: InputDecoration(
                   labelText: 'Block 6',
@@ -192,8 +186,6 @@ class _SettingsState extends State<SettingsPage> {
         ]));
   }
 
-  grade11() {}
-
   grade10() {
     return Form(
         key: _formKey,
@@ -203,8 +195,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController,
               decoration: InputDecoration(
                   labelText: 'Block 1',
@@ -225,8 +216,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController2,
               decoration: InputDecoration(
                   labelText: 'Block 2',
@@ -247,8 +237,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController3,
               decoration: InputDecoration(
                   labelText: 'Block 3',
@@ -269,8 +258,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController4,
               decoration: InputDecoration(
                   labelText: 'Block 4',
@@ -291,8 +279,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController5,
               decoration: InputDecoration(
                   labelText: 'Block 5',
@@ -313,8 +300,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController6,
               decoration: InputDecoration(
                   labelText: 'Block 6',
@@ -335,8 +321,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController7,
               decoration: InputDecoration(
                   labelText: 'Block 7',
@@ -357,8 +342,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController8,
               decoration: InputDecoration(
                   labelText: 'Block 8',
@@ -379,8 +363,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController9,
               decoration: InputDecoration(
                   labelText: 'Block 9',
@@ -401,8 +384,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
-              autofocus: false,
-              keyboardType: TextInputType.text,
+              focusNode: FocusNode(canRequestFocus: false),
               controller: myController10,
               decoration: InputDecoration(
                   labelText: 'Block 10',
@@ -455,16 +437,6 @@ class _SettingsState extends State<SettingsPage> {
         ]));
   }
 
-  grade9() {}
-
-  grade8() {}
-
-  grade7() {}
-
-  grade6() {}
-
-  grade5() {}
-
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (_value == 7 || _value == 8) {
@@ -499,14 +471,6 @@ class _SettingsState extends State<SettingsPage> {
     defaultsvals();
   }
 
-  chooser() {
-    if (_value == 7 || _value == 8) {
-      return grade12();
-    } else {
-      return grade10();
-    }
-  }
-
   @override
   void dispose() {
     myController.dispose();
@@ -538,10 +502,7 @@ class _SettingsState extends State<SettingsPage> {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          FocusScopeNode currentFocus = FocusScope.of(context);
-          if (!currentFocus.hasPrimaryFocus) {
-            currentFocus.unfocus();
-          }
+          FocusScope.of(context).requestFocus(FocusNode());
         },
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -621,50 +582,47 @@ class _SettingsState extends State<SettingsPage> {
                                                       Radius.circular(25.0))),
                                         ),
                                         child: DropdownButtonHideUnderline(
+                                            child: Listener(
+                                          onPointerDown: (_) =>
+                                              FocusScope.of(context).unfocus(),
                                           child: DropdownButton(
-                                              style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontWeight: FontWeight.w300,
-                                                  fontSize: 15,
-                                                  fontFamily:
-                                                      'Protipo Compact'),
-                                              elevation: 1,
-                                              isExpanded: true,
-                                              isDense: true,
-                                              icon: Icon(
-                                                  Icons.keyboard_arrow_down),
-                                              value: _value,
-                                              items: [
-                                                DropdownMenuItem(
-                                                    child: Text("5"), value: 1),
-                                                DropdownMenuItem(
-                                                    child: Text("6"), value: 2),
-                                                DropdownMenuItem(
-                                                    child: Text("7"), value: 3),
-                                                DropdownMenuItem(
-                                                    child: Text("8"), value: 4),
-                                                DropdownMenuItem(
-                                                    child: Text("9"), value: 5),
-                                                DropdownMenuItem(
-                                                    child: Text("10"),
-                                                    value: 6),
-                                                DropdownMenuItem(
-                                                    child: Text("11"),
-                                                    value: 7),
-                                                DropdownMenuItem(
-                                                    child: Text("12"),
-                                                    value: 8),
-                                              ],
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  FocusScope.of(context)
-                                                      .requestFocus(
-                                                          FocusNode());
-                                                  _value = value;
-                                                  addIntToSF();
-                                                });
-                                              }),
-                                        )),
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 15,
+                                                fontFamily: 'Protipo Compact'),
+                                            elevation: 1,
+                                            isExpanded: true,
+                                            isDense: true,
+                                            icon:
+                                                Icon(Icons.keyboard_arrow_down),
+                                            value: _value,
+                                            items: [
+                                              DropdownMenuItem(
+                                                  child: Text("5"), value: 1),
+                                              DropdownMenuItem(
+                                                  child: Text("6"), value: 2),
+                                              DropdownMenuItem(
+                                                  child: Text("7"), value: 3),
+                                              DropdownMenuItem(
+                                                  child: Text("8"), value: 4),
+                                              DropdownMenuItem(
+                                                  child: Text("9"), value: 5),
+                                              DropdownMenuItem(
+                                                  child: Text("10"), value: 6),
+                                              DropdownMenuItem(
+                                                  child: Text("11"), value: 7),
+                                              DropdownMenuItem(
+                                                  child: Text("12"), value: 8),
+                                            ],
+                                            onChanged: (value) {
+                                              setState(() {
+                                                _value = value;
+                                                addIntToSF();
+                                              });
+                                            },
+                                          ),
+                                        ))),
                                     SizedBox(
                                       height: 25,
                                     ),
@@ -685,7 +643,11 @@ class _SettingsState extends State<SettingsPage> {
                                       height: 5,
                                     ),
                                     Column(
-                                      children: <Widget>[chooser()],
+                                      children: <Widget>[
+                                        (_value == 7 || _value == 8)
+                                            ? grade12()
+                                            : grade10()
+                                      ],
                                     ),
                                   ]))),
                                 ])))))));
