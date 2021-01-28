@@ -536,140 +536,155 @@ class _SettingsState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            appBar: PreferredSize(
-                preferredSize: Size.fromHeight(100),
-                child: AppBar(
-                  backgroundColor: Color.fromRGBO(250, 250, 250, 1),
-                  elevation: 0,
-                  title: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Settings',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: 40,
-                                  color: const Color(0xff9b8fb1),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                            ]),
-                      ]),
-                  toolbarHeight: toolbarHeight,
-                )),
-            resizeToAvoidBottomInset: false,
-            body: SingleChildScrollView(
-                child: Container(
-                    child: Padding(
-                        padding:
-                            EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              SizedBox(
-                                height: 25,
-                              ),
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+    return GestureDetector(
+        onTap: () {
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          if (!currentFocus.hasPrimaryFocus) {
+            currentFocus.unfocus();
+          }
+        },
+        child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Scaffold(
+                appBar: PreferredSize(
+                    preferredSize: Size.fromHeight(100),
+                    child: AppBar(
+                      backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                      elevation: 0,
+                      title: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text('Choose Grade',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
-                                        color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w300,
-                                      )),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 25,
-                              ),
-                              Container(
-                                  child: Center(
-                                      child: Column(children: <Widget>[
-                                InputDecorator(
-                                    decoration: InputDecoration(
-                                      labelText: 'Select Grade',
-                                      labelStyle: Theme.of(context)
-                                          .primaryTextTheme
-                                          .caption
-                                          .copyWith(color: Colors.black),
-                                      border: const OutlineInputBorder(
-                                          gapPadding: 0,
-                                          borderSide:
-                                              const BorderSide(width: 1),
-                                          borderRadius: const BorderRadius.all(
-                                              Radius.circular(25.0))),
+                                  Text(
+                                    'Settings',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: 40,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
                                     ),
-                                    child: DropdownButtonHideUnderline(
-                                      child: DropdownButton(
+                                  ),
+                                ]),
+                          ]),
+                      toolbarHeight: toolbarHeight,
+                    )),
+                resizeToAvoidBottomInset: false,
+                body: SingleChildScrollView(
+                    child: Container(
+                        child: Padding(
+                            padding: EdgeInsets.only(
+                                top: 0.0, left: 25.0, right: 25.0),
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Choose Grade',
                                           style: TextStyle(
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w300,
-                                              fontSize: 15,
-                                              fontFamily: 'Protipo Compact'),
-                                          elevation: 1,
-                                          isExpanded: true,
-                                          isDense: true,
-                                          icon: Icon(Icons.keyboard_arrow_down),
-                                          value: _value,
-                                          items: [
-                                            DropdownMenuItem(
-                                                child: Text("5"), value: 1),
-                                            DropdownMenuItem(
-                                                child: Text("6"), value: 2),
-                                            DropdownMenuItem(
-                                                child: Text("7"), value: 3),
-                                            DropdownMenuItem(
-                                                child: Text("8"), value: 4),
-                                            DropdownMenuItem(
-                                                child: Text("9"), value: 5),
-                                            DropdownMenuItem(
-                                                child: Text("10"), value: 6),
-                                            DropdownMenuItem(
-                                                child: Text("11"), value: 7),
-                                            DropdownMenuItem(
-                                                child: Text("12"), value: 8),
-                                          ],
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _value = value;
-                                              addIntToSF();
-                                            });
-                                          }),
-                                    )),
-                                SizedBox(
-                                  height: 25,
-                                ),
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text('Add subjects',
-                                        style: TextStyle(
-                                          fontFamily: 'Protipo Compact',
-                                          fontSize: 30,
-                                          color: const Color(0xffbadfca),
-                                          fontWeight: FontWeight.w300,
+                                            fontFamily: 'Protipo Compact',
+                                            fontSize: 30,
+                                            color: const Color(0xffbadfca),
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  Container(
+                                      child: Center(
+                                          child: Column(children: <Widget>[
+                                    InputDecorator(
+                                        decoration: InputDecoration(
+                                          labelText: 'Select Grade',
+                                          labelStyle: Theme.of(context)
+                                              .primaryTextTheme
+                                              .caption
+                                              .copyWith(color: Colors.black),
+                                          border: const OutlineInputBorder(
+                                              gapPadding: 0,
+                                              borderSide:
+                                                  const BorderSide(width: 1),
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(25.0))),
+                                        ),
+                                        child: DropdownButtonHideUnderline(
+                                          child: DropdownButton(
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 15,
+                                                  fontFamily:
+                                                      'Protipo Compact'),
+                                              elevation: 1,
+                                              isExpanded: true,
+                                              isDense: true,
+                                              icon: Icon(
+                                                  Icons.keyboard_arrow_down),
+                                              value: _value,
+                                              items: [
+                                                DropdownMenuItem(
+                                                    child: Text("5"), value: 1),
+                                                DropdownMenuItem(
+                                                    child: Text("6"), value: 2),
+                                                DropdownMenuItem(
+                                                    child: Text("7"), value: 3),
+                                                DropdownMenuItem(
+                                                    child: Text("8"), value: 4),
+                                                DropdownMenuItem(
+                                                    child: Text("9"), value: 5),
+                                                DropdownMenuItem(
+                                                    child: Text("10"),
+                                                    value: 6),
+                                                DropdownMenuItem(
+                                                    child: Text("11"),
+                                                    value: 7),
+                                                DropdownMenuItem(
+                                                    child: Text("12"),
+                                                    value: 8),
+                                              ],
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  _value = value;
+                                                  addIntToSF();
+                                                });
+                                              }),
                                         )),
-                                  ],
-                                ),
-                                SizedBox(
-                                  height: 5,
-                                ),
-                                Column(
-                                  children: <Widget>[chooser()],
-                                ),
-                              ]))),
-                            ]))))));
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Add subjects',
+                                            style: TextStyle(
+                                              fontFamily: 'Protipo Compact',
+                                              fontSize: 30,
+                                              color: const Color(0xffbadfca),
+                                              fontWeight: FontWeight.w300,
+                                            )),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Column(
+                                      children: <Widget>[chooser()],
+                                    ),
+                                  ]))),
+                                ])))))));
   }
 }
