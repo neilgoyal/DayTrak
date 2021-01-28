@@ -159,7 +159,9 @@ class _SettingsState extends State<SettingsPage> {
                     borderSide: BorderSide(
                         color: Color.fromRGBO(224, 163, 160, 1), width: 2),
                   ))),
-                  SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -429,7 +431,9 @@ class _SettingsState extends State<SettingsPage> {
                     borderSide: BorderSide(
                         color: Color.fromRGBO(224, 163, 160, 1), width: 2),
                   ))),
-                  SizedBox(height: 15,),
+          SizedBox(
+            height: 15,
+          ),
           ElevatedButton(
             onPressed: () async {
               SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -586,7 +590,6 @@ class _SettingsState extends State<SettingsPage> {
                 )),
             resizeToAvoidBottomInset: false,
             body: SingleChildScrollView(
-                reverse: true,
                 child: Container(
                     child: Padding(
                         padding:
