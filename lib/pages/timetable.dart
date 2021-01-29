@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
-import 'package:gradient_widgets/gradient_widgets.dart';
+// import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TimetablePage extends StatefulWidget {
@@ -14,14 +14,23 @@ Future<Day> futureDay;
 double blocks_6 = 55;
 int numoftiles;
 Map timetable;
+String b1;
+String b2;
+String b3;
+String b4;
+String b5;
+String b6;
+String b7;
+String b8;
+String b9;
+String b10;
 showcorrectday(result) {
   if (result == '7') {
     result = 'Break';
   } else if (result == '8') {
     result = 'Error';
   } else {
-    // ignore: unnecessary_brace_in_string_interps
-    result = "Day ${result}";
+    result = "Day $result";
   }
   return result;
 }
@@ -33,6 +42,7 @@ class _TimetableState extends State<TimetablePage> {
     getIntValuesSF();
     selectNumTiles();
     futureDay = fetchDay();
+    defaultsvals();
   }
 
   getIntValuesSF() async {
@@ -40,6 +50,59 @@ class _TimetableState extends State<TimetablePage> {
     setState(() {
       globals.value_ = prefs.getInt('Value') ?? 11;
     });
+  }
+
+  blocktoprefrence(userinput) {
+    if (userinput == 'B1') {
+      return b1;
+    } else if (userinput == 'B2') {
+      return b2;
+    } else if (userinput == 'B3') {
+      return b3;
+    } else if (userinput == 'B4') {
+      return b4;
+    } else if (userinput == 'B5') {
+      return b5;
+    } else if (userinput == 'B6') {
+      return b6;
+    } else if (userinput == 'B7') {
+      return b7;
+    } else if (userinput == 'B8') {
+      return b8;
+    } else if (userinput == 'B9') {
+      return b9;
+    } else if (userinput == 'B10') {
+      return b10;
+    } else {
+      return userinput;
+    }
+  }
+
+  defaultsvals() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (globals.value_ == 11 || globals.value_ == 12) {
+      setState(() {
+        b1 = prefs.getString('B1') ?? "";
+        b2 = prefs.getString('B2') ?? "";
+        b3 = prefs.getString('B3') ?? "";
+        b4 = prefs.getString('B4') ?? "";
+        b5 = prefs.getString('B5') ?? "";
+        b6 = prefs.getString('B6') ?? "";
+      });
+    } else {
+      setState(() {
+        b1 = prefs.getString('B1') ?? "";
+        b2 = prefs.getString('B2') ?? "";
+        b3 = prefs.getString('B3') ?? "";
+        b4 = prefs.getString('B4') ?? "";
+        b5 = prefs.getString('B5') ?? "";
+        b6 = prefs.getString('B6') ?? "";
+        b7 = prefs.getString('B7') ?? "";
+        b8 = prefs.getString('B8') ?? "";
+        b9 = prefs.getString('B9') ?? "";
+        b10 = prefs.getString('B10') ?? "";
+      });
+    }
   }
 
   selectNumTiles() {
@@ -121,64 +184,75 @@ class _TimetableState extends State<TimetablePage> {
                   toolbarHeight: toolbarHeight,
                 )),
             body: Container(
-              child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: numoftiles,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding:
-                          EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
-                      child: Card(
-                        // gradient: LinearGradient(
-                        //   begin: Alignment(-1.0, -1.0),
-                        //   end: Alignment(1.0, -0.73),
-                        //   colors: [
-                        //     const Color(0x566e7aef),
-                        //     const Color(0x5671c8af)
-                        //   ],
-                        //   stops: [0.0, 1.0],
-                        // ),
-                        elevation: 2.5,
-
-                        color: Color.fromRGBO(252, 252, 252, 1),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(27)),
-                        child: Container(
-                          padding: EdgeInsets.all(8.0),
-                          child: ListTile(
-                              title: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Expanded(
-                                      child: Container(
-                                    child: Text(
-                                      timetable[
-                                          '${globals.value_}.${(index + 1)}'],
-                                      style: TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.black54,
-                                          fontWeight: FontWeight.w300,
-                                          fontFamily: "Protipo Compact"),
-                                    ),
-                                  ))
-                                ],
-                              ),
-                              trailing: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      timetable[
-                                          '${globals.value_}.${(index + 1)}_time'],
-                                      style: TextStyle(color: Colors.grey),
-                                    )
-                                  ])),
-                        ),
-                      ),
-                    );
-                  }),
-            )));
+                child: FutureBuilder<Day>(
+                    future: futureDay,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        return ListView.builder(
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: numoftiles,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                    top: 10.0, left: 18.0, right: 18.0),
+                                child: Card(
+                                  // gradient: LinearGradient(
+                                  //   begin: Alignment(-1.0, -1.0),
+                                  //   end: Alignment(1.0, -0.73),
+                                  //   colors: [
+                                  //     const Color(0x566e7aef),
+                                  //     const Color(0x5671c8af)
+                                  //   ],
+                                  //   stops: [0.0, 1.0],
+                                  // ),
+                                  elevation: 2.5,
+                                  color: Color.fromRGBO(252, 252, 252, 1),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(27)),
+                                  child: Container(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: ListTile(
+                                        title: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Expanded(
+                                                child: Container(
+                                              child: Text(
+                                                blocktoprefrence(timetable[
+                                                    '${globals.value_}.${(index + 1)}']),
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.black54,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontFamily:
+                                                        "Protipo Compact"),
+                                              ),
+                                            ))
+                                          ],
+                                        ),
+                                        trailing: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                timetable[
+                                                    '${globals.value_}.${(index + 1)}_time'],
+                                                style: TextStyle(
+                                                    color: Colors.grey),
+                                              )
+                                            ])),
+                                  ),
+                                ),
+                              );
+                            });
+                      } else {
+                        return Container();
+                      }
+                    }))));
   }
 }
