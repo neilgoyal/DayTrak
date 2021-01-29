@@ -10,6 +10,10 @@ class SettingsPage extends StatefulWidget {
 final double toolbarHeight = 100.0;
 int _value = 1;
 String errmessage = "Cannot Be Empty";
+OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+  borderSide: BorderSide(color: Colors.black54, width: 1),
+);
 
 class _SettingsState extends State<SettingsPage> {
   final myController = TextEditingController();
@@ -46,10 +50,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -73,10 +74,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -100,10 +98,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -127,10 +122,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -154,10 +146,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -181,10 +170,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -247,10 +233,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -274,10 +257,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -301,10 +281,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -328,10 +305,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -355,10 +329,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -382,10 +353,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -409,10 +377,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -436,10 +401,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -463,10 +425,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
@@ -490,10 +449,7 @@ class _SettingsState extends State<SettingsPage> {
                   labelStyle: TextStyle(
                     color: Colors.black54,
                   ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(color: Colors.black54, width: 1),
-                  ),
+                  enabledBorder: textfieldborderenabled,
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     borderSide: BorderSide(
