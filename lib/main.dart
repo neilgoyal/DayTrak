@@ -70,7 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            color: Colors.white,
+            color: Color.fromRGBO(250, 250, 250, 1),
           ),
           margin: EdgeInsets.only(bottom: 15),
           child: new TabBar(
@@ -97,7 +97,8 @@ class _MyHomePageState extends State<MyHomePage> {
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,
             labelColor: Colors.black,
-            indicator: CircleTabIndicator(color: const Color(0xffbadfca), radius: 3.5),
+            indicator:
+                CircleTabIndicator(color: const Color(0xffbadfca), radius: 3.5),
             // indicator:
             //     CircleTabIndicator(color: Colors.transparent, radius: 3.5),
             enableFeedback: true,

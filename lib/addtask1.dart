@@ -19,7 +19,7 @@ String newDttom = DateFormat.yMd().format(tomorrow);
 DateTime yesterday = globals.dt.add(new Duration(days: -1));
 String newDtyes = DateFormat.yMd().format(tomorrow);
 final double toolbarHeight = 190.0;
-String insan = "11"; 
+String insan = "11";
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
@@ -539,11 +539,19 @@ class _TodoListState1 extends State<TodoList1> {
           controller: panelController,
           borderRadius: radius,
           minHeight: 45,
-          maxHeight: 400,
+          maxHeight: 376,
           panel: _floatingPanel(),
           collapsed: _floatingCollasped(),
           onPanelClosed: () {
             closekeyboard();
+            _todoTitleController.text = "";
+            _todoDateController.text = "";
+            setState(() {
+              validated1 = true;
+              errtext1 = "";
+              validated2 = true;
+              errtext2 = "";
+            });
           },
           body: GestureDetector(
             onTap: () {
@@ -576,7 +584,6 @@ class _TodoListState1 extends State<TodoList1> {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
-                                    print(snapshot.data.timetable["11.5"]);
                                     globals.dayOrder = result;
                                     return Column(
                                         mainAxisAlignment:

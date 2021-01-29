@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:schoolcalendar/globals.dart' as globals;
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -8,7 +9,6 @@ class SettingsPage extends StatefulWidget {
 }
 
 final double toolbarHeight = 100.0;
-int _value = 1;
 String errmessage = "Cannot Be Empty";
 OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -496,7 +496,7 @@ class _SettingsState extends State<SettingsPage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (_value == 7 || _value == 8) {
+    if (globals.value_ == 11 || globals.value_ == 12) {
       setState(() {
         myController.text = prefs.getString('B1') ?? "";
         myController2.text = prefs.getString('B2') ?? "";
@@ -545,13 +545,13 @@ class _SettingsState extends State<SettingsPage> {
 
   addIntToSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('Value', _value);
+    prefs.setInt('Value', globals.value_);
   }
 
   getIntValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _value = prefs.getInt('Value') ?? 1;
+      globals.value_ = prefs.getInt('Value') ?? 11;
     });
   }
 
@@ -653,28 +653,28 @@ class _SettingsState extends State<SettingsPage> {
                                             isDense: true,
                                             icon:
                                                 Icon(Icons.keyboard_arrow_down),
-                                            value: _value,
+                                            value: globals.value_,
                                             items: [
                                               DropdownMenuItem(
-                                                  child: Text("5"), value: 1),
+                                                  child: Text("5"), value: 5),
                                               DropdownMenuItem(
-                                                  child: Text("6"), value: 2),
+                                                  child: Text("6"), value: 6),
                                               DropdownMenuItem(
-                                                  child: Text("7"), value: 3),
+                                                  child: Text("7"), value: 7),
                                               DropdownMenuItem(
-                                                  child: Text("8"), value: 4),
+                                                  child: Text("8"), value: 8),
                                               DropdownMenuItem(
-                                                  child: Text("9"), value: 5),
+                                                  child: Text("9"), value: 9),
                                               DropdownMenuItem(
-                                                  child: Text("10"), value: 6),
+                                                  child: Text("10"), value: 10),
                                               DropdownMenuItem(
-                                                  child: Text("11"), value: 7),
+                                                  child: Text("11"), value: 11),
                                               DropdownMenuItem(
-                                                  child: Text("12"), value: 8),
+                                                  child: Text("12"), value: 12),
                                             ],
                                             onChanged: (value) {
                                               setState(() {
-                                                _value = value;
+                                                globals.value_ = value;
                                                 addIntToSF();
                                               });
                                             },
@@ -701,7 +701,8 @@ class _SettingsState extends State<SettingsPage> {
                                     ),
                                     Column(
                                       children: <Widget>[
-                                        (_value == 7 || _value == 8)
+                                        (globals.value_ == 11 ||
+                                                globals.value_ == 12)
                                             ? grade12()
                                             : grade10()
                                       ],

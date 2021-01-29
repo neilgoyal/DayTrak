@@ -42,6 +42,7 @@ dependencies:
   flutter_icons: ^1.1.0
   popup_menu: ^1.0.5
   encrypt: ^4.1.0
+  gradient_widgets: ^0.5.1
 
 dev_dependencies:
   flutter_test:
