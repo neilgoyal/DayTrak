@@ -9,6 +9,7 @@ class SettingsPage extends StatefulWidget {
 
 final double toolbarHeight = 100.0;
 int _value = 1;
+String errmessage = "Cannot Be Empty";
 
 class _SettingsState extends State<SettingsPage> {
   final myController = TextEditingController();
@@ -33,6 +34,12 @@ class _SettingsState extends State<SettingsPage> {
           TextFormField(
               focusNode: FocusNode(canRequestFocus: false),
               cursorColor: Colors.black54,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               controller: myController,
               decoration: InputDecoration(
                   labelText: 'Block 1',
@@ -53,6 +60,12 @@ class _SettingsState extends State<SettingsPage> {
           ),
           TextFormField(
               cursorColor: Colors.black54,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController2,
               decoration: InputDecoration(
@@ -73,6 +86,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController3,
@@ -94,6 +113,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController4,
@@ -115,6 +140,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController5,
@@ -136,6 +167,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController6,
@@ -158,13 +195,15 @@ class _SettingsState extends State<SettingsPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString('B1', myController.text);
-              prefs.setString('B2', myController2.text);
-              prefs.setString('B3', myController3.text);
-              prefs.setString('B4', myController4.text);
-              prefs.setString('B5', myController5.text);
-              prefs.setString('B6', myController6.text);
+              if (_formKey.currentState.validate()) {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('B1', myController.text);
+                prefs.setString('B2', myController2.text);
+                prefs.setString('B3', myController3.text);
+                prefs.setString('B4', myController4.text);
+                prefs.setString('B5', myController5.text);
+                prefs.setString('B6', myController6.text);
+              }
             },
             child: const Text('Save',
                 style: TextStyle(
@@ -194,6 +233,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 20,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController,
@@ -215,6 +260,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController2,
@@ -236,6 +287,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController3,
@@ -257,6 +314,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController4,
@@ -278,6 +341,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController5,
@@ -299,6 +368,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController6,
@@ -320,6 +395,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController7,
@@ -341,6 +422,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController8,
@@ -362,6 +449,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController9,
@@ -383,6 +476,12 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
               cursorColor: Colors.black54,
               focusNode: FocusNode(canRequestFocus: false),
               controller: myController10,
@@ -405,17 +504,19 @@ class _SettingsState extends State<SettingsPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setString('B1', myController.text);
-              prefs.setString('B2', myController2.text);
-              prefs.setString('B3', myController3.text);
-              prefs.setString('B4', myController4.text);
-              prefs.setString('B5', myController5.text);
-              prefs.setString('B6', myController6.text);
-              prefs.setString('B7', myController7.text);
-              prefs.setString('B8', myController8.text);
-              prefs.setString('B9', myController9.text);
-              prefs.setString('B10', myController10.text);
+              if (_formKey.currentState.validate()) {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('B1', myController.text);
+                prefs.setString('B2', myController2.text);
+                prefs.setString('B3', myController3.text);
+                prefs.setString('B4', myController4.text);
+                prefs.setString('B5', myController5.text);
+                prefs.setString('B6', myController6.text);
+                prefs.setString('B7', myController7.text);
+                prefs.setString('B8', myController8.text);
+                prefs.setString('B9', myController9.text);
+                prefs.setString('B10', myController10.text);
+              }
             },
             child: const Text('Save',
                 style: TextStyle(
