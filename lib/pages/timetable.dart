@@ -74,9 +74,9 @@ class _TimetableState extends State<TimetablePage> {
                                             '${showcorrectday(result)}',
                                             style: TextStyle(
                                               fontFamily: 'Protipo Compact',
-                                              fontSize: 40,
-                                              color: const Color(0xff9b8fb1),
-                                              fontWeight: FontWeight.w300,
+                                              fontSize: 35,
+                                              color: const Color(0xffbadfca),
+                                              fontWeight: FontWeight.w200,
                                             ),
                                           )
                                         ],
@@ -85,10 +85,9 @@ class _TimetableState extends State<TimetablePage> {
                                       return Text(
                                         '${showcorrectday(globals.dayOrder)}',
                                         style: TextStyle(
-                                          fontFamily: 'Protipo Compact',
-                                          fontSize: 40,
-                                          color: const Color(0xff9b8fb1),
-                                          fontWeight: FontWeight.w300,
+                                          fontSize: 35,
+                                          color: const Color(0xffbadfca),
+                                          fontWeight: FontWeight.w200,
                                         ),
                                       );
                                   },
