@@ -4,18 +4,14 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart';
 
-final b64key = Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=');
-final fernet = Fernet(b64key);
-
-final encrypter = Encrypter(fernet);
+final encrypter = Encrypter(
+    Fernet(Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=')));
 
 class Main {
   final double temp;
-
   Main({
     this.temp,
   });
-
   factory Main.fromJson(Map<String, dynamic> json) {
     return Main(
       temp: double.parse(json['temp'].toString()),
@@ -25,11 +21,9 @@ class Main {
 
 class WeatherModel {
   final Main main;
-
   WeatherModel({
     this.main,
   });
-
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     return WeatherModel(
       main: Main.fromJson(json['main']),
@@ -59,7 +53,6 @@ Future<Day> fetchDay() async {
 
 class Day {
   // ignore: non_constant_identifier_names
-  Map timetable_;
   final int day1;
   final int day2;
   final int day3;
@@ -205,156 +198,155 @@ class Day {
   final String fifth_6;
   // ignore: non_constant_identifier_names
   final String fifth_6_time;
-  final List timetable;
+  final Map<String, dynamic> timetable;
 
-  Day(
-      {this.twelve_1,
-      // ignore: non_constant_identifier_names
-      this.twelve_1_time,
-      this.twelve_2,
-      // ignore: non_constant_identifier_names
-      this.twelve_2_time,
-      this.twelve_3,
-      // ignore: non_constant_identifier_names
-      this.twelve_3_time,
-      this.twelve_4,
-      // ignore: non_constant_identifier_names
-      this.twelve_4_time,
-      this.twelve_5,
-      // ignore: non_constant_identifier_names
-      this.twelve_5_time,
-      this.twelve_6,
-      // ignore: non_constant_identifier_names
-      this.twelve_6_time,
-      this.eleven_1,
-      // ignore: non_constant_identifier_names
-      this.eleven_1_time,
-      this.eleven_2,
-      // ignore: non_constant_identifier_names
-      this.eleven_2_time,
-      this.eleven_3,
-      // ignore: non_constant_identifier_names
-      this.eleven_3_time,
-      this.eleven_4,
-      // ignore: non_constant_identifier_names
-      this.eleven_4_time,
-      this.eleven_5,
-      // ignore: non_constant_identifier_names
-      this.eleven_5_time,
-      this.eleven_6,
-      // ignore: non_constant_identifier_names
-      this.eleven_6_time,
-      this.tenth_1,
-      // ignore: non_constant_identifier_names
-      this.tenth_1_time,
-      this.tenth_2,
-      // ignore: non_constant_identifier_names
-      this.tenth_2_time,
-      this.tenth_3,
-      // ignore: non_constant_identifier_names
-      this.tenth_4_time,
-      this.tenth_5,
-      // ignore: non_constant_identifier_names
-      this.tenth_5_time,
-      this.tenth_6,
-      // ignore: non_constant_identifier_names
-      this.tenth_6_time,
-      this.ninth_1,
-      // ignore: non_constant_identifier_names
-      this.ninth_1_time,
-      this.ninth_2,
-      // ignore: non_constant_identifier_names
-      this.ninth_2_time,
-      this.ninth_3,
-      // ignore: non_constant_identifier_names
-      this.ninth_3_time,
-      this.ninth_4,
-      // ignore: non_constant_identifier_names
-      this.ninth_4_time,
-      this.ninth_5,
-      // ignore: non_constant_identifier_names
-      this.ninth_5_time,
-      this.ninth_6,
-      // ignore: non_constant_identifier_names
-      this.ninth_6_time,
-      this.eighth_1,
-      // ignore: non_constant_identifier_names
-      this.eighth_1_time,
-      this.eighth_2,
-      // ignore: non_constant_identifier_names
-      this.eighth_2_time,
-      this.eighth_3,
-      // ignore: non_constant_identifier_names
-      this.eighth_3_time,
-      this.eighth_4,
-      // ignore: non_constant_identifier_names
-      this.eighth_4_time,
-      this.eighth_5,
-      // ignore: non_constant_identifier_names
-      this.eighth_5_time,
-      this.eighth_6,
-      // ignore: non_constant_identifier_names
-      this.eighth_6_time,
-      this.seventh_1,
-      // ignore: non_constant_identifier_names
-      this.seventh_1_time,
-      this.seventh_2,
-      // ignore: non_constant_identifier_names
-      this.seventh_2_time,
-      this.seventh_3,
-      // ignore: non_constant_identifier_names
-      this.seventh_3_time,
-      this.seventh_4,
-      // ignore: non_constant_identifier_names
-      this.seventh_4_time,
-      this.seventh_5,
-      // ignore: non_constant_identifier_names
-      this.seventh_5_time,
-      this.seventh_6,
-      // ignore: non_constant_identifier_names
-      this.seventh_6_time,
-      this.sixth_1,
-      // ignore: non_constant_identifier_names
-      this.sixth_1_time,
-      this.sixth_2,
-      // ignore: non_constant_identifier_names
-      this.sixth_2_time,
-      this.sixth_3,
-      // ignore: non_constant_identifier_names
-      this.sixth_3_time,
-      this.sixth_4,
-      // ignore: non_constant_identifier_names
-      this.sixth_4_time,
-      this.sixth_5,
-      // ignore: non_constant_identifier_names
-      this.sixth_5_time,
-      this.sixth_6,
-      // ignore: non_constant_identifier_names
-      this.sixth_6_time,
-      this.fifth_1,
-      // ignore: non_constant_identifier_names
-      this.fifth_1_time,
-      this.fifth_2,
-      // ignore: non_constant_identifier_names
-      this.fifth_2_time,
-      this.fifth_3,
-      // ignore: non_constant_identifier_names
-      this.fifth_3_time,
-      this.fifth_4,
-      // ignore: non_constant_identifier_names
-      this.fifth_4_time,
-      this.fifth_5,
-      // ignore: non_constant_identifier_names
-      this.fifth_5_time,
-      this.fifth_6,
-      // ignore: non_constant_identifier_names
-      this.fifth_6_time,
-      this.day1,
-      this.day2,
-      this.day3,
-      this.timetable,
-      // ignore: non_constant_identifier_names
-      this.timetable_});
+  Day({
+    this.twelve_1,
+    // ignore: non_constant_identifier_names
+    this.twelve_1_time,
+    this.twelve_2,
+    // ignore: non_constant_identifier_names
+    this.twelve_2_time,
+    this.twelve_3,
+    // ignore: non_constant_identifier_names
+    this.twelve_3_time,
+    this.twelve_4,
+    // ignore: non_constant_identifier_names
+    this.twelve_4_time,
+    this.twelve_5,
+    // ignore: non_constant_identifier_names
+    this.twelve_5_time,
+    this.twelve_6,
+    // ignore: non_constant_identifier_names
+    this.twelve_6_time,
+    this.eleven_1,
+    // ignore: non_constant_identifier_names
+    this.eleven_1_time,
+    this.eleven_2,
+    // ignore: non_constant_identifier_names
+    this.eleven_2_time,
+    this.eleven_3,
+    // ignore: non_constant_identifier_names
+    this.eleven_3_time,
+    this.eleven_4,
+    // ignore: non_constant_identifier_names
+    this.eleven_4_time,
+    this.eleven_5,
+    // ignore: non_constant_identifier_names
+    this.eleven_5_time,
+    this.eleven_6,
+    // ignore: non_constant_identifier_names
+    this.eleven_6_time,
+    this.tenth_1,
+    // ignore: non_constant_identifier_names
+    this.tenth_1_time,
+    this.tenth_2,
+    // ignore: non_constant_identifier_names
+    this.tenth_2_time,
+    this.tenth_3,
+    // ignore: non_constant_identifier_names
+    this.tenth_4_time,
+    this.tenth_5,
+    // ignore: non_constant_identifier_names
+    this.tenth_5_time,
+    this.tenth_6,
+    // ignore: non_constant_identifier_names
+    this.tenth_6_time,
+    this.ninth_1,
+    // ignore: non_constant_identifier_names
+    this.ninth_1_time,
+    this.ninth_2,
+    // ignore: non_constant_identifier_names
+    this.ninth_2_time,
+    this.ninth_3,
+    // ignore: non_constant_identifier_names
+    this.ninth_3_time,
+    this.ninth_4,
+    // ignore: non_constant_identifier_names
+    this.ninth_4_time,
+    this.ninth_5,
+    // ignore: non_constant_identifier_names
+    this.ninth_5_time,
+    this.ninth_6,
+    // ignore: non_constant_identifier_names
+    this.ninth_6_time,
+    this.eighth_1,
+    // ignore: non_constant_identifier_names
+    this.eighth_1_time,
+    this.eighth_2,
+    // ignore: non_constant_identifier_names
+    this.eighth_2_time,
+    this.eighth_3,
+    // ignore: non_constant_identifier_names
+    this.eighth_3_time,
+    this.eighth_4,
+    // ignore: non_constant_identifier_names
+    this.eighth_4_time,
+    this.eighth_5,
+    // ignore: non_constant_identifier_names
+    this.eighth_5_time,
+    this.eighth_6,
+    // ignore: non_constant_identifier_names
+    this.eighth_6_time,
+    this.seventh_1,
+    // ignore: non_constant_identifier_names
+    this.seventh_1_time,
+    this.seventh_2,
+    // ignore: non_constant_identifier_names
+    this.seventh_2_time,
+    this.seventh_3,
+    // ignore: non_constant_identifier_names
+    this.seventh_3_time,
+    this.seventh_4,
+    // ignore: non_constant_identifier_names
+    this.seventh_4_time,
+    this.seventh_5,
+    // ignore: non_constant_identifier_names
+    this.seventh_5_time,
+    this.seventh_6,
+    // ignore: non_constant_identifier_names
+    this.seventh_6_time,
+    this.sixth_1,
+    // ignore: non_constant_identifier_names
+    this.sixth_1_time,
+    this.sixth_2,
+    // ignore: non_constant_identifier_names
+    this.sixth_2_time,
+    this.sixth_3,
+    // ignore: non_constant_identifier_names
+    this.sixth_3_time,
+    this.sixth_4,
+    // ignore: non_constant_identifier_names
+    this.sixth_4_time,
+    this.sixth_5,
+    // ignore: non_constant_identifier_names
+    this.sixth_5_time,
+    this.sixth_6,
+    // ignore: non_constant_identifier_names
+    this.sixth_6_time,
+    this.fifth_1,
+    // ignore: non_constant_identifier_names
+    this.fifth_1_time,
+    this.fifth_2,
+    // ignore: non_constant_identifier_names
+    this.fifth_2_time,
+    this.fifth_3,
+    // ignore: non_constant_identifier_names
+    this.fifth_3_time,
+    this.fifth_4,
+    // ignore: non_constant_identifier_names
+    this.fifth_4_time,
+    this.fifth_5,
+    // ignore: non_constant_identifier_names
+    this.fifth_5_time,
+    this.fifth_6,
+    // ignore: non_constant_identifier_names
+    this.fifth_6_time,
+    this.day1,
+    this.day2,
+    this.day3,
+    this.timetable,
+  });
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
@@ -364,7 +356,7 @@ class Day {
           int.parse((encrypter.decrypt(Encrypted.fromBase64(json["pudding"])))),
       day2:
           int.parse((encrypter.decrypt(Encrypted.fromBase64(json["tomato"])))),
-      timetable: json['potato'],
+      timetable: json['potato'][0],
     );
   }
 }
