@@ -50,24 +50,19 @@ Future<WeatherModel> getWeather() async {
     throw Exception('Failed to load Weather Information');
 }
 
-Future<DayDecrypted> fetchDay() async {
+Future<Day> fetchDay() async {
   final response1 =
       await http.get('https://tumulrankypanky.pythonanywhere.com');
   var result = Day.fromJson(jsonDecode(response1.body));
-  var q = DayDecrypted();
-  q.day1 = int.parse((encrypter.decrypt(Encrypted.fromBase64(result.day1))));
-  q.day2 = int.parse((encrypter.decrypt(Encrypted.fromBase64(result.day2))));
-  q.day3 = int.parse((encrypter.decrypt(Encrypted.fromBase64(result.day3))));
-  q.timetable = result.timetable;
-  q.timetable_ = q.timetable[0];
-  return q;
+  return result;
 }
 
 class Day {
+  // ignore: non_constant_identifier_names
   Map timetable_;
-  final String day1;
-  final String day2;
-  final String day3;
+  final int day1;
+  final int day2;
+  final int day3;
   final String twelve_1;
   // ignore: non_constant_identifier_names
   final String twelve_1_time;
@@ -358,23 +353,18 @@ class Day {
       this.day2,
       this.day3,
       this.timetable,
+      // ignore: non_constant_identifier_names
       this.timetable_});
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
-      day1: json["hummer"],
-      day3: json["pudding"],
-      day2: json["tomato"],
+      day1:
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["hummer"])))),
+      day3:
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["pudding"])))),
+      day2:
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["tomato"])))),
       timetable: json['potato'],
     );
   }
-}
-
-class DayDecrypted {
-  int day1;
-  int day2;
-  int day3;
-  List timetable;
-  Map timetable_;
-  DayDecrypted({this.day1, this.day2, this.day3, this.timetable, this.timetable_});
 }

@@ -23,7 +23,7 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
 );
-Future<DayDecrypted> futureDay;
+Future<Day> futureDay;
 
 String nextDay = "-";
 String dayAfter = "-";
@@ -334,7 +334,7 @@ class _TodoListState1 extends State<TodoList1> {
                 borderRadius: BorderRadius.circular(20.0)), //this right here
             child: Container(
               height: 150,
-              child: FutureBuilder<DayDecrypted>(
+              child: FutureBuilder<Day>(
                 future: futureDay,
                 builder: (context, snapshot) {
                   var resultdaytod = ((snapshot.data.day1).toString());
@@ -569,13 +569,12 @@ class _TodoListState1 extends State<TodoList1> {
                                   fontWeight: FontWeight.w300,
                                 )),
                             Container(
-                              child: FutureBuilder<DayDecrypted>(
+                              child: FutureBuilder<Day>(
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
-                                    print(snapshot.data.timetable[0]);
                                     globals.dayOrder = result;
                                     return Column(
                                         mainAxisAlignment:

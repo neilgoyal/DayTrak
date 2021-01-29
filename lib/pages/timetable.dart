@@ -8,7 +8,7 @@ class TimetablePage extends StatefulWidget {
 }
 
 final double toolbarHeight = 100.0;
-Future<DayDecrypted> futureDay;
+Future<Day> futureDay;
 
 showcorrectday(result) {
   if (result == '7') {
@@ -59,7 +59,7 @@ class _TimetableState extends State<TimetablePage> {
                                         )),
                                   ]),
                               Container(
-                                child: FutureBuilder<DayDecrypted>(
+                                child: FutureBuilder<Day>(
                                   future: futureDay,
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
