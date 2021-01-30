@@ -1,34 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:schoolcalendar/pages/firstopen.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
 import 'pages/firstopen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  getIntValuesSF();
-  runApp(MyApp());
-}
-
-getIntValuesSF() async {
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var firstime = prefs.getBool('firstime') ?? false;
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  bool firstime;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'School planner',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: (firstime) ? FirstopenPage() : MyHomePage(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'School planner',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: (MyHomePage()));
   }
 }
 
@@ -69,12 +58,11 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     TimetablePage(),
     SettingsPage(),
-    FirstopenPage()
   ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 3,
       initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
@@ -106,12 +94,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   size: 35,
                 ),
               ),
-              Tab(
-                icon: Icon(
-                  CupertinoIcons.phone,
-                  size: 35,
-                ),
-              ),
+              // Tab(
+              //   icon: Icon(
+              //     CupertinoIcons.phone,
+              //     size: 35,
+              //   ),
+              // ),
             ],
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,
