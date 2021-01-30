@@ -4,6 +4,7 @@ import 'package:schoolcalendar/pages/firstopen.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
+import 'pages/firstopen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
@@ -26,8 +27,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: (firstime) ? 
-      : MyHomePage(),
+      home: (firstime) ? FirstopenPage() : MyHomePage(),
     );
   }
 }
