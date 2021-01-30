@@ -24,7 +24,7 @@ String b7;
 String b8;
 String b9;
 String b10;
-List cachedtiles = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
+List<String> cachedtiles = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
 List cachedtime = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
 showcorrectday(result) {
   if (result == '7') {
@@ -193,6 +193,12 @@ class _TimetableState extends State<TimetablePage> {
                         return ListView.builder(
                             itemCount: numoftiles,
                             itemBuilder: (context, index) {
+                              timetable = snapshot.data.timetable;
+                              cachedtiles[index + 1] = blocktoprefrence(
+                                  timetable[
+                                      '${globals.value_}.${(index + 1)}']);
+                              cachedtime[index + 1] = timetable[
+                                  '${globals.value_}.${(index + 1)}_time'];
                               return Padding(
                                 padding: EdgeInsets.only(
                                     top: 10.0, left: 18.0, right: 18.0),
@@ -266,8 +272,7 @@ class _TimetableState extends State<TimetablePage> {
                                             Expanded(
                                                 child: Container(
                                               child: Text(
-                                                blocktoprefrence(
-                                                    cachedtiles[index + 1]),
+                                                cachedtiles[index + 1],
                                                 style: TextStyle(
                                                     fontSize: 30,
                                                     color: Colors.black54,
