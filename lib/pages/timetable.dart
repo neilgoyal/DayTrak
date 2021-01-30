@@ -189,7 +189,7 @@ class _TimetableState extends State<TimetablePage> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
-                            physics: const NeverScrollableScrollPhysics(),
+                            // physics: const NeverScrollableScrollPhysics(),
                             itemCount: numoftiles,
                             itemBuilder: (context, index) {
                               return Padding(
