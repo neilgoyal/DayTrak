@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:schoolcalendar/pages/firstopen.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
@@ -57,11 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     TimetablePage(),
     SettingsPage(),
+    FirstopenPage()
   ];
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
@@ -90,6 +92,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Tab(
                 icon: Icon(
                   CupertinoIcons.settings_solid,
+                  size: 35,
+                ),
+              ),
+              Tab(
+                icon: Icon(
+                  CupertinoIcons.phone,
                   size: 35,
                 ),
               ),

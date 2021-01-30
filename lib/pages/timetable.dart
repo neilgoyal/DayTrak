@@ -189,7 +189,45 @@ class _TimetableState extends State<TimetablePage> {
                     future: futureDay,
                     builder: (context, snapshot) {
                       if (globals.dayOrder == "7" || globals.dayOrder == "8") {
-                        return Container();
+                        return Container(
+                            padding: EdgeInsets.only(
+                                top: 10.0, left: 18.0, right: 18.0),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Card(
+                                      elevation: 4,
+                                      color: Color.fromRGBO(252, 252, 252, 1),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(27)),
+                                      child: Container(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: ListTile(
+                                          title: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              Container(
+                                                child: Text(
+                                                  'No School',
+                                                  style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.black54,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontFamily:
+                                                          "Protipo Compact"),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ))
+                                ]));
                       } else {
                         if (snapshot.hasData) {
                           return ListView.builder(
