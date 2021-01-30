@@ -24,6 +24,8 @@ String b7;
 String b8;
 String b9;
 String b10;
+List cachedtiles = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
+List cachedtime = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
 showcorrectday(result) {
   if (result == '7') {
     result = 'Break';
@@ -82,25 +84,25 @@ class _TimetableState extends State<TimetablePage> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     if (globals.value_ == 11 || globals.value_ == 12) {
       setState(() {
-        b1 = prefs.getString('B1') ?? "";
-        b2 = prefs.getString('B2') ?? "";
-        b3 = prefs.getString('B3') ?? "";
-        b4 = prefs.getString('B4') ?? "";
-        b5 = prefs.getString('B5') ?? "";
-        b6 = prefs.getString('B6') ?? "";
+        b1 = prefs.getString('B1') ?? "Block 1";
+        b2 = prefs.getString('B2') ?? "Block 2";
+        b3 = prefs.getString('B3') ?? "Block 3";
+        b4 = prefs.getString('B4') ?? "Block 4";
+        b5 = prefs.getString('B5') ?? "Block 5";
+        b6 = prefs.getString('B6') ?? "Block 6";
       });
     } else {
       setState(() {
-        b1 = prefs.getString('B1') ?? "";
-        b2 = prefs.getString('B2') ?? "";
-        b3 = prefs.getString('B3') ?? "";
-        b4 = prefs.getString('B4') ?? "";
-        b5 = prefs.getString('B5') ?? "";
-        b6 = prefs.getString('B6') ?? "";
-        b7 = prefs.getString('B7') ?? "";
-        b8 = prefs.getString('B8') ?? "";
-        b9 = prefs.getString('B9') ?? "";
-        b10 = prefs.getString('B10') ?? "";
+        b1 = prefs.getString('B1') ?? "Block 1";
+        b2 = prefs.getString('B2') ?? "Block 2";
+        b3 = prefs.getString('B3') ?? "Block 3";
+        b4 = prefs.getString('B4') ?? "Block 4";
+        b5 = prefs.getString('B5') ?? "Block 5";
+        b6 = prefs.getString('B6') ?? "Block 6";
+        b7 = prefs.getString('B7') ?? "Block 7";
+        b8 = prefs.getString('B8') ?? "Block 8";
+        b9 = prefs.getString('B9') ?? "Block 9";
+        b10 = prefs.getString('B10') ?? "Block 10";
       });
     }
   }
@@ -189,22 +191,12 @@ class _TimetableState extends State<TimetablePage> {
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         return ListView.builder(
-                            // physics: const NeverScrollableScrollPhysics(),
                             itemCount: numoftiles,
                             itemBuilder: (context, index) {
                               return Padding(
                                 padding: EdgeInsets.only(
                                     top: 10.0, left: 18.0, right: 18.0),
                                 child: Card(
-                                  // gradient: LinearGradient(
-                                  //   begin: Alignment(-1.0, -1.0),
-                                  //   end: Alignment(1.0, -0.73),
-                                  //   colors: [
-                                  //     const Color(0x566e7aef),
-                                  //     const Color(0x5671c8af)
-                                  //   ],
-                                  //   stops: [0.0, 1.0],
-                                  // ),
                                   elevation: 2.5,
                                   color: Color.fromRGBO(252, 252, 252, 1),
                                   shape: RoundedRectangleBorder(
@@ -251,7 +243,57 @@ class _TimetableState extends State<TimetablePage> {
                               );
                             });
                       } else {
-                        return Container();
+                        return ListView.builder(
+                            itemCount: numoftiles,
+                            itemBuilder: (context, index) {
+                              return Padding(
+                                padding: EdgeInsets.only(
+                                    top: 10.0, left: 18.0, right: 18.0),
+                                child: Card(
+                                  elevation: 2.5,
+                                  color: Color.fromRGBO(252, 252, 252, 1),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(27)),
+                                  child: Container(
+                                    padding: EdgeInsets.all(8.0),
+                                    child: ListTile(
+                                        title: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: <Widget>[
+                                            Expanded(
+                                                child: Container(
+                                              child: Text(
+                                                blocktoprefrence(
+                                                    cachedtiles[index + 1]),
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    color: Colors.black54,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontFamily:
+                                                        "Protipo Compact"),
+                                              ),
+                                            ))
+                                          ],
+                                        ),
+                                        trailing: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                cachedtime[index + 1],
+                                                style: TextStyle(
+                                                    color: Colors.grey),
+                                              )
+                                            ])),
+                                  ),
+                                ),
+                              );
+                            });
                       }
                     }))));
   }
