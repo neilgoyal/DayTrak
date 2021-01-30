@@ -138,7 +138,7 @@ class _TimetableState extends State<TimetablePage> {
                               children: [
                                 Text(globals.newDt1,
                                     style: TextStyle(
-                                      fontSize: 45,
+                                      fontSize: 55,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     )),
@@ -162,7 +162,7 @@ class _TimetableState extends State<TimetablePage> {
                                         '${showcorrectday(result)}',
                                         style: TextStyle(
                                           fontFamily: 'Protipo Compact',
-                                          fontSize: 38,
+                                          fontSize: 48,
                                           color: const Color(0xffbadfca),
                                           fontWeight: FontWeight.w200,
                                         ),
@@ -173,7 +173,7 @@ class _TimetableState extends State<TimetablePage> {
                                   return Text(
                                     '${showcorrectday(globals.dayOrder)}',
                                     style: TextStyle(
-                                      fontSize: 38,
+                                      fontSize: 48,
                                       color: const Color(0xffbadfca),
                                       fontWeight: FontWeight.w200,
                                     ),

@@ -18,7 +18,7 @@ DateTime tomorrow = globals.dt.add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
 DateTime yesterday = globals.dt.add(new Duration(days: -1));
 String newDtyes = DateFormat.yMd().format(tomorrow);
-final double toolbarHeight = 190.0;
+final double toolbarHeight = 200.0;
 String insan = "11";
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
@@ -196,9 +196,9 @@ class _TodoListState1 extends State<TodoList1> {
       styleDatePicker: MaterialRoundedDatePickerStyle(
         paddingMonthHeader: EdgeInsets.all(12),
         textStyleButtonNegative:
-            TextStyle(fontSize: 15, color: Color.fromRGBO(2, 163, 160, 1)),
+            TextStyle(fontSize: 20, color: Color.fromRGBO(2, 163, 160, 1)),
         textStyleButtonPositive: TextStyle(
-          fontSize: 15,
+          fontSize: 20,
           color: Color.fromRGBO(2, 163, 160, 1),
         ),
       ),
@@ -347,19 +347,22 @@ class _TodoListState1 extends State<TodoList1> {
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '  Today:  ',
+                                    'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
+                                      fontSize: 40,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -367,19 +370,21 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(resultdaytod)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
+                                        fontSize: 40,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     '  Tomorrow:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
+                                      fontSize: 40,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -387,19 +392,21 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(resultdaytom)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
+                                        fontSize: 40,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     '  Day After:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
+                                      fontSize: 40,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -407,7 +414,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(resultdaytom2)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
+                                        fontSize: 40,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -422,19 +429,22 @@ class _TodoListState1 extends State<TodoList1> {
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '  Today:  ',
+                                    'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
+                                      fontSize: 40,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -442,13 +452,15 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(globals.dayOrder)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
+                                        fontSize: 40,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     '  Tomorrow:  ',
@@ -462,19 +474,21 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(nextDay)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
+                                        fontSize: 40,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     '  Day After:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
+                                      fontSize: 40,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -482,7 +496,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(dayAfter)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 30,
+                                        fontSize: 40,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -573,7 +587,7 @@ class _TodoListState1 extends State<TodoList1> {
                             Text(newDt,
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: 40,
+                                  fontSize: 50,
                                   color: const Color(0xff9b8fb1),
                                   fontWeight: FontWeight.w300,
                                 )),
@@ -616,7 +630,7 @@ class _TodoListState1 extends State<TodoList1> {
                                               '${showcorrectday(result)}',
                                               style: TextStyle(
                                                 fontFamily: 'Protipo Compact',
-                                                fontSize: 40,
+                                                fontSize: 50,
                                                 color: const Color(0xff9b8fb1),
                                                 fontWeight: FontWeight.w300,
                                               ),
@@ -655,7 +669,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                 '${showcorrectday(globals.dayOrder)}',
                                                 style: TextStyle(
                                                   fontFamily: 'Protipo Compact',
-                                                  fontSize: 40,
+                                                  fontSize: 50,
                                                   color:
                                                       const Color(0xff9b8fb1),
                                                   fontWeight: FontWeight.w300,
@@ -673,7 +687,7 @@ class _TodoListState1 extends State<TodoList1> {
                             Text(globals.newDt1,
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: 35,
+                                  fontSize: 45,
                                   color: const Color(0xffbadfca),
                                   fontWeight: FontWeight.w200,
                                 )),
@@ -692,7 +706,7 @@ class _TodoListState1 extends State<TodoList1> {
                                           '${model1.main.temp.round()} ˚C',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
-                                            fontSize: 35,
+                                            fontSize: 45,
                                             color: const Color(0xffbadfca),
                                             fontWeight: FontWeight.w200,
                                           ),
@@ -704,7 +718,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       '$weatherorder ˚C',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 35,
+                                        fontSize: 45,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w200,
                                       ),
@@ -724,7 +738,7 @@ class _TodoListState1 extends State<TodoList1> {
                                 'Upcoming Tasks',
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: 34,
+                                  fontSize: 44,
                                   color: const Color(0xff9b8fb1),
                                   fontWeight: FontWeight.w200,
                                 ),
