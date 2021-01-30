@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
-// import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TimetablePage extends StatefulWidget {
@@ -189,116 +188,124 @@ class _TimetableState extends State<TimetablePage> {
                 child: FutureBuilder<Day>(
                     future: futureDay,
                     builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        return ListView.builder(
-                            itemCount: numoftiles,
-                            itemBuilder: (context, index) {
-                              timetable = snapshot.data.timetable;
-                              cachedtiles[index + 1] = blocktoprefrence(
-                                  timetable[
-                                      '${globals.value_}.${(index + 1)}']);
-                              cachedtime[index + 1] = timetable[
-                                  '${globals.value_}.${(index + 1)}_time'];
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    top: 10.0, left: 18.0, right: 18.0),
-                                child: Card(
-                                  elevation: 2.5,
-                                  color: Color.fromRGBO(252, 252, 252, 1),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(27)),
-                                  child: Container(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                        title: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                                child: Container(
-                                              child: Text(
-                                                blocktoprefrence(timetable[
-                                                    '${globals.value_}.${(index + 1)}']),
-                                                style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.black54,
-                                                    fontWeight: FontWeight.w300,
-                                                    fontFamily:
-                                                        "Protipo Compact"),
-                                              ),
-                                            ))
-                                          ],
-                                        ),
-                                        trailing: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                timetable[
-                                                    '${globals.value_}.${(index + 1)}_time'],
-                                                style: TextStyle(
-                                                    color: Colors.grey),
-                                              )
-                                            ])),
-                                  ),
-                                ),
-                              );
-                            });
+                      if (globals.dayOrder == "7" || globals.dayOrder == "8") {
+                        return Container();
                       } else {
-                        return ListView.builder(
-                            itemCount: numoftiles,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(
-                                    top: 10.0, left: 18.0, right: 18.0),
-                                child: Card(
-                                  elevation: 2.5,
-                                  color: Color.fromRGBO(252, 252, 252, 1),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(27)),
-                                  child: Container(
-                                    padding: EdgeInsets.all(8.0),
-                                    child: ListTile(
-                                        title: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: <Widget>[
-                                            Expanded(
-                                                child: Container(
-                                              child: Text(
-                                                cachedtiles[index + 1],
-                                                style: TextStyle(
-                                                    fontSize: 30,
-                                                    color: Colors.black54,
-                                                    fontWeight: FontWeight.w300,
-                                                    fontFamily:
-                                                        "Protipo Compact"),
-                                              ),
-                                            ))
-                                          ],
-                                        ),
-                                        trailing: Column(
+                        if (snapshot.hasData) {
+                          return ListView.builder(
+                              itemCount: numoftiles,
+                              itemBuilder: (context, index) {
+                                timetable = snapshot.data.timetable;
+                                cachedtiles[index + 1] = blocktoprefrence(
+                                    timetable[
+                                        '${globals.value_}.${(index + 1)}']);
+                                cachedtime[index + 1] = timetable[
+                                    '${globals.value_}.${(index + 1)}_time'];
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 10.0, left: 18.0, right: 18.0),
+                                  child: Card(
+                                    elevation: 2.5,
+                                    color: Color.fromRGBO(252, 252, 252, 1),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(27)),
+                                    child: Container(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: ListTile(
+                                          title: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
                                             crossAxisAlignment:
                                                 CrossAxisAlignment.center,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                cachedtime[index + 1],
-                                                style: TextStyle(
-                                                    color: Colors.grey),
-                                              )
-                                            ])),
+                                            children: <Widget>[
+                                              Expanded(
+                                                  child: Container(
+                                                child: Text(
+                                                  blocktoprefrence(timetable[
+                                                      '${globals.value_}.${(index + 1)}']),
+                                                  style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.black54,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontFamily:
+                                                          "Protipo Compact"),
+                                                ),
+                                              ))
+                                            ],
+                                          ),
+                                          trailing: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  timetable[
+                                                      '${globals.value_}.${(index + 1)}_time'],
+                                                  style: TextStyle(
+                                                      color: Colors.grey),
+                                                )
+                                              ])),
+                                    ),
                                   ),
-                                ),
-                              );
-                            });
+                                );
+                              });
+                        } else {
+                          return ListView.builder(
+                              itemCount: numoftiles,
+                              itemBuilder: (context, index) {
+                                return Padding(
+                                  padding: EdgeInsets.only(
+                                      top: 10.0, left: 18.0, right: 18.0),
+                                  child: Card(
+                                    elevation: 2.5,
+                                    color: Color.fromRGBO(252, 252, 252, 1),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(27)),
+                                    child: Container(
+                                      padding: EdgeInsets.all(8.0),
+                                      child: ListTile(
+                                          title: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: <Widget>[
+                                              Expanded(
+                                                  child: Container(
+                                                child: Text(
+                                                  cachedtiles[index + 1],
+                                                  style: TextStyle(
+                                                      fontSize: 30,
+                                                      color: Colors.black54,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontFamily:
+                                                          "Protipo Compact"),
+                                                ),
+                                              ))
+                                            ],
+                                          ),
+                                          trailing: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  cachedtime[index + 1],
+                                                  style: TextStyle(
+                                                      color: Colors.grey),
+                                                )
+                                              ])),
+                                    ),
+                                  ),
+                                );
+                              });
+                        }
                       }
                     }))));
   }
