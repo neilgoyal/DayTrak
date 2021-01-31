@@ -535,7 +535,7 @@ class _TodoListState1 extends State<TodoList1> {
           style: TextStyle(
               color: Colors.white,
               fontFamily: 'Protipo Compact',
-              fontSize: globals.h5),
+              fontSize: globals.h6),
         ),
       ]),
     );
