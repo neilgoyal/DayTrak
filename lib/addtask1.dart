@@ -344,12 +344,12 @@ class _TodoListState1 extends State<TodoList1> {
               child: FutureBuilder<Day>(
                 future: futureDay,
                 builder: (context, snapshot) {
-                  var resultdaytod = ((snapshot.data.day1).toString());
-                  var resultdaytom = ((snapshot.data.day2).toString());
-                  var resultdaytom2 = ((snapshot.data.day3).toString());
-                  nextDay = resultdaytom;
-                  dayAfter = resultdaytom2;
                   if (snapshot.hasData) {
+                    var resultdaytod = ((snapshot.data.day1).toString());
+                    var resultdaytom = ((snapshot.data.day2).toString());
+                    var resultdaytom2 = ((snapshot.data.day3).toString());
+                    nextDay = resultdaytom;
+                    dayAfter = resultdaytom2;
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
