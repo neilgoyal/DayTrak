@@ -3,8 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'pages/home.dart';
 import 'pages/settings.dart';
 import 'pages/timetable.dart';
-import 'pages/firstopen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:schoolcalendar/globals.dart' as globals;
 
 void main() {
   runApp(MyApp());
@@ -64,6 +63,18 @@ class _MyHomePageState extends State<MyHomePage> {
   ];
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    globals.h1 = width * 0.115;
+    globals.h2 = width * 0.1;
+    globals.h3 = width * 0.09;
+    globals.h4 = width * 0.08;
+    globals.h5 = width * 0.075;
+    globals.h6 = width * 0.065;
+    globals.h7 = width * 0.06;
+    globals.h8 = width * 0.055;
+    globals.h9 = width * 0.05;
+    globals.h10 = width * 0.045;
+
     return DefaultTabController(
       length: 3,
       initialIndex: 0,

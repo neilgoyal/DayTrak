@@ -181,24 +181,29 @@ class _TodoListState1 extends State<TodoList1> {
         accentColor: Color.fromRGBO(185, 225, 203, 1),
         dialogBackgroundColor: Colors.white,
         textTheme: TextTheme(
-          bodyText1:
-              TextStyle(color: Colors.black54, fontFamily: 'Protipo Compact'),
+          bodyText1: TextStyle(
+              color: Colors.black54,
+              fontFamily: 'Protipo Compact',
+              fontSize: globals.h8),
           caption: TextStyle(
               color: Color.fromRGBO(224, 163, 160, 1),
-              fontFamily: 'Protipo Compact'),
+              fontFamily: 'Protipo Compact',
+              fontSize: globals.h10),
         ),
         accentTextTheme: TextTheme(
           bodyText2: TextStyle(
-              color: Colors.green[200], fontFamily: 'Protipo Compact'),
+              color: Colors.green[200],
+              fontFamily: 'Protipo Compact',
+              fontSize: globals.h10),
         ),
       ),
       customWeekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
       styleDatePicker: MaterialRoundedDatePickerStyle(
         paddingMonthHeader: EdgeInsets.all(12),
-        textStyleButtonNegative:
-            TextStyle(fontSize: 20, color: Color.fromRGBO(2, 163, 160, 1)),
+        textStyleButtonNegative: TextStyle(
+            fontSize: globals.h9, color: Color.fromRGBO(2, 163, 160, 1)),
         textStyleButtonPositive: TextStyle(
-          fontSize: 20,
+          fontSize: globals.h9,
           color: Color.fromRGBO(2, 163, 160, 1),
         ),
       ),
@@ -238,7 +243,7 @@ class _TodoListState1 extends State<TodoList1> {
             Text('Add Task',
                 style: TextStyle(
                   fontFamily: 'Protipo Compact',
-                  fontSize: 30,
+                  fontSize: globals.h5,
                   color: Colors.black54,
                   fontWeight: FontWeight.w300,
                 )),
@@ -318,6 +323,7 @@ class _TodoListState1 extends State<TodoList1> {
                 style: TextStyle(
                   color: Colors.black54,
                   fontFamily: 'Protipo Compact',
+                  fontSize: globals.h8,
                 )),
           )
         ],
@@ -362,7 +368,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 40,
+                                      fontSize: globals.h4,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -370,7 +376,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(resultdaytod)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
+                                        fontSize: globals.h4,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -384,7 +390,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     '  Tomorrow:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 40,
+                                      fontSize: globals.h4,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -392,7 +398,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(resultdaytom)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
+                                        fontSize: globals.h4,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -406,7 +412,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     '  Day After:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 40,
+                                      fontSize: globals.h4,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -414,7 +420,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(resultdaytom2)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
+                                        fontSize: globals.h4,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -444,7 +450,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 40,
+                                      fontSize: globals.h4,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -452,7 +458,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(globals.dayOrder)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
+                                        fontSize: globals.h4,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -466,7 +472,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     '  Tomorrow:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 30,
+                                      fontSize: globals.h4,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -474,7 +480,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(nextDay)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
+                                        fontSize: globals.h4,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -488,7 +494,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     '  Day After:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 40,
+                                      fontSize: globals.h4,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -496,7 +502,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   Text('${showcorrectday(dayAfter)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 40,
+                                        fontSize: globals.h4,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
@@ -527,7 +533,9 @@ class _TodoListState1 extends State<TodoList1> {
         Text(
           "Add Task",
           style: TextStyle(
-              color: Colors.white, fontFamily: 'Protipo Compact', fontSize: 27),
+              color: Colors.white,
+              fontFamily: 'Protipo Compact',
+              fontSize: globals.h5),
         ),
       ]),
     );
@@ -587,7 +595,7 @@ class _TodoListState1 extends State<TodoList1> {
                             Text(newDt,
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: 50,
+                                  fontSize: globals.h1,
                                   color: const Color(0xff9b8fb1),
                                   fontWeight: FontWeight.w300,
                                 )),
@@ -630,7 +638,7 @@ class _TodoListState1 extends State<TodoList1> {
                                               '${showcorrectday(result)}',
                                               style: TextStyle(
                                                 fontFamily: 'Protipo Compact',
-                                                fontSize: 50,
+                                                fontSize: globals.h1,
                                                 color: const Color(0xff9b8fb1),
                                                 fontWeight: FontWeight.w300,
                                               ),
@@ -669,7 +677,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                 '${showcorrectday(globals.dayOrder)}',
                                                 style: TextStyle(
                                                   fontFamily: 'Protipo Compact',
-                                                  fontSize: 50,
+                                                  fontSize: globals.h1,
                                                   color:
                                                       const Color(0xff9b8fb1),
                                                   fontWeight: FontWeight.w300,
@@ -687,7 +695,7 @@ class _TodoListState1 extends State<TodoList1> {
                             Text(globals.newDt1,
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: 45,
+                                  fontSize: globals.h2,
                                   color: const Color(0xffbadfca),
                                   fontWeight: FontWeight.w200,
                                 )),
@@ -706,7 +714,7 @@ class _TodoListState1 extends State<TodoList1> {
                                           '${model1.main.temp.round()} ˚C',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
-                                            fontSize: 45,
+                                            fontSize: globals.h2,
                                             color: const Color(0xffbadfca),
                                             fontWeight: FontWeight.w200,
                                           ),
@@ -718,7 +726,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       '$weatherorder ˚C',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
-                                        fontSize: 45,
+                                        fontSize: globals.h2,
                                         color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w200,
                                       ),
@@ -738,7 +746,7 @@ class _TodoListState1 extends State<TodoList1> {
                                 'Upcoming Tasks',
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: 44,
+                                  fontSize: globals.h3,
                                   color: const Color(0xff9b8fb1),
                                   fontWeight: FontWeight.w200,
                                 ),
@@ -774,15 +782,21 @@ class _TodoListState1 extends State<TodoList1> {
                                     children: <Widget>[
                                       Expanded(
                                           child: Container(
-                                        child: Text(_todoList[index].title ??
-                                            'No Title'),
+                                        child: Text(_todoList[index].title,
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontFamily: "Protipo Compact",
+                                                fontSize: globals.h7)),
                                       ))
                                     ],
                                   ),
                                   trailing: Text(
                                     '${concisedate(index)[0]}',
-                                    style:
-                                        TextStyle(color: concisedate(index)[1]),
+                                    style: TextStyle(
+                                        color: concisedate(index)[1],
+                                        fontWeight: FontWeight.w300,
+                                        fontFamily: "Protipo Compact",
+                                        fontSize: globals.h10),
                                   )),
                             ),
                             actions: <Widget>[],

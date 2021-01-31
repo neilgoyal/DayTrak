@@ -1,5 +1,5 @@
-import 'package:schoolcalendar/models/todo.dart';
 import 'package:schoolcalendar/repositories/repository.dart';
+import 'package:schoolcalendar/models/todo.dart';
 
 class TodoService {
   Repository _repository;

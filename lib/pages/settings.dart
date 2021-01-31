@@ -14,6 +14,10 @@ OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(25.0)),
   borderSide: BorderSide(color: Colors.black54, width: 1),
 );
+OutlineInputBorder focusedborder = OutlineInputBorder(
+  borderRadius: BorderRadius.all(Radius.circular(25.0)),
+  borderSide: BorderSide(color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+);
 
 class _SettingsState extends State<SettingsPage> {
   final myController = TextEditingController();
@@ -51,11 +55,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -75,11 +75,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -99,11 +95,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -123,11 +115,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -147,11 +135,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -171,11 +155,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 15,
           ),
@@ -234,11 +214,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -258,11 +234,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -282,11 +254,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -306,11 +274,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -330,11 +294,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -354,11 +314,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -378,11 +334,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -402,11 +354,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -426,11 +374,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 10,
           ),
@@ -450,11 +394,7 @@ class _SettingsState extends State<SettingsPage> {
                     color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(25.0)),
-                    borderSide: BorderSide(
-                        color: Color.fromRGBO(224, 163, 160, 1), width: 2),
-                  ))),
+                  focusedBorder: focusedborder)),
           SizedBox(
             height: 15,
           ),
@@ -582,7 +522,7 @@ class _SettingsState extends State<SettingsPage> {
                                     'Settings',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: 50,
+                                      fontSize: globals.h1,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
@@ -611,7 +551,7 @@ class _SettingsState extends State<SettingsPage> {
                                       Text('Choose Grade',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
-                                            fontSize: 40,
+                                            fontSize: globals.h3,
                                             color: const Color(0xffbadfca),
                                             fontWeight: FontWeight.w300,
                                           )),
@@ -646,7 +586,7 @@ class _SettingsState extends State<SettingsPage> {
                                             style: TextStyle(
                                                 color: Colors.black,
                                                 fontWeight: FontWeight.w300,
-                                                fontSize: 15,
+                                                fontSize: globals.h9,
                                                 fontFamily: 'Protipo Compact'),
                                             elevation: 1,
                                             isExpanded: true,
@@ -690,7 +630,7 @@ class _SettingsState extends State<SettingsPage> {
                                         Text('Add subjects',
                                             style: TextStyle(
                                               fontFamily: 'Protipo Compact',
-                                              fontSize: 40,
+                                              fontSize: globals.h3,
                                               color: const Color(0xffbadfca),
                                               fontWeight: FontWeight.w300,
                                             )),

@@ -137,7 +137,7 @@ class _TimetableState extends State<TimetablePage> {
                               children: [
                                 Text(globals.newDt1,
                                     style: TextStyle(
-                                      fontSize: 55,
+                                      fontSize: globals.h1,
                                       color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     )),
@@ -161,7 +161,7 @@ class _TimetableState extends State<TimetablePage> {
                                         '${showcorrectday(result)}',
                                         style: TextStyle(
                                           fontFamily: 'Protipo Compact',
-                                          fontSize: 48,
+                                          fontSize: globals.h2,
                                           color: const Color(0xffbadfca),
                                           fontWeight: FontWeight.w200,
                                         ),
@@ -172,7 +172,7 @@ class _TimetableState extends State<TimetablePage> {
                                   return Text(
                                     '${showcorrectday(globals.dayOrder)}',
                                     style: TextStyle(
-                                      fontSize: 48,
+                                      fontSize: globals.h2,
                                       color: const Color(0xffbadfca),
                                       fontWeight: FontWeight.w200,
                                     ),
@@ -215,7 +215,7 @@ class _TimetableState extends State<TimetablePage> {
                                                 child: Text(
                                                   'No School',
                                                   style: TextStyle(
-                                                      fontSize: 30,
+                                                      fontSize: globals.h3,
                                                       color: Colors.black54,
                                                       fontWeight:
                                                           FontWeight.w300,
@@ -263,7 +263,7 @@ class _TimetableState extends State<TimetablePage> {
                                                   blocktoprefrence(timetable[
                                                       '${globals.value_}.${(index + 1)}']),
                                                   style: TextStyle(
-                                                      fontSize: 30,
+                                                      fontSize: globals.h3,
                                                       color: Colors.black54,
                                                       fontWeight:
                                                           FontWeight.w300,
@@ -317,7 +317,7 @@ class _TimetableState extends State<TimetablePage> {
                                                 child: Text(
                                                   cachedtiles[index + 1],
                                                   style: TextStyle(
-                                                      fontSize: 30,
+                                                      fontSize: globals.h3,
                                                       color: Colors.black54,
                                                       fontWeight:
                                                           FontWeight.w300,
