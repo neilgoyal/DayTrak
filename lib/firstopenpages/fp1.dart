@@ -1,4 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolcalendar/globals.dart' as globals;
+
+final double toolbarHeight = 50.0;
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -12,35 +16,65 @@ class _Fp1State extends State<Fp1Page> {
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
             appBar: PreferredSize(
-                preferredSize: Size.fromHeight(150),
+                preferredSize: Size.fromHeight(50),
                 child: AppBar(
                     backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                     elevation: 0,
                     title: Container(
                         child: Padding(
-                            padding: EdgeInsets.only(
-                                top: 0.0, left: 15.0, right: 15.0),
-                            child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  SizedBox(
-                                    height: 15,
-                                  ),
-                                  Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text('Hello',
-                                            style: TextStyle(
-                                              fontSize: 55,
-                                              color: const Color(0xff9b8fb1),
-                                              fontWeight: FontWeight.w300,
-                                            )),
-                                      ]),
-                                  SizedBox(
-                                    height: 6,
-                                  )
-                                ])))))));
+                      padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            // Column(
+                            //   mainAxisAlignment: MainAxisAlignment.start,
+                            //   children: [
+                            //     ElevatedButton(
+                            //         style: ButtonStyle(
+                            //           backgroundColor:
+                            //               MaterialStateProperty.all<Color>(
+                            //                   Colors.transparent),
+                            //           foregroundColor:
+                            //               MaterialStateProperty.all<Color>(
+                            //                   Colors.transparent),
+                            //           shadowColor:
+                            //               MaterialStateProperty.all<Color>(
+                            //                   Colors.transparent),
+                            //         ),
+                            //         onPressed: () {},
+                            //         child: Icon(
+                            //           CupertinoIcons.chevron_back,
+                            //           color: Colors.black54,
+                            //           size: globals.h4,
+                            //         ))
+                            //   ],
+                            // ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.transparent),
+                                      foregroundColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.transparent),
+                                      shadowColor:
+                                          MaterialStateProperty.all<Color>(
+                                              Colors.transparent),
+                                    ),
+                                    onPressed: () {},
+                                    child: Icon(
+                                      CupertinoIcons.multiply,
+                                      color: Colors.black54,
+                                      size: globals.h4,
+                                    ))
+                              ],
+                            )
+                          ]),
+                    )),
+                    toolbarHeight: toolbarHeight))));
   }
 }
