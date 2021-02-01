@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:flutter/services.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -161,6 +162,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           ElevatedButton(
             onPressed: () async {
+              HapticFeedback.mediumImpact();
               if (_formKey.currentState.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('B1', myController.text);
