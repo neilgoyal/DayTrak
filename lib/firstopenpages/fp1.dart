@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
-//import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/services.dart';
 
 final double toolbarHeight = 50.0;
@@ -135,32 +134,6 @@ class _Fp1State extends State<Fp1Page> {
                       ))
                 ],
               ),
-              // SizedBox(
-              //   height: globals.h3,
-              // ),
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                // children: [
-                //   Text(
-                //     '.',
-                //     style: TextStyle(
-                //       fontFamily: 'Protipo Compact',
-                //       fontSize: globals.h1,
-                //       color: Colors.black54,
-                //       fontWeight: FontWeight.w900,
-                //     ),
-                //   ),
-                //   Text(
-                //     ' . .',
-                //     style: TextStyle(
-                //       fontFamily: 'Protipo Compact',
-                //       fontSize: globals.h1,
-                //       color: Colors.black26,
-                //       fontWeight: FontWeight.w900,
-                //     ),
-                //   ),
-                // ],
-              )
             ],
           ),
         ));

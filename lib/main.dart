@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/pages/home.dart';
-import 'package:schoolcalendar/firstopenpages/fp1.dart';
+import 'package:schoolcalendar/firstopenpages/fpMain.dart';
 
 void main() => runApp(new MyApp());
 
@@ -44,7 +44,7 @@ class SplashState extends State<Splash> {
     } else {
       prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => Fp1Page()));
+          new MaterialPageRoute(builder: (context) => FpMain()));
     }
   }
 
