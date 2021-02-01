@@ -212,7 +212,7 @@ class _TodoListState1 extends State<TodoList1> {
     );
 
     if (_pickedDate != null) {
-      if (mounted) {
+      if (this.mounted) {
         setState(() {
           _dateTime = _pickedDate;
           _todoDateController.text = DateFormat('yMd').format(_pickedDate);
@@ -227,8 +227,7 @@ class _TodoListState1 extends State<TodoList1> {
     } else if (result == '8') {
       result = 'Error';
     } else {
-      // ignore: unnecessary_brace_in_string_interps
-      result = "Day ${result}";
+      result = "Day $result";
     }
     return result;
   }
@@ -300,7 +299,7 @@ class _TodoListState1 extends State<TodoList1> {
               ),
               prefixIcon: InkWell(
                 onTap: () {
-                  _selectedTodoDate(this.context);
+                  _selectedTodoDate(_globalKey.currentContext);
                 },
                 child: Icon(
                   CupertinoIcons.calendar,
