@@ -90,7 +90,7 @@ class _Fp1State extends State<Fp1Page> {
                       child: Stack(children: <Widget>[
                         Positioned.fill(
                             child: NimaActor(
-                          "assets/Hop.nima",
+                          "assets/assets/robot_fork_to_play.nma",
                           alignment: Alignment.centerRight,
                           fit: BoxFit.contain,
                           animation: _animationName,

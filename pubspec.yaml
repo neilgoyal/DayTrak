@@ -63,6 +63,8 @@ flutter:
     - assets/Hop.png
     - assets/Robot.nma2d 
     - assets/WorldSpin.flr2d
+    - assets/robot_fork_to_play.nma
+    - assets/robot_fork_to_play.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
