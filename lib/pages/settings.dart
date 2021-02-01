@@ -436,7 +436,7 @@ class _SettingsState extends State<SettingsPage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.value_ == 11 || globals.value_ == 12) {
+    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
       setState(() {
         myController.text = prefs.getString('B1') ?? "";
         myController2.text = prefs.getString('B2') ?? "";
@@ -485,13 +485,13 @@ class _SettingsState extends State<SettingsPage> {
 
   addIntToSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('Value', globals.value_);
+    prefs.setInt('Value', globals.valueOfGrade);
   }
 
   getIntValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      globals.value_ = prefs.getInt('Value') ?? 11;
+      globals.valueOfGrade = prefs.getInt('Value') ?? 11;
     });
   }
 
@@ -593,7 +593,7 @@ class _SettingsState extends State<SettingsPage> {
                                             isDense: true,
                                             icon:
                                                 Icon(Icons.keyboard_arrow_down),
-                                            value: globals.value_,
+                                            value: globals.valueOfGrade,
                                             items: [
                                               DropdownMenuItem(
                                                   child: Text("5"), value: 5),
@@ -614,7 +614,7 @@ class _SettingsState extends State<SettingsPage> {
                                             ],
                                             onChanged: (value) {
                                               setState(() {
-                                                globals.value_ = value;
+                                                globals.valueOfGrade = value;
                                                 addIntToSF();
                                               });
                                             },
@@ -641,8 +641,8 @@ class _SettingsState extends State<SettingsPage> {
                                     ),
                                     Column(
                                       children: <Widget>[
-                                        (globals.value_ == 11 ||
-                                                globals.value_ == 12)
+                                        (globals.valueOfGrade == 11 ||
+                                                globals.valueOfGrade == 12)
                                             ? grade12()
                                             : grade10()
                                       ],

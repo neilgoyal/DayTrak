@@ -49,7 +49,7 @@ class _TimetableState extends State<TimetablePage> {
   getIntValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      globals.value_ = prefs.getInt('Value') ?? 11;
+      globals.valueOfGrade = prefs.getInt('Value') ?? 11;
     });
   }
 
@@ -81,7 +81,7 @@ class _TimetableState extends State<TimetablePage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.value_ == 11 || globals.value_ == 12) {
+    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
       setState(() {
         b1 = prefs.getString('B1') ?? "Block 1";
         b2 = prefs.getString('B2') ?? "Block 2";
@@ -107,7 +107,7 @@ class _TimetableState extends State<TimetablePage> {
   }
 
   selectNumTiles() {
-    if (globals.value_ == 12 || globals.value_ == 11) {
+    if (globals.valueOfGrade == 12 || globals.valueOfGrade == 11) {
       numoftiles = 6;
     } else {
       numoftiles = 1;
@@ -234,11 +234,12 @@ class _TimetableState extends State<TimetablePage> {
                               itemCount: numoftiles,
                               itemBuilder: (context, index) {
                                 timetable = snapshot.data.timetable;
-                                cachedtiles[index + 1] = blocktoprefrence(
-                                    timetable[
-                                        '${globals.value_}.${(index + 1)}']);
+                                cachedtiles[
+                                    index +
+                                        1] = blocktoprefrence(timetable[
+                                    '${globals.valueOfGrade}.${(index + 1)}']);
                                 cachedtime[index + 1] = timetable[
-                                    '${globals.value_}.${(index + 1)}_time'];
+                                    '${globals.valueOfGrade}.${(index + 1)}_time'];
                                 return Padding(
                                   padding: EdgeInsets.only(
                                       top: 10.0, left: 18.0, right: 18.0),
@@ -261,7 +262,7 @@ class _TimetableState extends State<TimetablePage> {
                                                   child: Container(
                                                 child: Text(
                                                   blocktoprefrence(timetable[
-                                                      '${globals.value_}.${(index + 1)}']),
+                                                      '${globals.valueOfGrade}.${(index + 1)}']),
                                                   style: TextStyle(
                                                       fontSize: globals.h3,
                                                       color: Colors.black54,
@@ -281,7 +282,7 @@ class _TimetableState extends State<TimetablePage> {
                                               children: [
                                                 Text(
                                                   timetable[
-                                                      '${globals.value_}.${(index + 1)}_time'],
+                                                      '${globals.valueOfGrade}.${(index + 1)}_time'],
                                                   style: TextStyle(
                                                       color: Colors.grey),
                                                 )

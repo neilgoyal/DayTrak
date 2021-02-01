@@ -80,6 +80,12 @@ class _MyHomePageState extends State<MyHomePage> {
     globals.h8 = width * 0.055;
     globals.h9 = width * 0.05;
     globals.h10 = width * 0.045;
+    globals.s1 = width * 0.3;
+    globals.s2 = width * 0.275;
+    globals.s3 = width * 0.25;
+    globals.s4 = width * 0.225;
+    globals.s5 = width * 0.13;
+    globals.w = width * 0.85;
 
     return DefaultTabController(
       length: 6,
@@ -138,8 +144,6 @@ class _MyHomePageState extends State<MyHomePage> {
             labelColor: Colors.black,
             indicator:
                 CircleTabIndicator(color: const Color(0xffbadfca), radius: 3.5),
-            // indicator:
-            //     CircleTabIndicator(color: Colors.transparent, radius: 3.5),
             enableFeedback: true,
           ),
         ),
