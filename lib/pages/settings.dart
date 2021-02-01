@@ -162,7 +162,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           ElevatedButton(
             onPressed: () async {
-              HapticFeedback.mediumImpact();
+              HapticFeedback.heavyImpact();
               if (_formKey.currentState.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('B1', myController.text);
@@ -402,6 +402,7 @@ class _SettingsState extends State<SettingsPage> {
           ),
           ElevatedButton(
             onPressed: () async {
+              HapticFeedback.heavyImpact();
               if (_formKey.currentState.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('B1', myController.text);

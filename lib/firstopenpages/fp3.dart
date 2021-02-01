@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:flutter/services.dart';
 
 final double toolbarHeight = 50.0;
 
@@ -22,7 +23,7 @@ class _Fp3State extends State<Fp3Page> {
                     elevation: 0,
                     title: Container(
                         child: Padding(
-                            padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
+                      padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -41,7 +42,9 @@ class _Fp3State extends State<Fp3Page> {
                                           MaterialStateProperty.all<Color>(
                                               Colors.transparent),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      HapticFeedback.heavyImpact();
+                                    },
                                     child: Icon(
                                       CupertinoIcons.chevron_back,
                                       color: Colors.black54,
@@ -64,17 +67,18 @@ class _Fp3State extends State<Fp3Page> {
                                           MaterialStateProperty.all<Color>(
                                               Colors.transparent),
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      HapticFeedback.heavyImpact();
+                                    },
                                     child: Icon(
                                       CupertinoIcons.checkmark_alt,
                                       color: Colors.black54,
                                       size: globals.h4,
                                     ))
                               ],
-                            ) 
-                          ]),)
-                                ), toolbarHeight: toolbarHeight
-                                ))
-                                ));
+                            )
+                          ]),
+                    )),
+                    toolbarHeight: toolbarHeight))));
   }
 }

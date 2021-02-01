@@ -43,6 +43,7 @@ dependencies:
   encrypt: ^4.1.0
   gradient_widgets: ^0.5.1
   flare_flutter: ^2.0.6
+  smooth_page_indicator: ^0.2.0
 
 dev_dependencies:
   flutter_test:
