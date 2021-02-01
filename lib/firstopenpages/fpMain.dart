@@ -22,8 +22,6 @@ class _FpMain extends State<FpMain> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultPageContoller(
-
-    )
+    return DefaultPageContoller();
   }
 }

@@ -137,11 +137,20 @@ class _Fp1State extends State<Fp1Page> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '. . .',
+                    '.',
                     style: TextStyle(
                       fontFamily: 'Protipo Compact',
-                      fontSize: globals.h4,
-                      color: const Color(0xff9b8fb1),
+                      fontSize: globals.h1,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  Text(
+                    ' . .',
+                    style: TextStyle(
+                      fontFamily: 'Protipo Compact',
+                      fontSize: globals.h1,
+                      color: Colors.black26,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
