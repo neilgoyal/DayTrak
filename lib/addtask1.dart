@@ -62,34 +62,32 @@ class _TodoListState1 extends State<TodoList1> {
 
   addatask() {
     if (_todoTitleController.text.isEmpty && _todoDateController.text.isEmpty) {
-      setState(() {
-        errtext1 = "";
-        errtext2 = "";
-        validated1 = true;
-        validated2 = true;
-        errtext1 = "Add a Task";
-        validated1 = false;
-        errtext2 = "Select a Date";
-        validated2 = false;
-      });
+      if (mounted) {
+        setState(() {
+          errtext1 = "Add a Task";
+          validated1 = false;
+          errtext2 = "Select a Date";
+          validated2 = false;
+        });
+      }
     } else if (_todoTitleController.text.isEmpty) {
-      setState(() {
-        errtext1 = "";
-        errtext2 = "";
-        validated1 = true;
-        validated2 = true;
-        errtext1 = "Add a Task";
-        validated1 = false;
-      });
+      if (mounted) {
+        setState(() {
+          errtext2 = "";
+          validated2 = true;
+          errtext1 = "Add a Task";
+          validated1 = false;
+        });
+      }
     } else if (_todoDateController.text.isEmpty) {
-      setState(() {
-        errtext1 = "";
-        errtext2 = "";
-        validated1 = true;
-        validated2 = true;
-        errtext2 = "Select a Date";
-        validated2 = false;
-      });
+      if (mounted) {
+        setState(() {
+          errtext1 = "";
+          validated1 = true;
+          errtext2 = "Select a Date";
+          validated2 = false;
+        });
+      }
     } else {
       _addbutton();
       _dateTime = DateTime.now();
@@ -108,12 +106,14 @@ class _TodoListState1 extends State<TodoList1> {
       _todoTitleController.text = "";
       _todoDateController.text = "";
     }
-    setState(() {
-      validated1 = true;
-      errtext1 = "";
-      validated2 = true;
-      errtext2 = "";
-    });
+    if (mounted) {
+      setState(() {
+        validated1 = true;
+        errtext1 = "";
+        validated2 = true;
+        errtext2 = "";
+      });
+    }
     panelController.close();
     if (!currentFocus.hasPrimaryFocus) {
       currentFocus.unfocus();
@@ -159,13 +159,15 @@ class _TodoListState1 extends State<TodoList1> {
     _todoList = List<Todo>();
     var todos = await _todoService.readTodos();
     todos.forEach((todo) {
-      setState(() {
-        var model = Todo();
-        model.id = todo['id'];
-        model.title = todo['title'];
-        model.todoDate = todo['todoDate'];
-        _todoList.add(model);
-      });
+      if (mounted) {
+        setState(() {
+          var model = Todo();
+          model.id = todo['id'];
+          model.title = todo['title'];
+          model.todoDate = todo['todoDate'];
+          _todoList.add(model);
+        });
+      }
     });
   }
 
@@ -210,10 +212,12 @@ class _TodoListState1 extends State<TodoList1> {
     );
 
     if (_pickedDate != null) {
-      setState(() {
-        _dateTime = _pickedDate;
-        _todoDateController.text = DateFormat('yMd').format(_pickedDate);
-      });
+      if (mounted) {
+        setState(() {
+          _dateTime = _pickedDate;
+          _todoDateController.text = DateFormat('yMd').format(_pickedDate);
+        });
+      }
     }
   }
 
@@ -296,7 +300,7 @@ class _TodoListState1 extends State<TodoList1> {
               ),
               prefixIcon: InkWell(
                 onTap: () {
-                  _selectedTodoDate(context);
+                  _selectedTodoDate(this.context);
                 },
                 child: Icon(
                   CupertinoIcons.calendar,
@@ -549,6 +553,11 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     PopupMenu.context = context;
     return Material(
@@ -568,12 +577,14 @@ class _TodoListState1 extends State<TodoList1> {
             closekeyboard();
             _todoTitleController.text = "";
             _todoDateController.text = "";
-            setState(() {
-              validated1 = true;
-              errtext1 = "";
-              validated2 = true;
-              errtext2 = "";
-            });
+            if (mounted) {
+              setState(() {
+                validated1 = true;
+                errtext1 = "";
+                validated2 = true;
+                errtext2 = "";
+              });
+            }
           },
           body: GestureDetector(
             onTap: () {
@@ -825,7 +836,6 @@ class _TodoListState1 extends State<TodoList1> {
                                         var _todoService = TodoService();
                                         var result = await _todoService
                                             .deleteTodo(_todoList[index].id);
-                                        setState(() {});
                                         if (result > 0) {
                                           getAllTodos();
                                         }
