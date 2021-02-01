@@ -9,6 +9,7 @@ import 'package:schoolcalendar/api.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:schoolcalendar/flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:popup_menu/popup_menu.dart';
+import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 
 final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
@@ -310,6 +311,7 @@ class _TodoListState1 extends State<TodoList1> {
           ),
           ElevatedButton(
             onPressed: () async {
+              HapticFeedback.mediumImpact();
               addatask();
             },
             style: ElevatedButton.styleFrom(
@@ -638,6 +640,7 @@ class _TodoListState1 extends State<TodoList1> {
                                             onPressed: () {},
                                             onLongPress: () {
                                               days();
+                                              HapticFeedback.mediumImpact();
                                             },
                                             child: Text(
                                               '${showcorrectday(result)}',
@@ -677,6 +680,7 @@ class _TodoListState1 extends State<TodoList1> {
                                               onPressed: () {},
                                               onLongPress: () {
                                                 days();
+                                                HapticFeedback.mediumImpact();
                                               },
                                               child: Text(
                                                 '${showcorrectday(globals.dayOrder)}',
