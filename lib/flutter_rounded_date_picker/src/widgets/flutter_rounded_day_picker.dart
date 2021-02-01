@@ -4,7 +4,6 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/semantics.dart';
 import 'package:schoolcalendar/flutter_rounded_date_picker/src/era_mode.dart';
 import 'package:schoolcalendar/flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
-import 'package:schoolcalendar/flutter_rounded_date_picker/src/thai_date_utils.dart';
 import 'dart:math' as math;
 
 /// Displays the days of a given month and allows choosing a day.
@@ -411,10 +410,7 @@ class FlutterRoundedDayPicker extends StatelessWidget {
     }
 
     String monthYearHeader = "";
-    if (locale != null && locale.languageCode.toLowerCase() == "th") {
-      monthYearHeader =
-          "${ThaiDateUtils.getMonthNameFull(displayedMonth.month)} ${calculateYearEra(era, displayedMonth.year)}";
-    } else if (era == EraMode.BUDDHIST_YEAR) {
+    if (era == EraMode.BUDDHIST_YEAR) {
       monthYearHeader = localizations.formatMonthYear(displayedMonth);
       monthYearHeader = monthYearHeader.replaceAll(RegExp("\\d"), "");
       monthYearHeader = monthYearHeader.replaceAll("ค.ศ.", "");
