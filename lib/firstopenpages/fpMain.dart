@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/firstopenpages/fp2.dart';
-import 'package:schoolcalendar/firstopenpages/fp3.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class FpMain extends StatefulWidget {
@@ -31,11 +30,10 @@ class _FpMain extends State<FpMain> {
       children: <Widget>[
         Fp1Page(),
         Fp2Page(),
-        Fp3Page(),
         Container(
             child: SmoothPageIndicator(
                 controller: _pageController,
-                count: 3,
+                count: 2,
                 effect: ScrollingDotsEffect(
                   activeStrokeWidth: 2.6,
                   activeDotScale: .4,

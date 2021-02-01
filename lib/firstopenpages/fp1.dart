@@ -111,7 +111,7 @@ class _Fp1State extends State<Fp1Page> {
                     )
                   ]),
               SizedBox(
-                height: globals.s5,
+                height: globals.s1,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -135,31 +135,31 @@ class _Fp1State extends State<Fp1Page> {
                       ))
                 ],
               ),
-              SizedBox(
-                height: globals.h3,
-              ),
+              // SizedBox(
+              //   height: globals.h3,
+              // ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '.',
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: globals.h1,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  Text(
-                    ' . .',
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: globals.h1,
-                      color: Colors.black26,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ],
+                // mainAxisAlignment: MainAxisAlignment.center,
+                // children: [
+                //   Text(
+                //     '.',
+                //     style: TextStyle(
+                //       fontFamily: 'Protipo Compact',
+                //       fontSize: globals.h1,
+                //       color: Colors.black54,
+                //       fontWeight: FontWeight.w900,
+                //     ),
+                //   ),
+                //   Text(
+                //     ' . .',
+                //     style: TextStyle(
+                //       fontFamily: 'Protipo Compact',
+                //       fontSize: globals.h1,
+                //       color: Colors.black26,
+                //       fontWeight: FontWeight.w900,
+                //     ),
+                //   ),
+                // ],
               )
             ],
           ),

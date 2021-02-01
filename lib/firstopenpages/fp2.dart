@@ -507,7 +507,7 @@ class _Fp2State extends State<Fp2Page> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Add Your Blocks',
+                    'Setup',
                     style: TextStyle(
                       fontFamily: 'Protipo Compact',
                       fontSize: globals.h1,
@@ -517,209 +517,208 @@ class _Fp2State extends State<Fp2Page> {
                   ),
                 ],
               ),
+              SizedBox(height: globals.h7),
               Row(children: [
                 Expanded(
                     child: SizedBox(
-                        width: globals.w,
-                        height: 450,
-                        child: GestureDetector(
-                            onTap: () {
-                              FocusScope.of(context).requestFocus(FocusNode());
-                            },
-                            child: MaterialApp(
-                                debugShowCheckedModeBanner: false,
-                                home: Scaffold(
-                                    body: SingleChildScrollView(
-                                        child: Container(
-                                            child: Padding(
-                                                padding: EdgeInsets.only(
-                                                    top: 0.0,
-                                                    left: 25.0,
-                                                    right: 25.0),
-                                                child: Column(
+                    width: globals.w,
+                    height: 470,
+                    child: GestureDetector(
+                        onTap: () {
+                          FocusScope.of(context).requestFocus(FocusNode());
+                        },
+                        child: MaterialApp(
+                            debugShowCheckedModeBanner: false,
+                            home: Scaffold(
+                                body: SingleChildScrollView(
+                                    child: Container(
+                                        child: Padding(
+                                            padding: EdgeInsets.only(
+                                                top: 0.0,
+                                                left: 30.0,
+                                                right: 30.0),
+                                            child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceEvenly,
+                                                children: [
+                                                  SizedBox(
+                                                    height: globals.h6,
+                                                  ),
+                                                  Row(
                                                     mainAxisAlignment:
                                                         MainAxisAlignment
-                                                            .spaceEvenly,
+                                                            .spaceBetween,
                                                     children: [
-                                                      SizedBox(
-                                                        height: 25,
-                                                      ),
-                                                      Row(
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .spaceBetween,
-                                                        children: [
-                                                          Text('Choose Grade',
-                                                              style: TextStyle(
-                                                                fontFamily:
-                                                                    'Protipo Compact',
-                                                                fontSize:
-                                                                    globals.h3,
-                                                                color: const Color(
-                                                                    0xffbadfca),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w300,
-                                                              )),
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        height: 25,
-                                                      ),
-                                                      Container(
-                                                          child: Center(
-                                                              child: Column(
-                                                                  children: <
-                                                                      Widget>[
-                                                            InputDecorator(
-                                                                decoration:
-                                                                    InputDecoration(
-                                                                  labelText:
-                                                                      'Select Grade',
-                                                                  labelStyle: Theme.of(
-                                                                          context)
-                                                                      .primaryTextTheme
-                                                                      .caption
-                                                                      .copyWith(
-                                                                          color:
-                                                                              Colors.black),
-                                                                  border: const OutlineInputBorder(
-                                                                      gapPadding:
-                                                                          0,
-                                                                      borderSide: const BorderSide(
-                                                                          width:
-                                                                              1),
-                                                                      borderRadius: const BorderRadius
-                                                                              .all(
-                                                                          Radius.circular(
-                                                                              25.0))),
-                                                                ),
-                                                                child:
-                                                                    DropdownButtonHideUnderline(
-                                                                        child:
-                                                                            Listener(
-                                                                  onPointerDown: (_) =>
-                                                                      FocusScope.of(
-                                                                              context)
-                                                                          .unfocus(),
-                                                                  child:
-                                                                      DropdownButton(
-                                                                    style: TextStyle(
-                                                                        color: Colors
-                                                                            .black,
-                                                                        fontWeight:
-                                                                            FontWeight
-                                                                                .w300,
-                                                                        fontSize:
-                                                                            globals
-                                                                                .h9,
-                                                                        fontFamily:
-                                                                            'Protipo Compact'),
-                                                                    elevation:
-                                                                        1,
-                                                                    isExpanded:
-                                                                        true,
-                                                                    isDense:
-                                                                        true,
-                                                                    icon: Icon(Icons
-                                                                        .keyboard_arrow_down),
-                                                                    value: globals
-                                                                        .valueOfGrade,
-                                                                    items: [
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "5"),
-                                                                          value:
-                                                                              5),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "6"),
-                                                                          value:
-                                                                              6),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "7"),
-                                                                          value:
-                                                                              7),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "8"),
-                                                                          value:
-                                                                              8),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "9"),
-                                                                          value:
-                                                                              9),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "10"),
-                                                                          value:
-                                                                              10),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "11"),
-                                                                          value:
-                                                                              11),
-                                                                      DropdownMenuItem(
-                                                                          child: Text(
-                                                                              "12"),
-                                                                          value:
-                                                                              12),
-                                                                    ],
-                                                                    onChanged:
-                                                                        (value) {
-                                                                      setState(
-                                                                          () {
-                                                                        globals.valueOfGrade =
-                                                                            value;
-                                                                        addIntToSF();
-                                                                      });
-                                                                    },
-                                                                  ),
-                                                                ))),
-                                                            SizedBox(
-                                                              height: 25,
-                                                            ),
-                                                            Row(
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Text(
-                                                                    'Add subjects',
-                                                                    style:
-                                                                        TextStyle(
-                                                                      fontFamily:
-                                                                          'Protipo Compact',
-                                                                      fontSize:
-                                                                          globals
-                                                                              .h3,
-                                                                      color: const Color(
-                                                                          0xffbadfca),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .w300,
-                                                                    )),
-                                                              ],
-                                                            ),
-                                                            SizedBox(
-                                                              height: 5,
-                                                            ),
-                                                            Column(
+                                                      Text('Grade: ',
+                                                          style: TextStyle(
+                                                            fontFamily:
+                                                                'Protipo Compact',
+                                                            fontSize:
+                                                                globals.h5,
+                                                            color: const Color(0xff9b8fb1),
+                                                            fontWeight:
+                                                                FontWeight
+                                                                    .w300,
+                                                          )),
+                                                    ],
+                                                  ),
+                                                  SizedBox(
+                                                    height: globals.h6,
+                                                  ),
+                                                  Container(
+                                                      child: Center(
+                                                          child: Column(
                                                               children: <
                                                                   Widget>[
-                                                                (globals.valueOfGrade ==
-                                                                            11 ||
-                                                                        globals.valueOfGrade ==
-                                                                            12)
-                                                                    ? grade12()
-                                                                    : grade10()
-                                                              ],
+                                                        InputDecorator(
+                                                            decoration:
+                                                                InputDecoration(
+                                                              labelText:
+                                                                  'Grade: ',
+                                                              labelStyle: Theme.of(
+                                                                      context)
+                                                                  .primaryTextTheme
+                                                                  .caption
+                                                                  .copyWith(
+                                                                      color:
+                                                                          Colors.black),
+                                                              border: const OutlineInputBorder(
+                                                                  gapPadding:
+                                                                      0,
+                                                                  borderSide: const BorderSide(
+                                                                      width:
+                                                                          1),
+                                                                  borderRadius: const BorderRadius
+                                                                          .all(
+                                                                      Radius.circular(
+                                                                          25.0))),
                                                             ),
-                                                          ]))),
-                                                    ])))))))))
+                                                            child:
+                                                                DropdownButtonHideUnderline(
+                                                                    child:
+                                                                        Listener(
+                                                              onPointerDown: (_) =>
+                                                                  FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child:
+                                                                  DropdownButton(
+                                                                style: TextStyle(
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                    fontSize:
+                                                                        globals
+                                                                            .h10,
+                                                                    fontFamily:
+                                                                        'Protipo Compact'),
+                                                                elevation:
+                                                                    1,
+                                                                isExpanded:
+                                                                    true,
+                                                                isDense:
+                                                                    true,
+                                                                icon: Icon(Icons
+                                                                    .keyboard_arrow_down),
+                                                                value: globals
+                                                                    .valueOfGrade,
+                                                                items: [
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "5"),
+                                                                      value:
+                                                                          5),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "6"),
+                                                                      value:
+                                                                          6),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "7"),
+                                                                      value:
+                                                                          7),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "8"),
+                                                                      value:
+                                                                          8),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "9"),
+                                                                      value:
+                                                                          9),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "10"),
+                                                                      value:
+                                                                          10),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "11"),
+                                                                      value:
+                                                                          11),
+                                                                  DropdownMenuItem(
+                                                                      child: Text(
+                                                                          "12"),
+                                                                      value:
+                                                                          12),
+                                                                ],
+                                                                onChanged:
+                                                                    (value) {
+                                                                  setState(
+                                                                      () {
+                                                                    globals.valueOfGrade =
+                                                                        value;
+                                                                    addIntToSF();
+                                                                  });
+                                                                },
+                                                              ),
+                                                            ))),
+                                                        SizedBox(
+                                                          height: globals.h6,
+                                                        ),
+                                                        Row(
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            Text(
+                                                                'Subjects:',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Protipo Compact',
+                                                                  fontSize:
+                                                                      globals
+                                                                          .h5,
+                                                                  color: const Color(0xff9b8fb1),
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w300,
+                                                                )),
+                                                          ],
+                                                        ),
+                                                        Column(
+                                                          children: <
+                                                              Widget>[
+                                                            (globals.valueOfGrade ==
+                                                                        11 ||
+                                                                    globals.valueOfGrade ==
+                                                                        12)
+                                                                ? grade12()
+                                                                : grade10()
+                                                          ],
+                                                        ),
+                                                      ]))),
+                                                ])))))))))
               ]),
+              SizedBox(
+                height: globals.h2,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -763,47 +762,47 @@ class _Fp2State extends State<Fp2Page> {
                         }
                       },
                       child: Icon(
-                        CupertinoIcons.chevron_forward,
+                        CupertinoIcons.checkmark_alt,
                         color: Colors.black54,
                         size: globals.h2,
                       ))
                 ],
               ),
-              SizedBox(
-                height: globals.h3,
-              ),
+              // SizedBox(
+              //   height: globals.h3,
+              // ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    '.',
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: globals.h1,
-                      color: Colors.black26,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  Text(
-                    ' .',
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: globals.h1,
-                      color: Colors.black54,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  Text(
-                    ' .',
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: globals.h1,
-                      color: Colors.black26,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                ],
-              )
+                  //   mainAxisAlignment: MainAxisAlignment.center,
+                  //   children: [
+                  //     Text(
+                  //       '.',
+                  //       style: TextStyle(
+                  //         fontFamily: 'Protipo Compact',
+                  //         fontSize: globals.h1,
+                  //         color: Colors.black26,
+                  //         fontWeight: FontWeight.w900,
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       ' .',
+                  //       style: TextStyle(
+                  //         fontFamily: 'Protipo Compact',
+                  //         fontSize: globals.h1,
+                  //         color: Colors.black54,
+                  //         fontWeight: FontWeight.w900,
+                  //       ),
+                  //     ),
+                  //     Text(
+                  //       ' .',
+                  //       style: TextStyle(
+                  //         fontFamily: 'Protipo Compact',
+                  //         fontSize: globals.h1,
+                  //         color: Colors.black26,
+                  //         fontWeight: FontWeight.w900,
+                  //       ),
+                  //     ),
+                  //   ],
+                  )
             ],
           ),
         ));
