@@ -57,7 +57,7 @@ class _Fp1State extends State<Fp1Page> {
           body: Column(
             children: [
               SizedBox(
-                height: globals.s5,
+                height: globals.h5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -66,9 +66,9 @@ class _Fp1State extends State<Fp1Page> {
                     'Get Started',
                     style: TextStyle(
                       fontFamily: 'Protipo Compact',
-                      fontSize: globals.h3,
+                      fontSize: globals.h1,
                       color: Colors.black54,
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],
@@ -79,8 +79,8 @@ class _Fp1State extends State<Fp1Page> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(CupertinoIcons.checkmark_alt_circle,
-                      color: Color.fromRGBO(119, 227, 134, 1), size: globals.s1)
+                  Icon(CupertinoIcons.chart_bar_alt_fill,
+                      color: Color.fromRGBO(119, 227, 134, 1), size: 205)
                 ],
               ),
               SizedBox(
@@ -96,30 +96,53 @@ class _Fp1State extends State<Fp1Page> {
                         '- is designed to help manage your school calendar in simple and easy way',
                         style: TextStyle(
                           fontFamily: 'Protipo Compact',
-                          fontSize: globals.h7,
+                          fontSize: globals.h8,
                           color: Colors.black54,
                           fontWeight: FontWeight.w300,
                         ),
                         overflow: TextOverflow.ellipsis,
                         textDirection: TextDirection.ltr,
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.justify,
                         maxLines: 6,
                       ),
                     )
                   ]),
               SizedBox(
-                height: globals.h4,
+                height: globals.s5,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent),
+                        foregroundColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent),
+                        shadowColor: MaterialStateProperty.all<Color>(
+                            Colors.transparent),
+                      ),
+                      onPressed: () {},
+                      child: Icon(
+                        CupertinoIcons.chevron_forward,
+                        color: Colors.black54,
+                        size: globals.h2,
+                      ))
+                ],
+              ),
+              SizedBox(
+                height: globals.h3,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Row 4',
+                    '. . .',
                     style: TextStyle(
                       fontFamily: 'Protipo Compact',
                       fontSize: globals.h4,
                       color: const Color(0xff9b8fb1),
-                      fontWeight: FontWeight.w300,
+                      fontWeight: FontWeight.w900,
                     ),
                   ),
                 ],
