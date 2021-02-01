@@ -38,7 +38,6 @@ dependencies:
   provider: ^4.3.2+2
   jiffy: ^3.0.1
   sliding_up_panel: ^1.0.2
-  flutter_rounded_date_picker: ^1.0.0
   flutter_icons: ^1.1.0
   popup_menu: ^1.0.5
   encrypt: ^4.1.0

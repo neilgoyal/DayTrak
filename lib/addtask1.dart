@@ -7,10 +7,11 @@ import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:schoolcalendar/api.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:flutter_rounded_date_picker/rounded_picker.dart';
+import 'package:schoolcalendar/flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:popup_menu/popup_menu.dart';
 import 'globals.dart' as globals;
 
+final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 String newDt = DateFormat.MMMd().format(globals.dt);
 // ignore: non_constant_identifier_names
 String newDt_ = DateFormat.yMd().format(globals.dt);
@@ -57,7 +58,6 @@ class _TodoListState1 extends State<TodoList1> {
   String errtext2 = "";
   bool validated1 = true;
   bool validated2 = true;
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
   DateTime _dateTime = DateTime.now();
 
   addatask() {
@@ -169,7 +169,7 @@ class _TodoListState1 extends State<TodoList1> {
     });
   }
 
-  _selectedTodoDate(BuildContext context) async {
+  selectedTodoDate(BuildContext context) async {
     var _pickedDate = await showRoundedDatePicker(
       context: context,
       initialDate: _dateTime,
@@ -224,7 +224,7 @@ class _TodoListState1 extends State<TodoList1> {
       result = 'Error';
     } else {
       // ignore: unnecessary_brace_in_string_interps
-      result = "Day ${result}";
+      result = "Day $result";
     }
     return result;
   }
@@ -296,7 +296,7 @@ class _TodoListState1 extends State<TodoList1> {
               ),
               prefixIcon: InkWell(
                 onTap: () {
-                  _selectedTodoDate(context);
+                  selectedTodoDate(context);
                 },
                 child: Icon(
                   CupertinoIcons.calendar,
@@ -546,6 +546,11 @@ class _TodoListState1 extends State<TodoList1> {
     super.initState();
     getAllTodos();
     futureDay = fetchDay();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
