@@ -41,19 +41,28 @@ dependencies:
   flutter_icons: ^1.1.0
   popup_menu: ^1.0.5
   encrypt: ^4.1.0
-  gradient_widgets: ^0.5.1
-  flare_flutter: ^2.0.6
   smooth_page_indicator: ^0.2.0
+  nima: ^1.0.5
+  flare_flutter: ^1.8.3
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter.
 flutter:
+
+  assets: 
+    - assets/Hop.nima
+    - assets/Hop.png
+    - assets/Robot.nma2d 
+    - assets/WorldSpin.flr2d
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

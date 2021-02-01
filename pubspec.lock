@@ -126,7 +126,7 @@ packages:
       name: flare_flutter
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.6"
+    version: "1.8.3"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -170,13 +170,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  gradient_widgets:
-    dependency: "direct main"
-    description:
-      name: gradient_widgets
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.2"
   http:
     dependency: "direct main"
     description:
@@ -240,6 +233,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.0.4"
+  nima:
+    dependency: "direct main"
+    description:
+      name: nima
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.5"
   path:
     dependency: "direct main"
     description:

@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
-//import 'package:flare_flutter/flare_actor.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/services.dart';
+import 'package:nima/nima.dart';
+import 'package:nima/nima_actor.dart';
 
 final double toolbarHeight = 50.0;
+String _animationName = "idle";
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -79,13 +82,23 @@ class _Fp1State extends State<Fp1Page> {
               SizedBox(
                 height: globals.s5,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(CupertinoIcons.chart_bar_alt_fill,
-                      color: Color.fromRGBO(119, 227, 134, 1), size: 205)
-                ],
-              ),
+              Column(
+                
+                  children: [
+                    SizedBox(
+                      width: globals.w,
+                      height: 225,
+                      child: Stack(children: <Widget>[
+                        Positioned.fill(
+                            child: NimaActor(
+                          "assets/Hop.nima",
+                          alignment: Alignment.centerRight,
+                          fit: BoxFit.contain,
+                          animation: _animationName,
+                        ))
+                      ]),
+                    ),
+                  ]),
               SizedBox(
                 height: globals.s5,
               ),
@@ -139,28 +152,28 @@ class _Fp1State extends State<Fp1Page> {
               //   height: globals.h3,
               // ),
               Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                // children: [
-                //   Text(
-                //     '.',
-                //     style: TextStyle(
-                //       fontFamily: 'Protipo Compact',
-                //       fontSize: globals.h1,
-                //       color: Colors.black54,
-                //       fontWeight: FontWeight.w900,
-                //     ),
-                //   ),
-                //   Text(
-                //     ' . .',
-                //     style: TextStyle(
-                //       fontFamily: 'Protipo Compact',
-                //       fontSize: globals.h1,
-                //       color: Colors.black26,
-                //       fontWeight: FontWeight.w900,
-                //     ),
-                //   ),
-                // ],
-              )
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // children: [
+                  //   Text(
+                  //     '.',
+                  //     style: TextStyle(
+                  //       fontFamily: 'Protipo Compact',
+                  //       fontSize: globals.h1,
+                  //       color: Colors.black54,
+                  //       fontWeight: FontWeight.w900,
+                  //     ),
+                  //   ),
+                  //   Text(
+                  //     ' . .',
+                  //     style: TextStyle(
+                  //       fontFamily: 'Protipo Compact',
+                  //       fontSize: globals.h1,
+                  //       color: Colors.black26,
+                  //       fontWeight: FontWeight.w900,
+                  //     ),
+                  //   ),
+                  // ],
+                  )
             ],
           ),
         ));
