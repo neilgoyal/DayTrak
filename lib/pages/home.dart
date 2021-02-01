@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/addtask1.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:schoolcalendar/firstopenpages/fp1.dart';
-import 'package:schoolcalendar/firstopenpages/fp2.dart';
 import 'settings.dart';
 import 'timetable.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
@@ -44,8 +42,6 @@ class _HomePageState extends State<HomePage> {
     Addtask1(),
     TimetablePage(),
     SettingsPage(),
-    Fp1Page(),
-    Fp2Page(),
   ];
   @override
   Widget build(BuildContext context) {
