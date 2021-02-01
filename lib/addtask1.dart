@@ -212,7 +212,7 @@ class _TodoListState1 extends State<TodoList1> {
     );
 
     if (_pickedDate != null) {
-      if (this.mounted) {
+      if (mounted) {
         setState(() {
           _dateTime = _pickedDate;
           _todoDateController.text = DateFormat('yMd').format(_pickedDate);
