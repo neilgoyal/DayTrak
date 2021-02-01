@@ -459,7 +459,9 @@ class _Fp2State extends State<Fp2Page> {
                                         MaterialStateProperty.all<Color>(
                                             Colors.transparent),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    HapticFeedback.heavyImpact();
+                                  },
                                   child: Icon(
                                     CupertinoIcons.chevron_back,
                                     color: Colors.black54,
@@ -483,7 +485,9 @@ class _Fp2State extends State<Fp2Page> {
                                         MaterialStateProperty.all<Color>(
                                             Colors.transparent),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    HapticFeedback.heavyImpact();
+                                  },
                                   child: Icon(
                                     CupertinoIcons.multiply,
                                     color: Colors.black54,
@@ -728,7 +732,7 @@ class _Fp2State extends State<Fp2Page> {
                             Colors.transparent),
                       ),
                       onPressed: () async {
-                        HapticFeedback.mediumImpact();
+                        HapticFeedback.heavyImpact();
                         if (globals.valueOfGrade == 11 ||
                             globals.valueOfGrade == 12) {
                           if (_formKey.currentState.validate()) {

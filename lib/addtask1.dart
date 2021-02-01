@@ -311,7 +311,7 @@ class _TodoListState1 extends State<TodoList1> {
           ),
           ElevatedButton(
             onPressed: () async {
-              HapticFeedback.mediumImpact();
+              HapticFeedback.heavyImpact();
               addatask();
             },
             style: ElevatedButton.styleFrom(
@@ -640,7 +640,7 @@ class _TodoListState1 extends State<TodoList1> {
                                             onPressed: () {},
                                             onLongPress: () {
                                               days();
-                                              HapticFeedback.mediumImpact();
+                                              HapticFeedback.heavyImpact();
                                             },
                                             child: Text(
                                               '${showcorrectday(result)}',
@@ -680,7 +680,7 @@ class _TodoListState1 extends State<TodoList1> {
                                               onPressed: () {},
                                               onLongPress: () {
                                                 days();
-                                                HapticFeedback.mediumImpact();
+                                                HapticFeedback.heavyImpact();
                                               },
                                               child: Text(
                                                 '${showcorrectday(globals.dayOrder)}',
@@ -831,6 +831,7 @@ class _TodoListState1 extends State<TodoList1> {
                                             color: Colors.black),
                                       ),
                                       onTap: () async {
+                                        HapticFeedback.heavyImpact();
                                         var _todoService = TodoService();
                                         var result = await _todoService
                                             .deleteTodo(_todoList[index].id);
