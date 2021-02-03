@@ -20,12 +20,17 @@ class _FpMain extends State<FpMain> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView(
-      controller: _controller,
-      children: [
-        Fp1Page(),
-        Fp2Page(),
-      ],
-    );
+    return MaterialApp(
+        home: DefaultTabController(
+      length: 2,
+      child: Scaffold(
+        body: TabBarView(
+          children: [
+            Fp1Page(),
+            Fp2Page(),
+          ],
+        ),
+      ),
+    ));
   }
 }

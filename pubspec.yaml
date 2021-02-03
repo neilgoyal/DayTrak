@@ -43,7 +43,7 @@ dependencies:
   encrypt: ^4.1.0
   smooth_page_indicator: ^0.2.0
   nima: ^1.0.5
-  flare_flutter: ^1.8.3
+  flare_flutter: ^2.0.6
   
 
 dev_dependencies:
@@ -59,10 +59,7 @@ dev_dependencies:
 flutter:
 
   assets: 
-    - assets/Hop.nima
-    - assets/Hop.png
-    - assets/Robot.nma2d 
-    - assets/WorldSpin.flr2d
+     - assets/connection.flr
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

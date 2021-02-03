@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
-import 'package:flutter/services.dart';
-import 'package:nima/nima.dart';
-import 'package:nima/nima_actor.dart';
+import 'package:flare_flutter/flare_actor.dart';
+
 
 final double toolbarHeight = 50.0;
-String _animationName = "idle";
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -46,9 +44,7 @@ class _Fp1State extends State<Fp1Page> {
                                         MaterialStateProperty.all<Color>(
                                             Colors.transparent),
                                   ),
-                                  onPressed: () {
-                                    HapticFeedback.heavyImpact();
-                                  },
+                                  onPressed: () {},
                                   child: Icon(
                                     CupertinoIcons.multiply,
                                     color: Colors.black54,
@@ -81,25 +77,36 @@ class _Fp1State extends State<Fp1Page> {
               SizedBox(
                 height: globals.s5,
               ),
-              Column(
-                
-                  children: [
-                    SizedBox(
-                      width: globals.w,
-                      height: 225,
-                      child: Stack(children: <Widget>[
-                        Positioned.fill(
-                            child: NimaActor(
-                          "assets/Hop.nima",
-                          alignment: Alignment.centerRight,
-                          fit: BoxFit.contain,
-                          animation: _animationName,
-                        ))
-                      ]),
-                    ),
+              Column(children: [
+                SizedBox(
+                  width: globals.w,
+                  height: 225,
+                  child: Stack(children: <Widget>[
+                    Positioned.fill(
+                        child: 
+                        FlareActor("assets/connection.flr", alignment:Alignment.center, 
+                        fit:BoxFit.contain, animation:"conn"),
+
+                        // FlareActor("assets/WorldSpin.flr", alignment:Alignment.center, 
+                        // fit:BoxFit.contain, animation:"roll"),
+
+
+                    //     NimaActor("assets/Robot.nima",
+                    //         alignment: Alignment.centerRight,
+                    //         fit: BoxFit.contain,
+                    //         animation: _animationName,
+                    //         mixSeconds: 0.5, completed: (String animationName) {
+                    //   setState(() {
+                    //     // Return to idle.
+                    //     _animationName = "Flight";
+                    //   });
+                    // })
+                    )
                   ]),
+                ),
+              ]),
               SizedBox(
-                height: globals.s5,
+                height: globals.s3,
               ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -123,7 +130,7 @@ class _Fp1State extends State<Fp1Page> {
                     )
                   ]),
               SizedBox(
-                height: globals.s1,
+                height: globals.s5,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -137,9 +144,7 @@ class _Fp1State extends State<Fp1Page> {
                         shadowColor: MaterialStateProperty.all<Color>(
                             Colors.transparent),
                       ),
-                      onPressed: () {
-                        HapticFeedback.heavyImpact();
-                      },
+                      onPressed: () {},
                       child: Icon(
                         CupertinoIcons.chevron_forward,
                         color: Colors.black54,
@@ -147,6 +152,32 @@ class _Fp1State extends State<Fp1Page> {
                       ))
                 ],
               ),
+              // SizedBox(
+              //   height: globals.h3,
+              // ),
+              Row(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // children: [
+                  //   Text(
+                  //     '.',
+                  //     style: TextStyle(
+                  //       fontFamily: 'Protipo Compact',
+                  //       fontSize: globals.h1,
+                  //       color: Colors.black54,
+                  //       fontWeight: FontWeight.w900,
+                  //     ),
+                  //   ),
+                  //   Text(
+                  //     ' . .',
+                  //     style: TextStyle(
+                  //       fontFamily: 'Protipo Compact',
+                  //       fontSize: globals.h1,
+                  //       color: Colors.black26,
+                  //       fontWeight: FontWeight.w900,
+                  //     ),
+                  //   ),
+                  // ],
+                  )
             ],
           ),
         ));

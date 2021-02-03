@@ -157,6 +157,9 @@ class _Fp2State extends State<Fp2Page> {
                   ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
+          SizedBox(
+            height: 20,
+          ),
         ]));
   }
 
@@ -364,6 +367,9 @@ class _Fp2State extends State<Fp2Page> {
                   ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
+          SizedBox(
+            height: 20,
+          ),
         ]));
   }
 
@@ -459,9 +465,7 @@ class _Fp2State extends State<Fp2Page> {
                                         MaterialStateProperty.all<Color>(
                                             Colors.transparent),
                                   ),
-                                  onPressed: () {
-                                    HapticFeedback.heavyImpact();
-                                  },
+                                  onPressed: () {},
                                   child: Icon(
                                     CupertinoIcons.chevron_back,
                                     color: Colors.black54,
@@ -485,9 +489,7 @@ class _Fp2State extends State<Fp2Page> {
                                         MaterialStateProperty.all<Color>(
                                             Colors.transparent),
                                   ),
-                                  onPressed: () {
-                                    HapticFeedback.heavyImpact();
-                                  },
+                                  onPressed: () {},
                                   child: Icon(
                                     CupertinoIcons.multiply,
                                     color: Colors.black54,
@@ -518,176 +520,49 @@ class _Fp2State extends State<Fp2Page> {
                 ],
               ),
               SizedBox(height: globals.h7),
-              Row(children: [
-                Expanded(
-                    child: SizedBox(
-                    width: globals.w,
-                    height: 470,
-                    child: GestureDetector(
-                        onTap: () {
-                          FocusScope.of(context).requestFocus(FocusNode());
-                        },
-                        child: MaterialApp(
-                            debugShowCheckedModeBanner: false,
-                            home: Scaffold(
-                                body: SingleChildScrollView(
-                                    child: Container(
-                                        child: Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 0.0,
-                                                left: 30.0,
-                                                right: 30.0),
-                                            child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: [
-                                                  SizedBox(
-                                                    height: globals.h6,
-                                                  ),
-                                                  Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Text('Grade: ',
-                                                          style: TextStyle(
-                                                            fontFamily:
-                                                                'Protipo Compact',
-                                                            fontSize:
-                                                                globals.h5,
-                                                            color: const Color(0xff9b8fb1),
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w300,
-                                                          )),
-                                                    ],
-                                                  ),
-                                                  SizedBox(
-                                                    height: globals.h6,
-                                                  ),
-                                                  Container(
-                                                      child: Center(
-                                                          child: Column(
-                                                              children: <
-                                                                  Widget>[
-                                                        InputDecorator(
-                                                            decoration:
-                                                                InputDecoration(
-                                                              labelText:
-                                                                  'Grade: ',
-                                                              labelStyle: Theme.of(
-                                                                      context)
-                                                                  .primaryTextTheme
-                                                                  .caption
-                                                                  .copyWith(
-                                                                      color:
-                                                                          Colors.black),
-                                                              border: const OutlineInputBorder(
-                                                                  gapPadding:
-                                                                      0,
-                                                                  borderSide: const BorderSide(
-                                                                      width:
-                                                                          1),
-                                                                  borderRadius: const BorderRadius
-                                                                          .all(
-                                                                      Radius.circular(
-                                                                          25.0))),
-                                                            ),
-                                                            child:
-                                                                DropdownButtonHideUnderline(
-                                                                    child:
-                                                                        Listener(
-                                                              onPointerDown: (_) =>
-                                                                  FocusScope.of(
-                                                                          context)
-                                                                      .unfocus(),
-                                                              child:
-                                                                  DropdownButton(
-                                                                style: TextStyle(
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w300,
-                                                                    fontSize:
-                                                                        globals
-                                                                            .h10,
-                                                                    fontFamily:
-                                                                        'Protipo Compact'),
-                                                                elevation:
-                                                                    1,
-                                                                isExpanded:
-                                                                    true,
-                                                                isDense:
-                                                                    true,
-                                                                icon: Icon(Icons
-                                                                    .keyboard_arrow_down),
-                                                                value: globals
-                                                                    .valueOfGrade,
-                                                                items: [
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "5"),
-                                                                      value:
-                                                                          5),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "6"),
-                                                                      value:
-                                                                          6),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "7"),
-                                                                      value:
-                                                                          7),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "8"),
-                                                                      value:
-                                                                          8),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "9"),
-                                                                      value:
-                                                                          9),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "10"),
-                                                                      value:
-                                                                          10),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "11"),
-                                                                      value:
-                                                                          11),
-                                                                  DropdownMenuItem(
-                                                                      child: Text(
-                                                                          "12"),
-                                                                      value:
-                                                                          12),
-                                                                ],
-                                                                onChanged:
-                                                                    (value) {
-                                                                  setState(
-                                                                      () {
-                                                                    globals.valueOfGrade =
-                                                                        value;
-                                                                    addIntToSF();
-                                                                  });
-                                                                },
-                                                              ),
-                                                            ))),
+              Container(
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.all(Radius.circular(55)),
+                  ),
+                  child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Column(children: [
+                          Card(
+                              elevation: 7,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(35)),
+                                  child: SizedBox(
+                                      width: globals.w,
+                                      height: 490,
+                                      child: GestureDetector(
+                                          onTap: () {
+                                            FocusScope.of(context)
+                                                .requestFocus(FocusNode());
+                                          },
+                                          child: SingleChildScrollView(
+                                              child: Padding(
+                                                  padding: EdgeInsets.only(
+                                                      top: 0.0,
+                                                      left: 30.0,
+                                                      right: 30.0),
+                                                  child: Container(
+                                                      child: Column(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceEvenly,
+                                                          children: [
                                                         SizedBox(
                                                           height: globals.h6,
                                                         ),
                                                         Row(
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                           children: [
-                                                            Text(
-                                                                'Subjects:',
+                                                            Text('Grade: ',
                                                                 style:
                                                                     TextStyle(
                                                                   fontFamily:
@@ -695,29 +570,158 @@ class _Fp2State extends State<Fp2Page> {
                                                                   fontSize:
                                                                       globals
                                                                           .h5,
-                                                                  color: const Color(0xff9b8fb1),
+                                                                  color: const Color(
+                                                                      0xff9b8fb1),
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .w300,
                                                                 )),
                                                           ],
                                                         ),
-                                                        Column(
-                                                          children: <
-                                                              Widget>[
-                                                            (globals.valueOfGrade ==
-                                                                        11 ||
-                                                                    globals.valueOfGrade ==
-                                                                        12)
-                                                                ? grade12()
-                                                                : grade10()
-                                                          ],
+                                                        SizedBox(
+                                                          height: globals.h6,
                                                         ),
-                                                      ]))),
-                                                ])))))))))
-              ]),
+                                                        Container(
+                                                            child: Center(
+                                                                child: Column(
+                                                                    children: <
+                                                                        Widget>[
+                                                              InputDecorator(
+                                                                  decoration:
+                                                                      InputDecoration(
+                                                                    labelText:
+                                                                        'Grade: ',
+                                                                    labelStyle: Theme.of(
+                                                                            context)
+                                                                        .primaryTextTheme
+                                                                        .caption
+                                                                        .copyWith(
+                                                                            color:
+                                                                                Colors.black),
+                                                                    border: const OutlineInputBorder(
+                                                                        gapPadding:
+                                                                            0,
+                                                                        borderSide: const BorderSide(
+                                                                            width:
+                                                                                1),
+                                                                        borderRadius:
+                                                                            const BorderRadius.all(Radius.circular(25.0))),
+                                                                  ),
+                                                                  child:
+                                                                      DropdownButtonHideUnderline(
+                                                                          child:
+                                                                              Listener(
+                                                                    onPointerDown: (_) =>
+                                                                        FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        DropdownButton(
+                                                                      style: TextStyle(
+                                                                          color: Colors
+                                                                              .black,
+                                                                          fontWeight: FontWeight
+                                                                              .w300,
+                                                                          fontSize: globals
+                                                                              .h10,
+                                                                          fontFamily:
+                                                                              'Protipo Compact'),
+                                                                      elevation:
+                                                                          1,
+                                                                      isExpanded:
+                                                                          true,
+                                                                      isDense:
+                                                                          true,
+                                                                      icon: Icon(
+                                                                          Icons
+                                                                              .keyboard_arrow_down),
+                                                                      value: globals
+                                                                          .valueOfGrade,
+                                                                      items: [
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("5"),
+                                                                            value: 5),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("6"),
+                                                                            value: 6),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("7"),
+                                                                            value: 7),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("8"),
+                                                                            value: 8),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("9"),
+                                                                            value: 9),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("10"),
+                                                                            value: 10),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("11"),
+                                                                            value: 11),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("12"),
+                                                                            value: 12),
+                                                                      ],
+                                                                      onChanged:
+                                                                          (value) {
+                                                                        setState(
+                                                                            () {
+                                                                          globals.valueOfGrade =
+                                                                              value;
+                                                                          addIntToSF();
+                                                                        });
+                                                                      },
+                                                                    ),
+                                                                  ))),
+                                                              SizedBox(
+                                                                height:
+                                                                    globals.h6,
+                                                              ),
+                                                              Row(
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Text(
+                                                                      'Subjects:',
+                                                                      style:
+                                                                          TextStyle(
+                                                                        fontFamily:
+                                                                            'Protipo Compact',
+                                                                        fontSize:
+                                                                            globals.h5,
+                                                                        color: const Color(
+                                                                            0xff9b8fb1),
+                                                                        fontWeight:
+                                                                            FontWeight.w300,
+                                                                      )),
+                                                                ],
+                                                              ),
+                                                              Column(
+                                                                children: <
+                                                                    Widget>[
+                                                                  (globals.valueOfGrade ==
+                                                                              11 ||
+                                                                          globals.valueOfGrade ==
+                                                                              12)
+                                                                      ? grade12()
+                                                                      : grade10()
+                                                                ],
+                                                              ),
+                                                            ]))),
+                                                      ])))))))
+                        ])
+                      ])),
               SizedBox(
-                height: globals.h2,
+                height: globals.h6,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -732,7 +736,7 @@ class _Fp2State extends State<Fp2Page> {
                             Colors.transparent),
                       ),
                       onPressed: () async {
-                        HapticFeedback.heavyImpact();
+                        HapticFeedback.mediumImpact();
                         if (globals.valueOfGrade == 11 ||
                             globals.valueOfGrade == 12) {
                           if (_formKey.currentState.validate()) {
