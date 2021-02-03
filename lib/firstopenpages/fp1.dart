@@ -86,20 +86,6 @@ class _Fp1State extends State<Fp1Page> {
                           alignment: Alignment.center,
                           fit: BoxFit.contain,
                           animation: "conn"),
-
-                      // FlareActor("assets/WorldSpin.flr", alignment:Alignment.center,
-                      // fit:BoxFit.contain, animation:"roll"),
-
-                      //     NimaActor("assets/Robot.nima",
-                      //         alignment: Alignment.centerRight,
-                      //         fit: BoxFit.contain,
-                      //         animation: _animationName,
-                      //         mixSeconds: 0.5, completed: (String animationName) {
-                      //   setState(() {
-                      //     // Return to idle.
-                      //     _animationName = "Flight";
-                      //   });
-                      // })
                     )
                   ]),
                 ),
@@ -151,32 +137,7 @@ class _Fp1State extends State<Fp1Page> {
                       ))
                 ],
               ),
-              // SizedBox(
-              //   height: globals.h3,
-              // ),
-              Row(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  // children: [
-                  //   Text(
-                  //     '.',
-                  //     style: TextStyle(
-                  //       fontFamily: 'Protipo Compact',
-                  //       fontSize: globals.h1,
-                  //       color: Colors.black54,
-                  //       fontWeight: FontWeight.w900,
-                  //     ),
-                  //   ),
-                  //   Text(
-                  //     ' . .',
-                  //     style: TextStyle(
-                  //       fontFamily: 'Protipo Compact',
-                  //       fontSize: globals.h1,
-                  //       color: Colors.black26,
-                  //       fontWeight: FontWeight.w900,
-                  //     ),
-                  //   ),
-                  // ],
-                  )
+              Row()
             ],
           ),
         ));
