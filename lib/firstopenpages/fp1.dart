@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 
-
 final double toolbarHeight = 50.0;
 
 class Fp1Page extends StatefulWidget {
@@ -83,24 +82,24 @@ class _Fp1State extends State<Fp1Page> {
                   height: 225,
                   child: Stack(children: <Widget>[
                     Positioned.fill(
-                        child: 
-                        FlareActor("assets/connection.flr", alignment:Alignment.center, 
-                        fit:BoxFit.contain, animation:"conn"),
+                      child: FlareActor("assets/connection.flr",
+                          alignment: Alignment.center,
+                          fit: BoxFit.contain,
+                          animation: "conn"),
 
-                        // FlareActor("assets/WorldSpin.flr", alignment:Alignment.center, 
-                        // fit:BoxFit.contain, animation:"roll"),
+                      // FlareActor("assets/WorldSpin.flr", alignment:Alignment.center,
+                      // fit:BoxFit.contain, animation:"roll"),
 
-
-                    //     NimaActor("assets/Robot.nima",
-                    //         alignment: Alignment.centerRight,
-                    //         fit: BoxFit.contain,
-                    //         animation: _animationName,
-                    //         mixSeconds: 0.5, completed: (String animationName) {
-                    //   setState(() {
-                    //     // Return to idle.
-                    //     _animationName = "Flight";
-                    //   });
-                    // })
+                      //     NimaActor("assets/Robot.nima",
+                      //         alignment: Alignment.centerRight,
+                      //         fit: BoxFit.contain,
+                      //         animation: _animationName,
+                      //         mixSeconds: 0.5, completed: (String animationName) {
+                      //   setState(() {
+                      //     // Return to idle.
+                      //     _animationName = "Flight";
+                      //   });
+                      // })
                     )
                   ]),
                 ),
