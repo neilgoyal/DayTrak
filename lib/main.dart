@@ -14,6 +14,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      initialRoute: '/',
+      routes: {'/first': (context) => Fp1Page(), '/s': (context) => HomePage()},
       home: Splash(),
     );
   }
@@ -36,12 +38,10 @@ class SplashState extends State<Splash> {
     bool _seen = (prefs.getBool('seen') ?? false);
 
     if (_seen) {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomePage()));
+      Navigator.pushReplacementNamed(context, "/s");
     } else {
       prefs.setBool('seen', true);
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => Fp1Page()));
+      Navigator.pushReplacementNamed(context, "/first");
     }
   }
 
