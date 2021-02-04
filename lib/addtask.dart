@@ -808,6 +808,7 @@ class _TodoListState1 extends State<TodoList1> {
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(25)),
                                   child: Slidable(
+                                    key: ValueKey(index),
                                     actionPane: SlidableDrawerActionPane(),
                                     actionExtentRatio: 0.25,
                                     child: Container(
