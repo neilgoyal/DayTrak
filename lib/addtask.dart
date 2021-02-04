@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/services/todo_service.dart';
@@ -63,10 +62,6 @@ class _TodoListState1 extends State<TodoList1> {
     if (_todoTitleController.text.isEmpty && _todoDateController.text.isEmpty) {
       if (mounted) {
         setState(() {
-          errtext1 = "";
-          errtext2 = "";
-          validated1 = true;
-          validated2 = true;
           errtext1 = "Add a Task";
           validated1 = false;
           errtext2 = "Select a Date";
@@ -76,9 +71,7 @@ class _TodoListState1 extends State<TodoList1> {
     } else if (_todoTitleController.text.isEmpty) {
       if (mounted) {
         setState(() {
-          errtext1 = "";
           errtext2 = "";
-          validated1 = true;
           validated2 = true;
           errtext1 = "Add a Task";
           validated1 = false;
@@ -88,9 +81,7 @@ class _TodoListState1 extends State<TodoList1> {
       if (mounted) {
         setState(() {
           errtext1 = "";
-          errtext2 = "";
           validated1 = true;
-          validated2 = true;
           errtext2 = "Select a Date";
           validated2 = false;
         });
