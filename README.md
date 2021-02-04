@@ -1,7 +1,7 @@
 # schoolcalendar
 
 A new Flutter project.
-
+By Neil Goyal and Vinayak Kapur
 ## Getting Started
 
 This project is a starting point for a Flutter application.

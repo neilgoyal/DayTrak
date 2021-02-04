@@ -35,7 +35,6 @@ dependencies:
   popup_menu: ^1.0.5
   encrypt: ^4.1.0
   flare_flutter: ^2.0.6
-  dependency_validator: ^2.0.0
   
 
 dev_dependencies:
