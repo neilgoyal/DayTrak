@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/models/todo.dart';
 import 'package:schoolcalendar/services/todo_service.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
