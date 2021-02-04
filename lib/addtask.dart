@@ -13,8 +13,7 @@ import 'globals.dart' as globals;
 
 final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 String newDt = DateFormat.MMMd().format(globals.dt);
-// ignore: non_constant_identifier_names
-String newDt_ = DateFormat.yMd().format(globals.dt);
+String newDt2 = DateFormat.yMd().format(globals.dt);
 DateTime tomorrow = globals.dt.add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
 DateTime yesterday = globals.dt.add(new Duration(days: -1));
@@ -147,7 +146,7 @@ class _TodoListState1 extends State<TodoList1> {
     if (setDate.difference(globals.dt) < Duration(days: -1)) {
       late_ = Colors.red;
     }
-    if (_todoList[index].todoDate == newDt_) {
+    if (_todoList[index].todoDate == newDt2) {
       concise = 'Today';
     } else if (_todoList[index].todoDate == newDttom) {
       concise = 'Tomorrow';
@@ -594,166 +593,198 @@ class _TodoListState1 extends State<TodoList1> {
             }
           },
           body: GestureDetector(
-            onTap: () {
-              closekeyboard();
-            },
-            child: Scaffold(
-              key: _globalKey,
-              appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(190),
-                  child: AppBar(
-                    backgroundColor: Color.fromRGBO(250, 250, 250, 1),
-                    elevation: 0,
-                    title: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+              onTap: () {
+                closekeyboard();
+              },
+              child: Scaffold(
+                  key: _globalKey,
+                  appBar: PreferredSize(
+                      preferredSize: Size.fromHeight(190),
+                      child: AppBar(
+                        backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                        elevation: 0,
+                        title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(newDt,
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h1,
-                                  color: const Color(0xff9b8fb1),
-                                  fontWeight: FontWeight.w300,
-                                )),
-                            Container(
-                              child: FutureBuilder<Day>(
-                                future: futureDay,
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    var result =
-                                        ((snapshot.data.day1).toString());
-                                    globals.dayOrder = result;
-                                    return Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          ElevatedButton(
-                                            style: ButtonStyle(
-                                                padding: MaterialStateProperty
-                                                    .all<EdgeInsetsGeometry>(
-                                                  EdgeInsets.only(
-                                                      top: 0.0,
-                                                      left: 0.0,
-                                                      right: 0.0),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(newDt,
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h1,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    )),
+                                Container(
+                                  child: FutureBuilder<Day>(
+                                    future: futureDay,
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        var result =
+                                            ((snapshot.data.day1).toString());
+                                        globals.dayOrder = result;
+                                        return Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              ElevatedButton(
+                                                style: ButtonStyle(
+                                                    padding:
+                                                        MaterialStateProperty.all<
+                                                            EdgeInsetsGeometry>(
+                                                      EdgeInsets.only(
+                                                          top: 0.0,
+                                                          left: 0.0,
+                                                          right: 0.0),
+                                                    ),
+                                                    shadowColor:
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Color.fromRGBO(
+                                                                    1, 1, 1, 0)),
+                                                    backgroundColor:
+                                                        MaterialStateProperty
+                                                            .all<Color>(
+                                                                Color.fromRGBO(
+                                                                    1,
+                                                                    1,
+                                                                    1,
+                                                                    0))),
+                                                onPressed: () {},
+                                                onLongPress: () {
+                                                  days();
+                                                  HapticFeedback.heavyImpact();
+                                                },
+                                                child: Text(
+                                                  '${showcorrectday(result)}',
+                                                  style: TextStyle(
+                                                    fontFamily:
+                                                        'Protipo Compact',
+                                                    fontSize: globals.h1,
+                                                    color:
+                                                        const Color(0xff9b8fb1),
+                                                    fontWeight: FontWeight.w300,
+                                                  ),
                                                 ),
-                                                shadowColor:
-                                                    MaterialStateProperty.all<
-                                                            Color>(
-                                                        Color.fromRGBO(
-                                                            1, 1, 1, 0)),
-                                                backgroundColor:
-                                                    MaterialStateProperty.all<
-                                                            Color>(
-                                                        Color.fromRGBO(
-                                                            1, 1, 1, 0))),
-                                            onPressed: () {},
-                                            onLongPress: () {
-                                              days();
-                                              HapticFeedback.heavyImpact();
-                                            },
-                                            child: Text(
-                                              '${showcorrectday(result)}',
+                                              )
+                                            ]);
+                                      } else
+                                        return Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              ElevatedButton(
+                                                  style: ButtonStyle(
+                                                      padding:
+                                                          MaterialStateProperty.all<
+                                                              EdgeInsetsGeometry>(
+                                                        EdgeInsets.only(
+                                                            top: 0.0,
+                                                            left: 0.0,
+                                                            right: 0.0),
+                                                      ),
+                                                      shadowColor:
+                                                          MaterialStateProperty
+                                                              .all<Color>(Color
+                                                                  .fromRGBO(
+                                                                      1, 1, 1, 0)),
+                                                      backgroundColor:
+                                                          MaterialStateProperty.all<
+                                                                  Color>(
+                                                              Color.fromRGBO(
+                                                                  1, 1, 1, 0))),
+                                                  onPressed: () {},
+                                                  onLongPress: () {
+                                                    days();
+                                                    HapticFeedback
+                                                        .heavyImpact();
+                                                  },
+                                                  child: Text(
+                                                    '${showcorrectday(globals.dayOrder)}',
+                                                    style: TextStyle(
+                                                      fontFamily:
+                                                          'Protipo Compact',
+                                                      fontSize: globals.h1,
+                                                      color: const Color(
+                                                          0xff9b8fb1),
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                    ),
+                                                  ))
+                                            ]);
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(globals.newDt1,
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h2,
+                                      color: const Color(0xffbadfca),
+                                      fontWeight: FontWeight.w200,
+                                    )),
+                                Container(
+                                  child: FutureBuilder<WeatherModel>(
+                                    future: getWeather(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        WeatherModel model1 = snapshot.data;
+                                        weatherorder = model1.main.temp.round();
+                                        return Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: <Widget>[
+                                            Text(
+                                              '${model1.main.temp.round()} ˚C',
                                               style: TextStyle(
                                                 fontFamily: 'Protipo Compact',
-                                                fontSize: globals.h1,
-                                                color: const Color(0xff9b8fb1),
-                                                fontWeight: FontWeight.w300,
+                                                fontSize: globals.h2,
+                                                color: const Color(0xffbadfca),
+                                                fontWeight: FontWeight.w200,
                                               ),
-                                            ),
-                                          )
-                                        ]);
-                                  } else
-                                    return Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          ElevatedButton(
-                                              style: ButtonStyle(
-                                                  padding: MaterialStateProperty
-                                                      .all<EdgeInsetsGeometry>(
-                                                    EdgeInsets.only(
-                                                        top: 0.0,
-                                                        left: 0.0,
-                                                        right: 0.0),
-                                                  ),
-                                                  shadowColor:
-                                                      MaterialStateProperty.all<
-                                                              Color>(
-                                                          Color.fromRGBO(
-                                                              1, 1, 1, 0)),
-                                                  backgroundColor:
-                                                      MaterialStateProperty.all<
-                                                              Color>(
-                                                          Color.fromRGBO(
-                                                              1, 1, 1, 0))),
-                                              onPressed: () {},
-                                              onLongPress: () {
-                                                days();
-                                                HapticFeedback.heavyImpact();
-                                              },
-                                              child: Text(
-                                                '${showcorrectday(globals.dayOrder)}',
-                                                style: TextStyle(
-                                                  fontFamily: 'Protipo Compact',
-                                                  fontSize: globals.h1,
-                                                  color:
-                                                      const Color(0xff9b8fb1),
-                                                  fontWeight: FontWeight.w300,
-                                                ),
-                                              ))
-                                        ]);
-                                },
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(globals.newDt1,
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h2,
-                                  color: const Color(0xffbadfca),
-                                  fontWeight: FontWeight.w200,
-                                )),
-                            Container(
-                              child: FutureBuilder<WeatherModel>(
-                                future: getWeather(),
-                                builder: (context, snapshot) {
-                                  if (snapshot.hasData) {
-                                    WeatherModel model1 = snapshot.data;
-                                    weatherorder = model1.main.temp.round();
-                                    return Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(
-                                          '${model1.main.temp.round()} ˚C',
+                                            )
+                                          ],
+                                        );
+                                      } else
+                                        return Text(
+                                          '$weatherorder ˚C',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: globals.h2,
                                             color: const Color(0xffbadfca),
                                             fontWeight: FontWeight.w200,
                                           ),
-                                        )
-                                      ],
-                                    );
-                                  } else
-                                    return Text(
-                                      '$weatherorder ˚C',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: globals.h2,
-                                        color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w200,
-                                      ),
-                                    );
-                                },
-                              ),
+                                        );
+                                    },
+                                  ),
+                                ),
+                              ],
                             ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Upcoming Tasks',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h3,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w200,
+                                    ),
+                                  )
+                                ]),
+                            SizedBox(
+                              height: 20,
+                            )
                           ],
                         ),
                         SizedBox(
@@ -819,10 +850,55 @@ class _TodoListState1 extends State<TodoList1> {
                                           child: Container(
                                         child: Text(_todoList[index].title,
                                             style: TextStyle(
+                                                color: concisedate(index)[1],
                                                 fontWeight: FontWeight.w300,
                                                 fontFamily: "Protipo Compact",
-                                                fontSize: globals.h7)),
-                                      ))
+                                                fontSize: globals.h10),
+                                          )),
+                                    ),
+                                    actions: <Widget>[],
+                                    secondaryActions: <Widget>[
+                                      Column(children: [
+                                        Expanded(
+                                          child: SlideAction(
+                                              color: Color.fromRGBO(0, 0, 0, 0),
+                                              child: Container(
+                                                height: 10000000.0,
+                                                width: 10000000.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromRGBO(
+                                                      119, 227, 134, 1),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topRight:
+                                                        const Radius.circular(
+                                                            25.0),
+                                                    bottomRight:
+                                                        const Radius.circular(
+                                                            25.0),
+                                                  ),
+                                                ),
+                                                child: Icon(
+                                                    CupertinoIcons
+                                                        .checkmark_alt,
+                                                    color: Colors.black),
+                                              ),
+                                              onTap: () async {
+                                                HapticFeedback.heavyImpact();
+                                                var _todoService =
+                                                    TodoService();
+                                                var result = await _todoService
+                                                    .deleteTodo(
+                                                        _todoList[index].id);
+                                                if (mounted) {
+                                                  setState(() {});
+                                                }
+                                                if (result > 0) {
+                                                  getAllTodos();
+                                                }
+                                              }),
+                                        )
+                                      ])
                                     ],
                                   ),
                                   trailing: Text(
