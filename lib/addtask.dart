@@ -789,7 +789,12 @@ class _TodoListState1 extends State<TodoList1> {
                         ),
                         toolbarHeight: toolbarHeight,
                       )),
-                  body: Card(
+                  body: 
+                  Container(
+                padding:
+                  EdgeInsets.only(top: 0.0, left: 12.0, right: 12.0),
+                child: 
+                  Card(
                     color: Colors.white,
                     elevation: 12,
                     shape: RoundedRectangleBorder(
@@ -887,7 +892,7 @@ class _TodoListState1 extends State<TodoList1> {
                                 ));
                           }),
                     ),
-                  )))),
+                  ))))),
       borderRadius: radius,
     );
   }
