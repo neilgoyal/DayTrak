@@ -1,7 +1,5 @@
-import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:encrypt/encrypt.dart';
 
 final encrypter = Encrypter(
@@ -34,11 +32,9 @@ class WeatherModel {
 Future<WeatherModel> getWeather() async {
   final response = await http.get(
       'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric');
-  SharedPreferences prefs = await SharedPreferences.getInstance();
   if (response.statusCode == 200) {
-    var result = json.decode(response.body);
-    var model = WeatherModel.fromJson(result);
-    prefs.setDouble('temp', model.main.temp);
+    dynamic result = json.decode(response.body);
+    WeatherModel model = WeatherModel.fromJson(result);
     return model;
   } else
     throw Exception('Failed to load Weather Information');
@@ -47,8 +43,11 @@ Future<WeatherModel> getWeather() async {
 Future<Day> fetchDay() async {
   final response1 =
       await http.get('https://tumulrankypanky.pythonanywhere.com');
-  var result = Day.fromJson(jsonDecode(response1.body));
-  return result;
+  if (response1.statusCode == 200) {
+    Day result = Day.fromJson(jsonDecode(response1.body));
+    return result;
+  } else
+    throw Exception('Failed to load Day Order Information');
 }
 
 class Day {
