@@ -130,12 +130,11 @@ class _TodoListState1 extends State<TodoList1> {
     globals.dt = DateTime.now();
     DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
-    // ignore: non_constant_identifier_names
-    Color late_ = Colors.black;
+    Color late = Colors.black;
     String newDttom = DateFormat.yMd().format(tomorrow);
     String newDtyes = DateFormat.yMd().format(yesterday);
     if (setDate.difference(globals.dt) < Duration(days: -1)) {
-      late_ = Colors.red;
+      late = Colors.red;
     }
     if (_todoList[index].todoDate == newDt1) {
       concise = 'Today';
@@ -148,7 +147,7 @@ class _TodoListState1 extends State<TodoList1> {
               .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
           'No Date';
     }
-    return [concise, late_];
+    return [concise, late];
   }
 
   getAllTodos() async {
