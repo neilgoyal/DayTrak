@@ -41,6 +41,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 20,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               focusNode: FocusNode(canRequestFocus: false),
               cursorColor: Colors.black54,
               validator: (value) {
@@ -61,6 +62,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
                 if (value.isEmpty) {
@@ -81,6 +83,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -101,6 +104,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -121,6 +125,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -141,6 +146,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -201,6 +207,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 20,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -221,6 +228,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -241,6 +249,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -261,6 +270,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -281,6 +291,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -301,6 +312,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -321,6 +333,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -341,6 +354,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -361,6 +375,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
@@ -381,6 +396,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
                   return errmessage;
