@@ -51,7 +51,6 @@ Future<Day> fetchDay() async {
 }
 
 class Day {
-  // ignore: non_constant_identifier_names
   final int day1;
   final int day2;
   final int day3;
