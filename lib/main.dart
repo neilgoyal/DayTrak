@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -28,8 +27,8 @@ class Splash extends StatefulWidget {
 class SplashState extends State<Splash> {
   @override
   void initState() {
-    super.initState();
     checkFirstSeen();
+    super.initState();
   }
 
   Future checkFirstSeen() async {
