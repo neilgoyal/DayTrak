@@ -779,7 +779,14 @@ class _TodoListState1 extends State<TodoList1> {
                     ),
                     toolbarHeight: toolbarHeight,
                   )),
-              body: ListView.builder(
+              body: Card(
+                elevation: 12,
+                shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(45)),
+                              child: Container(
+                              padding: EdgeInsets.all(10.0),
+                child: 
+              ListView.builder(
                   itemCount: _todoList.length,
                   itemBuilder: (context, index) {
                     return Padding(
@@ -859,7 +866,7 @@ class _TodoListState1 extends State<TodoList1> {
                           ),
                         ));
                   }),
-            ),
+            ),))
           )),
       borderRadius: radius,
     );
