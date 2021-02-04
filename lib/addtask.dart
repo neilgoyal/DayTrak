@@ -780,6 +780,7 @@ class _TodoListState1 extends State<TodoList1> {
                     toolbarHeight: toolbarHeight,
                   )),
               body: Card(
+                color: Colors.white,
                 elevation: 12,
                 shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(45)),
@@ -789,12 +790,14 @@ class _TodoListState1 extends State<TodoList1> {
               ListView.builder(
                   itemCount: _todoList.length,
                   itemBuilder: (context, index) {
-                    return Padding(
+                    return 
+                    Padding(
                         padding:
-                            EdgeInsets.only(top: 0.0, left: 8.0, right: 8.0),
-                        child: Card(
+                            EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+                        child: 
+                        Card(
                           color: Color.fromRGBO(211, 223, 229, 1),
-                          elevation: 5,
+                          elevation: 2,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(25)),
                           child: Slidable(
@@ -845,7 +848,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                 const Radius.circular(25.0),
                                           ),
                                         ),
-                                        child: Icon(Icons.check,
+                                        child: Icon(CupertinoIcons.checkmark_alt,
                                             color: Colors.black),
                                       ),
                                       onTap: () async {
