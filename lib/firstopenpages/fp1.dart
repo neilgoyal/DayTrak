@@ -4,7 +4,6 @@ import 'package:schoolcalendar/globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:schoolcalendar/pages/home.dart';
 import 'fp2.dart';
-final double toolbarHeight = 50.0;
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -75,7 +74,7 @@ class _Fp1State extends State<Fp1Page> {
                           )
                         ]),
                   )),
-                  toolbarHeight: toolbarHeight)),
+                  toolbarHeight: 50.0)),
           body: Column(
             children: [
               SizedBox(
