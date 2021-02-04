@@ -13,8 +13,7 @@ import 'globals.dart' as globals;
 
 final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 String newDt = DateFormat.MMMd().format(globals.dt);
-// ignore: non_constant_identifier_names
-String newDt_ = DateFormat.yMd().format(globals.dt);
+String newDt1 = DateFormat.yMd().format(globals.dt);
 DateTime tomorrow = globals.dt.add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
 DateTime yesterday = globals.dt.add(new Duration(days: -1));
@@ -147,7 +146,7 @@ class _TodoListState1 extends State<TodoList1> {
     if (setDate.difference(globals.dt) < Duration(days: -1)) {
       late_ = Colors.red;
     }
-    if (_todoList[index].todoDate == newDt_) {
+    if (_todoList[index].todoDate == newDt1) {
       concise = 'Today';
     } else if (_todoList[index].todoDate == newDttom) {
       concise = 'Tomorrow';
