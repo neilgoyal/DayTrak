@@ -46,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double lenght = MediaQuery.of(context).size.height;
     globals.h1 = width * 0.115;
     globals.h2 = width * 0.1;
     globals.h3 = width * 0.09;
@@ -62,6 +63,7 @@ class _HomePageState extends State<HomePage> {
     globals.s4 = width * 0.225;
     globals.s5 = width * 0.13;
     globals.w = width * 0.85;
+    globals.l1 = lenght * 0.34;
     return DefaultTabController(
       length: 3,
       initialIndex: 0,

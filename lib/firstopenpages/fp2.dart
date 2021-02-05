@@ -510,7 +510,9 @@ class _Fp2State extends State<Fp2Page> {
                         ]),
                   )),
                   toolbarHeight: toolbarHeight)),
-          body: Column(
+          body: ListView(
+            children: [
+          Column(
             children: [
               SizedBox(
                 height: globals.h5,
@@ -793,43 +795,8 @@ class _Fp2State extends State<Fp2Page> {
                       ))
                 ],
               ),
-              // SizedBox(
-              //   height: globals.h3,
-              // ),
-              Row(
-                  //   mainAxisAlignment: MainAxisAlignment.center,
-                  //   children: [
-                  //     Text(
-                  //       '.',
-                  //       style: TextStyle(
-                  //         fontFamily: 'Protipo Compact',
-                  //         fontSize: globals.h1,
-                  //         color: Colors.black26,
-                  //         fontWeight: FontWeight.w900,
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       ' .',
-                  //       style: TextStyle(
-                  //         fontFamily: 'Protipo Compact',
-                  //         fontSize: globals.h1,
-                  //         color: Colors.black54,
-                  //         fontWeight: FontWeight.w900,
-                  //       ),
-                  //     ),
-                  //     Text(
-                  //       ' .',
-                  //       style: TextStyle(
-                  //         fontFamily: 'Protipo Compact',
-                  //         fontSize: globals.h1,
-                  //         color: Colors.black26,
-                  //         fontWeight: FontWeight.w900,
-                  //       ),
-                  //     ),
-                  //   ],
-                  )
             ],
-          ),
+          ),])
         ));
   }
 }

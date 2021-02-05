@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
@@ -8,7 +9,7 @@ class TimetablePage extends StatefulWidget {
   _TimetableState createState() => _TimetableState();
 }
 
-final double toolbarHeight = 120.0;
+final double toolbarHeight = 190.0;
 Future<Day> futureDay;
 double blocks_6 = 55;
 int numoftiles;
@@ -119,7 +120,7 @@ class _TimetableState extends State<TimetablePage> {
         debugShowCheckedModeBanner: false,
         home: new Scaffold(
             appBar: PreferredSize(
-                preferredSize: Size.fromHeight(150),
+                preferredSize: Size.fromHeight(210),
                 child: AppBar(
                   backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                   elevation: 0,
@@ -145,6 +146,9 @@ class _TimetableState extends State<TimetablePage> {
                           SizedBox(
                             height: 6,
                           ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
                           Container(
                             child: FutureBuilder<Day>(
                               future: futureDay,
@@ -179,6 +183,11 @@ class _TimetableState extends State<TimetablePage> {
                                   );
                               },
                             ),
+                          ),],),
+                          SizedBox(
+                            height: 24,
+                          ),
+                          Row(
                           ),
                         ]),
                   )),
