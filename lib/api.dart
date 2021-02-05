@@ -55,13 +55,9 @@ class Day {
   final int day2;
   final int day3;
   final Map<String, dynamic> timetable;
+  final Map<String, dynamic> timetabletom;
 
-  Day({
-    this.day1,
-    this.day2,
-    this.day3,
-    this.timetable,
-  });
+  Day({this.day1, this.day2, this.day3, this.timetable, this.timetabletom});
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
@@ -72,6 +68,7 @@ class Day {
       day2:
           int.parse((encrypter.decrypt(Encrypted.fromBase64(json["tomato"])))),
       timetable: json['potato'][0],
+      timetabletom: json['aloo'][0],
     );
   }
 }
