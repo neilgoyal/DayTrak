@@ -60,6 +60,8 @@ class _HomePageState extends State<HomePage> {
     globals.s5 = width * 0.13;
     globals.w = width * 0.85;
     globals.l1 = lenght * 0.34;
+    globals.l2 = lenght * 0.1;
+    globals.l3 = lenght * 0.75;
     return DefaultTabController(
       length: 3,
       initialIndex: 0,

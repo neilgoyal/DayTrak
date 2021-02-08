@@ -78,7 +78,7 @@ class _Fp1State extends State<Fp1Page> {
           body: Column(
             children: [
               SizedBox(
-                height: globals.h5,
+                height: globals.h10,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -112,7 +112,7 @@ class _Fp1State extends State<Fp1Page> {
                 ),
               ]),
               SizedBox(
-                height: globals.s3,
+                height: globals.s5,
               ),
               Row(
                   mainAxisAlignment: MainAxisAlignment.center,
