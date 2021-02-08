@@ -30,8 +30,8 @@ class WeatherModel {
 }
 
 Future<WeatherModel> getWeather() async {
-  final response = await http.get(Uri.dataFromString(
-      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric'));
+  final response = await http.get(
+      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric');
   if (response.statusCode == 200) {
     dynamic result = json.decode(response.body);
     WeatherModel model = WeatherModel.fromJson(result);
@@ -41,8 +41,8 @@ Future<WeatherModel> getWeather() async {
 }
 
 Future<Day> fetchDay() async {
-  final response1 = await http
-      .get(Uri.dataFromString('https://tumulrankypanky.pythonanywhere.com'));
+  final response1 =
+      await http.get('https://tumulrankypanky.pythonanywhere.com');
   if (response1.statusCode == 200) {
     Day result = Day.fromJson(jsonDecode(response1.body));
     return result;
