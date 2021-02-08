@@ -164,39 +164,6 @@ class _Fp2State extends State<Fp2Page> {
                   ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
-          SizedBox(
-            height: 15,
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              HapticFeedback.heavyImpact();
-              if (_formKey.currentState.validate()) {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setString('B1', myController.text);
-                prefs.setString('B2', myController2.text);
-                prefs.setString('B3', myController3.text);
-                prefs.setString('B4', myController4.text);
-                prefs.setString('B5', myController5.text);
-                prefs.setString('B6', myController6.text);
-              }
-            },
-            child: const Text('Save',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontFamily: 'Protipo Compact',
-                )),
-            style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(119, 227, 134, 1),
-              shadowColor: Color.fromRGBO(223, 164, 160, 1),
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7)),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
         ]));
   }
 
@@ -393,63 +360,6 @@ class _Fp2State extends State<Fp2Page> {
                   ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController10,
-              decoration: InputDecoration(
-                  labelText: 'Block 10',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 15,
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              HapticFeedback.heavyImpact();
-              if (_formKey.currentState.validate()) {
-                SharedPreferences prefs = await SharedPreferences.getInstance();
-                prefs.setString('B1', myController.text);
-                prefs.setString('B2', myController2.text);
-                prefs.setString('B3', myController3.text);
-                prefs.setString('B4', myController4.text);
-                prefs.setString('B5', myController5.text);
-                prefs.setString('B6', myController6.text);
-                prefs.setString('B7', myController7.text);
-                prefs.setString('B8', myController8.text);
-                prefs.setString('B9', myController9.text);
-                prefs.setString('B10', myController10.text);
-              }
-            },
-            child: const Text('Save',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 22,
-                  fontFamily: 'Protipo Compact',
-                )),
-            style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(119, 227, 134, 1),
-              shadowColor: Color.fromRGBO(223, 164, 160, 1),
-              elevation: 3,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7)),
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
         ]));
   }
 
@@ -826,7 +736,7 @@ class _Fp2State extends State<Fp2Page> {
                                 Colors.transparent),
                           ),
                           onPressed: () async {
-                            HapticFeedback.mediumImpact();
+                            HapticFeedback.heavyImpact();
                             if (globals.valueOfGrade == 11 ||
                                 globals.valueOfGrade == 12) {
                               if (_formKey.currentState.validate()) {
