@@ -77,7 +77,7 @@ class _TimetableState extends State<TimetablePage>
                                     var result =
                                         ((snapshot.data.day1).toString());
                                     var result2 =
-                                        ((snapshot.data.day1).toString());
+                                        ((snapshot.data.day2).toString());
                                     globals.dayOrder = result;
                                     globals.nextDay = result2;
                                     return Column(
