@@ -45,25 +45,25 @@ class _TimetabletomState extends State<TimetabletomPage> {
 
   blocktoprefrence(userinput) {
     if (userinput == 'B1') {
-      return b1;
+      return (userinput == "Block 1") ? b1 : "B1 $b1";
     } else if (userinput == 'B2') {
-      return b2;
+      return (userinput == "Block 2") ? b2 : "B2 $b2";
     } else if (userinput == 'B3') {
-      return b3;
+      return (userinput == "Block 3") ? b3 : "B3 $b3";
     } else if (userinput == 'B4') {
-      return b4;
+      return (userinput == "Block 4") ? b4 : "B4 $b4";
     } else if (userinput == 'B5') {
-      return b5;
+      return (userinput == "Block 5") ? b5 : "B5 $b5";
     } else if (userinput == 'B6') {
-      return b6;
+      return (userinput == "Block 6") ? b6 : "B6 $b6";
     } else if (userinput == 'B7') {
-      return b7;
+      return (userinput == "Block 7") ? b7 : "B7 $b7";
     } else if (userinput == 'B8') {
-      return b8;
+      return (userinput == "Block 8") ? b8 : "B8 $b8";
     } else if (userinput == 'B9') {
-      return b9;
+      return (userinput == "Block 9") ? b9 : "B9 $b9";
     } else if (userinput == 'B10') {
-      return b10;
+      return (userinput == "Block 10") ? b10 : "B10 $b10";
     } else {
       return userinput;
     }
