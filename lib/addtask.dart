@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:schoolcalendar/db.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
@@ -778,116 +779,160 @@ class _TodoListState1 extends State<TodoList1> {
                         ),
                         toolbarHeight: toolbarHeight,
                       )),
-                  body: Container(
-                      padding:
-                          EdgeInsets.only(top: 0.0, left: 12.0, right: 12.0),
-                      child: Card(
-                        color: Colors.white,
-                        elevation: 12,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(45)),
-                        child: Container(
-                          padding: EdgeInsets.all(10.0),
-                          child: ListView.builder(
-                              itemCount: _todoList.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 8.0, left: 8.0, right: 8.0),
-                                    child: Card(
-                                      color: Color.fromRGBO(211, 223, 229, 1),
-                                      elevation: 2,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(25)),
-                                      child: Slidable(
-                                        actionPane: SlidableDrawerActionPane(),
-                                        actionExtentRatio: 0.25,
-                                        child: Container(
-                                          padding: EdgeInsets.all(5.0),
-                                          child: ListTile(
-                                              title: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: <Widget>[
-                                                  Expanded(
-                                                      child: Container(
-                                                    child: Text(
-                                                        _todoList[index].title,
-                                                        style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w300,
-                                                            fontFamily:
-                                                                "Protipo Compact",
-                                                            fontSize:
-                                                                globals.h7)),
-                                                  ))
-                                                ],
-                                              ),
-                                              trailing: Text(
-                                                '${concisedate(index)[0]}',
-                                                style: TextStyle(
-                                                    color:
-                                                        concisedate(index)[1],
-                                                    fontWeight: FontWeight.w300,
-                                                    fontFamily:
-                                                        "Protipo Compact",
-                                                    fontSize: globals.h10),
-                                              )),
-                                        ),
-                                        actions: <Widget>[],
-                                        secondaryActions: <Widget>[
-                                          Column(children: [
-                                            Expanded(
-                                              child: SlideAction(
-                                                  color: Color.fromRGBO(
-                                                      0, 0, 0, 0),
-                                                  child: Container(
-                                                    height: 10000000.0,
-                                                    width: 10000000.0,
-                                                    decoration: BoxDecoration(
-                                                      color: Color.fromRGBO(
-                                                          119, 227, 134, 1),
-                                                      borderRadius:
-                                                          BorderRadius.only(
-                                                        topRight: const Radius
-                                                            .circular(25.0),
-                                                        bottomRight:
-                                                            const Radius
-                                                                .circular(25.0),
-                                                      ),
-                                                    ),
-                                                    child: Icon(
-                                                        CupertinoIcons
-                                                            .checkmark_alt,
-                                                        color: Colors.black),
+                  body: (_todoList.isEmpty)
+                      ? Container(
+                         padding: EdgeInsets.only(
+                              top: 0.0, left: 12.0, right: 12.0),
+                         
+                          child: Card(
+                            color: Colors.white,
+                            elevation: 12,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(45)),
+                            child:
+                          Column(children: [
+                            SizedBox(
+                              height: globals.s4,
+                            ),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "You're all done!  ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Protipo Compact",
+                                        fontSize: globals.h6,
+                                        fontWeight: FontWeight.w200),
+                                  ), 
+                                  Icon(
+                                    CupertinoIcons.smiley,
+                                    size: globals.h6,
+                                    color: Colors.black54,
+
+                                  )
+                                ])
+                          ])))
+                      : Container(
+                          padding: EdgeInsets.only(
+                              top: 0.0, left: 12.0, right: 12.0),
+                          child: Card(
+                            color: Colors.white,
+                            elevation: 12,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(45)),
+                            child: Container(
+                              padding: EdgeInsets.all(10.0),
+                              child: ListView.builder(
+                                  itemCount: _todoList.length,
+                                  itemBuilder: (context, index) {
+                                    return Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 8.0, left: 8.0, right: 8.0),
+                                        child: Card(
+                                          color:
+                                              Color.fromRGBO(211, 223, 229, 1),
+                                          elevation: 2,
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(25)),
+                                          child: Slidable(
+                                            actionPane:
+                                                SlidableDrawerActionPane(),
+                                            actionExtentRatio: 0.25,
+                                            child: Container(
+                                              padding: EdgeInsets.all(5.0),
+                                              child: ListTile(
+                                                  title: Row(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: <Widget>[
+                                                      Expanded(
+                                                          child: Container(
+                                                        child: Text(
+                                                            _todoList[index]
+                                                                .title,
+                                                            style: TextStyle(
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .w300,
+                                                                fontFamily:
+                                                                    "Protipo Compact",
+                                                                fontSize:
+                                                                    globals
+                                                                        .h7)),
+                                                      ))
+                                                    ],
                                                   ),
-                                                  onTap: () async {
-                                                    HapticFeedback
-                                                        .heavyImpact();
-                                                    var _todoService =
-                                                        TodoService();
-                                                    var result =
-                                                        await _todoService
-                                                            .deleteTodo(
-                                                                _todoList[index]
-                                                                    .id);
-                                                    if (mounted) {
-                                                      setState(() {});
-                                                    }
-                                                    if (result > 0) {
-                                                      getAllTodos();
-                                                    }
-                                                  }),
-                                            )
-                                          ])
-                                        ],
-                                      ),
-                                    ));
-                              }),
-                        ),
-                      ))))),
+                                                  trailing: Text(
+                                                    '${concisedate(index)[0]}',
+                                                    style: TextStyle(
+                                                        color: concisedate(
+                                                            index)[1],
+                                                        fontWeight:
+                                                            FontWeight.w300,
+                                                        fontFamily:
+                                                            "Protipo Compact",
+                                                        fontSize: globals.h10),
+                                                  )),
+                                            ),
+                                            actions: <Widget>[],
+                                            secondaryActions: <Widget>[
+                                              Column(children: [
+                                                Expanded(
+                                                  child: SlideAction(
+                                                      color: Color.fromRGBO(
+                                                          0, 0, 0, 0),
+                                                      child: Container(
+                                                        height: 10000000.0,
+                                                        width: 10000000.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: Color.fromRGBO(
+                                                              119, 227, 134, 1),
+                                                          borderRadius:
+                                                              BorderRadius.only(
+                                                            topRight: const Radius
+                                                                .circular(25.0),
+                                                            bottomRight:
+                                                                const Radius
+                                                                        .circular(
+                                                                    25.0),
+                                                          ),
+                                                        ),
+                                                        child: Icon(
+                                                            CupertinoIcons
+                                                                .checkmark_alt,
+                                                            color:
+                                                                Colors.black),
+                                                      ),
+                                                      onTap: () async {
+                                                        HapticFeedback
+                                                            .heavyImpact();
+                                                        var _todoService =
+                                                            TodoService();
+                                                        var result =
+                                                            await _todoService
+                                                                .deleteTodo(
+                                                                    _todoList[
+                                                                            index]
+                                                                        .id);
+                                                        if (mounted) {
+                                                          setState(() {});
+                                                        }
+                                                        if (result > 0) {
+                                                          getAllTodos();
+                                                        }
+                                                      }),
+                                                )
+                                              ])
+                                            ],
+                                          ),
+                                        ));
+                                  }),
+                            ),
+                          ))))),
       borderRadius: radius,
     );
   }
