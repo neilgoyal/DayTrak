@@ -4,7 +4,6 @@ import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 import 'timetable_today.dart';
 import 'timetable_tom.dart';
-import 'package:extended_tabs/extended_tabs.dart';
 
 class TimetablePage extends StatefulWidget {
   @override
@@ -140,11 +139,10 @@ class _TimetableState extends State<TimetablePage>
                 ),
               ),
             ),
-            body: ExtendedTabBarView(
+            body: TabBarView(
               children: <Widget>[TimetabletodayPage(), TimetabletomPage()],
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),
-              cacheExtent: 1,
             )));
   }
 }
