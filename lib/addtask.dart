@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/services/todo_service.dart';
+import 'package:schoolcalendar/db.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'package:schoolcalendar/api.dart';
@@ -25,7 +25,6 @@ BorderRadiusGeometry radius = BorderRadius.only(
 );
 Future<Day> futureDay;
 
-String nextDay = "-";
 String dayAfter = "-";
 
 int weatherorder = 0;
@@ -348,7 +347,7 @@ class _TodoListState1 extends State<TodoList1> {
                     var resultdaytod = ((snapshot.data.day1).toString());
                     var resultdaytom = ((snapshot.data.day2).toString());
                     var resultdaytom2 = ((snapshot.data.day3).toString());
-                    nextDay = resultdaytom;
+                    globals.nextDay = resultdaytom;
                     dayAfter = resultdaytom2;
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
@@ -477,7 +476,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(nextDay)}',
+                                  Text('${showcorrectday(globals.nextDay)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,

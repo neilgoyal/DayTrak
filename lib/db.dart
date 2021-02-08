@@ -1,5 +1,47 @@
-import 'package:schoolcalendar/repositories/database_connection.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
+
+class Todo {
+  int id;
+  String title;
+  String todoDate;
+
+  todoMap() {
+    var mapping = Map<String, dynamic>();
+    mapping['id'] = id;
+    mapping['title'] = title;
+    mapping['todoDate'] = todoDate;
+
+    return mapping;
+  }
+}
+
+class TodoService {
+  Repository _repository;
+
+  TodoService() {
+    _repository = Repository();
+  }
+
+  // create todos
+  saveTodo(Todo todo) async {
+    return await _repository.insertData('todos', todo.todoMap());
+  }
+
+  // read todos
+  readTodos() async {
+    return await _repository.readData('todos');
+  }
+
+  deleteTodo(itemId) async {
+    return await _repository.deleteData('todos', itemId);
+  }
+
+  updateTodo(Todo todo) async {
+    return await _repository.updateData('todos', todo.todoMap());
+  }
+}
 
 class Repository {
   DatabaseConnection _databaseConnection;
@@ -54,5 +96,24 @@ class Repository {
     var connection = await database;
     return await connection
         .query(table, where: '$columnName=?', whereArgs: [columnValue]);
+  }
+}
+
+class DatabaseConnection {
+  setDatabase() async {
+    var directory = await getApplicationDocumentsDirectory();
+    var path = join(directory.path, 'db_todolist_sqflite');
+    var database =
+        await openDatabase(path, version: 1, onCreate: _onCreatingDatabase);
+    return database;
+  }
+
+  _onCreatingDatabase(Database database, int version) async {
+    await database
+        .execute("CREATE TABLE categories(id INTEGER PRIMARY KEY, name TEXT)");
+
+    // Create table todos
+    await database.execute(
+        "CREATE TABLE todos(id INTEGER PRIMARY KEY, title TEXT, todoDate TEXT)");
   }
 }

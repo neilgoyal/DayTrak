@@ -76,7 +76,10 @@ class _TimetableState extends State<TimetablePage>
                                   if (snapshot.hasData) {
                                     var result =
                                         ((snapshot.data.day1).toString());
+                                    var result2 =
+                                        ((snapshot.data.day1).toString());
                                     globals.dayOrder = result;
+                                    globals.nextDay = result2;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,

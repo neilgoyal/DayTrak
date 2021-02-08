@@ -15,7 +15,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       initialRoute: '/',
-      routes: {'/first': (context) => Fp1Page(), '/orangejuice': (context) => HomePage()},
+      routes: {
+        '/first': (context) => Fp1Page(),
+        '/main': (context) => HomePage()
+      },
       home: Splash(),
     );
   }
@@ -38,7 +41,7 @@ class SplashState extends State<Splash> {
     bool _seen = (prefs.getBool('seen') ?? false);
 
     if (_seen) {
-      Navigator.pushReplacementNamed(context, "/orangejuice");
+      Navigator.pushReplacementNamed(context, "/main");
     } else {
       prefs.setBool('seen', true);
       Navigator.pushReplacementNamed(context, "/first");

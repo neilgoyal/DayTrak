@@ -110,7 +110,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
         child: FutureBuilder<Day>(
             future: futureDay,
             builder: (context, snapshot) {
-              if (globals.dayOrder == "7" || globals.dayOrder == "8") {
+              if (globals.nextDay == "7" || globals.nextDay == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
