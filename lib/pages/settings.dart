@@ -41,8 +41,8 @@ class _SettingsState extends State<SettingsPage> {
             height: 20,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
-              focusNode: FocusNode(canRequestFocus: false),
               cursorColor: Colors.black54,
               validator: (value) {
                 if (value.isEmpty) {
@@ -62,6 +62,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
@@ -70,7 +71,6 @@ class _SettingsState extends State<SettingsPage> {
                 }
                 return null;
               },
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController2,
               decoration: InputDecoration(
                   labelText: 'Block 2',
@@ -83,6 +83,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -91,7 +92,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController3,
               decoration: InputDecoration(
                   labelText: 'Block 3',
@@ -104,6 +104,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -112,7 +113,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController4,
               decoration: InputDecoration(
                   labelText: 'Block 4',
@@ -125,6 +125,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -133,7 +134,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController5,
               decoration: InputDecoration(
                   labelText: 'Block 5',
@@ -154,7 +154,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController6,
               decoration: InputDecoration(
                   labelText: 'Block 6',
@@ -207,6 +206,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 20,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -215,7 +215,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController,
               decoration: InputDecoration(
                   labelText: 'Block 1',
@@ -228,6 +227,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -236,7 +236,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController2,
               decoration: InputDecoration(
                   labelText: 'Block 2',
@@ -249,6 +248,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -257,7 +257,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController3,
               decoration: InputDecoration(
                   labelText: 'Block 3',
@@ -270,6 +269,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -278,7 +278,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController4,
               decoration: InputDecoration(
                   labelText: 'Block 4',
@@ -291,6 +290,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -299,7 +299,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController5,
               decoration: InputDecoration(
                   labelText: 'Block 5',
@@ -312,6 +311,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -320,7 +320,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController6,
               decoration: InputDecoration(
                   labelText: 'Block 6',
@@ -333,6 +332,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -341,7 +341,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController7,
               decoration: InputDecoration(
                   labelText: 'Block 7',
@@ -354,6 +353,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -362,7 +362,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController8,
               decoration: InputDecoration(
                   labelText: 'Block 8',
@@ -375,6 +374,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -383,7 +383,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController9,
               decoration: InputDecoration(
                   labelText: 'Block 9',
@@ -404,7 +403,6 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              focusNode: FocusNode(canRequestFocus: false),
               controller: myController10,
               decoration: InputDecoration(
                   labelText: 'Block 10',
