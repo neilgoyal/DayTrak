@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'settings.dart';
 import 'timetable.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:extended_tabs/extended_tabs.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -63,7 +64,8 @@ class _HomePageState extends State<HomePage> {
       length: 3,
       initialIndex: 0,
       child: Scaffold(
-        body: TabBarView(
+        body: ExtendedTabBarView(
+          cacheExtent: 2,
           children: [
             Addtask1(),
             TimetablePage(),
