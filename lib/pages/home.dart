@@ -38,11 +38,6 @@ class _CirclePainter extends BoxPainter {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<Widget> pages = [
-    Addtask1(),
-    TimetablePage(),
-    SettingsPage(),
-  ];
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -69,7 +64,11 @@ class _HomePageState extends State<HomePage> {
       initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
-          children: pages,
+          children: [
+            Addtask1(),
+            TimetablePage(),
+            SettingsPage(),
+          ],
         ),
         bottomNavigationBar: Container(
           decoration: BoxDecoration(
@@ -77,7 +76,7 @@ class _HomePageState extends State<HomePage> {
             color: Color.fromRGBO(250, 250, 250, 1),
           ),
           margin: EdgeInsets.only(bottom: 15),
-          child: new TabBar(
+          child: TabBar(
             tabs: [
               Tab(
                 icon: Icon(
