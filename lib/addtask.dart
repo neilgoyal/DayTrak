@@ -83,11 +83,11 @@ class _TodoListState1 extends State<TodoList1> {
 
   _addbutton() async {
     FocusScopeNode currentFocus = FocusScope.of(context);
-    var todoObject = Todo();
+    Todo todoObject = Todo();
     todoObject.title = _todoTitleController.text;
     todoObject.todoDate = _todoDateController.text;
-    var _todoService = TodoService();
-    var result = await _todoService.saveTodo(todoObject);
+    TodoService _todoService = TodoService();
+    dynamic result = await _todoService.saveTodo(todoObject);
     if (result > 0) {
       getAllTodos();
       _todoTitleController.text = "";
@@ -119,23 +119,19 @@ class _TodoListState1 extends State<TodoList1> {
     DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
     Color late = Colors.black;
-    String newDttom =
-        DateFormat.yMd().format(DateTime.now().add(Duration(days: 1)));
-    String newDtyes =
-        DateFormat.yMd().format(DateTime.now().add(new Duration(days: -1)));
     if (setDate.difference(DateTime.now()) < Duration(days: -1)) {
       late = Colors.red;
     }
     if (_todoList[index].todoDate == DateFormat.yMd().format(DateTime.now())) {
       concise = 'Today';
-    } else if (_todoList[index].todoDate == newDttom) {
+    } else if (_todoList[index].todoDate ==
+        DateFormat.yMd().format(DateTime.now().add(Duration(days: 1)))) {
       concise = 'Tomorrow';
-    } else if (_todoList[index].todoDate == newDtyes) {
+    } else if (_todoList[index].todoDate ==
+        DateFormat.yMd().format(DateTime.now().add(new Duration(days: -1)))) {
       concise = 'Yesterday';
     } else {
-      concise = DateFormat('E, d MMM')
-              .format(DateFormat("yMd").parse(_todoList[index].todoDate)) ??
-          'No Date';
+      concise = DateFormat('E, d MMM').format(setDate) ?? 'No Date';
     }
     return [concise, late];
   }
@@ -144,10 +140,10 @@ class _TodoListState1 extends State<TodoList1> {
     _todoService = TodoService();
     // ignore: deprecated_member_use
     _todoList = List<Todo>();
-    var todos = await _todoService.readTodos();
+    dynamic todos = await _todoService.readTodos();
     todos.forEach((todo) {
       setState(() {
-        var model = Todo();
+        Todo model = Todo();
         model.id = todo['id'];
         model.title = todo['title'];
         model.todoDate = todo['todoDate'];
@@ -157,7 +153,7 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   selectedTodoDate(BuildContext context) async {
-    var _pickedDate = await showRoundedDatePicker(
+    DateTime _pickedDate = await showRoundedDatePicker(
       context: context,
       initialDate: _dateTime,
       firstDate: DateTime(DateTime.now().year - 1),
@@ -335,9 +331,9 @@ class _TodoListState1 extends State<TodoList1> {
                 future: futureDay,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    var resultdaytod = ((snapshot.data.day1).toString());
-                    var resultdaytom = ((snapshot.data.day2).toString());
-                    var resultdaytom2 = ((snapshot.data.day3).toString());
+                    String resultdaytod = ((snapshot.data.day1).toString());
+                    String resultdaytom = ((snapshot.data.day2).toString());
+                    String resultdaytom2 = ((snapshot.data.day3).toString());
                     globals.nextDay = resultdaytom;
                     dayAfter = resultdaytom2;
                     return Padding(
@@ -601,7 +597,7 @@ class _TodoListState1 extends State<TodoList1> {
                                     future: futureDay,
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
-                                        var result =
+                                        String result =
                                             ((snapshot.data.day1).toString());
                                         globals.dayOrder = result;
                                         return Column(
@@ -897,9 +893,10 @@ class _TodoListState1 extends State<TodoList1> {
                                                       onTap: () async {
                                                         HapticFeedback
                                                             .heavyImpact();
-                                                        var _todoService =
+                                                        TodoService
+                                                            _todoService =
                                                             TodoService();
-                                                        var result =
+                                                        dynamic result =
                                                             await _todoService
                                                                 .deleteTodo(
                                                                     _todoList[

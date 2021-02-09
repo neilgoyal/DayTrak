@@ -60,7 +60,7 @@ class Repository {
 
   readData(table) async {
     Database connection = await database;
-    return await connection.query(table, orderBy: 'todoDate');
+    return await connection.query(table, orderBy: 'todoDate ASC');
   }
 
   readDataById(table, itemId) async {
