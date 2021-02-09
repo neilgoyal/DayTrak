@@ -2,7 +2,10 @@ library my_prj.globals;
 
 String dayOrder = "-";
 String nextDay = "-";
+String dayAfter = "-";
 int valueOfGrade = 11;
+Map timetable = {};
+Map timetabletom = {};
 double h1,
     h2,
     h3,

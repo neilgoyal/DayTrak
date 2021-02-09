@@ -75,18 +75,21 @@ class _TimetableState extends State<TimetablePage>
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    var result =
+                                    globals.dayOrder =
                                         ((snapshot.data.day1).toString());
-                                    var result2 =
+                                    globals.nextDay =
                                         ((snapshot.data.day2).toString());
-                                    globals.dayOrder = result;
-                                    globals.nextDay = result2;
+                                    globals.dayAfter =
+                                        ((snapshot.data.day3).toString());
+                                    globals.timetable = snapshot.data.timetable;
+                                    globals.timetabletom =
+                                        snapshot.data.timetabletom;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          '${showcorrectday(result)}',
+                                          '${showcorrectday(globals.dayOrder)}',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: globals.h2,

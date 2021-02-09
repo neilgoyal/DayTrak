@@ -11,10 +11,7 @@ class TimetabletomPage extends StatefulWidget {
 
 Future<Day> futureDay;
 int numoftiles;
-Map timetable;
 String b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
-List<String> cachedtiles = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
-List cachedtime = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"];
 showcorrectday(result) {
   if (result == '7') {
     result = 'Break';
@@ -148,14 +145,14 @@ class _TimetabletomState extends State<TimetabletomPage> {
                         ]));
               } else {
                 if (snapshot.hasData) {
+                  globals.dayOrder = ((snapshot.data.day1).toString());
+                  globals.nextDay = ((snapshot.data.day2).toString());
+                  globals.dayAfter = ((snapshot.data.day3).toString());
+                  globals.timetable = snapshot.data.timetable;
+                  globals.timetabletom = snapshot.data.timetabletom;
                   return ListView.builder(
                       itemCount: numoftiles,
                       itemBuilder: (context, index) {
-                        timetable = snapshot.data.timetabletom;
-                        cachedtiles[index + 1] = blocktoprefrence(timetable[
-                            '${globals.valueOfGrade}.${(index + 1)}']);
-                        cachedtime[index + 1] = timetable[
-                            '${globals.valueOfGrade}.${(index + 1)}_time'];
                         return Padding(
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
@@ -176,7 +173,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          blocktoprefrence(timetable[
+                                          blocktoprefrence(globals.timetabletom[
                                               '${globals.valueOfGrade}.${(index + 1)}']),
                                           style: TextStyle(
                                               fontSize: globals.h4,
@@ -194,7 +191,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          timetable[
+                                          globals.timetabletom[
                                               '${globals.valueOfGrade}.${(index + 1)}_time'],
                                           style: TextStyle(color: Colors.grey),
                                         )
@@ -227,7 +224,11 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          cachedtiles[index + 1],
+                                          (globals.timetabletom.isNotEmpty)
+                                              ? blocktoprefrence(globals
+                                                      .timetabletom[
+                                                  '${globals.valueOfGrade}.${(index + 1)}'])
+                                              : "-",
                                           style: TextStyle(
                                               fontSize: globals.h4,
                                               color: Colors.black54,
@@ -244,7 +245,10 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          cachedtime[index + 1],
+                                          (globals.timetabletom.isNotEmpty)
+                                              ? globals.timetabletom[
+                                                  '${globals.valueOfGrade}.${(index + 1)}_time']
+                                              : "-",
                                           style: TextStyle(color: Colors.grey),
                                         )
                                       ])),
