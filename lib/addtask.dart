@@ -116,19 +116,22 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   concisedate(index) {
-    DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
+    DateTime setDate = DateTime.parse(_todoList[index].todoDate);
     String concise;
     Color late = Colors.black;
     if (setDate.difference(DateTime.now()) < Duration(days: -1)) {
       late = Colors.red;
     }
-    if (_todoList[index].todoDate == DateFormat.yMd().format(DateTime.now())) {
+    if (_todoList[index].todoDate ==
+        DateFormat('yyyy-MM-dd').format(DateTime.now())) {
       concise = 'Today';
     } else if (_todoList[index].todoDate ==
-        DateFormat.yMd().format(DateTime.now().add(Duration(days: 1)))) {
+        DateFormat('yyyy-MM-dd')
+            .format(DateTime.now().add(Duration(days: 1)))) {
       concise = 'Tomorrow';
     } else if (_todoList[index].todoDate ==
-        DateFormat.yMd().format(DateTime.now().add(new Duration(days: -1)))) {
+        DateFormat('yyyy-MM-dd')
+            .format(DateTime.now().add(new Duration(days: -1)))) {
       concise = 'Yesterday';
     } else {
       concise = DateFormat('E, d MMM').format(setDate) ?? 'No Date';
@@ -196,7 +199,8 @@ class _TodoListState1 extends State<TodoList1> {
       if (mounted) {
         setState(() {
           _dateTime = _pickedDate;
-          _todoDateController.text = DateFormat('yMd').format(_pickedDate);
+          _todoDateController.text =
+              DateFormat('yyyy-MM-dd').format(_pickedDate);
         });
       }
     }
