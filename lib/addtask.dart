@@ -12,22 +12,16 @@ import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 
 final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
-String newDt = DateFormat.MMMd().format(globals.dt);
-String newDt1 = DateFormat.yMd().format(globals.dt);
-DateTime tomorrow = globals.dt.add(new Duration(days: 1));
+DateTime tomorrow = DateTime.now().add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
-DateTime yesterday = globals.dt.add(new Duration(days: -1));
+DateTime yesterday = DateTime.now().add(new Duration(days: -1));
 String newDtyes = DateFormat.yMd().format(tomorrow);
-final double toolbarHeight = 200.0;
-String insan = "11";
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
 );
 Future<Day> futureDay;
-
 String dayAfter = "-";
-
 int weatherorder = 0;
 
 class Addtask1 extends StatelessWidget {
@@ -127,16 +121,15 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   concisedate(index) {
-    globals.dt = DateTime.now();
     DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
     Color late = Colors.black;
     String newDttom = DateFormat.yMd().format(tomorrow);
     String newDtyes = DateFormat.yMd().format(yesterday);
-    if (setDate.difference(globals.dt) < Duration(days: -1)) {
+    if (setDate.difference(DateTime.now()) < Duration(days: -1)) {
       late = Colors.red;
     }
-    if (_todoList[index].todoDate == newDt1) {
+    if (_todoList[index].todoDate == DateFormat.yMd().format(DateTime.now())) {
       concise = 'Today';
     } else if (_todoList[index].todoDate == newDttom) {
       concise = 'Tomorrow';
@@ -599,7 +592,7 @@ class _TodoListState1 extends State<TodoList1> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(newDt,
+                                Text(DateFormat.MMMd().format(DateTime.now()),
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h1,
@@ -777,42 +770,39 @@ class _TodoListState1 extends State<TodoList1> {
                             )
                           ],
                         ),
-                        toolbarHeight: toolbarHeight,
+                        toolbarHeight: 200.0,
                       )),
                   body: (_todoList.isEmpty)
                       ? Container(
-                         padding: EdgeInsets.only(
+                          padding: EdgeInsets.only(
                               top: 0.0, left: 12.0, right: 12.0),
-                         
                           child: Card(
-                            color: Colors.white,
-                            elevation: 12,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(45)),
-                            child:
-                          Column(children: [
-                            SizedBox(
-                              height: globals.s4,
-                            ),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "You're all done!  ",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: "Protipo Compact",
-                                        fontSize: globals.h6,
-                                        fontWeight: FontWeight.w200),
-                                  ), 
-                                  Icon(
-                                    CupertinoIcons.smiley,
-                                    size: globals.h6,
-                                    color: Colors.black54,
-
-                                  )
-                                ])
-                          ])))
+                              color: Colors.white,
+                              elevation: 12,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(45)),
+                              child: Column(children: [
+                                SizedBox(
+                                  height: globals.s4,
+                                ),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "You're all done!  ",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: "Protipo Compact",
+                                            fontSize: globals.h6,
+                                            fontWeight: FontWeight.w200),
+                                      ),
+                                      Icon(
+                                        CupertinoIcons.smiley,
+                                        size: globals.h6,
+                                        color: Colors.black54,
+                                      )
+                                    ])
+                              ])))
                       : Container(
                           padding: EdgeInsets.only(
                               top: 0.0, left: 12.0, right: 12.0),

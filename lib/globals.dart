@@ -4,8 +4,7 @@ import 'package:intl/intl.dart';
 
 String dayOrder = "-";
 String nextDay = "-";
-DateTime dt = DateTime.now();
-String newDt1 = DateFormat.EEEE().format(dt);
+String newDt1 = DateFormat.EEEE().format(DateTime.now());
 int valueOfGrade = 11;
 double h1,
     h2,
