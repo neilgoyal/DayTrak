@@ -11,7 +11,6 @@ import 'package:popup_menu/popup_menu.dart';
 import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 
-final GlobalKey<ScaffoldState> _globalKey = GlobalKey<ScaffoldState>();
 DateTime tomorrow = DateTime.now().add(new Duration(days: 1));
 String newDttom = DateFormat.yMd().format(tomorrow);
 DateTime yesterday = DateTime.now().add(new Duration(days: -1));
@@ -580,7 +579,7 @@ class _TodoListState1 extends State<TodoList1> {
                 closekeyboard();
               },
               child: Scaffold(
-                  key: _globalKey,
+                  key: GlobalKey<ScaffoldState>(),
                   appBar: PreferredSize(
                       preferredSize: Size.fromHeight(190),
                       child: AppBar(
@@ -704,7 +703,7 @@ class _TodoListState1 extends State<TodoList1> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(globals.newDt1,
+                                Text(DateFormat.EEEE().format(DateTime.now()),
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h2,

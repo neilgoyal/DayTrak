@@ -4,6 +4,7 @@ import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 import 'timetable_today.dart';
 import 'timetable_tom.dart';
+import 'package:intl/intl.dart';
 
 class TimetablePage extends StatefulWidget {
   @override
@@ -56,7 +57,7 @@ class _TimetableState extends State<TimetablePage>
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(globals.newDt1,
+                              Text(DateFormat.EEEE().format(DateTime.now()),
                                   style: TextStyle(
                                     fontSize: globals.h1,
                                     color: const Color(0xff9b8fb1),
