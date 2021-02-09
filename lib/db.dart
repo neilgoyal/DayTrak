@@ -96,8 +96,6 @@ class DatabaseConnection {
   }
 
   _onCreatingDatabase(Database database, int version) async {
-    await database
-        .execute("CREATE TABLE categories(id INTEGER PRIMARY KEY, name TEXT)");
     await database.execute(
         "CREATE TABLE todos(id INTEGER PRIMARY KEY, title TEXT, todoDate TEXT)");
   }
