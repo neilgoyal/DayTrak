@@ -11,10 +11,6 @@ import 'package:popup_menu/popup_menu.dart';
 import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 
-DateTime tomorrow = DateTime.now().add(new Duration(days: 1));
-String newDttom = DateFormat.yMd().format(tomorrow);
-DateTime yesterday = DateTime.now().add(new Duration(days: -1));
-String newDtyes = DateFormat.yMd().format(tomorrow);
 BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
@@ -43,8 +39,8 @@ class _TodoListState1 extends State<TodoList1> {
   TodoService _todoService;
   List<Todo> _todoList;
   final panelController = PanelController();
-  var _todoTitleController = TextEditingController();
-  var _todoDateController = TextEditingController();
+  TextEditingController _todoTitleController = TextEditingController();
+  TextEditingController _todoDateController = TextEditingController();
   String errtext1 = "";
   String errtext2 = "";
   bool validated1 = true;
@@ -123,8 +119,10 @@ class _TodoListState1 extends State<TodoList1> {
     DateTime setDate = DateFormat("yMd").parse(_todoList[index].todoDate);
     String concise;
     Color late = Colors.black;
-    String newDttom = DateFormat.yMd().format(tomorrow);
-    String newDtyes = DateFormat.yMd().format(yesterday);
+    String newDttom =
+        DateFormat.yMd().format(DateTime.now().add(Duration(days: 1)));
+    String newDtyes =
+        DateFormat.yMd().format(DateTime.now().add(new Duration(days: -1)));
     if (setDate.difference(DateTime.now()) < Duration(days: -1)) {
       late = Colors.red;
     }
@@ -330,7 +328,7 @@ class _TodoListState1 extends State<TodoList1> {
         builder: (context) {
           return Dialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)), //this right here
+                borderRadius: BorderRadius.circular(20.0)),
             child: Container(
               height: 150,
               child: FutureBuilder<Day>(
