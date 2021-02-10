@@ -104,7 +104,6 @@ class _HomePageState extends State<HomePage> {
             labelColor: Colors.black,
             indicator:
                 CircleTabIndicator(color: const Color(0xffbadfca), radius: 3.5),
-            enableFeedback: true,
           ),
         ),
       ),

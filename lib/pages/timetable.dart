@@ -14,14 +14,24 @@ class TimetablePage extends StatefulWidget {
 Future<Day> futureDay;
 
 showcorrectday(result) {
-  if (result == '7') {
-    result = 'Break';
-  } else if (result == '8') {
-    result = 'Error';
-  } else {
-    result = "Day $result";
+  switch (result) {
+    case '7':
+      {
+        result = 'Break';
+      }
+      break;
+    case '8':
+      {
+        result = 'Error';
+      }
+      break;
+    default:
+      {
+        result = "Day $result";
+      }
+      break;
+      return result;
   }
-  return result;
 }
 
 class _TimetableState extends State<TimetablePage>

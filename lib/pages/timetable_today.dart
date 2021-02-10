@@ -13,16 +13,6 @@ Future<Day> futureDay;
 int numoftiles;
 
 String b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
-showcorrectday(result) {
-  if (result == '7') {
-    result = 'Break';
-  } else if (result == '8') {
-    result = 'Error';
-  } else {
-    result = "Day $result";
-  }
-  return result;
-}
 
 class _TimetabletodayState extends State<TimetabletodayPage> {
   @override

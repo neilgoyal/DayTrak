@@ -62,7 +62,7 @@ class _Fp1State extends State<Fp1Page> {
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).pushReplacement(
-                                        new MaterialPageRoute(
+                                        MaterialPageRoute(
                                             builder: (context) => HomePage()));
                                   },
                                   child: Icon(
