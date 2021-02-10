@@ -327,90 +327,184 @@ class _TodoListState1 extends State<TodoList1> {
         builder: (context) {
           return Dialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)),
+                borderRadius: BorderRadius.circular(20.0)), //this right here
             child: Container(
-                height: 150,
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
+              height: 150,
+              child: FutureBuilder<Day>(
+                future: futureDay,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    globals.dayOrder = ((snapshot.data.day1).toString());
+                    globals.nextDay = ((snapshot.data.day2).toString());
+                    globals.dayAfter = ((snapshot.data.day3).toString());
+                    globals.timetable = snapshot.data.timetable;
+                    globals.timetabletom = snapshot.data.timetabletom;
+                    return Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Row(
+                          Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                'Today:  ',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h4,
-                                  color: const Color(0xff9b8fb1),
-                                  fontWeight: FontWeight.w300,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Today:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.dayOrder)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
                               ),
-                              Text('${showcorrectday(globals.dayOrder)}',
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: globals.h4,
-                                    color: const Color(0xffbadfca),
-                                    fontWeight: FontWeight.w300,
-                                  )),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '  Tomorrow:  ',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h4,
-                                  color: const Color(0xff9b8fb1),
-                                  fontWeight: FontWeight.w300,
-                                ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Tomorrow:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.nextDay)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
                               ),
-                              Text('${showcorrectday(globals.nextDay)}',
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: globals.h4,
-                                    color: const Color(0xffbadfca),
-                                    fontWeight: FontWeight.w300,
-                                  )),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Text(
-                                '  Day After:  ',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h4,
-                                  color: const Color(0xff9b8fb1),
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ),
-                              Text('${showcorrectday(globals.dayAfter)}',
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: globals.h4,
-                                    color: const Color(0xffbadfca),
-                                    fontWeight: FontWeight.w300,
-                                  )),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.dayAfter)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              )
                             ],
                           )
                         ],
-                      )
-                    ],
-                  ),
-                )),
+                      ),
+                    );
+                  } else
+                    return Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    'Today:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.dayOrder)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Tomorrow:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.nextDay)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.dayAfter)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              )
+                            ],
+                          )
+                        ],
+                      ),
+                    );
+                },
+              ),
+            ),
           );
         });
   }
