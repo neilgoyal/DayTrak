@@ -7,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'fp1.dart';
 import 'package:schoolcalendar/pages/home.dart';
 
-final double toolbarHeight = 100.0;
 String errmessage = "Cannot Be Empty";
 OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(25.0)),
@@ -30,12 +29,9 @@ class _Fp2State extends State<Fp2Page> {
   final myController4 = TextEditingController();
   final myController5 = TextEditingController();
   final myController6 = TextEditingController();
-  final myController7 = TextEditingController();
-  final myController8 = TextEditingController();
-  final myController9 = TextEditingController();
-  final myController10 = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  grade12() {
+
+  grade11() {
     return Form(
         key: _formKey,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
@@ -205,234 +201,9 @@ class _Fp2State extends State<Fp2Page> {
     );
   }
 
-  grade10() {
-    return Form(
-        key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController,
-              decoration: InputDecoration(
-                  labelText: 'Block 1',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController2,
-              decoration: InputDecoration(
-                  labelText: 'Block 2',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController3,
-              decoration: InputDecoration(
-                  labelText: 'Block 3',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController4,
-              decoration: InputDecoration(
-                  labelText: 'Block 4',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController5,
-              decoration: InputDecoration(
-                  labelText: 'Block 5',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController6,
-              decoration: InputDecoration(
-                  labelText: 'Block 6',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController7,
-              decoration: InputDecoration(
-                  labelText: 'Block 7',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController8,
-              decoration: InputDecoration(
-                  labelText: 'Block 8',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value.isEmpty) {
-                  return errmessage;
-                }
-                return null;
-              },
-              cursorColor: Colors.black54,
-              controller: myController9,
-              decoration: InputDecoration(
-                  labelText: 'Block 9',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-        ]));
-  }
-
-  defaultsvals() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
-      setState(() {
-        myController.text = prefs.getString('B1') ?? "";
-        myController2.text = prefs.getString('B2') ?? "";
-        myController3.text = prefs.getString('B3') ?? "";
-        myController4.text = prefs.getString('B4') ?? "";
-        myController5.text = prefs.getString('B5') ?? "";
-        myController6.text = prefs.getString('B6') ?? "";
-      });
-    } else {
-      setState(() {
-        myController.text = prefs.getString('B1') ?? "";
-        myController2.text = prefs.getString('B2') ?? "";
-        myController3.text = prefs.getString('B3') ?? "";
-        myController4.text = prefs.getString('B4') ?? "";
-        myController5.text = prefs.getString('B5') ?? "";
-        myController6.text = prefs.getString('B6') ?? "";
-        myController7.text = prefs.getString('B7') ?? "";
-        myController8.text = prefs.getString('B8') ?? "";
-        myController9.text = prefs.getString('B9') ?? "";
-        myController10.text = prefs.getString('B10') ?? "";
-      });
-    }
-  }
-
   @override
   void initState() {
     super.initState();
-    getIntValuesSF();
-    defaultsvals();
   }
 
   @override
@@ -443,10 +214,6 @@ class _Fp2State extends State<Fp2Page> {
     myController4.dispose();
     myController5.dispose();
     myController6.dispose();
-    myController7.dispose();
-    myController8.dispose();
-    myController9.dispose();
-    myController10.dispose();
     super.dispose();
   }
 
@@ -455,18 +222,11 @@ class _Fp2State extends State<Fp2Page> {
     prefs.setInt('Value', globals.valueOfGrade);
   }
 
-  getIntValuesSF() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      globals.valueOfGrade = prefs.getInt('Value') ?? 11;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: new Scaffold(
+        home: Scaffold(
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(50),
                 child: AppBar(
@@ -536,7 +296,7 @@ class _Fp2State extends State<Fp2Page> {
                             )
                           ]),
                     )),
-                    toolbarHeight: toolbarHeight)),
+                    toolbarHeight: 100.0)),
             body: ListView(children: [
               Column(
                 children: [
@@ -748,7 +508,7 @@ class _Fp2State extends State<Fp2Page> {
                                                                     Widget>[
                                                                   (globals.valueOfGrade ==
                                                                           11)
-                                                                      ? grade12()
+                                                                      ? grade11()
                                                                       : nosupport()
                                                                 ],
                                                               ),
@@ -773,8 +533,7 @@ class _Fp2State extends State<Fp2Page> {
                           ),
                           onPressed: () async {
                             HapticFeedback.heavyImpact();
-                            if (globals.valueOfGrade == 11 ||
-                                globals.valueOfGrade == 12) {
+                            if (globals.valueOfGrade == 11) {
                               if (_formKey.currentState.validate()) {
                                 SharedPreferences prefs =
                                     await SharedPreferences.getInstance();
@@ -784,24 +543,10 @@ class _Fp2State extends State<Fp2Page> {
                                 prefs.setString('B4', myController4.text);
                                 prefs.setString('B5', myController5.text);
                                 prefs.setString('B6', myController6.text);
+                                Navigator.of(context).pushReplacement(
+                                    new MaterialPageRoute(
+                                        builder: (context) => HomePage()));
                               }
-                              Navigator.of(context).pushReplacement(
-                                  new MaterialPageRoute(
-                                      builder: (context) => HomePage()));
-                            }
-                            if (_formKey.currentState.validate()) {
-                              SharedPreferences prefs =
-                                  await SharedPreferences.getInstance();
-                              prefs.setString('B1', myController.text);
-                              prefs.setString('B2', myController2.text);
-                              prefs.setString('B3', myController3.text);
-                              prefs.setString('B4', myController4.text);
-                              prefs.setString('B5', myController5.text);
-                              prefs.setString('B6', myController6.text);
-                              prefs.setString('B7', myController7.text);
-                              prefs.setString('B8', myController8.text);
-                              prefs.setString('B9', myController9.text);
-                              prefs.setString('B10', myController10.text);
                             }
                           },
                           child: Icon(

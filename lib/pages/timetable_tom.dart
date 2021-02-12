@@ -43,14 +43,6 @@ class _TimetabletomState extends State<TimetabletomPage> {
       return (b5 == "Block 5") ? b5 : "B5 $b5";
     } else if (userinput == 'B6') {
       return (b6 == "Block 6") ? b6 : "B6 $b6";
-    } else if (userinput == 'B7') {
-      return (b7 == "Block 7") ? b7 : "B7 $b7";
-    } else if (userinput == 'B8') {
-      return (b8 == "Block 8") ? b8 : "B8 $b8";
-    } else if (userinput == 'B9') {
-      return (b9 == "Block 9") ? b9 : "B9 $b9";
-    } else if (userinput == 'B10') {
-      return (b10 == "Block 10") ? b10 : "B10 $b10";
     } else {
       return userinput;
     }
@@ -58,7 +50,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
+    if (globals.valueOfGrade == 11) {
       setState(() {
         b1 = prefs.getString('B1') ?? "Block 1";
         b2 = prefs.getString('B2') ?? "Block 2";
@@ -66,28 +58,15 @@ class _TimetabletomState extends State<TimetabletomPage> {
         b4 = prefs.getString('B4') ?? "Block 4";
         b5 = prefs.getString('B5') ?? "Block 5";
         b6 = prefs.getString('B6') ?? "Block 6";
-      });
-    } else {
-      setState(() {
-        b1 = prefs.getString('B1') ?? "Block 1";
-        b2 = prefs.getString('B2') ?? "Block 2";
-        b3 = prefs.getString('B3') ?? "Block 3";
-        b4 = prefs.getString('B4') ?? "Block 4";
-        b5 = prefs.getString('B5') ?? "Block 5";
-        b6 = prefs.getString('B6') ?? "Block 6";
-        b7 = prefs.getString('B7') ?? "Block 7";
-        b8 = prefs.getString('B8') ?? "Block 8";
-        b9 = prefs.getString('B9') ?? "Block 9";
-        b10 = prefs.getString('B10') ?? "Block 10";
       });
     }
   }
 
   selectNumTiles() {
-    if (globals.valueOfGrade == 12 || globals.valueOfGrade == 11) {
+    if (globals.valueOfGrade == 11) {
       numoftiles = 6;
     } else {
-      numoftiles = 1;
+      numoftiles = 0;
     }
   }
 
@@ -97,7 +76,45 @@ class _TimetabletomState extends State<TimetabletomPage> {
         child: FutureBuilder<Day>(
             future: futureDay,
             builder: (context, snapshot) {
-              if (globals.nextDay == "7" || globals.nextDay == "8") {
+              if (globals.valueOfGrade != 11) {
+                return Container(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: globals.s2,
+                      ),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Expanded(
+                                child: Padding(
+                                    padding: EdgeInsets.only(
+                                        top: 0.0,
+                                        left: globals.h5,
+                                        right: globals.h5),
+                                    child: Container(
+                                      child: Text(
+                                        'Support Coming Soon!',
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: globals.h5,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                        textDirection: TextDirection.ltr,
+                                        textAlign: TextAlign.center,
+                                        maxLines: 6,
+                                      ),
+                                    )))
+                          ]),
+                    ],
+                  ),
+                );
+              } else if (globals.nextDay == "7" || globals.nextDay == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),

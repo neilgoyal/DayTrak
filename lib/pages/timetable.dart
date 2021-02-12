@@ -75,10 +75,8 @@ class _TimetableState extends State<TimetablePage>
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    (snapshot.data.day1 != null)
-                                        ? globals.dayOrder =
-                                            ((snapshot.data.day1).toString())
-                                        : globals.dayOrder = "-";
+                                    globals.dayOrder =
+                                        ((snapshot.data.day1).toString());
                                     globals.nextDay =
                                         ((snapshot.data.day2).toString());
                                     globals.dayAfter =
