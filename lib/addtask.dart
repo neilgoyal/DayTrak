@@ -334,11 +334,7 @@ class _TodoListState1 extends State<TodoList1> {
                 future: futureDay,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    (snapshot.data.day1 != null)
-                                            ? globals.dayOrder =
-                                                ((snapshot.data.day1)
-                                                    .toString())
-                                            : globals.dayOrder = "-";
+                    globals.dayOrder = ((snapshot.data.day1).toString());
                     globals.nextDay = ((snapshot.data.day2).toString());
                     globals.dayAfter = ((snapshot.data.day3).toString());
                     globals.timetable = snapshot.data.timetable;
