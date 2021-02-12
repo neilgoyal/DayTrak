@@ -198,6 +198,44 @@ class _SettingsState extends State<SettingsPage> {
         ]));
   }
 
+  nosupport() {
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: globals.s2,
+          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Expanded(
+                    child: Padding(
+                        padding: EdgeInsets.only(
+                            top: 0.0, left: globals.h5, right: globals.h5),
+                        child: Container(
+                          child: Text(
+                            'Support Coming Soon!',
+                            style: TextStyle(
+                              fontFamily: 'Protipo Compact',
+                              fontSize: globals.h5,
+                              color: Colors.black54,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            textDirection: TextDirection.ltr,
+                            textAlign: TextAlign.center,
+                            maxLines: 6,
+                          ),
+                        )))
+              ]),
+        ],
+      ),
+    );
+  }
+
   grade10() {
     return Form(
         key: _formKey,
@@ -658,10 +696,9 @@ class _SettingsState extends State<SettingsPage> {
                                     ),
                                     Column(
                                       children: <Widget>[
-                                        (globals.valueOfGrade == 11 ||
-                                                globals.valueOfGrade == 12)
+                                        (globals.valueOfGrade == 11)
                                             ? grade12()
-                                            : grade10()
+                                            : nosupport()
                                       ],
                                     ),
                                   ]))),
