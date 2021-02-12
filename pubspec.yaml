@@ -35,8 +35,6 @@ dependencies:
   popup_menu: ^1.0.5
   encrypt: ^4.1.0
   flare_flutter: ^2.0.6
-  extended_tabs: ^1.0.1
-  flutter_automation: ^1.4.0
 
 
 
