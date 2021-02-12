@@ -118,7 +118,7 @@ class _TodoListState1 extends State<TodoList1> {
   concisedate(index) {
     DateTime setDate = DateTime.parse(_todoList[index].todoDate);
     String concise;
-    Color late = Colors.black;
+    Color late = Colors.black45;
     if (setDate.difference(DateTime.now()) < Duration(days: -1)) {
       late = Colors.red;
     }
@@ -334,7 +334,11 @@ class _TodoListState1 extends State<TodoList1> {
                 future: futureDay,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    globals.dayOrder = ((snapshot.data.day1).toString());
+                    (snapshot.data.day1 != null)
+                                            ? globals.dayOrder =
+                                                ((snapshot.data.day1)
+                                                    .toString())
+                                            : globals.dayOrder = "-";
                     globals.nextDay = ((snapshot.data.day2).toString());
                     globals.dayAfter = ((snapshot.data.day3).toString());
                     globals.timetable = snapshot.data.timetable;
@@ -600,8 +604,11 @@ class _TodoListState1 extends State<TodoList1> {
                                     future: futureDay,
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
-                                        globals.dayOrder =
-                                            ((snapshot.data.day1).toString());
+                                        (snapshot.data.day1 != null)
+                                            ? globals.dayOrder =
+                                                ((snapshot.data.day1)
+                                                    .toString())
+                                            : globals.dayOrder = "-";
                                         globals.nextDay =
                                             ((snapshot.data.day2).toString());
                                         globals.dayAfter =

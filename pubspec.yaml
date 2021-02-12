@@ -37,6 +37,14 @@ dependencies:
   flare_flutter: ^2.0.6
   extended_tabs: ^1.0.1
   flutter_automation: ^1.4.0
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path_android: "assets/playstore-icon.png"
+  image_path_ios: "assets/playstore-icon.png"
+
 
 
 dev_dependencies:
@@ -53,6 +61,7 @@ flutter:
 
   assets: 
      - assets/connection.flr
+     - assets/playstore-icon.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

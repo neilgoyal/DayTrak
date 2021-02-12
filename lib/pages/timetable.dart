@@ -85,8 +85,10 @@ class _TimetableState extends State<TimetablePage>
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    globals.dayOrder =
-                                        ((snapshot.data.day1).toString());
+                                    (snapshot.data.day1 != null)
+                                        ? globals.dayOrder =
+                                            ((snapshot.data.day1).toString())
+                                        : globals.dayOrder = "-";
                                     globals.nextDay =
                                         ((snapshot.data.day2).toString());
                                     globals.dayAfter =
@@ -110,14 +112,15 @@ class _TimetableState extends State<TimetablePage>
                                       ],
                                     );
                                   } else
-                                    return Text(
-                                      '${showcorrectday(globals.dayOrder)}',
-                                      style: TextStyle(
-                                        fontSize: globals.h2,
-                                        color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w200,
-                                      ),
-                                    );
+                                    print(showcorrectday(globals.dayOrder));
+                                  return Text(
+                                    '${showcorrectday(globals.dayOrder)}',
+                                    style: TextStyle(
+                                      fontSize: globals.h2,
+                                      color: const Color(0xffbadfca),
+                                      fontWeight: FontWeight.w200,
+                                    ),
+                                  );
                                 },
                               ),
                             ),

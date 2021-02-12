@@ -124,16 +124,16 @@ class _Fp1State extends State<Fp1Page> {
                                 top: 0.0, left: globals.h5, right: globals.h5),
                             child: Container(
                               child: Text(
-                                '- is designed to help manage your school calendar in simple and easy way',
+                                'DayTrak is designed to help manage your school calendar in simple and easy way',
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h8,
+                                  fontSize: globals.h6,
                                   color: Colors.black54,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 overflow: TextOverflow.ellipsis,
                                 textDirection: TextDirection.ltr,
-                                textAlign: TextAlign.justify,
+                                textAlign: TextAlign.center,
                                 maxLines: 6,
                               ),
                             )))
