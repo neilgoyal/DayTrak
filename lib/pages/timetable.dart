@@ -102,15 +102,14 @@ class _TimetableState extends State<TimetablePage>
                                       ],
                                     );
                                   } else
-                                    print(showcorrectday(globals.dayOrder));
-                                  return Text(
-                                    '${showcorrectday(globals.dayOrder)}',
-                                    style: TextStyle(
-                                      fontSize: globals.h2,
-                                      color: const Color(0xffbadfca),
-                                      fontWeight: FontWeight.w200,
-                                    ),
-                                  );
+                                    return Text(
+                                      '${showcorrectday(globals.dayOrder)}',
+                                      style: TextStyle(
+                                        fontSize: globals.h2,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w200,
+                                      ),
+                                    );
                                 },
                               ),
                             ),
