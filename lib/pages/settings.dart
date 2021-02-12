@@ -30,7 +30,7 @@ class _SettingsState extends State<SettingsPage> {
 
   grade11() {
     return Form(
-        key: GlobalKey<FormState>(),
+        key: _formKey,
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           SizedBox(
             height: 20,
