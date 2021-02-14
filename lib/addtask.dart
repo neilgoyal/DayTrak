@@ -240,6 +240,7 @@ class _TodoListState1 extends State<TodoList1> {
             height: 15,
           ),
           TextField(
+              autofocus: true,
               cursorColor: Colors.black54,
               controller: _todoTitleController,
               decoration: InputDecoration(
