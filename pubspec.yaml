@@ -32,25 +32,17 @@ dependencies:
   popup_menu: ^1.0.5
   encrypt: ^4.1.0
   flare_flutter: ^2.0.6
-  flutter_automation: ^1.4.0
-  flutter_launcher_icons: ^0.8.1
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-flutter_icons:
-  image_path: "assets/opt10.png"
-  android: true
-  ios: true
   
 flutter:
 
   assets: 
      - assets/connection.flr
-     - assets/playstore-icon.png
-     - assets/opt10.png
 
   uses-material-design: true
 
