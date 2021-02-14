@@ -159,7 +159,7 @@ class _TodoListState1 extends State<TodoList1> {
     DateTime _pickedDate = await showRoundedDatePicker(
       context: context,
       initialDate: _dateTime,
-      firstDate: DateTime(DateTime.now().year - 1),
+      firstDate: DateTime(DateTime.now().year),
       lastDate: DateTime(DateTime.now().year + 1),
       borderRadius: 25,
       theme: ThemeData(
