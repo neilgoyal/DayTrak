@@ -88,8 +88,6 @@ typedef SelectableDayPredicate = bool Function(DateTime day);
 // ignore: deprecated_member_use
 ///  * [MonthPicker], which displays a scrollable list of months to allow
 ///    picking a month.
-///  * [YearPicker], which displays a scrollable list of years to allow picking
-///    a year.
 ///
 
 Future<DateTime> showRoundedDatePicker(
