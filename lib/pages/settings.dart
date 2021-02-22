@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
 
 class SettingsPage extends StatefulWidget {

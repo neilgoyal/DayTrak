@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/addtask.dart';
+import '../addtask.dart';
 import 'package:flutter/cupertino.dart';
 import 'settings.dart';
 import 'timetable.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import '../globals.dart' as globals;
 
 class HomePage extends StatefulWidget {
   @override

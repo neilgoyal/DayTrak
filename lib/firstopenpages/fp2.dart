@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import '../globals.dart' as globals;
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 import 'fp1.dart';
-import 'package:schoolcalendar/pages/home.dart';
+import '../pages/home.dart';
 
 String errmessage = "Cannot Be Empty";
 OutlineInputBorder textfieldborderenabled = OutlineInputBorder(

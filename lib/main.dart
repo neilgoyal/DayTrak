@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/pages/home.dart';
+import 'pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:schoolcalendar/firstopenpages/fp1.dart';
+import 'firstopenpages/fp1.dart';
 
 void main() => runApp(MyApp());
 

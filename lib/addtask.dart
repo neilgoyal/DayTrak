@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:schoolcalendar/db.dart';
+import 'db.dart';
 import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
-import 'package:schoolcalendar/api.dart';
+import 'api.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:schoolcalendar/flutter_rounded_date_picker/rounded_picker.dart';
 import 'package:popup_menu/popup_menu.dart';

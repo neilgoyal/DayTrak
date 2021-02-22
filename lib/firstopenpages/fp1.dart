@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import '../globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
-import 'package:schoolcalendar/pages/home.dart';
+import '../pages/home.dart';
 import 'fp2.dart';
 
 class Fp1Page extends StatefulWidget {
