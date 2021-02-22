@@ -1,5 +1,3 @@
-library my_prj.globals;
-
 String dayOrder = "-";
 String nextDay = "-";
 String dayAfter = "-";
