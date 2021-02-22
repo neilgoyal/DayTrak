@@ -24,7 +24,7 @@ jobs:
         run: dart --version
 
       - name: Install dependencies
-        run: dart pub get upgrade
+        run: flutter pub get upgrade
 
       # Uncomment this step to verify the use of 'dart format' on each commit.
       # - name: Verify formatting
