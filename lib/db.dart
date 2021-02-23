@@ -4,8 +4,7 @@ import 'package:path_provider/path_provider.dart';
 
 class Todo {
   int id;
-  String title;
-  String todoDate;
+  String title, todoDate;
 
   todoMap() {
     Map<String, dynamic> mapping = Map<String, dynamic>();
