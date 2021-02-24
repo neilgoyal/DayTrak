@@ -51,11 +51,8 @@ Future<Day> fetchDay() async {
 }
 
 class Day {
-  final int day1;
-  final int day2;
-  final int day3;
-  final Map<String, dynamic> timetable;
-  final Map<String, dynamic> timetabletom;
+  final int day1, day2, day3;
+  final Map<String, dynamic> timetable, timetabletom;
 
   Day({this.day1, this.day2, this.day3, this.timetable, this.timetabletom});
 

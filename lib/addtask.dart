@@ -39,12 +39,10 @@ class _TodoListState1 extends State<TodoList1> {
   TodoService _todoService;
   List<Todo> _todoList;
   final panelController = PanelController();
-  TextEditingController _todoTitleController = TextEditingController();
-  TextEditingController _todoDateController = TextEditingController();
-  String errtext1 = "";
-  String errtext2 = "";
-  bool validated1 = true;
-  bool validated2 = true;
+  TextEditingController _todoTitleController = TextEditingController(),
+      _todoDateController = TextEditingController();
+  String errtext1 = "", errtext2 = "";
+  bool validated1 = true, validated2 = true;
   DateTime _dateTime = DateTime.now();
 
   addatask() {
@@ -108,10 +106,8 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   closekeyboard() {
-    FocusScopeNode currentFocus = FocusScope.of(context);
-
-    if (!currentFocus.hasPrimaryFocus) {
-      currentFocus.unfocus();
+    if (!FocusScope.of(context).hasPrimaryFocus) {
+      FocusScope.of(context).unfocus();
     }
   }
 

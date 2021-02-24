@@ -1,9 +1,6 @@
-String dayOrder = "-";
-String nextDay = "-";
-String dayAfter = "-";
+String dayOrder = "-", nextDay = "-", dayAfter = "-";
 int valueOfGrade = 11;
-Map timetable = {};
-Map timetabletom = {};
+Map timetable = {}, timetabletom = {};
 double h1,
     h2,
     h3,
