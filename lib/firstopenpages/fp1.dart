@@ -32,6 +32,7 @@ class _Fp1State extends State<Fp1Page> {
     globals.w = width * 0.85;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'DayTrak',
         home: Scaffold(
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(50),

@@ -226,6 +226,7 @@ class _Fp2State extends State<Fp2Page> {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'DayTrak',
         home: Scaffold(
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(50),

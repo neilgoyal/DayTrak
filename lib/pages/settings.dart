@@ -283,6 +283,7 @@ class _SettingsState extends State<SettingsPage> {
         },
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
+            title: 'DayTrak',
             home: Scaffold(
                 appBar: PreferredSize(
                     preferredSize: Size.fromHeight(100),

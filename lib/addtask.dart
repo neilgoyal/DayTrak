@@ -25,7 +25,7 @@ class Addtask1 extends StatelessWidget {
     return MaterialApp(
         color: Colors.white,
         debugShowCheckedModeBanner: false,
-        title: 'To-Do List',
+        title: 'DayTrak',
         home: TodoList1());
   }
 }

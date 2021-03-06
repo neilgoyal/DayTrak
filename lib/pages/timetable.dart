@@ -39,6 +39,7 @@ class _TimetableState extends State<TimetablePage>
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
+        title: 'DayTrak',
         home: Scaffold(
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(170),
