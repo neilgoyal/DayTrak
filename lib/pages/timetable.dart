@@ -12,6 +12,8 @@ class TimetablePage extends StatefulWidget {
 }
 
 Future<Day> futureDay;
+String daytoshow;
+String ordertoshow;
 
 showcorrectday(result) {
   if (result == '7') {
@@ -33,6 +35,8 @@ class _TimetableState extends State<TimetablePage>
     super.initState();
     futureDay = fetchDay();
     _tabController = TabController(initialIndex: 0, vsync: this, length: 2);
+    _handleTabSelection();
+    _tabController.addListener(_handleTabSelection);
   }
 
   @override
@@ -58,7 +62,7 @@ class _TimetableState extends State<TimetablePage>
                         Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text(DateFormat.EEEE().format(DateTime.now()),
+                              Text(daytoshow,
                                   style: TextStyle(
                                     fontSize: globals.h1,
                                     color: const Color(0xff9b8fb1),
@@ -90,7 +94,7 @@ class _TimetableState extends State<TimetablePage>
                                           MainAxisAlignment.center,
                                       children: <Widget>[
                                         Text(
-                                          '${showcorrectday(globals.dayOrder)}',
+                                          '${showcorrectday(ordertoshow)}',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: globals.h2,
@@ -102,7 +106,7 @@ class _TimetableState extends State<TimetablePage>
                                     );
                                   } else
                                     return Text(
-                                      '${showcorrectday(globals.dayOrder)}',
+                                      '${showcorrectday(ordertoshow)}',
                                       style: TextStyle(
                                         fontSize: globals.h2,
                                         color: const Color(0xffbadfca),
@@ -149,5 +153,18 @@ class _TimetableState extends State<TimetablePage>
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),
             )));
+  }
+
+  _handleTabSelection() {
+    setState(() {
+      if (_tabController.index == 1) {
+        ordertoshow = globals.nextDay;
+        daytoshow = DateFormat.EEEE()
+            .format((DateTime.now()).add(const Duration(days: 1)));
+      } else {
+        ordertoshow = globals.dayOrder;
+        daytoshow = DateFormat.EEEE().format(DateTime.now());
+      }
+    });
   }
 }
