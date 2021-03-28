@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
     globals.l3 = lenght * 0.75;
     return DefaultTabController(
       length: 3,
-      initialIndex: 0,
+      initialIndex: 1,
       child: Scaffold(
         body: TabBarView(
           children: [
