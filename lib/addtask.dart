@@ -542,6 +542,7 @@ class _TodoListState1 extends State<TodoList1> {
   Widget build(BuildContext context) {
     PopupMenu.context = context;
     return Material(
+      color: Colors.black,
       child: SlidingUpPanel(
           backdropTapClosesPanel: true,
           backdropEnabled: true,
@@ -577,6 +578,7 @@ class _TodoListState1 extends State<TodoList1> {
                       preferredSize: Size.fromHeight(190),
                       child: AppBar(
                         backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                        // backgroundColor: Colors.black,
                         elevation: 0,
                         title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,

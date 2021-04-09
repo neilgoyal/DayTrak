@@ -49,6 +49,7 @@ class _TimetableState extends State<TimetablePage>
               preferredSize: Size.fromHeight(170),
               child: AppBar(
                 backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                // backgroundColor: Colors.black,
                 elevation: 0,
                 title: Container(
                     child: Padding(
