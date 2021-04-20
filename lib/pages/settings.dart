@@ -144,6 +144,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -164,6 +165,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {
@@ -184,6 +186,7 @@ class _SettingsState extends State<SettingsPage> {
             height: 10,
           ),
           TextFormField(
+              textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
                 if (value.isEmpty) {

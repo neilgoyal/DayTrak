@@ -508,21 +508,18 @@ class _TodoListState1 extends State<TodoList1> {
   Widget _floatingCollasped() {
     return Container(
       decoration: BoxDecoration(
-        color: Color.fromRGBO(185, 143, 163, 1),
+        color: Color.fromRGBO(137, 180, 184, 0.9),
         borderRadius: radius,
       ),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-        SizedBox(
-          height: 10,
-        ),
-        Text(
-          "Add Task",
-          style: TextStyle(
-              color: Colors.white,
-              fontFamily: 'Protipo Compact',
-              fontSize: globals.h6),
-        ),
-      ]),
+      child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 10,
+            ),
+            Icon(CupertinoIcons.chevron_compact_up, size: globals.h2)
+          ]),
     );
   }
 

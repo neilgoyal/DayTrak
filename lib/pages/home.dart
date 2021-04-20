@@ -102,8 +102,8 @@ class _HomePageState extends State<HomePage> {
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,
             labelColor: Colors.black,
-            indicator:
-                CircleTabIndicator(color: const Color(0xffbadfca), radius: 3.5),
+            indicator: CircleTabIndicator(
+                color: Color.fromRGBO(104, 115, 150, 1), radius: 3.5),
           ),
         ),
       ),

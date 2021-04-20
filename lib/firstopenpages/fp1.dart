@@ -156,8 +156,7 @@ class _Fp1State extends State<Fp1Page> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacement(
-                            new MaterialPageRoute(
-                                builder: (context) => Fp2Page()));
+                            MaterialPageRoute(builder: (context) => Fp2Page()));
                       },
                       child: Icon(
                         CupertinoIcons.chevron_forward,

@@ -29,7 +29,241 @@ class _Fp2State extends State<Fp2Page> {
   final myController4 = TextEditingController();
   final myController5 = TextEditingController();
   final myController6 = TextEditingController();
+  final myController7 = TextEditingController();
+  final myController8 = TextEditingController();
+  final myController9 = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  grade9() {
+    return Form(
+        key: _formKey,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              cursorColor: Colors.black54,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              controller: myController,
+              decoration: InputDecoration(
+                  labelText: 'Block 1',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              cursorColor: Colors.black54,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              controller: myController2,
+              decoration: InputDecoration(
+                  labelText: 'Block 2',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController3,
+              decoration: InputDecoration(
+                  labelText: 'Block 3',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController4,
+              decoration: InputDecoration(
+                  labelText: 'Block 4',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController5,
+              decoration: InputDecoration(
+                  labelText: 'Block 5',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController6,
+              decoration: InputDecoration(
+                  labelText: 'Block 6',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController7,
+              decoration: InputDecoration(
+                  labelText: 'Block 7',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController8,
+              decoration: InputDecoration(
+                  labelText: 'Block 8',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController9,
+              decoration: InputDecoration(
+                  labelText: 'Block 9',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 15,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              HapticFeedback.heavyImpact();
+              if (_formKey.currentState.validate()) {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('B1', myController.text);
+                prefs.setString('B2', myController2.text);
+                prefs.setString('B3', myController3.text);
+                prefs.setString('B4', myController4.text);
+                prefs.setString('B5', myController5.text);
+                prefs.setString('B6', myController6.text);
+                prefs.setString('B7', myController7.text);
+                prefs.setString('B8', myController8.text);
+                prefs.setString('B9', myController9.text);
+              }
+            },
+            child: const Text('Save',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontFamily: 'Protipo Compact',
+                )),
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromRGBO(119, 227, 134, 1),
+              shadowColor: Color.fromRGBO(223, 164, 160, 1),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+        ]));
+  }
 
   grade11() {
     return Form(
@@ -214,6 +448,9 @@ class _Fp2State extends State<Fp2Page> {
     myController4.dispose();
     myController5.dispose();
     myController6.dispose();
+    myController7.dispose();
+    myController8.dispose();
+    myController9.dispose();
     super.dispose();
   }
 
@@ -256,7 +493,7 @@ class _Fp2State extends State<Fp2Page> {
                                     ),
                                     onPressed: () {
                                       Navigator.of(context).pushReplacement(
-                                          new MaterialPageRoute(
+                                          MaterialPageRoute(
                                               builder: (context) => Fp1Page()));
                                     },
                                     child: Icon(
@@ -454,8 +691,12 @@ class _Fp2State extends State<Fp2Page> {
                                                                             value: 8),
                                                                         DropdownMenuItem(
                                                                             child:
-                                                                                Text("9"),
-                                                                            value: 9),
+                                                                                Text("9A"),
+                                                                            value: 91),
+                                                                        DropdownMenuItem(
+                                                                            child:
+                                                                                Text("9B"),
+                                                                            value: 92),
                                                                         DropdownMenuItem(
                                                                             child:
                                                                                 Text("10"),
@@ -507,10 +748,18 @@ class _Fp2State extends State<Fp2Page> {
                                                               Column(
                                                                 children: <
                                                                     Widget>[
-                                                                  (globals.valueOfGrade ==
-                                                                          11)
-                                                                      ? grade11()
-                                                                      : nosupport()
+                                                                  if (globals
+                                                                          .valueOfGrade ==
+                                                                      11)
+                                                                    grade11()
+                                                                  else if (globals
+                                                                              .valueOfGrade ==
+                                                                          91 ||
+                                                                      globals.valueOfGrade ==
+                                                                          92)
+                                                                    grade9()
+                                                                  else
+                                                                    nosupport()
                                                                 ],
                                                               ),
                                                             ]))),
@@ -544,6 +793,24 @@ class _Fp2State extends State<Fp2Page> {
                                 prefs.setString('B4', myController4.text);
                                 prefs.setString('B5', myController5.text);
                                 prefs.setString('B6', myController6.text);
+                                Navigator.of(context).pushReplacement(
+                                    new MaterialPageRoute(
+                                        builder: (context) => HomePage()));
+                              }
+                            } else if (globals.valueOfGrade == 91 ||
+                                globals.valueOfGrade == 92) {
+                              if (_formKey.currentState.validate()) {
+                                SharedPreferences prefs =
+                                    await SharedPreferences.getInstance();
+                                prefs.setString('B1', myController.text);
+                                prefs.setString('B2', myController2.text);
+                                prefs.setString('B3', myController3.text);
+                                prefs.setString('B4', myController4.text);
+                                prefs.setString('B5', myController5.text);
+                                prefs.setString('B6', myController6.text);
+                                prefs.setString('B7', myController7.text);
+                                prefs.setString('B8', myController8.text);
+                                prefs.setString('B9', myController9.text);
                                 Navigator.of(context).pushReplacement(
                                     new MaterialPageRoute(
                                         builder: (context) => HomePage()));
