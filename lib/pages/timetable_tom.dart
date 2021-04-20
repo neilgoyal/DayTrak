@@ -11,7 +11,7 @@ class TimetabletomPage extends StatefulWidget {
 
 Future<Day> futureDay;
 int numoftiles;
-String b1, b2, b3, b4, b5, b6, b7, b8, b9, b10;
+String b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
 class _TimetabletomState extends State<TimetabletomPage> {
   @override
@@ -43,6 +43,12 @@ class _TimetabletomState extends State<TimetabletomPage> {
       return (b5 == "Block 5") ? b5 : "B5 $b5";
     } else if (userinput == 'B6') {
       return (b6 == "Block 6") ? b6 : "B6 $b6";
+    } else if (userinput == 'B7') {
+      return (b7 == "Block 7") ? b7 : "B7 $b7";
+    } else if (userinput == 'B8') {
+      return (b8 == "Block 8") ? b8 : "B8 $b8";
+    } else if (userinput == 'B9') {
+      return (b9 == "Block 9") ? b9 : "B9 $b9";
     } else {
       return userinput;
     }
@@ -50,7 +56,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 11) {
+    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
       setState(() {
         b1 = prefs.getString('B1') ?? "Block 1";
         b2 = prefs.getString('B2') ?? "Block 2";
@@ -59,11 +65,25 @@ class _TimetabletomState extends State<TimetabletomPage> {
         b5 = prefs.getString('B5') ?? "Block 5";
         b6 = prefs.getString('B6') ?? "Block 6";
       });
+    } else if (globals.valueOfGrade == 91 || globals.valueOfGrade == 92) {
+      setState(() {
+        b1 = prefs.getString('B1') ?? "Block 1";
+        b2 = prefs.getString('B2') ?? "Block 2";
+        b3 = prefs.getString('B3') ?? "Block 3";
+        b4 = prefs.getString('B4') ?? "Block 4";
+        b5 = prefs.getString('B5') ?? "Block 5";
+        b6 = prefs.getString('B6') ?? "Block 6";
+        b7 = prefs.getString('B7') ?? "Block 7";
+        b8 = prefs.getString('B8') ?? "Block 8";
+        b9 = prefs.getString('B9') ?? "Block 9";
+      });
     }
   }
 
   selectNumTiles() {
-    if (globals.valueOfGrade == 11) {
+    if (globals.valueOfGrade == 11 ||
+        globals.valueOfGrade == 91 ||
+        globals.valueOfGrade == 92) {
       numoftiles = 6;
     } else {
       numoftiles = 0;
@@ -76,7 +96,9 @@ class _TimetabletomState extends State<TimetabletomPage> {
         child: FutureBuilder<Day>(
             future: futureDay,
             builder: (context, snapshot) {
-              if (globals.valueOfGrade != 11) {
+              if (globals.valueOfGrade != 11 &&
+                  globals.valueOfGrade != 91 &&
+                  globals.valueOfGrade != 92) {
                 return Container(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -114,7 +136,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                     ],
                   ),
                 );
-              } else if (globals.nextDay == "7" || globals.nextDay == "8") {
+              } else if (globals.nextDay == "7") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -138,6 +160,42 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                       Container(
                                         child: Text(
                                           'No School',
+                                          style: TextStyle(
+                                              fontSize: globals.h3,
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w300,
+                                              fontFamily: "Protipo Compact"),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ))
+                        ]));
+              } else if (globals.nextDay == "8") {
+                return Container(
+                    padding:
+                        EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Card(
+                              elevation: 4,
+                              color: Color.fromRGBO(252, 252, 252, 1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(27)),
+                              child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                child: ListTile(
+                                  title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          'Error',
                                           style: TextStyle(
                                               fontSize: globals.h3,
                                               color: Colors.black54,

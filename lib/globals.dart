@@ -1,5 +1,5 @@
 String dayOrder = "-", nextDay = "-", dayAfter = "-";
-int valueOfGrade = 12;
+int valueOfGrade = 11;
 Map timetable = {}, timetabletom = {};
 double h1,
     h2,

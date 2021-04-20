@@ -26,6 +26,9 @@ class _SettingsState extends State<SettingsPage> {
   final myController4 = TextEditingController();
   final myController5 = TextEditingController();
   final myController6 = TextEditingController();
+  final myController7 = TextEditingController();
+  final myController8 = TextEditingController();
+  final myController9 = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   grade9() {
@@ -169,7 +172,7 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              controller: myController6,
+              controller: myController7,
               decoration: InputDecoration(
                   labelText: 'Block 7',
                   labelStyle: TextStyle(
@@ -189,7 +192,7 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              controller: myController6,
+              controller: myController8,
               decoration: InputDecoration(
                   labelText: 'Block 8',
                   labelStyle: TextStyle(
@@ -209,7 +212,7 @@ class _SettingsState extends State<SettingsPage> {
                 return null;
               },
               cursorColor: Colors.black54,
-              controller: myController6,
+              controller: myController9,
               decoration: InputDecoration(
                   labelText: 'Block 9',
                   labelStyle: TextStyle(
@@ -231,6 +234,9 @@ class _SettingsState extends State<SettingsPage> {
                 prefs.setString('B4', myController4.text);
                 prefs.setString('B5', myController5.text);
                 prefs.setString('B6', myController6.text);
+                prefs.setString('B7', myController7.text);
+                prefs.setString('B8', myController8.text);
+                prefs.setString('B9', myController9.text);
               }
             },
             child: const Text('Save',
@@ -467,6 +473,18 @@ class _SettingsState extends State<SettingsPage> {
         myController5.text = prefs.getString('B5') ?? "";
         myController6.text = prefs.getString('B6') ?? "";
       });
+    } else if (globals.valueOfGrade == 91 || globals.valueOfGrade == 92) {
+      setState(() {
+        myController.text = prefs.getString('B1') ?? "";
+        myController2.text = prefs.getString('B2') ?? "";
+        myController3.text = prefs.getString('B3') ?? "";
+        myController4.text = prefs.getString('B4') ?? "";
+        myController5.text = prefs.getString('B5') ?? "";
+        myController6.text = prefs.getString('B6') ?? "";
+        myController7.text = prefs.getString('B7') ?? "";
+        myController8.text = prefs.getString('B8') ?? "";
+        myController9.text = prefs.getString('B9') ?? "";
+      });
     }
   }
 
@@ -485,6 +503,9 @@ class _SettingsState extends State<SettingsPage> {
     myController4.dispose();
     myController5.dispose();
     myController6.dispose();
+    myController7.dispose();
+    myController8.dispose();
+    myController9.dispose();
     super.dispose();
   }
 
@@ -496,7 +517,7 @@ class _SettingsState extends State<SettingsPage> {
   getIntValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      globals.valueOfGrade = prefs.getInt('Value') ?? 110;
+      globals.valueOfGrade = prefs.getInt('Value') ?? 11;
     });
   }
 
@@ -610,15 +631,15 @@ class _SettingsState extends State<SettingsPage> {
                                               DropdownMenuItem(
                                                   child: Text("8"), value: 8),
                                               DropdownMenuItem(
-                                                  child: Text("9A"), value: 9),
+                                                  child: Text("9A"), value: 91),
                                               DropdownMenuItem(
-                                                  child: Text("9B"), value: 10),
+                                                  child: Text("9B"), value: 92),
                                               DropdownMenuItem(
-                                                  child: Text("10"), value: 11),
+                                                  child: Text("10"), value: 10),
                                               DropdownMenuItem(
-                                                  child: Text("11"), value: 12),
+                                                  child: Text("11"), value: 11),
                                               DropdownMenuItem(
-                                                  child: Text("12"), value: 13),
+                                                  child: Text("12"), value: 12),
                                             ],
                                             onChanged: (value) {
                                               setState(() {
@@ -649,10 +670,10 @@ class _SettingsState extends State<SettingsPage> {
                                     ),
                                     Column(
                                       children: <Widget>[
-                                        if (globals.valueOfGrade == 12)
+                                        if (globals.valueOfGrade == 11)
                                           grade11()
-                                        else if (globals.valueOfGrade == 9 ||
-                                            globals.valueOfGrade == 10)
+                                        else if (globals.valueOfGrade == 91 ||
+                                            globals.valueOfGrade == 92)
                                           grade9()
                                         else
                                           nosupport()
