@@ -28,6 +28,231 @@ class _SettingsState extends State<SettingsPage> {
   final myController6 = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  grade9() {
+    return Form(
+        key: _formKey,
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+          SizedBox(
+            height: 20,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              cursorColor: Colors.black54,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              controller: myController,
+              decoration: InputDecoration(
+                  labelText: 'Block 1',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              cursorColor: Colors.black54,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              controller: myController2,
+              decoration: InputDecoration(
+                  labelText: 'Block 2',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController3,
+              decoration: InputDecoration(
+                  labelText: 'Block 3',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController4,
+              decoration: InputDecoration(
+                  labelText: 'Block 4',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textInputAction: TextInputAction.next,
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController5,
+              decoration: InputDecoration(
+                  labelText: 'Block 5',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController6,
+              decoration: InputDecoration(
+                  labelText: 'Block 6',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController6,
+              decoration: InputDecoration(
+                  labelText: 'Block 7',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController6,
+              decoration: InputDecoration(
+                  labelText: 'Block 8',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 10,
+          ),
+          TextFormField(
+              textCapitalization: TextCapitalization.sentences,
+              validator: (value) {
+                if (value.isEmpty) {
+                  return errmessage;
+                }
+                return null;
+              },
+              cursorColor: Colors.black54,
+              controller: myController6,
+              decoration: InputDecoration(
+                  labelText: 'Block 9',
+                  labelStyle: TextStyle(
+                    color: Colors.black54,
+                  ),
+                  enabledBorder: textfieldborderenabled,
+                  focusedBorder: focusedborder)),
+          SizedBox(
+            height: 15,
+          ),
+          ElevatedButton(
+            onPressed: () async {
+              HapticFeedback.heavyImpact();
+              if (_formKey.currentState.validate()) {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setString('B1', myController.text);
+                prefs.setString('B2', myController2.text);
+                prefs.setString('B3', myController3.text);
+                prefs.setString('B4', myController4.text);
+                prefs.setString('B5', myController5.text);
+                prefs.setString('B6', myController6.text);
+              }
+            },
+            child: const Text('Save',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 22,
+                  fontFamily: 'Protipo Compact',
+                )),
+            style: ElevatedButton.styleFrom(
+              primary: Color.fromRGBO(119, 227, 134, 1),
+              shadowColor: Color.fromRGBO(223, 164, 160, 1),
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(7)),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+        ]));
+  }
+
   grade11() {
     return Form(
         key: _formKey,
@@ -233,7 +458,7 @@ class _SettingsState extends State<SettingsPage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 11) {
+    if (globals.valueOfGrade == 12) {
       setState(() {
         myController.text = prefs.getString('B1') ?? "";
         myController2.text = prefs.getString('B2') ?? "";
@@ -271,7 +496,7 @@ class _SettingsState extends State<SettingsPage> {
   getIntValuesSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      globals.valueOfGrade = prefs.getInt('Value') ?? 11;
+      globals.valueOfGrade = prefs.getInt('Value') ?? 110;
     });
   }
 
@@ -385,13 +610,15 @@ class _SettingsState extends State<SettingsPage> {
                                               DropdownMenuItem(
                                                   child: Text("8"), value: 8),
                                               DropdownMenuItem(
-                                                  child: Text("9"), value: 9),
+                                                  child: Text("9A"), value: 9),
                                               DropdownMenuItem(
-                                                  child: Text("10"), value: 10),
+                                                  child: Text("9B"), value: 10),
                                               DropdownMenuItem(
-                                                  child: Text("11"), value: 11),
+                                                  child: Text("10"), value: 11),
                                               DropdownMenuItem(
-                                                  child: Text("12"), value: 12),
+                                                  child: Text("11"), value: 12),
+                                              DropdownMenuItem(
+                                                  child: Text("12"), value: 13),
                                             ],
                                             onChanged: (value) {
                                               setState(() {
@@ -422,9 +649,13 @@ class _SettingsState extends State<SettingsPage> {
                                     ),
                                     Column(
                                       children: <Widget>[
-                                        (globals.valueOfGrade == 11)
-                                            ? grade11()
-                                            : nosupport()
+                                        if (globals.valueOfGrade == 12)
+                                          grade11()
+                                        else if (globals.valueOfGrade == 9 ||
+                                            globals.valueOfGrade == 10)
+                                          grade9()
+                                        else
+                                          nosupport()
                                       ],
                                     ),
                                   ]))),
