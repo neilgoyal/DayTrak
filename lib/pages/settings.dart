@@ -467,7 +467,7 @@ class _SettingsState extends State<SettingsPage> {
 
   defaultsvals() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 12) {
+    if (globals.valueOfGrade == 11) {
       setState(() {
         myController.text = prefs.getString('B1') ?? "";
         myController2.text = prefs.getString('B2') ?? "";
