@@ -4,6 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'settings.dart';
 import 'timetable.dart';
 import '../globals.dart' as globals;
+import 'home2.dart';
+import 'settings2.dart';
+import 'timetable2.dart';
+import 'addtask2.dart';
+// import 'package:line_icons/line_icons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -62,7 +67,7 @@ class _HomePageState extends State<HomePage> {
     globals.l2 = lenght * 0.1;
     globals.l3 = lenght * 0.75;
     return DefaultTabController(
-      length: 3,
+      length: 7,
       initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
@@ -70,6 +75,10 @@ class _HomePageState extends State<HomePage> {
             Addtask1(),
             TimetablePage(),
             SettingsPage(),
+            Home2Page(),
+            Timetable2Page(),
+            Addtask2Page(),
+            Settings2Page()
           ],
         ),
         bottomNavigationBar: Container(
@@ -89,6 +98,30 @@ class _HomePageState extends State<HomePage> {
               Tab(
                 icon: Icon(
                   CupertinoIcons.list_dash,
+                  size: 35,
+                ),
+              ),
+              Tab(
+                icon: Icon(
+                  CupertinoIcons.settings_solid,
+                  size: 35,
+                ),
+              ),
+              Tab(
+                icon: Icon(
+                  CupertinoIcons.house,
+                  size: 35,
+                ),
+              ),
+              Tab(
+                icon: Icon(
+                  CupertinoIcons.calendar_today,
+                  size: 35,
+                ),
+              ),
+              Tab(
+                icon: Icon(
+                  CupertinoIcons.list_bullet,
                   size: 35,
                 ),
               ),
