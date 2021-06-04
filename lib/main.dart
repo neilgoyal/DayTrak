@@ -1,14 +1,16 @@
-// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'firstopenpages/fp1.dart';
 
-// Future<void> main() async {
-//   await Firebase.initializeApp();
-//   runApp(MyApp());
-// }
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
+
+// void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
