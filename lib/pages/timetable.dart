@@ -11,9 +11,9 @@ class TimetablePage extends StatefulWidget {
   _TimetableState createState() => _TimetableState();
 }
 
-Future<Day> futureDay;
-String daytoshow;
-String ordertoshow;
+Future<Day>? futureDay;
+late String daytoshow;
+String? ordertoshow;
 
 showcorrectday(result) {
   if (result == '7') {
@@ -28,7 +28,7 @@ showcorrectday(result) {
 
 class _TimetableState extends State<TimetablePage>
     with SingleTickerProviderStateMixin {
-  TabController _tabController;
+  TabController? _tabController;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _TimetableState extends State<TimetablePage>
     futureDay = fetchDay();
     _tabController = TabController(initialIndex: 0, vsync: this, length: 2);
     _handleTabSelection();
-    _tabController.addListener(_handleTabSelection);
+    _tabController!.addListener(_handleTabSelection);
   }
 
   @override
@@ -82,14 +82,15 @@ class _TimetableState extends State<TimetablePage>
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     globals.dayOrder =
-                                        ((snapshot.data.day1).toString());
+                                        ((snapshot.data!.day1).toString());
                                     globals.nextDay =
-                                        ((snapshot.data.day2).toString());
+                                        ((snapshot.data!.day2).toString());
                                     globals.dayAfter =
-                                        ((snapshot.data.day3).toString());
-                                    globals.timetable = snapshot.data.timetable;
+                                        ((snapshot.data!.day3).toString());
+                                    globals.timetable =
+                                        snapshot.data!.timetable;
                                     globals.timetabletom =
-                                        snapshot.data.timetabletom;
+                                        snapshot.data!.timetabletom;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -158,7 +159,7 @@ class _TimetableState extends State<TimetablePage>
 
   _handleTabSelection() {
     setState(() {
-      if (_tabController.index == 1) {
+      if (_tabController!.index == 1) {
         ordertoshow = globals.nextDay;
         daytoshow = DateFormat.EEEE()
             .format((DateTime.now()).add(const Duration(days: 1)));

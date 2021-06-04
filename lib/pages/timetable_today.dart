@@ -9,9 +9,9 @@ class TimetabletodayPage extends StatefulWidget {
   _TimetabletodayState createState() => _TimetabletodayState();
 }
 
-Future<Day> futureDay;
-int numoftiles;
-String b1, b2, b3, b4, b5, b6, b7, b8, b9;
+Future<Day>? futureDay;
+int? numoftiles;
+String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
 class _TimetabletodayState extends State<TimetabletodayPage> {
   @override
@@ -115,8 +115,8 @@ class _TimetabletodayState extends State<TimetabletodayPage> {
                                 child: Padding(
                                     padding: EdgeInsets.only(
                                         top: 0.0,
-                                        left: globals.h5,
-                                        right: globals.h5),
+                                        left: globals.h5!,
+                                        right: globals.h5!),
                                     child: Container(
                                       child: Text(
                                         'Support Coming Soon!',
@@ -210,11 +210,11 @@ class _TimetabletodayState extends State<TimetabletodayPage> {
                         ]));
               } else {
                 if (snapshot.hasData) {
-                  globals.dayOrder = ((snapshot.data.day1).toString());
-                  globals.nextDay = ((snapshot.data.day2).toString());
-                  globals.dayAfter = ((snapshot.data.day3).toString());
-                  globals.timetable = snapshot.data.timetable;
-                  globals.timetabletom = snapshot.data.timetabletom;
+                  globals.dayOrder = ((snapshot.data!.day1).toString());
+                  globals.nextDay = ((snapshot.data!.day2).toString());
+                  globals.dayAfter = ((snapshot.data!.day3).toString());
+                  globals.timetable = snapshot.data!.timetable;
+                  globals.timetabletom = snapshot.data!.timetabletom;
                   return ListView.builder(
                       itemCount: numoftiles,
                       itemBuilder: (context, index) {
@@ -238,7 +238,7 @@ class _TimetabletodayState extends State<TimetabletodayPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          blocktoprefrence(globals.timetable[
+                                          blocktoprefrence(globals.timetable![
                                               '${globals.valueOfGrade}.${(index + 1)}']),
                                           style: TextStyle(
                                               fontSize: globals.h4,
@@ -256,7 +256,7 @@ class _TimetabletodayState extends State<TimetabletodayPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          globals.timetable[
+                                          globals.timetable![
                                               '${globals.valueOfGrade}.${(index + 1)}_time'],
                                           style: TextStyle(color: Colors.grey),
                                         )
@@ -289,9 +289,9 @@ class _TimetabletodayState extends State<TimetabletodayPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          (globals.timetable.isNotEmpty)
+                                          (globals.timetable!.isNotEmpty)
                                               ? blocktoprefrence(globals
-                                                      .timetable[
+                                                      .timetable![
                                                   '${globals.valueOfGrade}.${(index + 1)}'])
                                               : "-",
                                           style: TextStyle(
@@ -310,8 +310,8 @@ class _TimetabletodayState extends State<TimetabletodayPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          (globals.timetable.isNotEmpty)
-                                              ? globals.timetable[
+                                          (globals.timetable!.isNotEmpty)
+                                              ? globals.timetable![
                                                   '${globals.valueOfGrade}.${(index + 1)}_time']
                                               : "-",
                                           style: TextStyle(color: Colors.grey),

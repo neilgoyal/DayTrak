@@ -9,6 +9,7 @@ class _Home2State extends State<Home2Page> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.green,
     );
   }
 }

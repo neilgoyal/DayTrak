@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
+// ignore: implementation_imports
 import 'package:schoolcalendar/flutter_rounded_date_picker/src/era_mode.dart';
 import 'package:schoolcalendar/flutter_rounded_date_picker/src/material_rounded_date_picker_style.dart';
 import 'package:schoolcalendar/flutter_rounded_date_picker/src/widgets/flutter_rounded_day_picker.dart';
@@ -31,14 +32,14 @@ class FlutterRoundedMonthPicker extends StatefulWidget {
   /// Rarely used directly. Instead, typically used as part of the dialog shown
   /// by [showDatePicker].
   FlutterRoundedMonthPicker(
-      {Key key,
-      @required this.selectedDate,
-      @required this.onChanged,
-      @required this.firstDate,
-      @required this.lastDate,
+      {Key? key,
+      required this.selectedDate,
+      required this.onChanged,
+      required this.firstDate,
+      required this.lastDate,
       this.selectableDayPredicate,
       this.dragStartBehavior = DragStartBehavior.start,
-      this.era,
+      required this.era,
       this.locale,
       this.fontFamily,
       this.style,
@@ -47,9 +48,7 @@ class FlutterRoundedMonthPicker extends StatefulWidget {
       this.builderDay,
       this.listDateDisabled,
       this.onTapDay})
-      : assert(selectedDate != null),
-        assert(onChanged != null),
-        assert(!firstDate.isAfter(lastDate)),
+      : assert(!firstDate.isAfter(lastDate)),
 //        assert(selectedDate.isAfter(firstDate) || selectedDate.isAtSameMomentAs(firstDate)),
         super(key: key);
 
@@ -68,41 +67,41 @@ class FlutterRoundedMonthPicker extends StatefulWidget {
   final DateTime lastDate;
 
   /// Optional user supplied predicate function to customize selectable days.
-  final SelectableDayPredicate selectableDayPredicate;
+  final SelectableDayPredicate? selectableDayPredicate;
 
   /// {@macro flutter.widgets.scrollable.dragStartBehavior}
   final DragStartBehavior dragStartBehavior;
 
   /// Optional era year.
   final EraMode era;
-  final Locale locale;
+  final Locale? locale;
 
   /// Font
-  final String fontFamily;
+  final String? fontFamily;
 
   /// Style
-  final MaterialRoundedDatePickerStyle style;
+  final MaterialRoundedDatePickerStyle? style;
 
   final double borderRadius;
 
   /// Custom Weekday.
-  final List<String> customWeekDays;
+  final List<String>? customWeekDays;
 
-  final BuilderDayOfDatePicker builderDay;
+  final BuilderDayOfDatePicker? builderDay;
 
-  final List<DateTime> listDateDisabled;
-  final OnTapDay onTapDay;
+  final List<DateTime>? listDateDisabled;
+  final OnTapDay? onTapDay;
 
   @override
-  _FlutterRoundedMonthPickerState createState() =>
-      _FlutterRoundedMonthPickerState();
+
+       _FlutterRoundedMonthPickerState createState() => _FlutterRoundedMonthPickerState();
 }
 
 class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
     with SingleTickerProviderStateMixin {
   static final Animatable<double> _chevronOpacityTween =
-      Tween<double>(begin: 1.0, end: 0.0)
-          .chain(CurveTween(curve: Curves.easeInOut));
+      Tween
+          <double>(begin: 1.0, end: 0.0).chain(CurveTween(curve: Curves.easeInOut));
 
   @override
   void initState() {
@@ -133,8 +132,8 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
     }
   }
 
-  MaterialLocalizations localizations;
-  TextDirection textDirection;
+  late MaterialLocalizations localizations;
+  late TextDirection textDirection;
 
   @override
   void didChangeDependencies() {
@@ -143,12 +142,12 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
     textDirection = Directionality.of(context);
   }
 
-  DateTime _todayDate;
-  DateTime _currentDisplayedMonthDate;
-  Timer _timer;
-  PageController _dayPickerController;
-  AnimationController _chevronOpacityController;
-  Animation<double> _chevronOpacityAnimation;
+  late DateTime _todayDate;
+  late DateTime _currentDisplayedMonthDate;
+  Timer? _timer;
+  late PageController _dayPickerController;
+  late AnimationController _chevronOpacityController;
+  late Animation<double> _chevronOpacityAnimation;
 
   void _updateCurrentDate() {
     _todayDate = DateTime.now();
@@ -164,9 +163,9 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
   }
 
   static int _monthDelta(DateTime startDate, DateTime endDate) {
-    return (endDate.year - startDate.year) * 12 +
-        endDate.month -
-        startDate.month;
+
+       
+           return (endDate.year - startDate.year) * 12 + endDate.month - startDate.month;
   }
 
   /// Add months to a month truncated date.
@@ -241,8 +240,8 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
     );
   }
 
-  DateTime _previousMonthDate;
-  DateTime _nextMonthDate;
+  late DateTime _previousMonthDate;
+  late DateTime _nextMonthDate;
 
   void _handleMonthPageChanged(int monthPage) {
     setState(() {
@@ -309,15 +308,15 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
                 child: IconButton(
                   icon: Icon(
                     Icons.chevron_left,
-                    size: widget?.style?.sizeArrow,
-                    color: widget?.style?.colorArrowPrevious,
+                    size: widget.style?.sizeArrow,
+                    color: widget.style?.colorArrowPrevious,
                   ),
                   tooltip: _isDisplayingFirstMonth
                       ? null
                       : '${localizations.previousMonthTooltip} ${localizations.formatMonthYear(_previousMonthDate)}',
-                  onPressed: _isDisplayingFirstMonth == true
-                      ? null
-                      : _handlePreviousMonth,
+                
+                     
+                       onPressed: _isDisplayingFirstMonth == true ? null : _handlePreviousMonth,
                 ),
               ),
             ),
@@ -334,8 +333,8 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
                 child: IconButton(
                   icon: Icon(
                     Icons.chevron_right,
-                    size: widget?.style?.sizeArrow,
-                    color: widget?.style?.colorArrowNext,
+                    size: widget.style?.sizeArrow,
+                    color: widget.style?.colorArrowNext,
                   ),
                   tooltip: _isDisplayingLastMonth
                       ? null
@@ -353,8 +352,8 @@ class _FlutterRoundedMonthPickerState extends State<FlutterRoundedMonthPicker>
   @override
   void dispose() {
     _timer?.cancel();
-    _chevronOpacityController?.dispose();
-    _dayPickerController?.dispose();
+    _chevronOpacityController.dispose();
+    _dayPickerController.dispose();
     super.dispose();
   }
 }

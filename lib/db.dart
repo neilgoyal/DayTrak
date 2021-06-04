@@ -3,8 +3,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
 class Todo {
-  int id;
-  String title, todoDate;
+  int? id;
+  late String title, todoDate;
 
   todoMap() {
     Map<String, dynamic> mapping = Map<String, dynamic>();
@@ -17,7 +17,7 @@ class Todo {
 }
 
 class TodoService {
-  Repository _repository;
+  late Repository _repository;
 
   TodoService() {
     _repository = Repository();
@@ -40,17 +40,14 @@ class TodoService {
 }
 
 class Repository {
-  DatabaseConnection _databaseConnection;
+  late DatabaseConnection _databaseConnection;
 
   Repository() {
     _databaseConnection = DatabaseConnection();
   }
-  static Database _database;
-  Future<Database> get database async {
-    if (_database != null) return _database;
-    _database = await _databaseConnection.setDatabase();
-    return _database;
-  }
+  static Database? _database;
+  Future<Database> get database async =>
+      _database ??= await _databaseConnection.setDatabase();
 
   insertData(table, data) async {
     Database connection = await database;

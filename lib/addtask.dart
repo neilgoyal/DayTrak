@@ -6,8 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'api.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:schoolcalendar/flutter_rounded_date_picker/rounded_picker.dart';
-import 'package:popup_menu/popup_menu.dart';
+// import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
+import 'package:schoolcalendar/flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 
@@ -15,7 +15,7 @@ BorderRadiusGeometry radius = BorderRadius.only(
   topLeft: Radius.circular(35.0),
   topRight: Radius.circular(35.0),
 );
-Future<Day> futureDay;
+Future<Day>? futureDay;
 
 int weatherorder = 0;
 
@@ -36,8 +36,8 @@ class TodoList1 extends StatefulWidget {
 }
 
 class _TodoListState1 extends State<TodoList1> {
-  TodoService _todoService;
-  List<Todo> _todoList;
+  late TodoService _todoService;
+  late List<Todo> _todoList;
   final panelController = PanelController();
   TextEditingController _todoTitleController = TextEditingController(),
       _todoDateController = TextEditingController();
@@ -130,7 +130,7 @@ class _TodoListState1 extends State<TodoList1> {
             .format(DateTime.now().add(new Duration(days: -1)))) {
       concise = 'Yesterday';
     } else {
-      concise = DateFormat('E, d MMM').format(setDate) ?? 'No Date';
+      concise = DateFormat('E, d MMM').format(setDate);
     }
     return [concise, late];
   }
@@ -138,7 +138,7 @@ class _TodoListState1 extends State<TodoList1> {
   getAllTodos() async {
     _todoService = TodoService();
     // ignore: deprecated_member_use
-    _todoList = List<Todo>();
+    _todoList = <Todo>[];
     dynamic todos = await _todoService.readTodos();
     todos.forEach((todo) {
       setState(() {
@@ -152,7 +152,7 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   selectedTodoDate(BuildContext context) async {
-    DateTime _pickedDate = await showRoundedDatePicker(
+    DateTime? _pickedDate = await showRoundedDatePicker(
       context: context,
       initialDate: _dateTime,
       firstDate: DateTime(DateTime.now().year),
@@ -316,7 +316,6 @@ class _TodoListState1 extends State<TodoList1> {
     );
   }
 
-  // ignore: missing_return
   Widget days() {
     showDialog(
         context: context,
@@ -330,11 +329,11 @@ class _TodoListState1 extends State<TodoList1> {
                 future: futureDay,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    globals.dayOrder = ((snapshot.data.day1).toString());
-                    globals.nextDay = ((snapshot.data.day2).toString());
-                    globals.dayAfter = ((snapshot.data.day3).toString());
-                    globals.timetable = snapshot.data.timetable;
-                    globals.timetabletom = snapshot.data.timetabletom;
+                    globals.dayOrder = ((snapshot.data!.day1).toString());
+                    globals.nextDay = ((snapshot.data!.day2).toString());
+                    globals.dayAfter = ((snapshot.data!.day3).toString());
+                    globals.timetable = snapshot.data!.timetable;
+                    globals.timetabletom = snapshot.data!.timetabletom;
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
@@ -503,6 +502,7 @@ class _TodoListState1 extends State<TodoList1> {
             ),
           );
         });
+    return Container();
   }
 
   Widget _floatingCollasped() {
@@ -537,7 +537,7 @@ class _TodoListState1 extends State<TodoList1> {
 
   @override
   Widget build(BuildContext context) {
-    PopupMenu.context = context;
+    // PopupMenu.context = context;
     return Material(
       color: Colors.black,
       child: SlidingUpPanel(
@@ -595,19 +595,19 @@ class _TodoListState1 extends State<TodoList1> {
                                     future: futureDay,
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
-                                        (snapshot.data.day1 != null)
+                                        (snapshot.data!.day1 != null)
                                             ? globals.dayOrder =
-                                                ((snapshot.data.day1)
+                                                ((snapshot.data!.day1)
                                                     .toString())
                                             : globals.dayOrder = "-";
                                         globals.nextDay =
-                                            ((snapshot.data.day2).toString());
+                                            ((snapshot.data!.day2).toString());
                                         globals.dayAfter =
-                                            ((snapshot.data.day3).toString());
+                                            ((snapshot.data!.day3).toString());
                                         globals.timetable =
-                                            snapshot.data.timetable;
+                                            snapshot.data!.timetable;
                                         globals.timetabletom =
-                                            snapshot.data.timetabletom;
+                                            snapshot.data!.timetabletom;
                                         return Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -717,14 +717,15 @@ class _TodoListState1 extends State<TodoList1> {
                                     future: getWeather(),
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
-                                        WeatherModel model1 = snapshot.data;
-                                        weatherorder = model1.main.temp.round();
+                                        WeatherModel model1 = snapshot.data!;
+                                        weatherorder =
+                                            model1.main!.temp!.round();
                                         return Column(
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: <Widget>[
                                             Text(
-                                              '${model1.main.temp.round()} ˚C',
+                                              '${model1.main!.temp!.round()} ˚C',
                                               style: TextStyle(
                                                 fontFamily: 'Protipo Compact',
                                                 fontSize: globals.h2,

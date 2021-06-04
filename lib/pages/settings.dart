@@ -43,7 +43,7 @@ class _SettingsState extends State<SettingsPage> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -64,7 +64,7 @@ class _SettingsState extends State<SettingsPage> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -84,7 +84,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -105,7 +105,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -126,7 +126,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -147,7 +147,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -168,7 +168,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -189,7 +189,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -209,7 +209,7 @@ class _SettingsState extends State<SettingsPage> {
           TextFormField(
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -229,7 +229,7 @@ class _SettingsState extends State<SettingsPage> {
           ElevatedButton(
             onPressed: () async {
               HapticFeedback.heavyImpact();
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('B1', myController.text);
                 prefs.setString('B2', myController2.text);
@@ -274,7 +274,7 @@ class _SettingsState extends State<SettingsPage> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -295,7 +295,7 @@ class _SettingsState extends State<SettingsPage> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -315,7 +315,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -336,7 +336,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -357,7 +357,7 @@ class _SettingsState extends State<SettingsPage> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -377,7 +377,7 @@ class _SettingsState extends State<SettingsPage> {
           TextFormField(
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -397,7 +397,7 @@ class _SettingsState extends State<SettingsPage> {
           ElevatedButton(
             onPressed: () async {
               HapticFeedback.heavyImpact();
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('B1', myController.text);
                 prefs.setString('B2', myController2.text);
@@ -443,7 +443,7 @@ class _SettingsState extends State<SettingsPage> {
                 Expanded(
                     child: Padding(
                         padding: EdgeInsets.only(
-                            top: 0.0, left: globals.h5, right: globals.h5),
+                            top: 0.0, left: globals.h5!, right: globals.h5!),
                         child: Container(
                           child: Text(
                             'Support Coming Soon!',
@@ -514,7 +514,7 @@ class _SettingsState extends State<SettingsPage> {
 
   addIntToSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('Value', globals.valueOfGrade);
+    prefs.setInt('Value', globals.valueOfGrade!);
   }
 
   getIntValuesSF() async {
@@ -598,7 +598,7 @@ class _SettingsState extends State<SettingsPage> {
                                           labelText: 'Select Grade',
                                           labelStyle: Theme.of(context)
                                               .primaryTextTheme
-                                              .caption
+                                              .caption!
                                               .copyWith(color: Colors.black),
                                           border: const OutlineInputBorder(
                                               gapPadding: 0,
@@ -644,7 +644,7 @@ class _SettingsState extends State<SettingsPage> {
                                               DropdownMenuItem(
                                                   child: Text("12"), value: 12),
                                             ],
-                                            onChanged: (value) {
+                                            onChanged: (dynamic value) {
                                               setState(() {
                                                 globals.valueOfGrade = value;
                                                 addIntToSF();

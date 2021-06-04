@@ -18,11 +18,11 @@ class HomePage extends StatefulWidget {
 class CircleTabIndicator extends Decoration {
   final BoxPainter _painter;
 
-  CircleTabIndicator({@required Color color, @required double radius})
+  CircleTabIndicator({required Color color, required double radius})
       : _painter = _CirclePainter(color, radius);
 
   @override
-  BoxPainter createBoxPainter([onChanged]) => _painter;
+  BoxPainter createBoxPainter([VoidCallback? onChanged]) => _painter;
 }
 
 class _CirclePainter extends BoxPainter {
@@ -37,7 +37,7 @@ class _CirclePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
     final Offset circleOffset =
-        offset + Offset(cfg.size.width / 2, cfg.size.height - radius + 2);
+        offset + Offset(cfg.size!.width / 2, cfg.size!.height - radius + 2);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }

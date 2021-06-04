@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "227089157820",
+    "project_id": "daytrak-f9a15",
+    "storage_bucket": "daytrak-f9a15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227089157820:android:180277830031fb002a0ab9",
+        "android_client_info": {
+          "package_name": "com.JMDDevelopment.schoolcalendarnvxy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227089157820-m00kqlbt5pu2a06elcb8535gud0j5i4r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDrlKfG7yggm2g5sWLv-BnI9vH2xl-tbOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "227089157820-m00kqlbt5pu2a06elcb8535gud0j5i4r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

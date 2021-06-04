@@ -6,7 +6,7 @@ final encrypter = Encrypter(
     Fernet(Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=')));
 
 class Main {
-  final double temp;
+  final double? temp;
   Main({
     this.temp,
   });
@@ -18,7 +18,7 @@ class Main {
 }
 
 class WeatherModel {
-  final Main main;
+  final Main? main;
   WeatherModel({
     this.main,
   });
@@ -30,8 +30,8 @@ class WeatherModel {
 }
 
 Future<WeatherModel> getWeather() async {
-  final response = await http.get(
-      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric');
+  final response = await http.get(Uri.parse(
+      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric'));
   if (response.statusCode == 200) {
     dynamic result = json.decode(response.body);
     WeatherModel model = WeatherModel.fromJson(result);
@@ -42,7 +42,7 @@ Future<WeatherModel> getWeather() async {
 
 Future<Day> fetchDay() async {
   final response1 =
-      await http.get('https://tumulrankypanky.pythonanywhere.com');
+      await http.get(Uri.parse('https://tumulrankypanky.pythonanywhere.com'));
   if (response1.statusCode == 200) {
     Day result = Day.fromJson(jsonDecode(response1.body));
     return result;
@@ -51,8 +51,8 @@ Future<Day> fetchDay() async {
 }
 
 class Day {
-  final int day1, day2, day3;
-  final Map<String, dynamic> timetable, timetabletom;
+  final int? day1, day2, day3;
+  final Map<String, dynamic>? timetable, timetabletom;
 
   Day({this.day1, this.day2, this.day3, this.timetable, this.timetabletom});
 

@@ -122,7 +122,7 @@ class _Fp1State extends State<Fp1Page> {
                     Expanded(
                         child: Padding(
                             padding: EdgeInsets.only(
-                                top: 0.0, left: globals.h5, right: globals.h5),
+                                top: 0.0, left: globals.h5!, right: globals.h5!),
                             child: Container(
                               child: Text(
                                 'DayTrak is designed to help manage your school calendar in simple and easy way',

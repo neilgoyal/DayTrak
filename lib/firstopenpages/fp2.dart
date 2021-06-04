@@ -46,7 +46,7 @@ class _Fp2State extends State<Fp2Page> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -67,7 +67,7 @@ class _Fp2State extends State<Fp2Page> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -87,7 +87,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -108,7 +108,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -129,7 +129,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -150,7 +150,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -171,7 +171,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -192,7 +192,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -212,7 +212,7 @@ class _Fp2State extends State<Fp2Page> {
           TextFormField(
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -232,7 +232,7 @@ class _Fp2State extends State<Fp2Page> {
           ElevatedButton(
             onPressed: () async {
               HapticFeedback.heavyImpact();
-              if (_formKey.currentState.validate()) {
+              if (_formKey.currentState!.validate()) {
                 SharedPreferences prefs = await SharedPreferences.getInstance();
                 prefs.setString('B1', myController.text);
                 prefs.setString('B2', myController2.text);
@@ -277,7 +277,7 @@ class _Fp2State extends State<Fp2Page> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -298,7 +298,7 @@ class _Fp2State extends State<Fp2Page> {
               textCapitalization: TextCapitalization.sentences,
               cursorColor: Colors.black54,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -318,7 +318,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -339,7 +339,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -360,7 +360,7 @@ class _Fp2State extends State<Fp2Page> {
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -380,7 +380,7 @@ class _Fp2State extends State<Fp2Page> {
           TextFormField(
               textCapitalization: TextCapitalization.sentences,
               validator: (value) {
-                if (value.isEmpty) {
+                if (value!.isEmpty) {
                   return errmessage;
                 }
                 return null;
@@ -413,7 +413,7 @@ class _Fp2State extends State<Fp2Page> {
                 Expanded(
                     child: Padding(
                         padding: EdgeInsets.only(
-                            top: 0.0, left: globals.h5, right: globals.h5),
+                            top: 0.0, left: globals.h5!, right: globals.h5!),
                         child: Container(
                           child: Text(
                             'Support Coming Soon!',
@@ -456,7 +456,7 @@ class _Fp2State extends State<Fp2Page> {
 
   addIntToSF() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('Value', globals.valueOfGrade);
+    prefs.setInt('Value', globals.valueOfGrade!);
   }
 
   @override
@@ -630,7 +630,7 @@ class _Fp2State extends State<Fp2Page> {
                                                                     labelStyle: Theme.of(
                                                                             context)
                                                                         .primaryTextTheme
-                                                                        .caption
+                                                                        .caption!
                                                                         .copyWith(
                                                                             color:
                                                                                 Colors.black),
@@ -711,7 +711,7 @@ class _Fp2State extends State<Fp2Page> {
                                                                             value: 12),
                                                                       ],
                                                                       onChanged:
-                                                                          (value) {
+                                                                          (dynamic value) {
                                                                         setState(
                                                                             () {
                                                                           globals.valueOfGrade =
@@ -784,7 +784,7 @@ class _Fp2State extends State<Fp2Page> {
                           onPressed: () async {
                             HapticFeedback.heavyImpact();
                             if (globals.valueOfGrade == 11) {
-                              if (_formKey.currentState.validate()) {
+                              if (_formKey.currentState!.validate()) {
                                 SharedPreferences prefs =
                                     await SharedPreferences.getInstance();
                                 prefs.setString('B1', myController.text);
@@ -799,7 +799,7 @@ class _Fp2State extends State<Fp2Page> {
                               }
                             } else if (globals.valueOfGrade == 91 ||
                                 globals.valueOfGrade == 92) {
-                              if (_formKey.currentState.validate()) {
+                              if (_formKey.currentState!.validate()) {
                                 SharedPreferences prefs =
                                     await SharedPreferences.getInstance();
                                 prefs.setString('B1', myController.text);

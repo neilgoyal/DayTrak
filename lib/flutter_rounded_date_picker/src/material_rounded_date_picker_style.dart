@@ -1,32 +1,33 @@
 import 'package:flutter/cupertino.dart';
 
 class MaterialRoundedDatePickerStyle {
-  TextStyle textStyleYearButton;
-  TextStyle textStyleDayButton;
-  TextStyle textStyleDayHeader;
-  TextStyle textStyleDayOnCalendar;
-  TextStyle textStyleDayOnCalendarSelected;
-  TextStyle textStyleDayOnCalendarDisabled;
-  TextStyle textStyleCurrentDayOnCalendar;
-  TextStyle textStyleMonthYearHeader;
-  EdgeInsets paddingDatePicker;
-  EdgeInsets paddingMonthHeader;
-  EdgeInsets paddingActionBar;
-  EdgeInsets paddingDateYearHeader;
-  double sizeArrow;
-  double marginTopArrowPrevious;
-  double marginLeftArrowPrevious;
-  double marginTopArrowNext;
-  double marginRightArrowNext;
-  BoxDecoration decorationDateSelected;
-  Color colorArrowPrevious;
-  Color colorArrowNext;
-  Color backgroundPicker;
-  Color backgroundActionBar;
-  Color backgroundHeaderMonth;
-  TextStyle textStyleButtonPositive;
-  TextStyle textStyleButtonNegative;
-  TextStyle textStyleButtonAction;
+  TextStyle? textStyleYearButton;
+  TextStyle? textStyleDayButton;
+  TextStyle? textStyleDayHeader;
+  TextStyle? textStyleDayOnCalendar;
+  TextStyle? textStyleDayOnCalendarSelected;
+  TextStyle? textStyleDayOnCalendarDisabled;
+  TextStyle? textStyleCurrentDayOnCalendar;
+  TextStyle? textStyleMonthYearHeader;
+  EdgeInsets? paddingDatePicker;
+  EdgeInsets? paddingMonthHeader;
+  EdgeInsets? paddingActionBar;
+  EdgeInsets? paddingDateYearHeader;
+  double? sizeArrow;
+  double? marginTopArrowPrevious;
+  double? marginLeftArrowPrevious;
+  double? marginTopArrowNext;
+  double? marginRightArrowNext;
+  BoxDecoration? decorationDateSelected;
+  Color? colorArrowPrevious;
+  Color? colorArrowNext;
+  Color? backgroundPicker;
+  Color? backgroundActionBar;
+  Color? backgroundHeader;
+  Color? backgroundHeaderMonth;
+  TextStyle? textStyleButtonPositive;
+  TextStyle? textStyleButtonNegative;
+  TextStyle? textStyleButtonAction;
 
   MaterialRoundedDatePickerStyle({
     this.textStyleYearButton,
@@ -54,6 +55,7 @@ class MaterialRoundedDatePickerStyle {
     this.colorArrowPrevious,
     this.backgroundActionBar,
     this.backgroundPicker,
+    this.backgroundHeader,
     this.backgroundHeaderMonth,
   });
 }
