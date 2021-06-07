@@ -20,19 +20,26 @@ class _Home2State extends State<Home2Page> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Icon(
-                    CupertinoIcons.person_alt_circle,
-                    size: s6,
-                  ),
+                Column(
+                  children: [
+                    IconButton(
+                        onPressed: () {},
+                        padding:
+                            EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0, bottom: 45,),
+                        icon: Icon(
+                          CupertinoIcons.person_alt_circle,
+                          size: s6,
+                        ))
+                  ],
                 ),
-                Text(" Good " "Morning",
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: h9,
-                      fontWeight: FontWeight.w300,
-                    ))
+                Column(children: [
+                  Text("  Good " "Morning",
+                      style: TextStyle(
+                        fontFamily: 'Protipo Compact',
+                        fontSize: h9,
+                        fontWeight: FontWeight.w300,
+                      ))
+                ]),
               ],
             ),
             Column(

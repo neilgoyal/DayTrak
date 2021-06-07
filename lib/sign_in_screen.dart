@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolcalendar/pages/home.dart';
 import 'custom_colors.dart';
 import 'authentication.dart';
 import 'google_sign_in_button.dart';
+import 'package:schoolcalendar/globals.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -12,7 +15,47 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.firebaseNavy,
+       appBar: PreferredSize(
+              preferredSize: Size.fromHeight(50),
+              child: AppBar(
+                  elevation: 0,
+                  title: Container(
+                      child: Padding(
+                    padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent),
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent),
+                                    shadowColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent),
+                                  ),
+                                  onPressed: () {
+                                    Navigator.of(context).pushReplacement(
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()));
+                                  },
+                                  child: Icon(
+                                    CupertinoIcons.multiply,
+                                    color: Colors.black54,
+                                    size:h4,
+                                  ))
+                            ],
+                          )
+                        ]),
+                  )),
+                  toolbarHeight: 50.0)),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(
@@ -20,7 +63,8 @@ class _SignInScreenState extends State<SignInScreen> {
             right: 16.0,
             bottom: 20.0,
           ),
-          child: Column(
+          child: 
+          Column(
             mainAxisSize: MainAxisSize.max,
             children: [
               Row(),
