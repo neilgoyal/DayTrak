@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/globals.dart';
+import 'package:schoolcalendar/pages/timetable.dart';
 
 class Home2Page extends StatefulWidget {
   @override
@@ -43,6 +44,7 @@ class _Home2State extends State<Home2Page> {
                           ),
                           icon: Icon(
                             CupertinoIcons.person_alt_circle,
+                            color: Colors.pink,
                             size: s6,
                           ))
                     ],
@@ -66,7 +68,7 @@ class _Home2State extends State<Home2Page> {
               ),
               Column(
                 children: [
-                  Text("Day 6",
+                  Text('${showcorrectday(dayOrder)}',
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
                         fontSize: h4,
@@ -93,7 +95,7 @@ class _Home2State extends State<Home2Page> {
               elevation: 12,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35)),
-              color: Colors.blue.shade300,
+              color: Colors.amberAccent.shade700,
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
@@ -119,7 +121,7 @@ class _Home2State extends State<Home2Page> {
               elevation: 12,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35)),
-              color: Colors.blue.shade300,
+              color: Colors.amberAccent.shade700,
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
