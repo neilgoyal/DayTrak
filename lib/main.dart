@@ -1,17 +1,10 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'firstopenpages/fp1.dart';
+import 'sign_in_screen.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  runApp(MyApp());
-}
-
-// void main() => runApp(MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -24,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'School planner',
       initialRoute: '/',
       routes: {
-        '/first': (context) => Fp1Page(),
+        '/first': (context) => SignInScreen(),
         // '/main': (context) => Fp1Page(),
         '/main': (context) => HomePage()
       },
