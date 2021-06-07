@@ -136,7 +136,7 @@ class _HomePageState extends State<HomePage> {
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,
             indicator: CircleTabIndicator(
-                color: Colors.lightBlueAccent.shade700, radius: 3.5),
+                color: Colors.amberAccent.shade700, radius: 3.5),
           ),
         ),
       ),
