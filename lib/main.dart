@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/first': (context) => SignInScreen(),
         // '/main': (context) => Fp1Page(),
-        '/main': (context) => SignInScreen(),
-        // '/main': (context) => HomePage()
+        // '/main': (context) => SignInScreen(),
+        '/main': (context) => HomePage()
       },
       home: Splash(),
     );
