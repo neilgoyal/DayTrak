@@ -8,8 +8,8 @@ class Addtask2Page extends StatefulWidget {
 class _Addtask2State extends State<Addtask2Page> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
+    return Scaffold(
+      
     );
   }
 }

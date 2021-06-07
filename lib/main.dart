@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'firstopenpages/fp1.dart';
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      themeMode: ThemeMode.system,
+      theme: MyThemes.lightTheme,
+      darkTheme: MyThemes.darkTheme,
       title: 'School planner',
       initialRoute: '/',
       routes: {

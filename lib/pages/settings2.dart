@@ -8,8 +8,8 @@ class Settings2Page extends StatefulWidget {
 class _Settings2State extends State<Settings2Page> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.green,
+    return Scaffold(
+      
     );
   }
 }

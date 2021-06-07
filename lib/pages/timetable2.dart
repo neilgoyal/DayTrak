@@ -8,8 +8,8 @@ class Timetable2Page extends StatefulWidget {
 class _Timetable2State extends State<Timetable2Page> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.orange,
+    return Scaffold(
+      
     );
   }
 }

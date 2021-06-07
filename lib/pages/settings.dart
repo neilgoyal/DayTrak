@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
@@ -272,7 +273,7 @@ class _SettingsState extends State<SettingsPage> {
           TextFormField(
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
-              cursorColor: Colors.black54,
+              // cursorColor: Colors.black54,
               validator: (value) {
                 if (value!.isEmpty) {
                   return errmessage;
@@ -283,7 +284,7 @@ class _SettingsState extends State<SettingsPage> {
               decoration: InputDecoration(
                   labelText: 'Block 1',
                   labelStyle: TextStyle(
-                    color: Colors.black54,
+                    // color: Colors.black54,
                   ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
@@ -531,13 +532,16 @@ class _SettingsState extends State<SettingsPage> {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: MaterialApp(
+          themeMode: ThemeMode.system,
+      theme: MyThemes.lightTheme,
+      darkTheme: MyThemes.darkTheme,
             debugShowCheckedModeBanner: false,
             title: 'DayTrak',
             home: Scaffold(
                 appBar: PreferredSize(
                     preferredSize: Size.fromHeight(100),
                     child: AppBar(
-                      backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                      // backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                       elevation: 0,
                       title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -553,7 +557,7 @@ class _SettingsState extends State<SettingsPage> {
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h1,
-                                      color: const Color(0xff9b8fb1),
+                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -582,7 +586,7 @@ class _SettingsState extends State<SettingsPage> {
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
                                             fontSize: globals.h3,
-                                            color: const Color(0xffbadfca),
+                                            // color: const Color(0xffbadfca),
                                             fontWeight: FontWeight.w300,
                                           )),
                                     ],
@@ -663,7 +667,7 @@ class _SettingsState extends State<SettingsPage> {
                                             style: TextStyle(
                                               fontFamily: 'Protipo Compact',
                                               fontSize: globals.h3,
-                                              color: const Color(0xffbadfca),
+                                              // color: const Color(0xffbadfca),
                                               fontWeight: FontWeight.w300,
                                             )),
                                       ],
