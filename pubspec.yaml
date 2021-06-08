@@ -43,6 +43,11 @@ dev_dependencies:
 
   
 flutter:
+  fonts: 
+    - family: Nunito Sans 
+      fonts: 
+        - asset: assets/fonts/NunitoSans-Light.ttf
+        
 
   assets: 
      - assets/

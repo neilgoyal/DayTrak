@@ -37,7 +37,7 @@ class _CirclePainter extends BoxPainter {
   @override
   void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
     final Offset circleOffset =
-        offset + Offset(cfg.size!.width / 1.75, cfg.size!.height - radius + 2);
+        offset + Offset(cfg.size!.width / 1.5, cfg.size!.height - radius + 2);
     canvas.drawCircle(circleOffset, radius, _paint);
   }
 }
@@ -63,6 +63,7 @@ class _HomePageState extends State<HomePage> {
     globals.s4 = width * 0.225;
     globals.s5 = width * 0.13;
     globals.s6 = width * 0.15;
+    globals.s7 = width * 0.17;
     globals.w = width * 0.85;
     globals.l1 = lenght * 0.34;
     globals.l2 = lenght * 0.1;
@@ -83,10 +84,10 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         bottomNavigationBar: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            color: Colors.transparent,
-          ),
+          // decoration: BoxDecoration(
+          //   borderRadius: BorderRadius.circular(50),
+          //   color: Colors.transparent,
+          // ),
           margin: EdgeInsets.only(bottom: 15),
           child: TabBar(
             tabs: [
@@ -136,7 +137,8 @@ class _HomePageState extends State<HomePage> {
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,
             indicator: CircleTabIndicator(
-                color: Colors.amberAccent.shade700, radius: 3.5),
+                color: Color.fromRGBO(111, 174, 204, 0), radius: 3.5),
+            
           ),
         ),
       ),
