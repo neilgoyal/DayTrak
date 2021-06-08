@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class MyThemes {
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.grey.shade900,
+    fontFamily: 'Nunito Sans',
     primaryColor: Colors.grey.shade900,
     colorScheme: ColorScheme.dark(
 
@@ -11,6 +12,7 @@ class MyThemes {
   ); 
 
   static final lightTheme = ThemeData(
+    fontFamily: 'Nunito Sans',
     scaffoldBackgroundColor: Colors.white,
     primaryColor: Colors.white,
     colorScheme: ColorScheme.light(),

@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      theme: MyThemes.lightTheme,
+      theme: MyThemes.lightTheme,  
       darkTheme: MyThemes.darkTheme,
       title: 'School planner',
       initialRoute: '/',
