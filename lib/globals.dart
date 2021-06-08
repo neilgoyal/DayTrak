@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 String dayOrder = "-", nextDay = "-", dayAfter = "-";
 int? valueOfGrade = 11;
 Map? timetable = {}, timetabletom = {};
@@ -21,3 +23,4 @@ double? h1,
     l1,
     l2,
     l3;
+User? user;
