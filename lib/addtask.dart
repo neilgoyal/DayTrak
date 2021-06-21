@@ -328,14 +328,18 @@ class _TodoListState1 extends State<TodoList1> {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20.0)), //this right here
             child: Container(
-              height: 150,
+              height: 350,
               child: FutureBuilder<Day>(
                 future: futureDay,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     globals.dayOrder = ((snapshot.data!.day1).toString());
-                    globals.nextDay = ((snapshot.data!.day2).toString());
-                    globals.dayAfter = ((snapshot.data!.day3).toString());
+                    globals.day2 = ((snapshot.data!.day2).toString());
+                    globals.day3 = ((snapshot.data!.day3).toString());
+                    globals.day4 = ((snapshot.data!.day4).toString());
+                    globals.day5 = ((snapshot.data!.day5).toString());
+                    globals.day6 = ((snapshot.data!.day6).toString());
+                    globals.day7 = ((snapshot.data!.day7).toString());
                     globals.timetable = snapshot.data!.timetable;
                     globals.timetabletom = snapshot.data!.timetabletom;
                     return Padding(
@@ -383,7 +387,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(globals.nextDay)}',
+                                  Text('${showcorrectday(globals.day2)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
@@ -397,7 +401,7 @@ class _TodoListState1 extends State<TodoList1> {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '  Day After:  ',
+                                    '  Day After1:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h4,
@@ -405,7 +409,95 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(globals.dayAfter)}',
+                                  Text('${showcorrectday(globals.day3)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After2:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day4)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After3:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day5)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After4:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day6)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After5:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day7)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
@@ -465,7 +557,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(globals.nextDay)}',
+                                  Text('${showcorrectday(globals.day2)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
@@ -487,7 +579,95 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(globals.dayAfter)}',
+                                  Text('${showcorrectday(globals.day3)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After2:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day4)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After3:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day5)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After4:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day6)}',
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h4,
+                                        color: const Color(0xffbadfca),
+                                        fontWeight: FontWeight.w300,
+                                      )),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    '  Day After5:  ',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      color: const Color(0xff9b8fb1),
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  Text('${showcorrectday(globals.day7)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
@@ -604,9 +784,9 @@ class _TodoListState1 extends State<TodoList1> {
                                                 ((snapshot.data!.day1)
                                                     .toString())
                                             : globals.dayOrder = "-";
-                                        globals.nextDay =
+                                        globals.day2 =
                                             ((snapshot.data!.day2).toString());
-                                        globals.dayAfter =
+                                        globals.day3 =
                                             ((snapshot.data!.day3).toString());
                                         globals.timetable =
                                             snapshot.data!.timetable;

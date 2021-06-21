@@ -41,8 +41,8 @@ Future<WeatherModel> getWeather() async {
 }
 
 Future<Day> fetchDay() async {
-  final response1 =
-      await http.get(Uri.parse('https://tumulrankypanky.pythonanywhere.com/day'));
+  final response1 = await http
+      .get(Uri.parse('https://tumulrankypanky.pythonanywhere.com/binod'));
   if (response1.statusCode == 200) {
     Day result = Day.fromJson(jsonDecode(response1.body));
     return result;
@@ -51,19 +51,34 @@ Future<Day> fetchDay() async {
 }
 
 class Day {
-  final int? day1, day2, day3;
+  final int? day1, day2, day3, day4, day5, day6, day7;
   final Map<String, dynamic>? timetable, timetabletom;
 
-  Day({this.day1, this.day2, this.day3, this.timetable, this.timetabletom});
+  Day(
+      {this.day1,
+      this.day2,
+      this.day3,
+      this.day4,
+      this.day5,
+      this.day6,
+      this.day7,
+      this.timetable,
+      this.timetabletom});
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
       day1:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["hummer"])))),
-      day3:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["pudding"])))),
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["0"])))),
       day2:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["tomato"])))),
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["1"])))),
+      day3:
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["2"])))),
+      day4: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["3"])))),
+      day5: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["4"])))),
+      day6:
+          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["5"])))),
+      day7: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["6"])))),
+
       // timetable: json['potato'][0],
       // timetabletom: json['aloo'][0],
     );

@@ -136,7 +136,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                     ],
                   ),
                 );
-              } else if (globals.nextDay == "7") {
+              } else if (globals.day2 == "7") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -172,7 +172,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                 ),
                               ))
                         ]));
-              } else if (globals.nextDay == "8") {
+              } else if (globals.day2 == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -211,8 +211,8 @@ class _TimetabletomState extends State<TimetabletomPage> {
               } else {
                 if (snapshot.hasData) {
                   globals.dayOrder = ((snapshot.data!.day1).toString());
-                  globals.nextDay = ((snapshot.data!.day2).toString());
-                  globals.dayAfter = ((snapshot.data!.day3).toString());
+                  globals.day2 = ((snapshot.data!.day2).toString());
+                  globals.day3 = ((snapshot.data!.day3).toString());
                   globals.timetable = snapshot.data!.timetable;
                   globals.timetabletom = snapshot.data!.timetabletom;
                   return ListView.builder(

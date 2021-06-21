@@ -83,9 +83,9 @@ class _TimetableState extends State<TimetablePage>
                                   if (snapshot.hasData) {
                                     globals.dayOrder =
                                         ((snapshot.data!.day1).toString());
-                                    globals.nextDay =
+                                    globals.day2 =
                                         ((snapshot.data!.day2).toString());
-                                    globals.dayAfter =
+                                    globals.day3 =
                                         ((snapshot.data!.day3).toString());
                                     globals.timetable =
                                         snapshot.data!.timetable;
@@ -160,7 +160,7 @@ class _TimetableState extends State<TimetablePage>
   _handleTabSelection() {
     setState(() {
       if (_tabController!.index == 1) {
-        ordertoshow = globals.nextDay;
+        ordertoshow = globals.day2;
         daytoshow = DateFormat.EEEE()
             .format((DateTime.now()).add(const Duration(days: 1)));
       } else {
