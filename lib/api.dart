@@ -42,7 +42,7 @@ Future<WeatherModel> getWeather() async {
 
 Future<Day> fetchDay() async {
   final response1 =
-      await http.get(Uri.parse('https://tumulrankypanky.pythonanywhere.com'));
+      await http.get(Uri.parse('https://tumulrankypanky.pythonanywhere.com/day'));
   if (response1.statusCode == 200) {
     Day result = Day.fromJson(jsonDecode(response1.body));
     return result;
@@ -64,8 +64,8 @@ class Day {
           int.parse((encrypter.decrypt(Encrypted.fromBase64(json["pudding"])))),
       day2:
           int.parse((encrypter.decrypt(Encrypted.fromBase64(json["tomato"])))),
-      timetable: json['potato'][0],
-      timetabletom: json['aloo'][0],
+      // timetable: json['potato'][0],
+      // timetabletom: json['aloo'][0],
     );
   }
 }

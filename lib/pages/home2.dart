@@ -110,7 +110,7 @@ class _Home2State extends State<Home2Page> {
               // color: Colors.transparent,
               shadowColor: Color.fromRGBO(201, 254, 86, 1),
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(35)),
+                  borderRadius: BorderRadius.circular(25)),
               child: Container(
                 padding: EdgeInsets.all(10.0),
                 child: Text(
