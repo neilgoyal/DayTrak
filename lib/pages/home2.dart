@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/globals.dart';
 import 'package:schoolcalendar/pages/timetable.dart';
+import '../globals.dart' as globals;
 
 class Home2Page extends StatefulWidget {
   @override
@@ -34,20 +35,23 @@ class _Home2State extends State<Home2Page> {
                 children: [
                   Column(
                     children: [
-                      IconButton(
-                          splashColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onPressed: () {},
-                          padding: EdgeInsets.only(
-                            top: 0.0,
-                            left: 0.0,
-                            right: 0.0,
-                            bottom: 25,
-                          ),
-                          icon: Icon(
-                            CupertinoIcons.person_alt_circle,
-                            // color: Colors.pink,
-                            size: s6,
+                      Padding(
+                          padding:
+                              EdgeInsets.only(top: 0.0, left: 0.0, right: 12.0),
+                          child: Material(
+                            elevation: 4.0,
+                            shape: CircleBorder(),
+                            clipBehavior: Clip.hardEdge,
+                            color: Colors.transparent,
+                            child: Ink.image(
+                              image: NetworkImage(user!.photoURL!),
+                              fit: BoxFit.cover,
+                              width: s5,
+                              height: s5,
+                              child: InkWell(
+                                onTap: () {},
+                              ),
+                            ),
                           ))
                     ],
                   ),
@@ -55,13 +59,13 @@ class _Home2State extends State<Home2Page> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("   Good " '${greeting()},',
+                        Text("Good " '${greeting()},',
                             style: TextStyle(
                               fontFamily: 'Protipo Compact',
                               fontSize: h9,
                               fontWeight: FontWeight.w300,
                             )),
-                        Text("   Neil",
+                        Text(globals.user!.displayName.toString().split(" ")[0],
                             textAlign: TextAlign.left,
                             style: TextStyle(
                               fontFamily: 'Protipo Compact',

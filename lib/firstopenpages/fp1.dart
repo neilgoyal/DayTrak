@@ -4,6 +4,9 @@ import '../globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 import '../pages/home.dart';
 import 'fp2.dart';
+import '../custom_colors.dart';
+import '../authentication.dart';
+import '../google_sign_in_button.dart';
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -41,39 +44,7 @@ class _Fp1State extends State<Fp1Page> {
                   elevation: 0,
                   title: Container(
                       child: Padding(
-                    padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.transparent),
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.transparent),
-                                    shadowColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.transparent),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()));
-                                  },
-                                  child: Icon(
-                                    CupertinoIcons.multiply,
-                                    color: Colors.black54,
-                                    size: globals.h4,
-                                  ))
-                            ],
-                          )
-                        ]),
+                    padding: EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
                   )),
                   toolbarHeight: 50.0)),
           body: Column(
@@ -122,7 +93,9 @@ class _Fp1State extends State<Fp1Page> {
                     Expanded(
                         child: Padding(
                             padding: EdgeInsets.only(
-                                top: 0.0, left: globals.h5!, right: globals.h5!),
+                                top: 0.0,
+                                left: globals.h5!,
+                                right: globals.h5!),
                             child: Container(
                               child: Text(
                                 'DayTrak is designed to help manage your school calendar in simple and easy way',

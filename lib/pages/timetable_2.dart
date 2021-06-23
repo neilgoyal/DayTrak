@@ -4,6 +4,7 @@ import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: camel_case_types
 class Timetable_2Page extends StatefulWidget {
   @override
   _Timetable_2State createState() => _Timetable_2State();
@@ -14,6 +15,7 @@ Future<Timetable>? futureTimetable;
 int? numoftiles;
 String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
+// ignore: camel_case_types
 class _Timetable_2State extends State<Timetable_2Page> {
   @override
   void initState() {
