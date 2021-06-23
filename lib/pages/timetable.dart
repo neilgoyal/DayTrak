@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:schoolcalendar/pages/timetable_2.dart';
+import 'package:schoolcalendar/pages/timetable_3.dart';
+import 'package:schoolcalendar/pages/timetable_4.dart';
+import 'package:schoolcalendar/pages/timetable_5.dart';
+import 'package:schoolcalendar/pages/timetable_6.dart';
 import '../api.dart';
-import 'timetable_today.dart';
-import 'timetable_tom.dart';
+import 'timetable_0.dart';
+import 'timetable_1.dart';
 import 'package:intl/intl.dart';
 
 class TimetablePage extends StatefulWidget {
@@ -34,9 +39,22 @@ class _TimetableState extends State<TimetablePage>
   void initState() {
     super.initState();
     futureDay = fetchDay();
-    _tabController = TabController(initialIndex: 0, vsync: this, length: 2);
+    _tabController = TabController(initialIndex: 0, vsync: this, length: 7);
     _handleTabSelection();
     _tabController!.addListener(_handleTabSelection);
+  }
+
+  _handleTabSelection() {
+    setState(() {
+      if (_tabController!.index == 1) {
+        ordertoshow = globals.day2;
+        daytoshow = DateFormat.EEEE()
+            .format((DateTime.now()).add(const Duration(days: 1)));
+      } else {
+        ordertoshow = globals.day1;
+        daytoshow = DateFormat.EEEE().format(DateTime.now());
+      }
+    });
   }
 
   @override
@@ -81,16 +99,12 @@ class _TimetableState extends State<TimetablePage>
                                 future: futureDay,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    globals.dayOrder =
+                                    globals.day1 =
                                         ((snapshot.data!.day1).toString());
                                     globals.day2 =
                                         ((snapshot.data!.day2).toString());
                                     globals.day3 =
                                         ((snapshot.data!.day3).toString());
-                                    globals.timetable =
-                                        snapshot.data!.timetable;
-                                    globals.timetabletom =
-                                        snapshot.data!.timetabletom;
                                     return Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
@@ -146,27 +160,67 @@ class _TimetableState extends State<TimetablePage>
                           color: Colors.black54,
                           fontWeight: FontWeight.w300,
                         )),
+                    Text(
+                      DateFormat.MMMEd().format(DateTime.now().add(new Duration(days: 2))),
+                      style: TextStyle(
+                        fontFamily: 'Protipo Compact',
+                        fontSize: globals.h6,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                     Text(
+                      DateFormat.MMMEd().format(DateTime.now().add(new Duration(days: 3))),
+                      style: TextStyle(
+                        fontFamily: 'Protipo Compact',
+                        fontSize: globals.h6,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                     Text(
+                      DateFormat.MMMEd().format(DateTime.now().add(new Duration(days: 4))),
+                      style: TextStyle(
+                        fontFamily: 'Protipo Compact',
+                        fontSize: globals.h6,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                     Text(
+                      DateFormat.MMMEd().format(DateTime.now().add(new Duration(days: 5))),
+                      style: TextStyle(
+                        fontFamily: 'Protipo Compact',
+                        fontSize: globals.h6,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
+                     Text(
+                      DateFormat.MMMEd().format(DateTime.now().add(new Duration(days: 6))),
+                      style: TextStyle(
+                        fontFamily: 'Protipo Compact',
+                        fontSize: globals.h6,
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w300,
+                      ),
+                    ),
                   ],
                 ),
               ),
             ),
             body: TabBarView(
-              children: <Widget>[TimetabletodayPage(), TimetabletomPage()],
+              children: <Widget>[
+                Timetable_0Page(),
+                Timetable_1Page(),
+                Timetable_2Page(),
+                Timetable_3Page(),
+                Timetable_4Page(),
+                Timetable_5Page(),
+                Timetable_6Page()
+              ],
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),
             )));
-  }
-
-  _handleTabSelection() {
-    setState(() {
-      if (_tabController!.index == 1) {
-        ordertoshow = globals.day2;
-        daytoshow = DateFormat.EEEE()
-            .format((DateTime.now()).add(const Duration(days: 1)));
-      } else {
-        ordertoshow = globals.dayOrder;
-        daytoshow = DateFormat.EEEE().format(DateTime.now());
-      }
-    });
   }
 }

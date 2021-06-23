@@ -333,15 +333,15 @@ class _TodoListState1 extends State<TodoList1> {
                 future: futureDay,
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
-                    globals.dayOrder = ((snapshot.data!.day1).toString());
+                    globals.day1 = ((snapshot.data!.day1).toString());
                     globals.day2 = ((snapshot.data!.day2).toString());
                     globals.day3 = ((snapshot.data!.day3).toString());
                     globals.day4 = ((snapshot.data!.day4).toString());
                     globals.day5 = ((snapshot.data!.day5).toString());
                     globals.day6 = ((snapshot.data!.day6).toString());
                     globals.day7 = ((snapshot.data!.day7).toString());
-                    globals.timetable = snapshot.data!.timetable;
-                    globals.timetabletom = snapshot.data!.timetabletom;
+                    // globals.timetable = snapshot.data!.timetable;
+                    // globals.timetabletom = snapshot.data!.timetabletom;
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
@@ -365,7 +365,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(globals.dayOrder)}',
+                                  Text('${showcorrectday(globals.day1)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
@@ -535,7 +535,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
-                                  Text('${showcorrectday(globals.dayOrder)}',
+                                  Text('${showcorrectday(globals.day1)}',
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
@@ -780,18 +780,18 @@ class _TodoListState1 extends State<TodoList1> {
                                     builder: (context, snapshot) {
                                       if (snapshot.hasData) {
                                         (snapshot.data!.day1 != null)
-                                            ? globals.dayOrder =
+                                            ? globals.day1 =
                                                 ((snapshot.data!.day1)
                                                     .toString())
-                                            : globals.dayOrder = "-";
+                                            : globals.day1 = "-";
                                         globals.day2 =
                                             ((snapshot.data!.day2).toString());
                                         globals.day3 =
                                             ((snapshot.data!.day3).toString());
-                                        globals.timetable =
-                                            snapshot.data!.timetable;
-                                        globals.timetabletom =
-                                            snapshot.data!.timetabletom;
+                                        // globals.timetable =
+                                        //     snapshot.data!.timetable;
+                                        // globals.timetabletom =
+                                        //     snapshot.data!.timetabletom;
                                         return Column(
                                             mainAxisAlignment:
                                                 MainAxisAlignment.center,
@@ -825,7 +825,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                 },
                                                 onPressed: () {},
                                                 child: Text(
-                                                  '${showcorrectday(globals.dayOrder)}',
+                                                  '${showcorrectday(globals.day1)}',
                                                   style: TextStyle(
                                                     fontFamily:
                                                         'Protipo Compact',
@@ -869,7 +869,7 @@ class _TodoListState1 extends State<TodoList1> {
                                                         .heavyImpact();
                                                   },
                                                   child: Text(
-                                                    '${showcorrectday(globals.dayOrder)}',
+                                                    '${showcorrectday(globals.day1)}',
                                                     style: TextStyle(
                                                       fontFamily:
                                                           'Protipo Compact',

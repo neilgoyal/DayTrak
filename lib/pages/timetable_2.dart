@@ -4,22 +4,23 @@ import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class TimetabletomPage extends StatefulWidget {
+class Timetable_2Page extends StatefulWidget {
   @override
-  _TimetabletomState createState() => _TimetabletomState();
+  _Timetable_2State createState() => _Timetable_2State();
 }
 
-Future<Day>? futureDay;
+
+Future<Timetable>? futureTimetable;
 int? numoftiles;
 String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
-class _TimetabletomState extends State<TimetabletomPage> {
+class _Timetable_2State extends State<Timetable_2Page> {
   @override
   void initState() {
     super.initState();
     getIntValuesSF();
     selectNumTiles();
-    futureDay = fetchDay();
+    futureTimetable = timetable();
     defaultsvals();
   }
 
@@ -93,50 +94,10 @@ class _TimetabletomState extends State<TimetabletomPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: FutureBuilder<Day>(
-            future: futureDay,
+        child: FutureBuilder<Timetable>(
+            future: futureTimetable,
             builder: (context, snapshot) {
-              if (globals.valueOfGrade != 11 &&
-                  globals.valueOfGrade != 91 &&
-                  globals.valueOfGrade != 92) {
-                return Container(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                        height: globals.s2,
-                      ),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Expanded(
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 0.0,
-                                        left: globals.h5!,
-                                        right: globals.h5!),
-                                    child: Container(
-                                      child: Text(
-                                        'Support Coming Soon!',
-                                        style: TextStyle(
-                                          fontFamily: 'Protipo Compact',
-                                          fontSize: globals.h5,
-                                          color: Colors.black54,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        overflow: TextOverflow.ellipsis,
-                                        textDirection: TextDirection.ltr,
-                                        textAlign: TextAlign.center,
-                                        maxLines: 6,
-                                      ),
-                                    )))
-                          ]),
-                    ],
-                  ),
-                );
-              } else if (globals.day2 == "7") {
+              if (globals.day3 == "7") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -172,7 +133,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                 ),
                               ))
                         ]));
-              } else if (globals.day2 == "8") {
+              } if (globals.day3 == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -210,11 +171,13 @@ class _TimetabletomState extends State<TimetabletomPage> {
                         ]));
               } else {
                 if (snapshot.hasData) {
-                  globals.dayOrder = ((snapshot.data!.day1).toString());
-                  globals.day2 = ((snapshot.data!.day2).toString());
-                  globals.day3 = ((snapshot.data!.day3).toString());
-                  globals.timetable = snapshot.data!.timetable;
-                  globals.timetabletom = snapshot.data!.timetabletom;
+                  globals.timetable_0 = snapshot.data!.timetable_0;
+                  globals.timetable_1 = snapshot.data!.timetable_1;
+                  globals.timetable_2 = snapshot.data!.timetable_2;
+                  globals.timetable_3 = snapshot.data!.timetable_3;
+                  globals.timetable_4 = snapshot.data!.timetable_4;
+                  globals.timetable_5 = snapshot.data!.timetable_5;
+                  globals.timetable_6 = snapshot.data!.timetable_6;
                   return ListView.builder(
                       itemCount: numoftiles,
                       itemBuilder: (context, index) {
@@ -238,7 +201,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          blocktoprefrence(globals.timetabletom![
+                                          blocktoprefrence(globals.timetable_2![
                                               '${globals.valueOfGrade}.${(index + 1)}']),
                                           style: TextStyle(
                                               fontSize: globals.h4,
@@ -256,7 +219,7 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          globals.timetabletom![
+                                          globals.timetable_2![
                                               '${globals.valueOfGrade}.${(index + 1)}_time'],
                                           style: TextStyle(color: Colors.grey),
                                         )
@@ -289,9 +252,9 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          (globals.timetabletom!.isNotEmpty)
+                                          (globals.timetable_2!.isNotEmpty)
                                               ? blocktoprefrence(globals
-                                                      .timetabletom![
+                                                      .timetable_2![
                                                   '${globals.valueOfGrade}.${(index + 1)}'])
                                               : "-",
                                           style: TextStyle(
@@ -310,8 +273,8 @@ class _TimetabletomState extends State<TimetabletomPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          (globals.timetabletom!.isNotEmpty)
-                                              ? globals.timetabletom![
+                                          (globals.timetable_2!.isNotEmpty)
+                                              ? globals.timetable_2![
                                                   '${globals.valueOfGrade}.${(index + 1)}_time']
                                               : "-",
                                           style: TextStyle(color: Colors.grey),
