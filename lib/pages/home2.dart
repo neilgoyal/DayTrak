@@ -73,7 +73,7 @@ class _Home2State extends State<Home2Page> {
               ),
               Column(
                 children: [
-                  Text('${showcorrectday(dayOrder)}',
+                  Text('${showcorrectday(day1)}',
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
                         fontSize: h4,

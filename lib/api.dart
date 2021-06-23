@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:encrypt/encrypt.dart';
+import 'package:schoolcalendar/globals.dart';
 
 final encrypter = Encrypter(
     Fernet(Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=')));
@@ -40,6 +41,16 @@ Future<WeatherModel> getWeather() async {
     throw Exception('Failed to load Weather Information');
 }
 
+Future<Timetable> timetable() async {
+  final response1 = await http.get(
+      Uri.parse('https://tumulrankypanky.pythonanywhere.com/g$valueOfGrade'));
+  if (response1.statusCode == 200) {
+    Timetable result = Timetable.fromJson(jsonDecode(response1.body));
+    return result;
+  } else
+    throw Exception('Failed to load Day Order Information');
+}
+
 Future<Day> fetchDay() async {
   final response1 = await http
       .get(Uri.parse('https://tumulrankypanky.pythonanywhere.com/binod'));
@@ -48,6 +59,38 @@ Future<Day> fetchDay() async {
     return result;
   } else
     throw Exception('Failed to load Day Order Information');
+}
+
+class Timetable {
+  final Map<String, dynamic>? timetable_0,
+      timetable_1,
+      timetable_2,
+      timetable_3,
+      timetable_4,
+      timetable_5,
+      timetable_6;
+
+  Timetable({
+    this.timetable_0,
+    this.timetable_1,
+    this.timetable_2,
+    this.timetable_3,
+    this.timetable_4,
+    this.timetable_5,
+    this.timetable_6,
+  });
+
+  factory Timetable.fromJson(Map<String, dynamic> json) {
+    return Timetable(
+      timetable_0: json['0'][0],
+      timetable_1: json['1'][0],
+      timetable_2: json['2'][0],
+      timetable_3: json['3'][0],
+      timetable_4: json['4'][0],
+      timetable_5: json['5'][0],
+      timetable_6: json['6'][0],
+    );
+  }
 }
 
 class Day {
@@ -67,18 +110,13 @@ class Day {
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
-      day1:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["0"])))),
-      day2:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["1"])))),
-      day3:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["2"])))),
+      day1: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["0"])))),
+      day2: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["1"])))),
+      day3: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["2"])))),
       day4: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["3"])))),
       day5: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["4"])))),
-      day6:
-          int.parse((encrypter.decrypt(Encrypted.fromBase64(json["5"])))),
+      day6: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["5"])))),
       day7: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["6"])))),
-
       // timetable: json['potato'][0],
       // timetabletom: json['aloo'][0],
     );
