@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
+import 'firstopenpages/fp1.dart';
+// ignore: unused_import
 import 'pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'sign_in_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,15 +13,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
-      theme: MyThemes.lightTheme,  
+      theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
       title: 'School planner',
       initialRoute: '/',
       routes: {
-        '/first': (context) => SignInScreen(),
-        // '/main': (context) => Fp1Page(),
-        // '/main': (context) => SignInScreen(),
-        '/main': (context) => HomePage()
+        '/first': (context) => Fp1Page(),
+        '/main': (context) => Fp1Page()
+        //'/main': (context) => HomePage()
       },
       home: Splash(),
     );
