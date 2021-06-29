@@ -10,7 +10,6 @@ class Timetable_2Page extends StatefulWidget {
   _Timetable_2State createState() => _Timetable_2State();
 }
 
-
 Future<Timetable>? futureTimetable;
 int? numoftiles;
 String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
@@ -135,7 +134,8 @@ class _Timetable_2State extends State<Timetable_2Page> {
                                 ),
                               ))
                         ]));
-              } if (globals.day3 == "8") {
+              }
+              if (globals.day3 == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -187,7 +187,8 @@ class _Timetable_2State extends State<Timetable_2Page> {
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
                           child: Card(
-                            elevation: 2.5,
+                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                            elevation: 7.5,
                             color: Color.fromRGBO(252, 252, 252, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),
@@ -238,7 +239,8 @@ class _Timetable_2State extends State<Timetable_2Page> {
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
                           child: Card(
-                            elevation: 2.5,
+                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                            elevation: 7.5,
                             color: Color.fromRGBO(252, 252, 252, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),

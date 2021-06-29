@@ -187,8 +187,8 @@ class _Timetable_0State extends State<Timetable_0Page> {
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
                           child: Card(
-                            elevation: 2.5,
-                            color: Color.fromRGBO(252, 252, 252, 1),
+                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                            elevation: 7.5,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),
                             child: Container(
@@ -207,7 +207,7 @@ class _Timetable_0State extends State<Timetable_0Page> {
                                               '${globals.valueOfGrade}.${(index + 1)}']),
                                           style: TextStyle(
                                               fontSize: globals.h4,
-                                              color: Colors.black54,
+                                              // color: Colors.black54,
                                               fontWeight: FontWeight.w300,
                                               fontFamily: "Protipo Compact"),
                                         ),
@@ -238,8 +238,8 @@ class _Timetable_0State extends State<Timetable_0Page> {
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
                           child: Card(
-                            elevation: 2.5,
-                            color: Color.fromRGBO(252, 252, 252, 1),
+                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                            elevation: 7.5,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),
                             child: Container(
@@ -261,7 +261,7 @@ class _Timetable_0State extends State<Timetable_0Page> {
                                               : "-",
                                           style: TextStyle(
                                               fontSize: globals.h4,
-                                              color: Colors.black54,
+                                              // color: Colors.black54,
                                               fontWeight: FontWeight.w300,
                                               fontFamily: "Protipo Compact"),
                                         ),

@@ -138,7 +138,6 @@ class _HomePageState extends State<HomePage> {
             indicatorSize: TabBarIndicatorSize.label,
             indicator: CircleTabIndicator(
                 color: Color.fromRGBO(111, 174, 204, 0), radius: 3.5),
-            
           ),
         ),
       ),

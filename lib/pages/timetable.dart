@@ -81,9 +81,9 @@ class _TimetableState extends State<TimetablePage>
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.system,
-       theme: MyThemes.lightTheme,
-      darkTheme: MyThemes.darkTheme,
+        themeMode: ThemeMode.system,
+        theme: MyThemes.lightTheme,
+        darkTheme: MyThemes.darkTheme,
         debugShowCheckedModeBanner: false,
         title: 'DayTrak',
         home: Scaffold(
@@ -172,7 +172,7 @@ class _TimetableState extends State<TimetablePage>
                 toolbarHeight: 100.0,
                 bottom: TabBar(
                   isScrollable: true,
-                  indicatorColor: const Color(0xffbadfca),
+                  indicatorColor: Color.fromRGBO(201, 248, 86, 0.8),
                   indicatorWeight: 2,
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
@@ -205,7 +205,7 @@ class _TimetableState extends State<TimetablePage>
                       ),
                     ),
                     Text(
-                      DateFormat.MMMd()
+                      DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 3))),
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
@@ -215,7 +215,7 @@ class _TimetableState extends State<TimetablePage>
                       ),
                     ),
                     Text(
-                      DateFormat.MMMd()
+                      DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 4))),
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
@@ -225,7 +225,7 @@ class _TimetableState extends State<TimetablePage>
                       ),
                     ),
                     Text(
-                      DateFormat.MMMd()
+                      DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 5))),
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
@@ -235,7 +235,7 @@ class _TimetableState extends State<TimetablePage>
                       ),
                     ),
                     Text(
-                      DateFormat.MMMd()
+                      DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 6))),
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
