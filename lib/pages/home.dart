@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/user_info_screen.dart';
-import '../addtask.dart';
 import 'package:flutter/cupertino.dart';
 import 'settings.dart';
-import 'timetable.dart';
 import '../globals.dart' as globals;
 import 'home2.dart';
 import 'settings2.dart';

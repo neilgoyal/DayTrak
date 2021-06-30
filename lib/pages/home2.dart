@@ -8,7 +8,6 @@ import 'package:schoolcalendar/pages/timetable.dart';
 import '../api.dart';
 import '../authentication.dart';
 import '../globals.dart' as globals;
-import '../sign_in_screen.dart';
 
 class Home2Page extends StatefulWidget {
   @override
@@ -26,6 +25,7 @@ class _Home2State extends State<Home2Page> {
     }
     return 'Evening';
   }
+  // ignore: unused_field
   bool _isSigningOut = false;
 
   Route _routeToSignInScreen() {
