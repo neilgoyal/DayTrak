@@ -58,7 +58,7 @@ class _Home2State extends State<Home2Page> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
               child: Container(
-                  height: l1,
+                  height: l4,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -78,22 +78,22 @@ class _Home2State extends State<Home2Page> {
                                 maxLines: 6,
                               ),
                             ]),
-                            SizedBox(
-                              height: h8,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                "'${user!.displayName}'",
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: h9,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              )
-                              ],
-                            ),
+                        SizedBox(
+                          height: h8,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "'${user!.displayName}'",
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                fontSize: h9,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            )
+                          ],
+                        ),
                         SizedBox(
                           height: h7,
                         ),
@@ -101,15 +101,12 @@ class _Home2State extends State<Home2Page> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             _isSigningOut
-                                ? CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Colors.white),
-                                  )
+                                ? CircularProgressIndicator()
                                 : ElevatedButton(
                                     style: ButtonStyle(
                                       backgroundColor:
                                           MaterialStateProperty.all(
-                                        Colors.redAccent,
+                                        Colors.deepOrange[400],
                                       ),
                                       shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
@@ -136,10 +133,9 @@ class _Home2State extends State<Home2Page> {
                                       child: Text(
                                         'Sign Out',
                                         style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white,
-                                          letterSpacing: 2,
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: h7,
+                                          fontWeight: FontWeight.w500,
                                         ),
                                       ),
                                     ),
