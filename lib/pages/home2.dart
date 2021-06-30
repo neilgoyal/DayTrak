@@ -6,7 +6,9 @@ import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/globals.dart';
 import 'package:schoolcalendar/pages/timetable.dart';
 import '../api.dart';
+import '../app_bar_title.dart';
 import '../authentication.dart';
+import '../custom_colors.dart';
 import '../globals.dart' as globals;
 
 class Home2Page extends StatefulWidget {
@@ -25,6 +27,7 @@ class _Home2State extends State<Home2Page> {
     }
     return 'Evening';
   }
+
   // ignore: unused_field
   bool _isSigningOut = false;
 
@@ -47,13 +50,114 @@ class _Home2State extends State<Home2Page> {
     );
   }
 
+  Widget signOut() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              child: Container(
+                  height: l1,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'You are now signed in as ',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: h9,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                // textDirection: TextDirection.LTR,
+                                textAlign: TextAlign.center,
+                                maxLines: 6,
+                              ),
+                            ]),
+                            SizedBox(
+                              height: h8,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                "'${user!.displayName}'",
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: h9,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              )
+                              ],
+                            ),
+                        SizedBox(
+                          height: h7,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _isSigningOut
+                                ? CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Colors.white),
+                                  )
+                                : ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                        Colors.redAccent,
+                                      ),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: () async {
+                                      setState(() {
+                                        _isSigningOut = true;
+                                      });
+                                      await Authentication.signOut(
+                                          context: context);
+                                      setState(() {
+                                        _isSigningOut = false;
+                                      });
+                                      Navigator.of(context).pushReplacement(
+                                          _routeToSignInScreen());
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 8.0, bottom: 8.0),
+                                      child: Text(
+                                        'Sign Out',
+                                        style: TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white,
+                                          letterSpacing: 2,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                          ],
+                        )
+                      ])));
+        });
+    return Container();
+  }
+
   Widget days() {
     showDialog(
         context: context,
         builder: (context) {
           return Dialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)), //this right here
+                borderRadius: BorderRadius.circular(20.0)),
             child: Container(
               height: 150,
               child: FutureBuilder<Day>(
@@ -267,17 +371,8 @@ class _Home2State extends State<Home2Page> {
                               width: s5,
                               height: s5,
                               child: InkWell(
-                                onTap: () async {
-                                  setState(() {
-                                    _isSigningOut = true;
-                                  });
-                                  await Authentication.signOut(
-                                      context: context);
-                                  setState(() {
-                                    _isSigningOut = false;
-                                  });
-                                  Navigator.of(context)
-                                      .pushReplacement(_routeToSignInScreen());
+                                onTap: () {
+                                  signOut();
                                 },
                               ),
                             ),
