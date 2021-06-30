@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/firstopenpages/fp2.dart';
+import 'package:schoolcalendar/pages/home2.dart';
 import 'Provider/theme_provider.dart';
 import 'firstopenpages/fp1.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'pages/home2.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/first': (context) => Fp1Page(),
-        '/main': (context) => Fp1Page(),
-        '/main1': (context) => Home2Page(),
-        '/fp2': (context) => Fp2Page()
+        '/main': (context) => Home2Page(),
       },
       home: Splash(),
     );
@@ -41,9 +39,10 @@ class SplashState extends State<Splash> {
   }
 
   Future checkFirstSeen() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool _seen = (prefs.getBool('seen') ?? false);
-    if (_seen) {
+    // ignore: unused_local_variable
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
       Navigator.pushReplacementNamed(context, "/main");
     } else {
       Navigator.pushReplacementNamed(context, "/first");

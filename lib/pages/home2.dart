@@ -8,6 +8,8 @@ import 'package:schoolcalendar/pages/timetable.dart';
 import '../api.dart';
 import '../authentication.dart';
 import '../globals.dart' as globals;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Home2Page extends StatefulWidget {
   @override
@@ -25,8 +27,10 @@ class _Home2State extends State<Home2Page> {
     }
     return 'Evening';
   }
+
   // ignore: unused_field
   bool _isSigningOut = false;
+  Future<User>? usersetup;
 
   Route _routeToSignInScreen() {
     return PageRouteBuilder(
@@ -240,6 +244,21 @@ class _Home2State extends State<Home2Page> {
     return Container();
   }
 
+  @override
+  void initState() {
+    usersetup = initializeFirebase();
+    super.initState();
+  }
+
+  Future<User> initializeFirebase() async {
+    // ignore: unused_local_variable
+    FirebaseApp firebaseApp = await Firebase.initializeApp();
+    // ignore: unused_local_variable
+    User user = FirebaseAuth.instance.currentUser!;
+    return user;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
@@ -257,31 +276,38 @@ class _Home2State extends State<Home2Page> {
                           padding:
                               EdgeInsets.only(top: 0.0, left: 0.0, right: 12.0),
                           child: Material(
-                            elevation: 4.0,
-                            shape: CircleBorder(),
-                            clipBehavior: Clip.hardEdge,
-                            color: Colors.transparent,
-                            child: Ink.image(
-                              image: NetworkImage(user!.photoURL!),
-                              fit: BoxFit.cover,
-                              width: s5,
-                              height: s5,
-                              child: InkWell(
-                                onTap: () async {
-                                  setState(() {
-                                    _isSigningOut = true;
-                                  });
-                                  await Authentication.signOut(
-                                      context: context);
-                                  setState(() {
-                                    _isSigningOut = false;
-                                  });
-                                  Navigator.of(context)
-                                      .pushReplacement(_routeToSignInScreen());
-                                },
-                              ),
-                            ),
-                          ))
+                              elevation: 4.0,
+                              shape: CircleBorder(),
+                              clipBehavior: Clip.hardEdge,
+                              color: Colors.transparent,
+                              child: FutureBuilder<User>(
+                                  future: usersetup,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      User? user = snapshot.data;
+                                      return Ink.image(
+                                        image: NetworkImage(user!.photoURL!),
+                                        fit: BoxFit.cover,
+                                        width: s5,
+                                        height: s5,
+                                        child: InkWell(
+                                          onTap: () async {
+                                            setState(() {
+                                              _isSigningOut = true;
+                                            });
+                                            await Authentication.signOut(
+                                                context: context);
+                                            setState(() {
+                                              _isSigningOut = false;
+                                            });
+                                            Navigator.of(context)
+                                                .pushReplacement(
+                                                    _routeToSignInScreen());
+                                          },
+                                        ),
+                                      );
+                                    }
+                                  })))
                     ],
                   ),
                   Column(
@@ -294,13 +320,21 @@ class _Home2State extends State<Home2Page> {
                               fontSize: h9,
                               fontWeight: FontWeight.w300,
                             )),
-                        Text(globals.user!.displayName.toString().split(" ")[0],
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: h9,
-                              fontWeight: FontWeight.w300,
-                            )),
+                        FutureBuilder<User>(
+                            future: usersetup,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                User? user = snapshot.data;
+                                return Text(
+                                    user!.displayName.toString().split(" ")[0],
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: h9,
+                                      fontWeight: FontWeight.w300,
+                                    ));
+                              }
+                            })
                       ]),
                 ],
               ),

@@ -6,7 +6,6 @@ import 'home2.dart';
 import 'settings2.dart';
 import 'timetable2.dart';
 import 'addtask2.dart';
-// import 'package:line_icons/line_icons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -117,7 +116,6 @@ class _HomePageState extends State<HomePage> {
                   size: 35,
                 ),
               ),
-             
             ],
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,

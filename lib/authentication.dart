@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:schoolcalendar/pages/home.dart';
-import 'globals.dart' as globals;
 
 class Authentication {
   static SnackBar customSnackBar({required String content}) {
@@ -23,7 +22,6 @@ class Authentication {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
 
     User? user = FirebaseAuth.instance.currentUser;
-    globals.user = user;
 
     if (user != null) {
       Navigator.of(context).pushReplacement(
