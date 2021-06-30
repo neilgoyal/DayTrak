@@ -4,7 +4,7 @@ import '../globals.dart' as globals;
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
-import '../pages/home2.dart';
+import '../pages/home.dart';
 
 String errmessage = "Cannot Be Empty";
 OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
@@ -723,7 +723,7 @@ class _Fp2State extends State<Fp2Page> {
                                 prefs.setString('B6', myController6.text);
                                 Navigator.of(context).pushReplacement(
                                     new MaterialPageRoute(
-                                        builder: (context) => Home2Page()));
+                                        builder: (context) => HomePage()));
                               }
                             } else if (globals.valueOfGrade == 91 ||
                                 globals.valueOfGrade == 92) {
@@ -741,7 +741,7 @@ class _Fp2State extends State<Fp2Page> {
                                 prefs.setString('B9', myController9.text);
                                 Navigator.of(context).pushReplacement(
                                     new MaterialPageRoute(
-                                        builder: (context) => Home2Page()));
+                                        builder: (context) => HomePage()));
                               }
                             }
                           },

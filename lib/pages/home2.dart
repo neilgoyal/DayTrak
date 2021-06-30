@@ -6,9 +6,7 @@ import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/globals.dart';
 import 'package:schoolcalendar/pages/timetable.dart';
 import '../api.dart';
-import '../app_bar_title.dart';
 import '../authentication.dart';
-import '../custom_colors.dart';
 import '../globals.dart' as globals;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -87,14 +85,28 @@ class _Home2State extends State<Home2Page> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              "'${user!.displayName}'",
-                              style: TextStyle(
-                                fontFamily: 'Protipo Compact',
-                                fontSize: h9,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            )
+                            FutureBuilder<User>(
+                                future: usersetup,
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    User? user = snapshot.data;
+                                    return Text('${user!.displayName}',
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: h9,
+                                          fontWeight: FontWeight.w300,
+                                        ));
+                                  } else {
+                                    return Text(globals.nickname,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: h9,
+                                          fontWeight: FontWeight.w300,
+                                        ));
+                                  }
+                                })
                           ],
                         ),
                         SizedBox(
@@ -375,22 +387,77 @@ class _Home2State extends State<Home2Page> {
                           padding:
                               EdgeInsets.only(top: 0.0, left: 0.0, right: 12.0),
                           child: Material(
-                            elevation: 4.0,
-                            shape: CircleBorder(),
-                            clipBehavior: Clip.hardEdge,
-                            color: Colors.transparent,
-                            child: Ink.image(
-                              image: NetworkImage(user!.photoURL!),
-                              fit: BoxFit.cover,
-                              width: s5,
-                              height: s5,
-                              child: InkWell(
-                                onTap: () {
-                                  signOut();
-                                },
-                              ),
-                            ),
-                          ))
+                              elevation: 4.0,
+                              shape: CircleBorder(),
+                              clipBehavior: Clip.hardEdge,
+                              color: Colors.transparent,
+                              child: FutureBuilder<User>(
+                                  future: usersetup,
+                                  builder: (context, snapshot) {
+                                    if (snapshot.hasData) {
+                                      //User? user = snapshot.data;
+                                      // return Ink.image(
+                                      //   image: NetworkImage(user!.photoURL!),
+                                      //   fit: BoxFit.cover,
+                                      //   width: s5,
+                                      //   height: s5,
+                                      //   child: InkWell(
+                                      //     onTap: () {
+                                      //       signOut();
+                                      //     },
+                                      //   ),
+                                      // )
+                                      // ;
+                                      return ElevatedButton(
+                                        style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsetsGeometry>(
+                                              EdgeInsets.only(
+                                                  top: 0.0,
+                                                  left: 0.0,
+                                                  right: 0.0),
+                                            ),
+                                            elevation: MaterialStateProperty<double?>,
+                                            shadowColor: MaterialStateProperty
+                                                .all<Color>(Colors.transparent),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.transparent)),
+                                        child: Icon(
+                                          CupertinoIcons.person_alt_circle,
+                                          // color: Colors.pink,
+                                          size: s6,
+                                        ),
+                                        onPressed: () {
+                                          signOut();
+                                        },
+                                      );
+                                    } else {
+                                      return ElevatedButton(
+                                        style: ButtonStyle(
+                                            padding: MaterialStateProperty.all<
+                                                EdgeInsetsGeometry>(
+                                              EdgeInsets.only(
+                                                  top: 0.0,
+                                                  left: 0.0,
+                                                  right: 0.0),
+                                            ),
+                                            shadowColor: MaterialStateProperty
+                                                .all<Color>(Colors.transparent),
+                                            backgroundColor:
+                                                MaterialStateProperty.all<
+                                                    Color>(Colors.transparent)),
+                                        child: Icon(
+                                          CupertinoIcons.person_alt_circle,
+                                          color: Colors.pink,
+                                          size: s6,
+                                        ),
+                                        onPressed: () {
+                                          signOut();
+                                        },
+                                      );
+                                    }
+                                  })))
                     ],
                   ),
                   Column(
@@ -410,6 +477,14 @@ class _Home2State extends State<Home2Page> {
                                 User? user = snapshot.data;
                                 return Text(
                                     user!.displayName.toString().split(" ")[0],
+                                    textAlign: TextAlign.left,
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: h9,
+                                      fontWeight: FontWeight.w300,
+                                    ));
+                              } else {
+                                return Text(globals.nickname,
                                     textAlign: TextAlign.left,
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',

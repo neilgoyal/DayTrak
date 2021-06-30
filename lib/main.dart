@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/pages/home2.dart';
+import 'package:schoolcalendar/pages/home.dart';
 import 'Provider/theme_provider.dart';
 import 'firstopenpages/fp1.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/first': (context) => Fp1Page(),
-        '/main': (context) => Home2Page(),
+        '/main': (context) => HomePage(),
       },
       home: Splash(),
     );

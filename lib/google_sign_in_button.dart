@@ -2,8 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'authentication.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'pages/home2.dart';
 import 'firstopenpages/fp2.dart';
+import 'pages/home.dart';
 
 class GoogleSignInButton extends StatefulWidget {
   @override
@@ -80,7 +80,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
     if (_seen) {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => Home2Page(),
+          builder: (context) => HomePage(),
         ),
       );
     } else {
