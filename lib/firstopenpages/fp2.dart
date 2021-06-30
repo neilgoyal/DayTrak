@@ -4,7 +4,6 @@ import '../globals.dart' as globals;
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
-import 'fp1.dart';
 import '../pages/home.dart';
 
 String errmessage = "Cannot Be Empty";
@@ -475,63 +474,7 @@ class _Fp2State extends State<Fp2Page> {
                       padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
                       child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                      foregroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                      shadowColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (context) => Fp1Page()));
-                                    },
-                                    child: Icon(
-                                      CupertinoIcons.chevron_back,
-                                      color: Colors.black54,
-                                      size: globals.h4,
-                                    ))
-                              ],
-                            ),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                      foregroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                      shadowColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                    ),
-                                    onPressed: () {
-                                      Navigator.of(context).pushReplacement(
-                                          new MaterialPageRoute(
-                                              builder: (context) => Fp1Page()));
-                                    },
-                                    child: Icon(
-                                      CupertinoIcons.multiply,
-                                      color: Colors.black54,
-                                      size: globals.h4,
-                                    ))
-                              ],
-                            )
-                          ]),
+                          children: []),
                     )),
                     toolbarHeight: 100.0)),
             body: ListView(children: [
@@ -813,7 +756,7 @@ class _Fp2State extends State<Fp2Page> {
                                 prefs.setString('B9', myController9.text);
                                 Navigator.of(context).pushReplacement(
                                     new MaterialPageRoute(
-                                        builder: (context) => Fp1Page()));
+                                        builder: (context) => HomePage()));
                               }
                             }
                           },
