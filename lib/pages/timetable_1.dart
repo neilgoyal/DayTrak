@@ -187,7 +187,8 @@ class _Timetable_1State extends State<Timetable_1Page> {
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
                           child: Card(
-                            elevation: 2.5,
+                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                            elevation: 7.5,
                             color: Color.fromRGBO(252, 252, 252, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),
@@ -238,7 +239,8 @@ class _Timetable_1State extends State<Timetable_1Page> {
                           padding: EdgeInsets.only(
                               top: 10.0, left: 18.0, right: 18.0),
                           child: Card(
-                            elevation: 2.5,
+                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                            elevation: 7.5,
                             color: Color.fromRGBO(252, 252, 252, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),

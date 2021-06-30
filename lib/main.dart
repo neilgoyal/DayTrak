@@ -2,13 +2,19 @@ import 'package:flutter/material.dart';
 import 'Provider/theme_provider.dart';
 import 'firstopenpages/fp1.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return
+        // StreamProvider(
+        //     create: (_) => AuthService().user,
+        //     child:
+        MaterialApp(
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,

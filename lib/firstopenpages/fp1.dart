@@ -42,9 +42,7 @@ class _Fp1State extends State<Fp1Page> {
                   elevation: 0,
                   title: Container(
                       child: Padding(
-                    padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end, children: []),
+                    padding: EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
                   )),
                   toolbarHeight: 50.0)),
           body: Column(
