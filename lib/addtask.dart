@@ -24,9 +24,9 @@ class Addtask1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.system,
-      theme: MyThemes.lightTheme,
-      darkTheme: MyThemes.darkTheme,
+        themeMode: ThemeMode.system,
+        theme: MyThemes.lightTheme,
+        darkTheme: MyThemes.darkTheme,
         color: Colors.white,
         debugShowCheckedModeBanner: false,
         title: 'DayTrak',
@@ -588,7 +588,7 @@ class _TodoListState1 extends State<TodoList1> {
                                       )),
                                 ],
                               ),
-                               Row(
+                              Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [

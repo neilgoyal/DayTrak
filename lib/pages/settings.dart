@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:schoolcalendar/Provider/theme_provider.dart';
+import '../Provider/theme_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../globals.dart' as globals;
 import 'package:flutter/services.dart';
@@ -284,8 +284,8 @@ class _SettingsState extends State<SettingsPage> {
               decoration: InputDecoration(
                   labelText: 'Block 1',
                   labelStyle: TextStyle(
-                    // color: Colors.black54,
-                  ),
+                      // color: Colors.black54,
+                      ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
           SizedBox(
@@ -532,9 +532,9 @@ class _SettingsState extends State<SettingsPage> {
           FocusScope.of(context).requestFocus(FocusNode());
         },
         child: MaterialApp(
-          themeMode: ThemeMode.system,
-      theme: MyThemes.lightTheme,
-      darkTheme: MyThemes.darkTheme,
+            themeMode: ThemeMode.system,
+            theme: MyThemes.lightTheme,
+            darkTheme: MyThemes.darkTheme,
             debugShowCheckedModeBanner: false,
             title: 'DayTrak',
             home: Scaffold(

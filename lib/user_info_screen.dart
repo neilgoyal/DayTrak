@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'custom_colors.dart';
-import 'sign_in_screen.dart';
+import 'firstopenpages/fp1.dart';
 import 'authentication.dart';
 import 'app_bar_title.dart';
 
@@ -22,7 +22,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
 
   Route _routeToSignInScreen() {
     return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => SignInScreen(),
+      pageBuilder: (context, animation, secondaryAnimation) => Fp1Page(),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         var begin = Offset(-1.0, 0.0);
         var end = Offset.zero;

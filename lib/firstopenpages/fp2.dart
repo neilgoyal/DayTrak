@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/services.dart';
 import 'fp1.dart';
 import '../pages/home.dart';
-import '../sign_in_screen.dart';
 
 String errmessage = "Cannot Be Empty";
 OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
@@ -523,8 +522,7 @@ class _Fp2State extends State<Fp2Page> {
                                     onPressed: () {
                                       Navigator.of(context).pushReplacement(
                                           new MaterialPageRoute(
-                                              builder: (context) =>
-                                                  SignInScreen()));
+                                              builder: (context) => Fp1Page()));
                                     },
                                     child: Icon(
                                       CupertinoIcons.multiply,
@@ -815,7 +813,7 @@ class _Fp2State extends State<Fp2Page> {
                                 prefs.setString('B9', myController9.text);
                                 Navigator.of(context).pushReplacement(
                                     new MaterialPageRoute(
-                                        builder: (context) => SignInScreen()));
+                                        builder: (context) => Fp1Page()));
                               }
                             }
                           },
