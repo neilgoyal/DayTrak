@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:schoolcalendar/Provider/theme_provider.dart';
+import 'Provider/theme_provider.dart';
 import 'firstopenpages/fp1.dart';
-// ignore: unused_import
-import 'pages/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
@@ -42,11 +40,9 @@ class SplashState extends State<Splash> {
   Future checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool _seen = (prefs.getBool('seen') ?? false);
-
     if (_seen) {
       Navigator.pushReplacementNamed(context, "/main");
     } else {
-      prefs.setBool('seen', true);
       Navigator.pushReplacementNamed(context, "/first");
     }
   }

@@ -2,8 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
-import '../pages/home.dart';
-import 'fp2.dart';
+import '../custom_colors.dart';
+import '../authentication.dart';
+import '../google_sign_in_button.dart';
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -43,37 +44,7 @@ class _Fp1State extends State<Fp1Page> {
                       child: Padding(
                     padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              ElevatedButton(
-                                  style: ButtonStyle(
-                                    backgroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.transparent),
-                                    foregroundColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.transparent),
-                                    shadowColor:
-                                        MaterialStateProperty.all<Color>(
-                                            Colors.transparent),
-                                  ),
-                                  onPressed: () {
-                                    Navigator.of(context).pushReplacement(
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()));
-                                  },
-                                  child: Icon(
-                                    CupertinoIcons.multiply,
-                                    color: Colors.black54,
-                                    size: globals.h4,
-                                  ))
-                            ],
-                          )
-                        ]),
+                        mainAxisAlignment: MainAxisAlignment.end, children: []),
                   )),
                   toolbarHeight: 50.0)),
           body: Column(
@@ -122,7 +93,9 @@ class _Fp1State extends State<Fp1Page> {
                     Expanded(
                         child: Padding(
                             padding: EdgeInsets.only(
-                                top: 0.0, left: globals.h5!, right: globals.h5!),
+                                top: 0.0,
+                                left: globals.h5!,
+                                right: globals.h5!),
                             child: Container(
                               child: Text(
                                 'DayTrak is designed to help manage your school calendar in simple and easy way',
@@ -145,24 +118,22 @@ class _Fp1State extends State<Fp1Page> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton(
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent),
-                        foregroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent),
-                        shadowColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent),
-                      ),
-                      onPressed: () {
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context) => Fp2Page()));
-                      },
-                      child: Icon(
-                        CupertinoIcons.chevron_forward,
-                        color: Colors.black54,
-                        size: globals.h2,
-                      ))
+                  FutureBuilder(
+                    future: Authentication.initializeFirebase(context: context),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Error initializing Firebase');
+                      } else if (snapshot.connectionState ==
+                          ConnectionState.done) {
+                        return GoogleSignInButton();
+                      }
+                      return CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(
+                          CustomColors.firebaseOrange,
+                        ),
+                      );
+                    },
+                  )
                 ],
               ),
             ],

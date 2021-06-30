@@ -4,16 +4,17 @@ import 'package:schoolcalendar/globals.dart' as globals;
 import '../api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+// ignore: camel_case_types
 class Timetable_6Page extends StatefulWidget {
   @override
   _Timetable_6State createState() => _Timetable_6State();
 }
 
-
 Future<Timetable>? futureTimetable;
 int? numoftiles;
 String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
+// ignore: camel_case_types
 class _Timetable_6State extends State<Timetable_6Page> {
   @override
   void initState() {
@@ -133,7 +134,8 @@ class _Timetable_6State extends State<Timetable_6Page> {
                                 ),
                               ))
                         ]));
-              } if (globals.day7 == "8") {
+              }
+              if (globals.day7 == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
