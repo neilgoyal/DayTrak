@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:schoolcalendar/user_info_screen.dart';
 import '../addtask.dart';
 import 'package:flutter/cupertino.dart';
 import 'settings.dart';
@@ -69,18 +70,16 @@ class _HomePageState extends State<HomePage> {
     globals.l2 = lenght * 0.1;
     globals.l3 = lenght * 0.75;
     return DefaultTabController(
-      length: 7,
+      length: 5,
       initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
           children: [
-            Addtask1(),
-            TimetablePage(),
             SettingsPage(),
             Home2Page(),
             Timetable2Page(),
             Addtask2Page(),
-            Settings2Page()
+            Settings2Page(),
           ],
         ),
         bottomNavigationBar: Container(
@@ -91,18 +90,6 @@ class _HomePageState extends State<HomePage> {
           margin: EdgeInsets.only(bottom: 15),
           child: TabBar(
             tabs: [
-              Tab(
-                icon: Icon(
-                  CupertinoIcons.house,
-                  size: 35,
-                ),
-              ),
-              Tab(
-                icon: Icon(
-                  CupertinoIcons.list_dash,
-                  size: 35,
-                ),
-              ),
               Tab(
                 icon: Icon(
                   CupertinoIcons.settings_solid,
@@ -133,6 +120,7 @@ class _HomePageState extends State<HomePage> {
                   size: 35,
                 ),
               ),
+             
             ],
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,

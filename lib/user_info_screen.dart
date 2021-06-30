@@ -5,18 +5,18 @@ import 'sign_in_screen.dart';
 import 'authentication.dart';
 import 'app_bar_title.dart';
 
-class UserInfoScreen extends StatefulWidget {
-  const UserInfoScreen({Key? key, required User user})
+class UserInfoPage extends StatefulWidget {
+  const UserInfoPage({Key? key, required User user})
       : _user = user,
         super(key: key);
 
   final User _user;
 
   @override
-  _UserInfoScreenState createState() => _UserInfoScreenState();
+  _UserInfoPageState createState() => _UserInfoPageState();
 }
 
-class _UserInfoScreenState extends State<UserInfoScreen> {
+class _UserInfoPageState extends State<UserInfoPage> {
   late User _user;
   bool _isSigningOut = false;
 
