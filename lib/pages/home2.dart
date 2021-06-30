@@ -6,7 +6,9 @@ import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/globals.dart';
 import 'package:schoolcalendar/pages/timetable.dart';
 import '../api.dart';
+import '../app_bar_title.dart';
 import '../authentication.dart';
+import '../custom_colors.dart';
 import '../globals.dart' as globals;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -51,13 +53,110 @@ class _Home2State extends State<Home2Page> {
     );
   }
 
+  Widget signOut() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Dialog(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              child: Container(
+                  height: l4,
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'You are now signed in as ',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  fontSize: h9,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                // textDirection: TextDirection.LTR,
+                                textAlign: TextAlign.center,
+                                maxLines: 6,
+                              ),
+                            ]),
+                        SizedBox(
+                          height: h8,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "'${user!.displayName}'",
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                fontSize: h9,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            )
+                          ],
+                        ),
+                        SizedBox(
+                          height: h7,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _isSigningOut
+                                ? CircularProgressIndicator()
+                                : ElevatedButton(
+                                    style: ButtonStyle(
+                                      backgroundColor:
+                                          MaterialStateProperty.all(
+                                        Colors.deepOrange[400],
+                                      ),
+                                      shape: MaterialStateProperty.all(
+                                        RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    ),
+                                    onPressed: () async {
+                                      setState(() {
+                                        _isSigningOut = true;
+                                      });
+                                      await Authentication.signOut(
+                                          context: context);
+                                      setState(() {
+                                        _isSigningOut = false;
+                                      });
+                                      Navigator.of(context).pushReplacement(
+                                          _routeToSignInScreen());
+                                    },
+                                    child: Padding(
+                                      padding: EdgeInsets.only(
+                                          top: 8.0, bottom: 8.0),
+                                      child: Text(
+                                        'Sign Out',
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: h7,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                          ],
+                        )
+                      ])));
+        });
+    return Container();
+  }
+
   Widget days() {
     showDialog(
         context: context,
         builder: (context) {
           return Dialog(
             shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0)), //this right here
+                borderRadius: BorderRadius.circular(20.0)),
             child: Container(
               height: 150,
               child: FutureBuilder<Day>(
@@ -276,38 +375,22 @@ class _Home2State extends State<Home2Page> {
                           padding:
                               EdgeInsets.only(top: 0.0, left: 0.0, right: 12.0),
                           child: Material(
-                              elevation: 4.0,
-                              shape: CircleBorder(),
-                              clipBehavior: Clip.hardEdge,
-                              color: Colors.transparent,
-                              child: FutureBuilder<User>(
-                                  future: usersetup,
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
-                                      User? user = snapshot.data;
-                                      return Ink.image(
-                                        image: NetworkImage(user!.photoURL!),
-                                        fit: BoxFit.cover,
-                                        width: s5,
-                                        height: s5,
-                                        child: InkWell(
-                                          onTap: () async {
-                                            setState(() {
-                                              _isSigningOut = true;
-                                            });
-                                            await Authentication.signOut(
-                                                context: context);
-                                            setState(() {
-                                              _isSigningOut = false;
-                                            });
-                                            Navigator.of(context)
-                                                .pushReplacement(
-                                                    _routeToSignInScreen());
-                                          },
-                                        ),
-                                      );
-                                    }
-                                  })))
+                            elevation: 4.0,
+                            shape: CircleBorder(),
+                            clipBehavior: Clip.hardEdge,
+                            color: Colors.transparent,
+                            child: Ink.image(
+                              image: NetworkImage(user!.photoURL!),
+                              fit: BoxFit.cover,
+                              width: s5,
+                              height: s5,
+                              child: InkWell(
+                                onTap: () {
+                                  signOut();
+                                },
+                              ),
+                            ),
+                          ))
                     ],
                   ),
                   Column(
