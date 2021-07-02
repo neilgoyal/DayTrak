@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
 import '../globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
-import '../custom_colors.dart';
 import '../authentication.dart';
 import '../google_sign_in_button.dart';
 
