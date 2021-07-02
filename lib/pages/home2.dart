@@ -409,20 +409,11 @@ class _Home2State extends State<Home2Page> {
                                       // )
                                       // ;
                                       return ElevatedButton(
-                                        style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsetsGeometry>(
-                                              EdgeInsets.only(
-                                                  top: 0.0,
-                                                  left: 0.0,
-                                                  right: 0.0),
-                                            ),
-                                            elevation: MaterialStateProperty<double?>,
-                                            shadowColor: MaterialStateProperty
-                                                .all<Color>(Colors.transparent),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(Colors.transparent)),
+                                        style: ElevatedButton.styleFrom(
+                                          padding: EdgeInsets.all(4),
+                                          shadowColor: Colors.transparent,
+                                          primary: Colors.transparent,
+                                        ),
                                         child: Icon(
                                           CupertinoIcons.person_alt_circle,
                                           // color: Colors.pink,
