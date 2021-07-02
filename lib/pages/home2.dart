@@ -90,7 +90,7 @@ class _Home2State extends State<Home2Page> {
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
                                     User? user = snapshot.data;
-                                    return Text('${user!.displayName}',
+                                    return Text("'${user!.displayName}'",
                                         textAlign: TextAlign.left,
                                         style: TextStyle(
                                           fontFamily: 'Protipo Compact',
@@ -150,6 +150,7 @@ class _Home2State extends State<Home2Page> {
                                         style: TextStyle(
                                           fontFamily: 'Protipo Compact',
                                           fontSize: h7,
+                                          color: Colors.white70,
                                           fontWeight: FontWeight.w500,
                                         ),
                                       ),
@@ -385,9 +386,8 @@ class _Home2State extends State<Home2Page> {
                     children: [
                       Padding(
                           padding:
-                              EdgeInsets.only(top: 0.0, left: 0.0, right: 12.0),
+                              EdgeInsets.only(top: 0.0, left: 0.0, right: 9.0),
                           child: Material(
-                              elevation: 4.0,
                               shape: CircleBorder(),
                               clipBehavior: Clip.hardEdge,
                               color: Colors.transparent,
@@ -395,7 +395,7 @@ class _Home2State extends State<Home2Page> {
                                   future: usersetup,
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
-                                      //User? user = snapshot.data;
+                                      // User? user = snapshot.data;
                                       // return Ink.image(
                                       //   image: NetworkImage(user!.photoURL!),
                                       //   fit: BoxFit.cover,
@@ -406,17 +406,17 @@ class _Home2State extends State<Home2Page> {
                                       //       signOut();
                                       //     },
                                       //   ),
-                                      // )
-                                      // ;
+                                      // );
                                       return ElevatedButton(
                                         style: ElevatedButton.styleFrom(
+                                          elevation: 0,
                                           padding: EdgeInsets.all(4),
-                                          shadowColor: Colors.transparent,
                                           primary: Colors.transparent,
+                                          onSurface: Colors.transparent,
                                         ),
                                         child: Icon(
                                           CupertinoIcons.person_alt_circle,
-                                          // color: Colors.pink,
+                                          color: Colors.grey[500],
                                           size: s6,
                                         ),
                                         onPressed: () {
@@ -461,6 +461,9 @@ class _Home2State extends State<Home2Page> {
                               fontSize: h9,
                               fontWeight: FontWeight.w300,
                             )),
+                        // SizedBox(
+                        //   height: h11,
+                        // ),
                         FutureBuilder<User>(
                             future: usersetup,
                             builder: (context, snapshot) {

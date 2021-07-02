@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:schoolcalendar/Provider/theme_provider.dart';
 import '../globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 import '../custom_colors.dart';
@@ -34,11 +35,14 @@ class _Fp1State extends State<Fp1Page> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'DayTrak',
+        themeMode: ThemeMode.system,
+        theme: MyThemes.lightTheme,
+        darkTheme: MyThemes.darkTheme,
         home: Scaffold(
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(50),
               child: AppBar(
-                  backgroundColor: Color.fromRGBO(250, 250, 250, 1),
+                  // backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                   elevation: 0,
                   title: Container(
                       child: Padding(
@@ -58,7 +62,7 @@ class _Fp1State extends State<Fp1Page> {
                     style: TextStyle(
                       fontFamily: 'Protipo Compact',
                       fontSize: globals.h1,
-                      color: Colors.black54,
+                      // color: Colors.black54,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -100,7 +104,7 @@ class _Fp1State extends State<Fp1Page> {
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
                                   fontSize: globals.h6,
-                                  color: Colors.black54,
+                                  // color: Colors.black54,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 overflow: TextOverflow.ellipsis,
@@ -125,11 +129,7 @@ class _Fp1State extends State<Fp1Page> {
                           ConnectionState.done) {
                         return GoogleSignInButton();
                       }
-                      return CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          CustomColors.firebaseOrange,
-                        ),
-                      );
+                      return CircularProgressIndicator();
                     },
                   )
                 ],

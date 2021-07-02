@@ -54,6 +54,7 @@ class _HomePageState extends State<HomePage> {
     globals.h8 = width * 0.055;
     globals.h9 = width * 0.05;
     globals.h10 = width * 0.045;
+    globals.h11 = width * 0.01;
     globals.s1 = width * 0.3;
     globals.s2 = width * 0.275;
     globals.s3 = width * 0.25;
