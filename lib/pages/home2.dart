@@ -395,18 +395,20 @@ class _Home2State extends State<Home2Page> {
                                   future: usersetup,
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
-                                      // User? user = snapshot.data;
-                                      // return Ink.image(
-                                      //   image: NetworkImage(user!.photoURL!),
-                                      //   fit: BoxFit.cover,
-                                      //   width: s5,
-                                      //   height: s5,
-                                      //   child: InkWell(
-                                      //     onTap: () {
-                                      //       signOut();
-                                      //     },
-                                      //   ),
-                                      // );
+                                      User? user = snapshot.data;
+                                      return Ink.image(
+                                        image: NetworkImage(user!.photoURL!),
+                                        fit: BoxFit.cover,
+                                        width: s5,
+                                        height: s5,
+                                        child: InkWell(
+                                          onTap: () {
+                                            signOut();
+                                          },
+                                        ),
+                                      );
+                                      
+                                    } else {
                                       return ElevatedButton(
                                         style: ElevatedButton.styleFrom(
                                           elevation: 0,
@@ -417,30 +419,6 @@ class _Home2State extends State<Home2Page> {
                                         child: Icon(
                                           CupertinoIcons.person_alt_circle,
                                           color: Colors.grey[500],
-                                          size: s6,
-                                        ),
-                                        onPressed: () {
-                                          signOut();
-                                        },
-                                      );
-                                    } else {
-                                      return ElevatedButton(
-                                        style: ButtonStyle(
-                                            padding: MaterialStateProperty.all<
-                                                EdgeInsetsGeometry>(
-                                              EdgeInsets.only(
-                                                  top: 0.0,
-                                                  left: 0.0,
-                                                  right: 0.0),
-                                            ),
-                                            shadowColor: MaterialStateProperty
-                                                .all<Color>(Colors.transparent),
-                                            backgroundColor:
-                                                MaterialStateProperty.all<
-                                                    Color>(Colors.transparent)),
-                                        child: Icon(
-                                          CupertinoIcons.person_alt_circle,
-                                          color: Colors.pink,
                                           size: s6,
                                         ),
                                         onPressed: () {
