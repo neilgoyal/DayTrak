@@ -1,9 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'custom_colors.dart';
 import 'firstopenpages/fp1.dart';
 import 'authentication.dart';
-import 'app_bar_title.dart';
 
 class UserInfoPage extends StatefulWidget {
   const UserInfoPage({Key? key, required User user})
@@ -49,11 +47,8 @@ class _UserInfoPageState extends State<UserInfoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: CustomColors.firebaseNavy,
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: CustomColors.firebaseNavy,
-        title: AppBarTitle(),
       ),
       body: SafeArea(
         child: Padding(
@@ -69,7 +64,6 @@ class _UserInfoPageState extends State<UserInfoPage> {
               _user.photoURL != null
                   ? ClipOval(
                       child: Material(
-                        color: CustomColors.firebaseGrey.withOpacity(0.3),
                         child: Image.network(
                           _user.photoURL!,
                           fit: BoxFit.fitHeight,
@@ -78,13 +72,11 @@ class _UserInfoPageState extends State<UserInfoPage> {
                     )
                   : ClipOval(
                       child: Material(
-                        color: CustomColors.firebaseGrey.withOpacity(0.3),
                         child: Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Icon(
                             Icons.person,
                             size: 60,
-                            color: CustomColors.firebaseGrey,
                           ),
                         ),
                       ),
@@ -93,7 +85,6 @@ class _UserInfoPageState extends State<UserInfoPage> {
               Text(
                 'Hello',
                 style: TextStyle(
-                  color: CustomColors.firebaseGrey,
                   fontSize: 26,
                 ),
               ),
@@ -101,7 +92,6 @@ class _UserInfoPageState extends State<UserInfoPage> {
               Text(
                 _user.displayName!,
                 style: TextStyle(
-                  color: CustomColors.firebaseYellow,
                   fontSize: 26,
                 ),
               ),
@@ -109,7 +99,6 @@ class _UserInfoPageState extends State<UserInfoPage> {
               Text(
                 '( ${_user.email!} )',
                 style: TextStyle(
-                  color: CustomColors.firebaseOrange,
                   fontSize: 20,
                   letterSpacing: 0.5,
                 ),
@@ -117,10 +106,7 @@ class _UserInfoPageState extends State<UserInfoPage> {
               SizedBox(height: 24.0),
               Text(
                 'You are now signed in using your Google account. To sign out of your account click the "Sign Out" button below.',
-                style: TextStyle(
-                    color: CustomColors.firebaseGrey.withOpacity(0.8),
-                    fontSize: 14,
-                    letterSpacing: 0.2),
+                style: TextStyle(fontSize: 14, letterSpacing: 0.2),
               ),
               SizedBox(height: 16.0),
               _isSigningOut

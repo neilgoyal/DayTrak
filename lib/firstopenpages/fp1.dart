@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
-import '../custom_colors.dart';
 import '../authentication.dart';
 import '../google_sign_in_button.dart';
 
@@ -125,11 +124,7 @@ class _Fp1State extends State<Fp1Page> {
                           ConnectionState.done) {
                         return GoogleSignInButton();
                       }
-                      return CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                          CustomColors.firebaseOrange,
-                        ),
-                      );
+                      return CircularProgressIndicator();
                     },
                   )
                 ],
