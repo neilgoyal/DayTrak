@@ -11,7 +11,7 @@ class DatabaseService {
     required String date,
   }) async {
     DocumentReference documentReferencer =
-        _mainCollection.doc(firebaseUser!.uid).collection('users').doc();
+        _mainCollection.doc(firebaseUser!.uid).collection('tasks').doc();
     Map<String, dynamic> data = <String, dynamic>{
       "title": title,
       "date": date,
