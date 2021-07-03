@@ -185,7 +185,7 @@ class _Timetable_0State extends State<Timetable_0Page> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(
-                              top: 10.0, left: 18.0, right: 18.0),
+                              top: 20.0, left: 18.0, right: 18.0),
                           child: Card(
                             shadowColor: Color.fromRGBO(61, 195, 252, 1),
                             elevation: 7.5,
@@ -236,7 +236,7 @@ class _Timetable_0State extends State<Timetable_0Page> {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(
-                              top: 10.0, left: 18.0, right: 18.0),
+                              top: 20.0, left: 18.0, right: 18.0),
                           child: Card(
                             shadowColor: Color.fromRGBO(61, 195, 252, 1),
                             elevation: 7.5,

@@ -145,7 +145,6 @@ class _Timetable2State extends State<Timetable2Page>
                                         Text(
                                           '${showcorrectday(ordertoshow)}',
                                           style: TextStyle(
-                                            fontFamily: 'Protipo Compact',
                                             fontSize: globals.h2,
                                             // color: Colors.black54,
                                             fontWeight: FontWeight.w300,
@@ -181,7 +180,6 @@ class _Timetable2State extends State<Timetable2Page>
                     Text(
                       'Today',
                       style: TextStyle(
-                        fontFamily: 'Protipo Compact',
                         fontSize: globals.h6,
                         // color: Colors.black54,
                         fontWeight: FontWeight.w300,
@@ -189,7 +187,6 @@ class _Timetable2State extends State<Timetable2Page>
                     ),
                     Text('Tomorrow',
                         style: TextStyle(
-                          fontFamily: 'Protipo Compact',
                           fontSize: globals.h6,
                           // color: Colors.black54,
                           fontWeight: FontWeight.w300,
@@ -198,7 +195,6 @@ class _Timetable2State extends State<Timetable2Page>
                       DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 2))),
                       style: TextStyle(
-                        fontFamily: 'Protipo Compact',
                         fontSize: globals.h6,
                         // color: Colors.black54,
                         fontWeight: FontWeight.w300,
@@ -208,7 +204,6 @@ class _Timetable2State extends State<Timetable2Page>
                       DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 3))),
                       style: TextStyle(
-                        fontFamily: 'Protipo Compact',
                         fontSize: globals.h6,
                         // color: Colors.black54,
                         fontWeight: FontWeight.w300,
@@ -218,7 +213,6 @@ class _Timetable2State extends State<Timetable2Page>
                       DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 4))),
                       style: TextStyle(
-                        fontFamily: 'Protipo Compact',
                         fontSize: globals.h6,
                         // color: Colors.black54,
                         fontWeight: FontWeight.w300,
@@ -228,7 +222,6 @@ class _Timetable2State extends State<Timetable2Page>
                       DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 5))),
                       style: TextStyle(
-                        fontFamily: 'Protipo Compact',
                         fontSize: globals.h6,
                         // color: Colors.black54,
                         fontWeight: FontWeight.w300,
@@ -238,7 +231,6 @@ class _Timetable2State extends State<Timetable2Page>
                       DateFormat.MMMEd()
                           .format(DateTime.now().add(new Duration(days: 6))),
                       style: TextStyle(
-                        fontFamily: 'Protipo Compact',
                         fontSize: globals.h6,
                         // color: Colors.black54,
                         fontWeight: FontWeight.w300,

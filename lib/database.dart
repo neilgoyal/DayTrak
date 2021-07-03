@@ -21,4 +21,11 @@ class DatabaseService {
         .whenComplete(() => print("Task added to the database"))
         .catchError((e) => print(e));
   }
+
+  static Stream<QuerySnapshot> readItems() {
+    CollectionReference notesItemCollection =
+        _mainCollection.doc(firebaseUser!.uid).collection('tasks');
+
+    return notesItemCollection.snapshots();
+  }
 }

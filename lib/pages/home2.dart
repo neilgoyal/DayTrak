@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +11,7 @@ import '../authentication.dart';
 import '../globals.dart' as globals;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import '../database.dart';
 
 class Home2Page extends StatefulWidget {
   @override
@@ -183,8 +185,6 @@ class _Home2State extends State<Home2Page> {
                     globals.day5 = ((snapshot.data!.day5).toString());
                     globals.day6 = ((snapshot.data!.day6).toString());
                     globals.day7 = ((snapshot.data!.day7).toString());
-                    // globals.timetable = snapshot.data!.timetable;
-                    // globals.timetabletom = snapshot.data!.timetabletom;
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
@@ -196,15 +196,11 @@ class _Home2State extends State<Home2Page> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
-                                // mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -375,7 +371,7 @@ class _Home2State extends State<Home2Page> {
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: s7,
-          elevation: 0,
+          elevation: 5,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -407,7 +403,6 @@ class _Home2State extends State<Home2Page> {
                                           },
                                         ),
                                       );
-                                      
                                     } else {
                                       return ElevatedButton(
                                         style: ElevatedButton.styleFrom(
@@ -506,9 +501,9 @@ class _Home2State extends State<Home2Page> {
             ],
           ),
         ),
-        body: ListView(padding: EdgeInsets.all(10.0), children: [
+        body: ListView(padding: EdgeInsets.all(13.0), children: [
           SizedBox(
-            height: s5,
+            height: h5,
           ),
           Text("Upcoming Classes:",
               style: TextStyle(
@@ -553,15 +548,61 @@ class _Home2State extends State<Home2Page> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(35)),
               child: Container(
-                padding: EdgeInsets.all(10.0),
-                child: Text(
-                  "hefiejnwfoewnceiuc ifnewunewiufneiwfniefewfewawnf",
-                  style: TextStyle(
-                      fontSize: 50,
-                      fontFamily: "Protipo Compact",
-                      fontWeight: FontWeight.w200),
-                ),
-              )),
+                  margin: EdgeInsets.all(10),
+                  height: 400,
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: DatabaseService.readItems(),
+                    builder: (context, snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Something went wrong');
+                      } else if (snapshot.hasData || snapshot.data != null) {
+                        return ListView.separated(
+                          padding: EdgeInsets.fromLTRB(5, 12, 5, 5),
+                          separatorBuilder: (context, index) =>
+                              SizedBox(height: 16.0),
+                          itemCount: snapshot.data!.docs.length,
+                          itemBuilder: (context, index) {
+                            var tasks = snapshot.data!.docs[index];
+                            // ignore: unused_local_variable
+                            String docID = snapshot.data!.docs[index].id;
+                            String title = tasks['title'];
+                            String description = tasks['date'];
+                            return Card(
+                              shadowColor: Colors.blue,
+                              elevation: 4,
+                              shape: RoundedRectangleBorder(
+                                side:
+                                    BorderSide(width: 1.5, color: Colors.grey),
+                                borderRadius: BorderRadius.circular(22),
+                              ),
+                              child: ListTile(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20.0),
+                                ),
+                                title: Text(
+                                  title,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                                subtitle: Text(
+                                  description,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                            Colors.orange,
+                          ),
+                        ),
+                      );
+                    },
+                  ))),
           SizedBox(
             height: h2,
           ),
