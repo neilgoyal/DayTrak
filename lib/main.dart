@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
       darkTheme: MyThemes.darkTheme,
-      title: 'School planner',
+      title: 'DayTrak',
       initialRoute: '/',
       routes: {
         '/first': (context) => Fp1Page(),
