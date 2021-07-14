@@ -5,71 +5,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import '../globals.dart';
+import 'package:flutter/cupertino.dart';
 import '/Provider/theme_provider.dart';
 import '../database.dart';
-
-class TechBorder extends StatelessWidget {
-  final Widget child;
-  final Color borderColor;
-  final double borderWidth, leftBorderLength, rightBorderLength;
-  TechBorder({
-    required this.child,
-    required this.borderColor,
-    required this.borderWidth,
-    required this.leftBorderLength,
-    required this.rightBorderLength,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Container(
-          decoration: BoxDecoration(
-              border: Border(
-                  left: BorderSide(color: borderColor, width: borderWidth),
-                  right: BorderSide(color: borderColor, width: borderWidth)),
-              color: Colors.transparent),
-        ),
-        Container(
-            color: Colors.transparent,
-            child: Stack(children: [
-              Positioned(
-                  top: 0,
-                  left: 0,
-                  child: Container(
-                      color: borderColor,
-                      width: leftBorderLength,
-                      height: borderWidth)),
-              Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: Container(
-                      color: borderColor,
-                      width: leftBorderLength,
-                      height: borderWidth)),
-              Positioned(
-                  right: 0,
-                  child: Container(
-                      color: borderColor,
-                      width: rightBorderLength,
-                      height: borderWidth)),
-              Positioned(
-                  bottom: 0,
-                  right: 0,
-                  child: Container(
-                      color: borderColor,
-                      width: rightBorderLength,
-                      height: borderWidth)),
-            ])),
-        Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: child,
-        )
-      ],
-    );
-  }
-}
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class Addtask2Page extends StatefulWidget {
   @override
@@ -81,6 +20,19 @@ class _Addtask2State extends State<Addtask2Page> {
       _todoDateController = TextEditingController();
   String errtext1 = "", errtext2 = "";
   bool validated1 = true, validated2 = true;
+
+  selectedTodoDate(BuildContext context) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        isScrollControlled: false,
+        context: context,
+        builder: (context) {
+          return Container(child: SfDateRangePicker());
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -90,7 +42,7 @@ class _Addtask2State extends State<Addtask2Page> {
         darkTheme: MyThemes.darkTheme,
         home: Scaffold(
           appBar: AppBar(
-            elevation: 0,
+            elevation: 2.5,
             title: Text(
               'Reminders',
               style: TextStyle(
@@ -125,7 +77,7 @@ class _Addtask2State extends State<Addtask2Page> {
           //     ]))
 //         ));
 //   }
-// }
+//
           body: Column(children: [
             Flexible(
                 child: StreamBuilder<QuerySnapshot>(
@@ -208,72 +160,82 @@ class _Addtask2State extends State<Addtask2Page> {
             // )
           ]),
           floatingActionButton: FloatingActionButton(
-              onPressed: () => _displayDialog(context),
+              onPressed: () => _modalBottomSheetMenu(context),
               child: Icon(Icons.add),
               backgroundColor: Colors.amberAccent[700]),
         ));
   }
 
-  Widget _displayDialog() {
-return  Container(
-                height: globals.s1,
-                child: Column(
-                  children: <Widget>[
-                    TextField(
-                        cursorColor: Colors.black54,
-                        controller: _todoTitleController,
-                        decoration: InputDecoration(
-                          errorText: validated1 ? null : errtext1,
-                          labelText: "Create a new task",
-                          labelStyle: TextStyle(color: Colors.black54),
-                          fillColor: Colors.white,
-                        )),
-                    TextField(
-                      cursorColor: Colors.black54,
-                      controller: _todoDateController,
-                      readOnly: true,
-                      textInputAction: TextInputAction.done,
-                      onSubmitted: (term) async {
-                        //                Addtask1();
-                      },
-                      decoration: InputDecoration(
-                        errorText: validated2 ? null : errtext2,
-                        labelText: "Select a date",
-                        labelStyle: TextStyle(color: Colors.black54),
-                        fillColor: Colors.white,
-                        prefixIcon: InkWell(
-                          onTap: () {
-                            //        selectedTodoDate(context);
-                          },
-                          child: Icon(
-                            CupertinoIcons.calendar,
-                            color: Colors.black54,
-                          ),
-                        ),
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        HapticFeedback.heavyImpact();
-                        //      addatask();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        primary: Color.fromRGBO(119, 227, 134, 1),
-                        shadowColor: Color.fromRGBO(223, 164, 160, 1),
-                        elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(7)),
-                      ),
-                      child: Text('+',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Protipo Compact',
-                            fontSize: globals.h4,
+  void _modalBottomSheetMenu(context) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        isScrollControlled: false,
+        context: context,
+        builder: (context) {
+          return Container(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(10, 5, 10, 0),
+                      child: TextField(
+                          cursorColor: Colors.black54,
+                          autofocus: true,
+                          controller: _todoTitleController,
+                          decoration: InputDecoration(
+                            hintText: "Add a Reminder",
+                            errorText: validated1 ? null : errtext1,
+                            fillColor: Colors.white,
                           )),
-                    )
-                  ],
-                ),
-              ));
+                    ),
+                    Padding(
+                        padding: EdgeInsets.fromLTRB(5, 5, 5, 0),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(children: [
+                                IconButton(
+                                    onPressed: () {
+                                      selectedTodoDate(context);
+                                    },
+                                    icon: Icon(
+                                      CupertinoIcons.calendar_today,
+                                      size: h4,
+                                    )),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      CupertinoIcons.clock,
+                                      size: h4,
+                                    )),
+                                IconButton(
+                                    onPressed: () {},
+                                    icon: Icon(
+                                      CupertinoIcons.flag,
+                                      size: h4,
+                                    )),
+                              ]),
+                              Row(
+                                children: [
+                                  ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.transparent,
+                                        shadowColor: Colors.transparent,
+                                      ),
+                                      onPressed: () {},
+                                      child: Text('SAVE',
+                                          style:
+                                              TextStyle(color: Colors.black)))
+                                ],
+                              )
+                            ])),
+                    Text("hellp", style: TextStyle(fontSize: 175)),
+                  ]));
         });
   }
 }

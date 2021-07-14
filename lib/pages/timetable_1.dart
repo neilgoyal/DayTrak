@@ -224,7 +224,6 @@ class _Timetable_1State extends State<Timetable_1Page> {
                                         Text(
                                           globals.timetable_1![
                                               '${globals.valueOfGrade}.${(index + 1)}_time'],
-                                          style: TextStyle(color: Colors.grey),
                                         )
                                       ])),
                             ),
@@ -241,7 +240,6 @@ class _Timetable_1State extends State<Timetable_1Page> {
                           child: Card(
                             shadowColor: Color.fromRGBO(61, 195, 252, 1),
                             elevation: 7.5,
-                            color: Color.fromRGBO(252, 252, 252, 1),
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(27)),
                             child: Container(
@@ -263,7 +261,6 @@ class _Timetable_1State extends State<Timetable_1Page> {
                                               : "-",
                                           style: TextStyle(
                                               fontSize: globals.h4,
-                                              color: Colors.black54,
                                               fontWeight: FontWeight.w300,
                                               fontFamily: "Protipo Compact"),
                                         ),
@@ -281,7 +278,6 @@ class _Timetable_1State extends State<Timetable_1Page> {
                                               ? globals.timetable_1![
                                                   '${globals.valueOfGrade}.${(index + 1)}_time']
                                               : "-",
-                                          style: TextStyle(color: Colors.grey),
                                         )
                                       ])),
                             ),

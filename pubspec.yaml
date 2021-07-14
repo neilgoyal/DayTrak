@@ -36,6 +36,7 @@ dependencies:
   google_sign_in: ^5.0.4
   provider: ^5.0.0
   cloud_firestore: ^2.3.0
+  syncfusion_flutter_datepicker: ^19.2.47
 
 dev_dependencies:
   flutter_test:

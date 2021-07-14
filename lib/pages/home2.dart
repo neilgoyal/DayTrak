@@ -371,7 +371,7 @@ class _Home2State extends State<Home2Page> {
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: s7,
-          elevation: 5,
+          elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
