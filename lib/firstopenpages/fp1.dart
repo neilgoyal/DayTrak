@@ -36,7 +36,6 @@ class _Fp1State extends State<Fp1Page> {
         title: 'DayTrak',
         themeMode: ThemeMode.system,
         theme: MyThemes.lightTheme,
-        darkTheme: MyThemes.darkTheme,
         home: Scaffold(
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(50),

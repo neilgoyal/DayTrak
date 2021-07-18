@@ -6,6 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/globals.dart';
 import 'package:schoolcalendar/pages/timetable.dart';
+import 'package:schoolcalendar/pages/timetable_0copy.dart';
 import '../api.dart';
 import '../authentication.dart';
 import '../globals.dart' as globals;
@@ -505,7 +506,7 @@ class _Home2State extends State<Home2Page> {
           SizedBox(
             height: h5,
           ),
-          Text("Upcoming Classes:",
+          Text("Today's Classes:",
               style: TextStyle(
                   fontSize: h4,
                   fontFamily: "Protipo Compact",
@@ -521,15 +522,9 @@ class _Home2State extends State<Home2Page> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               child: Container(
-                padding: EdgeInsets.all(10.0),
-                child: Text(
-                  "hellp grwfgmreofgnorengoraengoarengoirengove",
-                  style: TextStyle(
-                      fontSize: 50,
-                      fontFamily: "Protipo Compact",
-                      fontWeight: FontWeight.w200),
-                ),
-              )),
+                  height: 350,
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  child: Timetable_0copyPage())),
           SizedBox(
             height: h1,
           ),
@@ -555,6 +550,27 @@ class _Home2State extends State<Home2Page> {
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         return Text('Something went wrong');
+                      } else if (snapshot.data == null) {
+                        return Container(
+                            padding: EdgeInsets.only(
+                                top: 0.0, left: 12.0, right: 12.0),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "You're all done!  ",
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: "Protipo Compact",
+                                        fontSize: globals.h4,
+                                        fontWeight: FontWeight.w200),
+                                  ),
+                                  Icon(
+                                    CupertinoIcons.smiley,
+                                    size: globals.h4,
+                                    color: Colors.black54,
+                                  )
+                                ]));
                       } else if (snapshot.hasData || snapshot.data != null) {
                         return ListView.separated(
                           padding: EdgeInsets.fromLTRB(5, 12, 5, 5),
@@ -566,13 +582,12 @@ class _Home2State extends State<Home2Page> {
                             // ignore: unused_local_variable
                             String docID = snapshot.data!.docs[index].id;
                             String title = tasks['title'];
-                            String description = tasks['date'];
+                            String description = DateFormat('EEE, MMM d')
+                                .format(DateTime.parse(tasks['date']));
                             return Card(
                               shadowColor: Colors.blue,
                               elevation: 4,
                               shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(width: 1.5, color: Colors.grey),
                                 borderRadius: BorderRadius.circular(22),
                               ),
                               child: ListTile(
