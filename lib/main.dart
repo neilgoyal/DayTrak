@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       themeMode: ThemeMode.system,
       theme: MyThemes.lightTheme,
-      darkTheme: MyThemes.darkTheme,
       title: 'DayTrak',
       initialRoute: '/',
       routes: {

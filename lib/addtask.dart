@@ -7,8 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 import 'api.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-// import 'package:flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
-import 'package:schoolcalendar/flutter_rounded_date_picker/flutter_rounded_date_picker.dart';
 import 'package:flutter/services.dart';
 import 'globals.dart' as globals;
 
@@ -47,7 +45,7 @@ class _TodoListState1 extends State<TodoList1> {
       _todoDateController = TextEditingController();
   String errtext1 = "", errtext2 = "";
   bool validated1 = true, validated2 = true;
-  DateTime _dateTime = DateTime.now();
+  //DateTime _dateTime = DateTime.now();
 
   addatask() {
     if (_todoTitleController.text.isEmpty && _todoDateController.text.isEmpty) {
@@ -79,7 +77,7 @@ class _TodoListState1 extends State<TodoList1> {
       }
     } else {
       _addbutton();
-      _dateTime = DateTime.now();
+      //_dateTime = DateTime.now();
     }
   }
 
@@ -156,54 +154,54 @@ class _TodoListState1 extends State<TodoList1> {
   }
 
   selectedTodoDate(BuildContext context) async {
-    DateTime? _pickedDate = await showRoundedDatePicker(
-      context: context,
-      initialDate: _dateTime,
-      firstDate: DateTime(DateTime.now().year),
-      lastDate: DateTime(DateTime.now().year + 1),
-      borderRadius: 25,
-      theme: ThemeData(
-        primaryColor: Color.fromRGBO(2, 163, 160, 1),
-        accentColor: Color.fromRGBO(185, 225, 203, 1),
-        dialogBackgroundColor: Colors.white,
-        textTheme: TextTheme(
-          bodyText1: TextStyle(
-              color: Colors.black54,
-              fontFamily: 'Protipo Compact',
-              fontSize: globals.h8),
-          caption: TextStyle(
-              color: Color.fromRGBO(224, 163, 160, 1),
-              fontFamily: 'Protipo Compact',
-              fontSize: globals.h10),
-        ),
-        accentTextTheme: TextTheme(
-          bodyText2: TextStyle(
-              color: Colors.green[200],
-              fontFamily: 'Protipo Compact',
-              fontSize: globals.h10),
-        ),
-      ),
-      customWeekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-      styleDatePicker: MaterialRoundedDatePickerStyle(
-        paddingMonthHeader: EdgeInsets.all(12),
-        textStyleButtonNegative: TextStyle(
-            fontSize: globals.h9, color: Color.fromRGBO(2, 163, 160, 1)),
-        textStyleButtonPositive: TextStyle(
-          fontSize: globals.h9,
-          color: Color.fromRGBO(2, 163, 160, 1),
-        ),
-      ),
-    );
+    // DateTime? _pickedDate = await showRoundedDatePicker(
+    //   context: context,
+    //   initialDate: _dateTime,
+    //   firstDate: DateTime(DateTime.now().year),
+    //   lastDate: DateTime(DateTime.now().year + 1),
+    //   borderRadius: 25,
+    //   theme: ThemeData(
+    //     primaryColor: Color.fromRGBO(2, 163, 160, 1),
+    //     accentColor: Color.fromRGBO(185, 225, 203, 1),
+    //     dialogBackgroundColor: Colors.white,
+    //     textTheme: TextTheme(
+    //       bodyText1: TextStyle(
+    //           color: Colors.black54,
+    //           fontFamily: 'Protipo Compact',
+    //           fontSize: globals.h8),
+    //       caption: TextStyle(
+    //           color: Color.fromRGBO(224, 163, 160, 1),
+    //           fontFamily: 'Protipo Compact',
+    //           fontSize: globals.h10),
+    //     ),
+    //     accentTextTheme: TextTheme(
+    //       bodyText2: TextStyle(
+    //           color: Colors.green[200],
+    //           fontFamily: 'Protipo Compact',
+    //           fontSize: globals.h10),
+    //     ),
+    //   ),
+    //   customWeekDays: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    //   styleDatePicker: MaterialRoundedDatePickerStyle(
+    //     paddingMonthHeader: EdgeInsets.all(12),
+    //     textStyleButtonNegative: TextStyle(
+    //         fontSize: globals.h9, color: Color.fromRGBO(2, 163, 160, 1)),
+    //     textStyleButtonPositive: TextStyle(
+    //       fontSize: globals.h9,
+    //       color: Color.fromRGBO(2, 163, 160, 1),
+    //     ),
+    //   ),
+    // );
 
-    if (_pickedDate != null) {
-      if (mounted) {
-        setState(() {
-          _dateTime = _pickedDate;
-          _todoDateController.text =
-              DateFormat('yyyy-MM-dd').format(_pickedDate);
-        });
-      }
-    }
+    // if (_pickedDate != null) {
+    //   if (mounted) {
+    //     setState(() {
+    //       _dateTime = _pickedDate;
+    //       _todoDateController.text =
+    //           DateFormat('yyyy-MM-dd').format(_pickedDate);
+    //     });
+    //   }
+    // }
   }
 
   showcorrectday(result) {

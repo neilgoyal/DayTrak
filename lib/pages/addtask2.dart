@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:intl/intl.dart';
 import '../globals.dart';
-import 'package:flutter/cupertino.dart';
 import '/Provider/theme_provider.dart';
 import '../database.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -16,10 +14,10 @@ class Addtask2Page extends StatefulWidget {
 }
 
 class _Addtask2State extends State<Addtask2Page> {
-  TextEditingController _todoTitleController = TextEditingController(),
-      _todoDateController = TextEditingController();
+  TextEditingController _todoTitleController = TextEditingController();
   String errtext1 = "", errtext2 = "";
   bool validated1 = true, validated2 = true;
+  DateTime? selectedDate;
 
   selectedTodoDate(BuildContext context) {
     showModalBottomSheet(
@@ -29,7 +27,23 @@ class _Addtask2State extends State<Addtask2Page> {
         isScrollControlled: false,
         context: context,
         builder: (context) {
-          return Container(child: SfDateRangePicker());
+          return Container(
+              child: SfDateRangePicker(
+            view: DateRangePickerView.month,
+            selectionMode: DateRangePickerSelectionMode.single,
+            enablePastDates: false,
+            showActionButtons: true,
+            onSubmit: (Object value) {
+              if (value is DateTime) {
+                selectedDate = value;
+                print(selectedDate);
+                Navigator.pop(context);
+              }
+            },
+            onCancel: () {
+              Navigator.pop(context);
+            },
+          ));
         });
   }
 
@@ -39,10 +53,9 @@ class _Addtask2State extends State<Addtask2Page> {
         debugShowCheckedModeBanner: false,
         themeMode: ThemeMode.system,
         theme: MyThemes.lightTheme,
-        darkTheme: MyThemes.darkTheme,
         home: Scaffold(
           appBar: AppBar(
-            elevation: 2.5,
+            elevation: 0,
             title: Text(
               'Reminders',
               style: TextStyle(
@@ -50,34 +63,6 @@ class _Addtask2State extends State<Addtask2Page> {
               ),
             ),
           ),
-          // body: Container(
-          //     child: Column(
-          //         mainAxisAlignment: MainAxisAlignment.end,
-          //         crossAxisAlignment: CrossAxisAlignment.end,
-          //         children: [
-          //       Row(
-          //           mainAxisAlignment: MainAxisAlignment.center,
-          //           crossAxisAlignment: CrossAxisAlignment.end,
-          //           children: [
-          //             FloatingActionButton(
-          //                 backgroundColor: Colors.amberAccent[700],
-          //                 onPressed: () async {
-          //                   await DatabaseService.addItem(
-          //                       title: "sample", date: "test");
-          //                 },
-          //                 child: Icon(
-          //                   Icons.add,
-          //                   size: h1,
-          //                   color: Colors.black54,
-          //                 ))
-          //           ]),
-          //       SizedBox(
-          //         height: h1,
-          //       )
-          //     ]))
-//         ));
-//   }
-//
           body: Column(children: [
             Flexible(
                 child: StreamBuilder<QuerySnapshot>(
@@ -85,6 +70,30 @@ class _Addtask2State extends State<Addtask2Page> {
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
                   return Text('Something went wrong');
+                } else if (snapshot.data!.docs.isEmpty) {
+                  return Container(
+                      padding:
+                          EdgeInsets.only(top: 0.0, left: 12.0, right: 12.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              height: l1,
+                            ),
+                            Text(
+                              "You're all done!  ",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontFamily: "Protipo Compact",
+                                  fontSize: h6,
+                                  fontWeight: FontWeight.w200),
+                            ),
+                            Icon(
+                              CupertinoIcons.smiley,
+                              size: h6,
+                              color: Colors.black54,
+                            )
+                          ]));
                 } else if (snapshot.hasData || snapshot.data != null) {
                   return Container(
                     padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -97,7 +106,14 @@ class _Addtask2State extends State<Addtask2Page> {
                         // ignore: unused_local_variable
                         String docID = snapshot.data!.docs[index].id;
                         String title = tasks['title'];
-                        String description = tasks['date'];
+                        String description = DateFormat('EEE, MMM d')
+                            .format(DateTime.parse(tasks['date']));
+                        // DateTime parseDate =
+                        //     new DateFormat("yyyy-MM-dd").parse(description);
+                        // var inputDate = DateTime.parse(parseDate.toString());
+                        // var outputFormat = DateFormat('MM/dd/yyyy');
+                        // var outputDate = outputFormat.format(inputDate);
+                        // print(outputDate);
                         return Ink(
                           child: Slidable(
                             actionPane: SlidableDrawerActionPane(),
@@ -130,11 +146,22 @@ class _Addtask2State extends State<Addtask2Page> {
                             secondaryActions: <Widget>[
                               Column(children: [
                                 Expanded(
-                                  child: SlideAction(
-                                    color: Colors.grey,
-                                    child: Icon(Icons.ac_unit),
-                                  ),
-                                )
+                                    child: SlideAction(
+                                  color: Colors.red[400],
+                                  child: ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        primary: Colors.transparent,
+                                        shadowColor: Colors.transparent,
+                                      ),
+                                      onPressed: () async {
+                                        await DatabaseService.deleteItem(
+                                            docId: docID);
+                                      },
+                                      child: Text('DELETE',
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontFamily: 'Protipo Compact'))),
+                                ))
                               ])
                             ],
                           ),
@@ -207,18 +234,21 @@ class _Addtask2State extends State<Addtask2Page> {
                                       CupertinoIcons.calendar_today,
                                       size: h4,
                                     )),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      CupertinoIcons.clock,
-                                      size: h4,
-                                    )),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: Icon(
-                                      CupertinoIcons.flag,
-                                      size: h4,
-                                    )),
+                                Text(selectedDate != null
+                                    ? DateFormat.yMMMMd().format(selectedDate!)
+                                    : ''),
+                                // IconButton(
+                                //     onPressed: () {},
+                                //     icon: Icon(
+                                //       CupertinoIcons.clock,
+                                //       size: h4,
+                                //     )),
+                                // IconButton(
+                                //     onPressed: () {},
+                                //     icon: Icon(
+                                //       CupertinoIcons.flag,
+                                //       size: h4,
+                                //     )),
                               ]),
                               Row(
                                 children: [
@@ -227,14 +257,20 @@ class _Addtask2State extends State<Addtask2Page> {
                                         primary: Colors.transparent,
                                         shadowColor: Colors.transparent,
                                       ),
-                                      onPressed: () {},
+                                      onPressed: () async {
+                                        await DatabaseService.addItem(
+                                            title: _todoTitleController.text,
+                                            date: DateFormat('yyyy-MM-dd')
+                                                .format(selectedDate!));
+                                        _todoTitleController.text = '';
+                                        Navigator.pop(context);
+                                      },
                                       child: Text('SAVE',
                                           style:
                                               TextStyle(color: Colors.black)))
                                 ],
                               )
                             ])),
-                    Text("hellp", style: TextStyle(fontSize: 175)),
                   ]));
         });
   }

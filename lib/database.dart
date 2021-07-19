@@ -28,4 +28,16 @@ class DatabaseService {
 
     return notesItemCollection.snapshots();
   }
+
+  static Future<void> deleteItem({
+    required String docId,
+  }) async {
+    DocumentReference documentReferencer =
+        _mainCollection.doc(firebaseUser!.uid).collection('tasks').doc(docId);
+
+    await documentReferencer
+        .delete()
+        .whenComplete(() => print('Note item deleted from the database'))
+        .catchError((e) => print(e));
+  }
 }

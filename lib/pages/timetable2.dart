@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
+import 'package:schoolcalendar/firstopenpages/fp2.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import 'package:schoolcalendar/pages/timetable_2.dart';
 import 'package:schoolcalendar/pages/timetable_3.dart';
@@ -30,6 +31,22 @@ showcorrectday(result) {
     result = "Day $result";
   }
   return result;
+}
+
+dayAdjust(BuildContext context) {
+  showModalBottomSheet(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+      isScrollControlled: false,
+      context: context,
+      builder: (context) {
+        return Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(60), color: Colors.white),
+            child: Padding(
+                padding: EdgeInsets.fromLTRB(4, 20, 0, 4), child: Fp2Page()));
+      });
 }
 
 class _Timetable2State extends State<Timetable2Page>
@@ -83,13 +100,19 @@ class _Timetable2State extends State<Timetable2Page>
     return MaterialApp(
         themeMode: ThemeMode.system,
         theme: MyThemes.lightTheme,
-        darkTheme: MyThemes.darkTheme,
         debugShowCheckedModeBanner: false,
         title: 'DayTrak',
         home: Scaffold(
             appBar: PreferredSize(
               preferredSize: Size.fromHeight(130),
               child: AppBar(
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        dayAdjust(context);
+                      },
+                      icon: Icon(CupertinoIcons.ellipsis))
+                ],
                 // backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                 // backgroundColor: Colors.black,
                 elevation: 0,
@@ -97,24 +120,8 @@ class _Timetable2State extends State<Timetable2Page>
                     child: Padding(
                   padding: EdgeInsets.only(top: 0.0, left: 15.0, right: 15.0),
                   child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // SizedBox(
-                        //   height: 15,
-                        // ),
-                        // Row(
-                        //     mainAxisAlignment: MainAxisAlignment.center,
-                        //     children: [
-                        //       // Text(daytoshow,
-                        //       //     style: TextStyle(
-                        //       //       fontSize: globals.h1,
-                        //       //       color: const Color(0xff9b8fb1),
-                        //       //       fontWeight: FontWeight.w300,
-                        //       //     )),
-                        //     ]),
-                        // SizedBox(
-                        //   height: 6,
-                        // ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
