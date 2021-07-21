@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:schoolcalendar/firstopenpages/fp1.dart';
+// ignore: unused_import
 import 'package:schoolcalendar/firstopenpages/fp2.dart';
 // import 'settings.dart';
 import '../globals.dart' as globals;
@@ -100,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                   CupertinoIcons.list_bullet,
                   size: 35,
                 ),
-              ),
+              )
             ],
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
             indicatorSize: TabBarIndicatorSize.label,

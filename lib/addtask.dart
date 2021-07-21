@@ -338,8 +338,6 @@ class _TodoListState1 extends State<TodoList1> {
                     globals.day5 = ((snapshot.data!.day5).toString());
                     globals.day6 = ((snapshot.data!.day6).toString());
                     globals.day7 = ((snapshot.data!.day7).toString());
-                    // globals.timetable = snapshot.data!.timetable;
-                    // globals.timetabletom = snapshot.data!.timetabletom;
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(

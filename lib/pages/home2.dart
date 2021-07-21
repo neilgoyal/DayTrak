@@ -197,11 +197,15 @@ class _Home2State extends State<Home2Page> {
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
                               Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h4,
+                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -209,14 +213,14 @@ class _Home2State extends State<Home2Page> {
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
-                                        color: const Color(0xffbadfca),
+                                        // color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Tomorrow:  ',
@@ -238,14 +242,14 @@ class _Home2State extends State<Home2Page> {
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Day After:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h4,
-                                      color: const Color(0xff9b8fb1),
+                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -253,7 +257,7 @@ class _Home2State extends State<Home2Page> {
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
-                                        color: const Color(0xffbadfca),
+                                        // color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
@@ -356,7 +360,13 @@ class _Home2State extends State<Home2Page> {
   @override
   void initState() {
     usersetup = initializeFirebase();
+    futureDay = fetchDay();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   Future<User> initializeFirebase() async {
@@ -466,30 +476,72 @@ class _Home2State extends State<Home2Page> {
               ),
               Column(
                 children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-                          EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
-                        ),
-                        shadowColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent),
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                            Colors.transparent)),
-                    onLongPress: () {
-                      days();
-                      HapticFeedback.heavyImpact();
-                    },
-                    onPressed: () {},
-                    child: Text(
-                      '${showcorrectday(day1)}',
-                      style: TextStyle(
-                        fontFamily: 'Protipo Compact',
-                        color: Colors.black,
-                        fontSize: h4,
-                        fontWeight: FontWeight.w300,
-                      ),
-                    ),
-                  ),
+                  FutureBuilder<Day>(
+                      future: futureDay,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          globals.day1 = ((snapshot.data!.day1).toString());
+                          globals.day2 = ((snapshot.data!.day2).toString());
+                          globals.day3 = ((snapshot.data!.day3).toString());
+                          globals.day4 = ((snapshot.data!.day4).toString());
+                          globals.day5 = ((snapshot.data!.day5).toString());
+                          globals.day6 = ((snapshot.data!.day6).toString());
+                          globals.day7 = ((snapshot.data!.day7).toString());
+                          return ElevatedButton(
+                            style: ButtonStyle(
+                                padding: MaterialStateProperty.all<
+                                    EdgeInsetsGeometry>(
+                                  EdgeInsets.only(
+                                      top: 0.0, left: 0.0, right: 0.0),
+                                ),
+                                shadowColor: MaterialStateProperty.all<Color>(
+                                    Colors.transparent),
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.transparent)),
+                            onLongPress: () {
+                              days();
+                              HapticFeedback.heavyImpact();
+                            },
+                            onPressed: () {},
+                            child: Text(
+                              '${showcorrectday(globals.day1)}',
+                              style: TextStyle(
+                                fontFamily: 'Protipo Compact',
+                                color: Colors.black,
+                                fontSize: h4,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          );
+                        } else
+                          return ElevatedButton(
+                              style: ButtonStyle(
+                                  padding: MaterialStateProperty.all<
+                                      EdgeInsetsGeometry>(
+                                    EdgeInsets.only(
+                                        top: 0.0, left: 0.0, right: 0.0),
+                                  ),
+                                  shadowColor: MaterialStateProperty.all<Color>(
+                                      Colors.transparent),
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                          Colors.transparent)),
+                              onLongPress: () {
+                                days();
+                                HapticFeedback.heavyImpact();
+                              },
+                              onPressed: () {},
+                              child: Text(
+                                '${showcorrectday(globals.day1)}',
+                                style: TextStyle(
+                                  fontFamily: 'Protipo Compact',
+                                  color: Colors.black,
+                                  fontSize: h4,
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ));
+                      }),
                   Text(DateFormat.MMMEd().format(DateTime.now()),
                       textAlign: TextAlign.left,
                       style: TextStyle(

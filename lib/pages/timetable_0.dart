@@ -14,14 +14,13 @@ Future<Timetable>? futureTimetable;
 int? numoftiles;
 String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
-// ignore: camel_case_types
 class _Timetable_0State extends State<Timetable_0Page> {
   @override
   void initState() {
     super.initState();
+    futureTimetable = timetable();
     getIntValuesSF();
     selectNumTiles();
-    futureTimetable = timetable();
     defaultsvals();
   }
 

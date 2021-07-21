@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -13,11 +14,21 @@ class Addtask2Page extends StatefulWidget {
   _Addtask2State createState() => _Addtask2State();
 }
 
-class _Addtask2State extends State<Addtask2Page> {
+class _Addtask2State extends State<Addtask2Page>
+    with SingleTickerProviderStateMixin {
   TextEditingController _todoTitleController = TextEditingController();
   String errtext1 = "", errtext2 = "";
   bool validated1 = true, validated2 = true;
   DateTime? selectedDate;
+  late AnimationController _animationController;
+  bool isPlaying = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 450));
+  }
 
   selectedTodoDate(BuildContext context) {
     showModalBottomSheet(
@@ -45,6 +56,15 @@ class _Addtask2State extends State<Addtask2Page> {
             },
           ));
         });
+  }
+
+  void _handleOnPressed() {
+    setState(() {
+      isPlaying = !isPlaying;
+      isPlaying
+          ? _animationController.forward()
+          : _animationController.reverse();
+    });
   }
 
   @override
@@ -96,7 +116,7 @@ class _Addtask2State extends State<Addtask2Page> {
                           ]));
                 } else if (snapshot.hasData || snapshot.data != null) {
                   return Container(
-                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                    padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                     child: ListView.builder(
                       shrinkWrap: true,
                       padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
@@ -119,7 +139,7 @@ class _Addtask2State extends State<Addtask2Page> {
                             actionPane: SlidableDrawerActionPane(),
                             actionExtentRatio: 0.25,
                             child: Container(
-                              padding: EdgeInsets.all(5.0),
+                              padding: EdgeInsets.all(0.0),
                               child: ListTile(
                                 horizontalTitleGap: 7,
                                 minLeadingWidth: 0,
@@ -127,11 +147,21 @@ class _Addtask2State extends State<Addtask2Page> {
                                 //   bottom: BorderSide(
                                 //       color: Colors.grey, width: 1.5),
                                 // ),
-                                leading: Icon(CupertinoIcons.circle, size: h5),
+                                leading: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        shadowColor: Colors.transparent,
+                                        primary: Colors.transparent),
+                                    onPressed: () {},
+                                    child: SizedBox(
+                                      height: 60,
+                                      width: 60,
+                                      child: FlareActor("assets/check.flr",
+                                          animation: "Untitled"),
+                                    )),
                                 title: Text(
                                   title,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 3,
+                                  overflow: TextOverflow.visible,
                                   style: TextStyle(fontSize: h5),
                                 ),
                                 trailing: Text(
@@ -263,6 +293,7 @@ class _Addtask2State extends State<Addtask2Page> {
                                             date: DateFormat('yyyy-MM-dd')
                                                 .format(selectedDate!));
                                         _todoTitleController.text = '';
+                                        selectedDate = null;
                                         Navigator.pop(context);
                                       },
                                       child: Text('SAVE',

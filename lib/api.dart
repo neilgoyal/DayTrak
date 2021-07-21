@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:encrypt/encrypt.dart';
-import 'package:schoolcalendar/globals.dart';
+import 'package:schoolcalendar/globals.dart' as globals;
 
 final encrypter = Encrypter(
     Fernet(Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=')));
@@ -37,13 +37,14 @@ Future<WeatherModel> getWeather() async {
     dynamic result = json.decode(response.body);
     WeatherModel model = WeatherModel.fromJson(result);
     return model;
-  } else
+  } else {
     throw Exception('Failed to load Weather Information');
+  }
 }
 
 Future<Timetable> timetable() async {
-  final response1 = await http.get(
-      Uri.parse('https://tumulrankypanky.pythonanywhere.com/g$valueOfGrade'));
+  final response1 = await http.get(Uri.parse(
+      'https://tumulrankypanky.pythonanywhere.com/g${globals.valueOfGrade}'));
   if (response1.statusCode == 200) {
     Timetable result = Timetable.fromJson(jsonDecode(response1.body));
     return result;
@@ -95,7 +96,6 @@ class Timetable {
 
 class Day {
   final int? day1, day2, day3, day4, day5, day6, day7;
-  final Map<String, dynamic>? timetable, timetabletom;
 
   Day(
       {this.day1,
@@ -104,9 +104,7 @@ class Day {
       this.day4,
       this.day5,
       this.day6,
-      this.day7,
-      this.timetable,
-      this.timetabletom});
+      this.day7});
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
@@ -117,8 +115,6 @@ class Day {
       day5: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["4"])))),
       day6: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["5"])))),
       day7: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["6"])))),
-      // timetable: json['potato'][0],
-      // timetabletom: json['aloo'][0],
     );
   }
 }
