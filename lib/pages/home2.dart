@@ -5,7 +5,6 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/globals.dart';
-import 'package:schoolcalendar/pages/timetable.dart';
 import 'package:schoolcalendar/pages/timetable_0copy.dart';
 import '../api.dart';
 import '../authentication.dart';
@@ -19,6 +18,8 @@ class Home2Page extends StatefulWidget {
   _Home2State createState() => _Home2State();
 }
 
+Future<Day>? futureDay;
+
 class _Home2State extends State<Home2Page> {
   String greeting() {
     var hour = DateTime.now().hour;
@@ -29,6 +30,17 @@ class _Home2State extends State<Home2Page> {
       return 'Afternoon';
     }
     return 'Evening';
+  }
+
+  showcorrectday(result) {
+    if (result == '7') {
+      result = 'Break';
+    } else if (result == '8') {
+      result = 'Error';
+    } else {
+      result = "Day $result";
+    }
+    return result;
   }
 
   // ignore: unused_field

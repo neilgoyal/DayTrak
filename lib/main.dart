@@ -33,19 +33,23 @@ class Splash extends StatefulWidget {
 class SplashState extends State<Splash> {
   @override
   void initState() {
-    checkFirstSeen();
     super.initState();
+    checkFirstSeen();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   Future checkFirstSeen() async {
-    // ignore: unused_local_variable
     FirebaseApp firebaseApp = await Firebase.initializeApp();
-    User? user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
+    if (FirebaseAuth.instance.currentUser != null) {
       Navigator.pushReplacementNamed(context, "/main");
     } else {
       Navigator.pushReplacementNamed(context, "/first");
     }
+    return firebaseApp;
   }
 
   @override

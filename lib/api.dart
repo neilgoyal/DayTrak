@@ -6,42 +6,6 @@ import 'package:schoolcalendar/globals.dart' as globals;
 final encrypter = Encrypter(
     Fernet(Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=')));
 
-class Main {
-  final double? temp;
-  Main({
-    this.temp,
-  });
-  factory Main.fromJson(Map<String, dynamic> json) {
-    return Main(
-      temp: double.parse(json['temp'].toString()),
-    );
-  }
-}
-
-class WeatherModel {
-  final Main? main;
-  WeatherModel({
-    this.main,
-  });
-  factory WeatherModel.fromJson(Map<String, dynamic> json) {
-    return WeatherModel(
-      main: Main.fromJson(json['main']),
-    );
-  }
-}
-
-Future<WeatherModel> getWeather() async {
-  final response = await http.get(Uri.parse(
-      'https://api.openweathermap.org/data/2.5/weather?lat=28.4667&lon=77.0333&appid=77580a3797c4f2efd008403c9faf5e22&units=metric'));
-  if (response.statusCode == 200) {
-    dynamic result = json.decode(response.body);
-    WeatherModel model = WeatherModel.fromJson(result);
-    return model;
-  } else {
-    throw Exception('Failed to load Weather Information');
-  }
-}
-
 Future<Timetable> timetable() async {
   final response1 = await http.get(Uri.parse(
       'https://tumulrankypanky.pythonanywhere.com/g${globals.valueOfGrade}'));
