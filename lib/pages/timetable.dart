@@ -2,14 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
-import 'package:schoolcalendar/pages/timetable_2.dart';
-import 'package:schoolcalendar/pages/timetable_3.dart';
-import 'package:schoolcalendar/pages/timetable_4.dart';
-import 'package:schoolcalendar/pages/timetable_5.dart';
-import 'package:schoolcalendar/pages/timetable_6.dart';
 import '../api.dart';
-import 'timetable_0.dart';
-import 'timetable_1.dart';
 import 'package:intl/intl.dart';
 
 class TimetablePage extends StatefulWidget {
@@ -242,13 +235,7 @@ class _TimetableState extends State<TimetablePage>
             ),
             body: TabBarView(
               children: <Widget>[
-                Timetable_0Page(),
-                Timetable_1Page(),
-                Timetable_2Page(),
-                Timetable_3Page(),
-                Timetable_4Page(),
-                Timetable_5Page(),
-                Timetable_6Page()
+                // Timetable_0Page(),
               ],
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),

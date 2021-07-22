@@ -602,64 +602,65 @@ class _Home2State extends State<Home2Page> {
                     builder: (context, snapshot) {
                       if (snapshot.hasError) {
                         return Text('Something went wrong');
-                      } else if (snapshot.data == null) {
-                        return Container(
-                            padding: EdgeInsets.only(
-                                top: 0.0, left: 12.0, right: 12.0),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "You're all done!  ",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontFamily: "Protipo Compact",
-                                        fontSize: globals.h4,
-                                        fontWeight: FontWeight.w200),
-                                  ),
-                                  Icon(
-                                    CupertinoIcons.smiley,
-                                    size: globals.h4,
-                                    color: Colors.black54,
-                                  )
-                                ]));
                       } else if (snapshot.hasData || snapshot.data != null) {
-                        return ListView.separated(
-                          padding: EdgeInsets.fromLTRB(5, 12, 5, 5),
-                          separatorBuilder: (context, index) =>
-                              SizedBox(height: 16.0),
-                          itemCount: snapshot.data!.docs.length,
-                          itemBuilder: (context, index) {
-                            var tasks = snapshot.data!.docs[index];
-                            // ignore: unused_local_variable
-                            String docID = snapshot.data!.docs[index].id;
-                            String title = tasks['title'];
-                            String description = DateFormat('EEE, MMM d')
-                                .format(DateTime.parse(tasks['date']));
-                            return Card(
-                              shadowColor: Colors.blue,
-                              elevation: 4,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(22),
-                              ),
-                              child: ListTile(
+                        if (snapshot.data!.docs.isEmpty) {
+                          return Container(
+                              padding: EdgeInsets.only(
+                                  top: 0.0, left: 12.0, right: 12.0),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      "You're all done!  ",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontFamily: "Protipo Compact",
+                                          fontSize: globals.h4,
+                                          fontWeight: FontWeight.w200),
+                                    ),
+                                    Icon(
+                                      CupertinoIcons.smiley,
+                                      size: globals.h4,
+                                      color: Colors.black54,
+                                    )
+                                  ]));
+                        } else
+                          return ListView.separated(
+                            padding: EdgeInsets.fromLTRB(5, 12, 5, 5),
+                            separatorBuilder: (context, index) =>
+                                SizedBox(height: 16.0),
+                            itemCount: snapshot.data!.docs.length,
+                            itemBuilder: (context, index) {
+                              var tasks = snapshot.data!.docs[index];
+                              // ignore: unused_local_variable
+                              String docID = snapshot.data!.docs[index].id;
+                              String title = tasks['title'];
+                              String description = DateFormat('EEE, MMM d')
+                                  .format(DateTime.parse(tasks['date']));
+                              return Card(
+                                shadowColor: Colors.blue,
+                                elevation: 4,
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(20.0),
+                                  borderRadius: BorderRadius.circular(22),
                                 ),
-                                title: Text(
-                                  title,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
+                                child: ListTile(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                  ),
+                                  title: Text(
+                                    title,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  subtitle: Text(
+                                    description,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
                                 ),
-                                subtitle: Text(
-                                  description,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                              );
+                            },
+                          );
                       }
                       return Center(
                         child: CircularProgressIndicator(
