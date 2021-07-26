@@ -10,8 +10,8 @@ class Timetable_0copyPage extends StatefulWidget {
   _Timetable_0copyState createState() => _Timetable_0copyState();
 }
 
-Future<Timetable>? futureTimetable;
-int? numoftiles;
+Future<Map<String, dynamic>>? futureTimetablepers;
+Map<String, dynamic>? timetablePers = {};
 String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 
 // ignore: camel_case_types
@@ -20,8 +20,7 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
   void initState() {
     super.initState();
     getIntValuesSF();
-    selectNumTiles();
-    futureTimetable = timetable();
+    futureTimetablepers = personalizedTT();
     defaultsvals();
   }
 
@@ -82,21 +81,11 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
     }
   }
 
-  selectNumTiles() {
-    if (globals.valueOfGrade == 11 ||
-        globals.valueOfGrade == 91 ||
-        globals.valueOfGrade == 92) {
-      numoftiles = 6;
-    } else {
-      numoftiles = 0;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: FutureBuilder<Timetable>(
-            future: futureTimetable,
+        child: FutureBuilder<Map<String, dynamic>>(
+            future: futureTimetablepers,
             builder: (context, snapshot) {
               if (globals.day1 == "7") {
                 return Container(
@@ -173,15 +162,9 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
                         ]));
               } else {
                 if (snapshot.hasData) {
-                  globals.timetable_0 = snapshot.data!.timetable_0;
-                  globals.timetable_1 = snapshot.data!.timetable_1;
-                  globals.timetable_2 = snapshot.data!.timetable_2;
-                  globals.timetable_3 = snapshot.data!.timetable_3;
-                  globals.timetable_4 = snapshot.data!.timetable_4;
-                  globals.timetable_5 = snapshot.data!.timetable_5;
-                  globals.timetable_6 = snapshot.data!.timetable_6;
+                  timetablePers = snapshot.data;
                   return ListView.builder(
-                      itemCount: numoftiles,
+                      itemCount: 3,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(
@@ -202,11 +185,10 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          blocktoprefrence(globals.timetable_0![
+                                          blocktoprefrence(timetablePers![
                                               '${globals.valueOfGrade}.${(index + 1)}']),
                                           style: TextStyle(
                                               fontSize: globals.h4,
-                                              // color: Colors.black54,
                                               fontWeight: FontWeight.w300,
                                               fontFamily: "Protipo Compact"),
                                         ),
@@ -220,7 +202,7 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          globals.timetable_0![
+                                          timetablePers![
                                               '${globals.valueOfGrade}.${(index + 1)}_time'],
                                           style: TextStyle(color: Colors.grey),
                                         )
@@ -231,7 +213,7 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
                       });
                 } else {
                   return ListView.builder(
-                      itemCount: numoftiles,
+                      itemCount: 3,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: EdgeInsets.only(
@@ -252,9 +234,8 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
                                       Expanded(
                                           child: Container(
                                         child: Text(
-                                          (globals.timetable_0!.isNotEmpty)
-                                              ? blocktoprefrence(globals
-                                                      .timetable_0![
+                                          (timetablePers!.isNotEmpty)
+                                              ? blocktoprefrence(timetablePers![
                                                   '${globals.valueOfGrade}.${(index + 1)}'])
                                               : "-",
                                           style: TextStyle(
@@ -273,10 +254,11 @@ class _Timetable_0copyState extends State<Timetable_0copyPage> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                          (globals.timetable_0!.isNotEmpty)
-                                              ? globals.timetable_0![
-                                                  '${globals.valueOfGrade}.${(index + 1)}_time']
-                                              : "-",
+                                          "yo",
+                                          // (timetablePers!.isNotEmpty)
+                                          //     ? timetablePers![
+                                          //         '${globals.valueOfGrade}.${(index + 1)}_time']
+                                          //     : "-",
                                           style: TextStyle(color: Colors.grey),
                                         )
                                       ])),
