@@ -4,7 +4,7 @@ import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:schoolcalendar/firstopenpages/fp2.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
-import '../api.dart';
+import 'package:schoolcalendar/api.dart';
 import 'package:intl/intl.dart';
 
 class Timetable2Page extends StatefulWidget {
@@ -27,26 +27,13 @@ List gloabls = [
   globals.day6,
   globals.day7,
 ];
-List titables = [
-  globals.timetable_0,
-  globals.timetable_1,
-  globals.timetable_2,
-  globals.timetable_3,
-  globals.timetable_4,
-  globals.timetable_5,
-  globals.timetable_6
-];
-
-showcorrectday(result) {
-  if (result == '7') {
-    result = 'Break';
-  } else if (result == '8') {
-    result = 'Error';
-  } else {
-    result = "Day $result";
-  }
-  return result;
-}
+Map? timetable_0 = {},
+    timetable_1 = {},
+    timetable_2 = {},
+    timetable_3 = {},
+    timetable_4 = {},
+    timetable_5 = {},
+    timetable_6 = {};
 
 dayAdjust(BuildContext context) {
   showModalBottomSheet(
@@ -71,13 +58,14 @@ class _Timetable2State extends State<Timetable2Page>
   @override
   void initState() {
     super.initState();
+    getIntValuesSF();
     futureDay = fetchDay();
+    futureTimetable = timetable();
+    selectNumTiles();
+    defaultsvals();
     _tabController = TabController(initialIndex: 0, vsync: this, length: 7);
     _handleTabSelection();
     _tabController!.addListener(_handleTabSelection);
-    getIntValuesSF();
-    selectNumTiles();
-    defaultsvals();
   }
 
   getIntValuesSF() async {
@@ -260,118 +248,76 @@ class _Timetable2State extends State<Timetable2Page>
                         ]));
               } else {
                 if (snapshot.hasData) {
-                  globals.timetable_0 = snapshot.data!.timetable_0;
-                  globals.timetable_1 = snapshot.data!.timetable_1;
-                  globals.timetable_2 = snapshot.data!.timetable_2;
-                  globals.timetable_3 = snapshot.data!.timetable_3;
-                  globals.timetable_4 = snapshot.data!.timetable_4;
-                  globals.timetable_5 = snapshot.data!.timetable_5;
-                  globals.timetable_6 = snapshot.data!.timetable_6;
-                  return ListView.builder(
-                      itemCount: numoftiles,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                              top: 20.0, left: 18.0, right: 18.0),
-                          child: Card(
-                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
-                            elevation: 7.5,
-                            color: Color.fromRGBO(252, 252, 252, 1),
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(27)),
-                            child: Container(
-                              padding: EdgeInsets.all(8.0),
-                              child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Expanded(
-                                          child: Container(
-                                        child: Text(
-                                          blocktoprefrence(titables[dayord]![
-                                              '${globals.valueOfGrade}.${(index + 1)}']),
-                                          style: TextStyle(
-                                              fontSize: globals.h4,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w300,
-                                              fontFamily: "Protipo Compact"),
-                                        ),
-                                      ))
-                                    ],
-                                  ),
-                                  trailing: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          titables[dayord]![
-                                              '${globals.valueOfGrade}.${(index + 1)}_time'],
-                                        )
-                                      ])),
-                            ),
-                          ),
-                        );
-                      });
-                } else {
-                  return ListView.builder(
-                      itemCount: numoftiles,
-                      itemBuilder: (context, index) {
-                        return Padding(
-                          padding: EdgeInsets.only(
-                              top: 20.0, left: 18.0, right: 18.0),
-                          child: Card(
-                            shadowColor: Color.fromRGBO(61, 195, 252, 1),
-                            elevation: 7.5,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(27)),
-                            child: Container(
-                              padding: EdgeInsets.all(8.0),
-                              child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Expanded(
-                                          child: Container(
-                                        child: Text(
-                                          (titables[dayord]!.isNotEmpty)
-                                              ? blocktoprefrence(titables[
-                                                      dayord]![
-                                                  '${globals.valueOfGrade}.${(index + 1)}'])
-                                              : "-",
-                                          style: TextStyle(
-                                              fontSize: globals.h4,
-                                              fontWeight: FontWeight.w300,
-                                              fontFamily: "Protipo Compact"),
-                                        ),
-                                      ))
-                                    ],
-                                  ),
-                                  trailing: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          (titables[dayord]!.isNotEmpty)
-                                              ? titables[dayord]![
-                                                  '${globals.valueOfGrade}.${(index + 1)}_time']
-                                              : "-",
-                                        )
-                                      ])),
-                            ),
-                          ),
-                        );
-                      });
+                  timetable_0 = snapshot.data!.timetable_0;
+                  timetable_1 = snapshot.data!.timetable_1;
+                  timetable_2 = snapshot.data!.timetable_2;
+                  timetable_3 = snapshot.data!.timetable_3;
+                  timetable_4 = snapshot.data!.timetable_4;
+                  timetable_5 = snapshot.data!.timetable_5;
+                  timetable_6 = snapshot.data!.timetable_6;
                 }
+                List titables = [
+                  timetable_0,
+                  timetable_1,
+                  timetable_2,
+                  timetable_3,
+                  timetable_4,
+                  timetable_5,
+                  timetable_6
+                ];
+                return ListView.builder(
+                    itemCount: numoftiles,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding:
+                            EdgeInsets.only(top: 20.0, left: 18.0, right: 18.0),
+                        child: Card(
+                          shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                          elevation: 7.5,
+                          color: Color.fromRGBO(252, 252, 252, 1),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(27)),
+                          child: Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Expanded(
+                                        child: Container(
+                                      child: Text(
+                                        (titables[dayord]!.isNotEmpty)
+                                            ? blocktoprefrence(titables[
+                                                    dayord]![
+                                                '${globals.valueOfGrade}.${(index + 1)}'])
+                                            : "-",
+                                        style: TextStyle(
+                                            fontSize: globals.h4,
+                                            color: Colors.black54,
+                                            fontWeight: FontWeight.w300,
+                                            fontFamily: "Protipo Compact"),
+                                      ),
+                                    ))
+                                  ],
+                                ),
+                                trailing: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        (titables[dayord]!.isNotEmpty)
+                                            ? titables[dayord]![
+                                                '${globals.valueOfGrade}.${(index + 1)}_time']
+                                            : "-",
+                                      )
+                                    ])),
+                          ),
+                        ),
+                      );
+                    });
               }
             }));
   }
@@ -394,8 +340,6 @@ class _Timetable2State extends State<Timetable2Page>
                       },
                       icon: Icon(CupertinoIcons.ellipsis))
                 ],
-                // backgroundColor: Color.fromRGBO(250, 250, 250, 1),
-                // backgroundColor: Colors.black,
                 elevation: 0,
                 title: Container(
                     child: Padding(
@@ -425,30 +369,19 @@ class _Timetable2State extends State<Timetable2Page>
                                         ((snapshot.data!.day6).toString());
                                     globals.day7 =
                                         ((snapshot.data!.day7).toString());
-
-                                    return Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: <Widget>[
-                                        Text(
-                                          '${showcorrectday(ordertoshow)}',
-                                          style: TextStyle(
-                                            fontSize: globals.h2,
-                                            // color: Colors.black54,
-                                            fontWeight: FontWeight.w300,
-                                          ),
-                                        )
-                                      ],
-                                    );
-                                  } else
-                                    return Text(
-                                      '${showcorrectday(ordertoshow)}',
-                                      style: TextStyle(
-                                        fontSize: globals.h2,
-                                        // color: Colors.black54,
-                                        fontWeight: FontWeight.w300,
-                                      ),
-                                    );
+                                  }
+                                  return Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      Text(
+                                        '${showcorrectday(ordertoshow)}',
+                                        style: TextStyle(
+                                          fontSize: globals.h2,
+                                          fontWeight: FontWeight.w300,
+                                        ),
+                                      )
+                                    ],
+                                  );
                                 },
                               ),
                             ),
@@ -469,14 +402,12 @@ class _Timetable2State extends State<Timetable2Page>
                       'Today',
                       style: TextStyle(
                         fontSize: globals.h6,
-                        // color: Colors.black54,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
                     Text('Tomorrow',
                         style: TextStyle(
                           fontSize: globals.h6,
-                          // color: Colors.black54,
                           fontWeight: FontWeight.w300,
                         )),
                     Text(
@@ -484,7 +415,6 @@ class _Timetable2State extends State<Timetable2Page>
                           .format(DateTime.now().add(new Duration(days: 2))),
                       style: TextStyle(
                         fontSize: globals.h6,
-                        // color: Colors.black54,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -493,7 +423,6 @@ class _Timetable2State extends State<Timetable2Page>
                           .format(DateTime.now().add(new Duration(days: 3))),
                       style: TextStyle(
                         fontSize: globals.h6,
-                        // color: Colors.black54,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -502,7 +431,6 @@ class _Timetable2State extends State<Timetable2Page>
                           .format(DateTime.now().add(new Duration(days: 4))),
                       style: TextStyle(
                         fontSize: globals.h6,
-                        // color: Colors.black54,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -511,7 +439,6 @@ class _Timetable2State extends State<Timetable2Page>
                           .format(DateTime.now().add(new Duration(days: 5))),
                       style: TextStyle(
                         fontSize: globals.h6,
-                        // color: Colors.black54,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -520,7 +447,6 @@ class _Timetable2State extends State<Timetable2Page>
                           .format(DateTime.now().add(new Duration(days: 6))),
                       style: TextStyle(
                         fontSize: globals.h6,
-                        // color: Colors.black54,
                         fontWeight: FontWeight.w300,
                       ),
                     ),
@@ -530,13 +456,13 @@ class _Timetable2State extends State<Timetable2Page>
             ),
             body: TabBarView(
               children: <Widget>[
-                buildTimetable(_tabController!.index),
-                buildTimetable(_tabController!.index),
-                buildTimetable(_tabController!.index),
-                buildTimetable(_tabController!.index),
-                buildTimetable(_tabController!.index),
-                buildTimetable(_tabController!.index),
-                buildTimetable(_tabController!.index)
+                buildTimetable(0),
+                buildTimetable(1),
+                buildTimetable(2),
+                buildTimetable(3),
+                buildTimetable(4),
+                buildTimetable(5),
+                buildTimetable(6)
               ],
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),

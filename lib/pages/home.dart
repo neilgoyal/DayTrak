@@ -1,46 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-// ignore: unused_import
-import 'package:schoolcalendar/firstopenpages/fp1.dart';
-// ignore: unused_import
-import 'package:schoolcalendar/firstopenpages/fp2.dart';
-// import 'settings.dart';
-import '../globals.dart' as globals;
+import 'package:schoolcalendar/globals.dart' as globals;
 import 'home2.dart';
-// import 'settings2.dart';
 import 'timetable2.dart';
 import 'addtask2.dart';
 
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
-}
-
-class CircleTabIndicator extends Decoration {
-  final BoxPainter _painter;
-
-  CircleTabIndicator({required Color color, required double radius})
-      : _painter = _CirclePainter(color, radius);
-
-  @override
-  BoxPainter createBoxPainter([VoidCallback? onChanged]) => _painter;
-}
-
-class _CirclePainter extends BoxPainter {
-  final Paint _paint;
-  final double radius;
-
-  _CirclePainter(Color color, this.radius)
-      : _paint = Paint()
-          ..color = color
-          ..isAntiAlias = true;
-
-  @override
-  void paint(Canvas canvas, Offset offset, ImageConfiguration cfg) {
-    final Offset circleOffset =
-        offset + Offset(cfg.size!.width / 1.5, cfg.size!.height - radius + 2);
-    canvas.drawCircle(circleOffset, radius, _paint);
-  }
 }
 
 class _HomePageState extends State<HomePage> {
@@ -79,10 +46,6 @@ class _HomePageState extends State<HomePage> {
           children: [Home2Page(), Timetable2Page(), Addtask2Page()],
         ),
         bottomNavigationBar: Container(
-          // decoration: BoxDecoration(
-          //   borderRadius: BorderRadius.circular(50),
-          //   color: Colors.transparent,
-          // ),
           margin: EdgeInsets.only(bottom: 15),
           child: TabBar(
             tabs: [
@@ -106,9 +69,7 @@ class _HomePageState extends State<HomePage> {
               )
             ],
             unselectedLabelColor: Color.fromRGBO(150, 150, 150, 1),
-            indicatorSize: TabBarIndicatorSize.label,
-            indicator: CircleTabIndicator(
-                color: Color.fromRGBO(111, 174, 204, 0), radius: 3.5),
+            indicatorColor: Colors.white,
           ),
         ),
       ),

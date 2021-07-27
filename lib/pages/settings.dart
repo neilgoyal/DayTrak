@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import '../Provider/theme_provider.dart';
+import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../globals.dart' as globals;
+import 'package:schoolcalendar/globals.dart' as globals;
 import 'package:flutter/services.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -541,7 +541,6 @@ class _SettingsState extends State<SettingsPage> {
                 appBar: PreferredSize(
                     preferredSize: Size.fromHeight(100),
                     child: AppBar(
-                      // backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                       elevation: 0,
                       title: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -557,7 +556,6 @@ class _SettingsState extends State<SettingsPage> {
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h1,
-                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),

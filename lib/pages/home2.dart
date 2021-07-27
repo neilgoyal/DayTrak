@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/firstopenpages/fp1.dart';
-import 'package:schoolcalendar/globals.dart';
-import 'package:schoolcalendar/pages/timetable_0copy.dart';
-import '../api.dart';
-import '../authentication.dart';
-import '../globals.dart' as globals;
+import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:schoolcalendar/api.dart';
+import 'package:schoolcalendar/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-import '../database.dart';
+import 'package:schoolcalendar/database.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home2Page extends StatefulWidget {
   @override
@@ -19,10 +17,15 @@ class Home2Page extends StatefulWidget {
 }
 
 Future<Day>? futureDay;
+Future<Map<String, dynamic>>? futureTimetablepers;
+late Map<String, dynamic>? timetablePers = {};
+String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
+int buffer = 0;
+String uname = "DayTrak User", uname2 = "DayTrak User";
 
 class _Home2State extends State<Home2Page> {
   String greeting() {
-    var hour = DateTime.now().hour;
+    int hour = DateTime.now().hour;
     if (hour < 12) {
       return 'Morning';
     }
@@ -32,18 +35,6 @@ class _Home2State extends State<Home2Page> {
     return 'Evening';
   }
 
-  showcorrectday(result) {
-    if (result == '7') {
-      result = 'Break';
-    } else if (result == '8') {
-      result = 'Error';
-    } else {
-      result = "Day $result";
-    }
-    return result;
-  }
-
-  // ignore: unused_field
   bool _isSigningOut = false;
   Future<User>? usersetup;
 
@@ -74,7 +65,7 @@ class _Home2State extends State<Home2Page> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20.0)),
               child: Container(
-                  height: l4,
+                  height: globals.l4,
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -85,17 +76,16 @@ class _Home2State extends State<Home2Page> {
                                 'You are now signed in as ',
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
-                                  fontSize: h9,
+                                  fontSize: globals.h9,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 overflow: TextOverflow.ellipsis,
-                                // textDirection: TextDirection.LTR,
                                 textAlign: TextAlign.center,
                                 maxLines: 6,
                               ),
                             ]),
                         SizedBox(
-                          height: h8,
+                          height: globals.h8,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -104,28 +94,20 @@ class _Home2State extends State<Home2Page> {
                                 future: usersetup,
                                 builder: (context, snapshot) {
                                   if (snapshot.hasData) {
-                                    User? user = snapshot.data;
-                                    return Text("'${user!.displayName}'",
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          fontFamily: 'Protipo Compact',
-                                          fontSize: h9,
-                                          fontWeight: FontWeight.w300,
-                                        ));
-                                  } else {
-                                    return Text(globals.nickname,
-                                        textAlign: TextAlign.left,
-                                        style: TextStyle(
-                                          fontFamily: 'Protipo Compact',
-                                          fontSize: h9,
-                                          fontWeight: FontWeight.w300,
-                                        ));
+                                    uname = '${snapshot.data!.displayName}';
                                   }
+                                  return Text(uname,
+                                      textAlign: TextAlign.left,
+                                      style: TextStyle(
+                                        fontFamily: 'Protipo Compact',
+                                        fontSize: globals.h9,
+                                        fontWeight: FontWeight.w300,
+                                      ));
                                 })
                           ],
                         ),
                         SizedBox(
-                          height: h7,
+                          height: globals.h7,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -164,7 +146,7 @@ class _Home2State extends State<Home2Page> {
                                         'Sign Out',
                                         style: TextStyle(
                                           fontFamily: 'Protipo Compact',
-                                          fontSize: h7,
+                                          fontSize: globals.h7,
                                           color: Colors.white70,
                                           fontWeight: FontWeight.w500,
                                         ),
@@ -188,16 +170,17 @@ class _Home2State extends State<Home2Page> {
             child: Container(
               height: 150,
               child: FutureBuilder<Day>(
-                future: futureDay,
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    globals.day1 = ((snapshot.data!.day1).toString());
-                    globals.day2 = ((snapshot.data!.day2).toString());
-                    globals.day3 = ((snapshot.data!.day3).toString());
-                    globals.day4 = ((snapshot.data!.day4).toString());
-                    globals.day5 = ((snapshot.data!.day5).toString());
-                    globals.day6 = ((snapshot.data!.day6).toString());
-                    globals.day7 = ((snapshot.data!.day7).toString());
+                  future: futureDay,
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      globals.day1 = ((snapshot.data!.day1).toString());
+                      globals.day2 = ((snapshot.data!.day2).toString());
+                      globals.day3 = ((snapshot.data!.day3).toString());
+                      globals.day4 = ((snapshot.data!.day4).toString());
+                      globals.day5 = ((snapshot.data!.day5).toString());
+                      globals.day6 = ((snapshot.data!.day6).toString());
+                      globals.day7 = ((snapshot.data!.day7).toString());
+                    }
                     return Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: Column(
@@ -210,14 +193,12 @@ class _Home2State extends State<Home2Page> {
                             children: [
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Today:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -225,21 +206,18 @@ class _Home2State extends State<Home2Page> {
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
-                                        // color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Tomorrow:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -247,21 +225,18 @@ class _Home2State extends State<Home2Page> {
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
-                                        // color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
                               ),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(
                                     'Day After:  ',
                                     style: TextStyle(
                                       fontFamily: 'Protipo Compact',
                                       fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
                                       fontWeight: FontWeight.w300,
                                     ),
                                   ),
@@ -269,7 +244,6 @@ class _Home2State extends State<Home2Page> {
                                       style: TextStyle(
                                         fontFamily: 'Protipo Compact',
                                         fontSize: globals.h4,
-                                        // color: const Color(0xffbadfca),
                                         fontWeight: FontWeight.w300,
                                       )),
                                 ],
@@ -279,101 +253,54 @@ class _Home2State extends State<Home2Page> {
                         ],
                       ),
                     );
-                  } else
-                    return Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Today:  ',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  ),
-                                  Text('${showcorrectday(globals.day1)}',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: globals.h4,
-                                        // color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w300,
-                                      )),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Tomorrow:  ',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  ),
-                                  Text('${showcorrectday(globals.day2)}',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: globals.h4,
-                                        // color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w300,
-                                      )),
-                                ],
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                // crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Day After:  ',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h4,
-                                      // color: const Color(0xff9b8fb1),
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  ),
-                                  Text('${showcorrectday(globals.day3)}',
-                                      style: TextStyle(
-                                        fontFamily: 'Protipo Compact',
-                                        fontSize: globals.h4,
-                                        // color: const Color(0xffbadfca),
-                                        fontWeight: FontWeight.w300,
-                                      )),
-                                ],
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    );
-                },
-              ),
+                  }),
             ),
           );
         });
     return Container();
   }
 
+  getIntValuesSF() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      globals.valueOfGrade = prefs.getInt('Value') ?? 11;
+    });
+  }
+
+  defaultsvals() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
+      setState(() {
+        b1 = prefs.getString('B1') ?? "Block 1";
+        b2 = prefs.getString('B2') ?? "Block 2";
+        b3 = prefs.getString('B3') ?? "Block 3";
+        b4 = prefs.getString('B4') ?? "Block 4";
+        b5 = prefs.getString('B5') ?? "Block 5";
+        b6 = prefs.getString('B6') ?? "Block 6";
+      });
+    } else if (globals.valueOfGrade == 91 || globals.valueOfGrade == 92) {
+      setState(() {
+        b1 = prefs.getString('B1') ?? "Block 1";
+        b2 = prefs.getString('B2') ?? "Block 2";
+        b3 = prefs.getString('B3') ?? "Block 3";
+        b4 = prefs.getString('B4') ?? "Block 4";
+        b5 = prefs.getString('B5') ?? "Block 5";
+        b6 = prefs.getString('B6') ?? "Block 6";
+        b7 = prefs.getString('B7') ?? "Block 7";
+        b8 = prefs.getString('B8') ?? "Block 8";
+        b9 = prefs.getString('B9') ?? "Block 9";
+      });
+    }
+  }
+
   @override
   void initState() {
-    usersetup = initializeFirebase();
-    futureDay = fetchDay();
     super.initState();
+    usersetup = initializeFirebase();
+    getIntValuesSF();
+    futureDay = fetchDay();
+    futureTimetablepers = personalizedTT();
+    defaultsvals();
   }
 
   @override
@@ -382,18 +309,203 @@ class _Home2State extends State<Home2Page> {
   }
 
   Future<User> initializeFirebase() async {
-    // ignore: unused_local_variable
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    // ignore: unused_local_variable
     User user = FirebaseAuth.instance.currentUser!;
     return user;
+  }
+
+  blocktoprefrence(userinput) {
+    if (userinput == 'B1') {
+      return (b1 == "Block 1") ? b1 : "B1 $b1";
+    } else if (userinput == 'B2') {
+      return (b2 == "Block 2") ? b2 : "B2 $b2";
+    } else if (userinput == 'B3') {
+      return (b3 == "Block 3") ? b3 : "B3 $b3";
+    } else if (userinput == 'B4') {
+      return (b4 == "Block 4") ? b4 : "B4 $b4";
+    } else if (userinput == 'B5') {
+      return (b5 == "Block 5") ? b5 : "B5 $b5";
+    } else if (userinput == 'B6') {
+      return (b6 == "Block 6") ? b6 : "B6 $b6";
+    } else if (userinput == 'B7') {
+      return (b7 == "Block 7") ? b7 : "B7 $b7";
+    } else if (userinput == 'B8') {
+      return (b8 == "Block 8") ? b8 : "B8 $b8";
+    } else if (userinput == 'B9') {
+      return (b9 == "Block 9") ? b9 : "B9 $b9";
+    } else {
+      return userinput;
+    }
+  }
+
+  perstimetable() {
+    return Container(
+        child: FutureBuilder<Map<String, dynamic>>(
+            future: futureTimetablepers,
+            builder: (context, snapshot) {
+              if (globals.day1 == "7") {
+                return Container(
+                    padding:
+                        EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Card(
+                              elevation: 4,
+                              color: Color.fromRGBO(252, 252, 252, 1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(27)),
+                              child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                child: ListTile(
+                                  title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          'No School',
+                                          style: TextStyle(
+                                              fontSize: globals.h3,
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w300,
+                                              fontFamily: "Protipo Compact"),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ))
+                        ]));
+              }
+              if (globals.day1 == "8") {
+                return Container(
+                    padding:
+                        EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Card(
+                              elevation: 4,
+                              color: Color.fromRGBO(252, 252, 252, 1),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(27)),
+                              child: Container(
+                                padding: EdgeInsets.all(8.0),
+                                child: ListTile(
+                                  title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Container(
+                                        child: Text(
+                                          'Error',
+                                          style: TextStyle(
+                                              fontSize: globals.h3,
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w300,
+                                              fontFamily: "Protipo Compact"),
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ))
+                        ]));
+              } else {
+                if (snapshot.hasData) {
+                  if (snapshot.data!.isEmpty) {
+                    return Container(
+                        padding:
+                            EdgeInsets.only(top: 30.0, left: 12.0, right: 12.0),
+                        child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                "You're all done!  ",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontFamily: "Protipo Compact",
+                                    fontSize: globals.h4,
+                                    fontWeight: FontWeight.w200),
+                              ),
+                              Icon(
+                                CupertinoIcons.smiley,
+                                size: globals.h4,
+                                color: Colors.black54,
+                              )
+                            ]));
+                  }
+                  timetablePers = snapshot.data;
+                  while (timetablePers![
+                          '${globals.valueOfGrade}.${(buffer + 1)}'] ==
+                      null) {
+                    buffer = buffer + 1;
+                  }
+                }
+                return ListView.builder(
+                    itemCount: timetablePers!.length ~/ 2,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding:
+                            EdgeInsets.only(top: 20.0, left: 18.0, right: 18.0),
+                        child: Card(
+                          elevation: 7.5,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(27)),
+                          child: Container(
+                            padding: EdgeInsets.all(8.0),
+                            child: ListTile(
+                                title: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    Expanded(
+                                        child: Container(
+                                      child: Text(
+                                        (timetablePers!.isNotEmpty)
+                                            ? blocktoprefrence(timetablePers![
+                                                '${globals.valueOfGrade}.${(index + buffer + 1)}'])
+                                            : "-",
+                                        style: TextStyle(
+                                            fontSize: globals.h4,
+                                            fontWeight: FontWeight.w300,
+                                            fontFamily: "Protipo Compact"),
+                                      ),
+                                    ))
+                                  ],
+                                ),
+                                trailing: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        (timetablePers!.isNotEmpty)
+                                            ? timetablePers![
+                                                '${globals.valueOfGrade}.${(index + buffer + 1)}_time']
+                                            : "-",
+                                        style: TextStyle(color: Colors.grey),
+                                      )
+                                    ])),
+                          ),
+                        ),
+                      );
+                    });
+              }
+            }));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          toolbarHeight: s7,
+          toolbarHeight: globals.s7,
           elevation: 0,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -418,8 +530,8 @@ class _Home2State extends State<Home2Page> {
                                       return Ink.image(
                                         image: NetworkImage(user!.photoURL!),
                                         fit: BoxFit.cover,
-                                        width: s5,
-                                        height: s5,
+                                        width: globals.s5,
+                                        height: globals.s5,
                                         child: InkWell(
                                           onTap: () {
                                             signOut();
@@ -437,7 +549,7 @@ class _Home2State extends State<Home2Page> {
                                         child: Icon(
                                           CupertinoIcons.person_alt_circle,
                                           color: Colors.grey[500],
-                                          size: s6,
+                                          size: globals.s6,
                                         ),
                                         onPressed: () {
                                           signOut();
@@ -454,34 +566,24 @@ class _Home2State extends State<Home2Page> {
                         Text("Good " '${greeting()},',
                             style: TextStyle(
                               fontFamily: 'Protipo Compact',
-                              fontSize: h9,
+                              fontSize: globals.h9,
                               fontWeight: FontWeight.w300,
                             )),
-                        // SizedBox(
-                        //   height: h11,
-                        // ),
                         FutureBuilder<User>(
                             future: usersetup,
                             builder: (context, snapshot) {
                               if (snapshot.hasData) {
-                                User? user = snapshot.data;
-                                return Text(
-                                    user!.displayName.toString().split(" ")[0],
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: h9,
-                                      fontWeight: FontWeight.w300,
-                                    ));
-                              } else {
-                                return Text(globals.nickname,
-                                    textAlign: TextAlign.left,
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: h9,
-                                      fontWeight: FontWeight.w300,
-                                    ));
+                                uname2 = snapshot.data!.displayName
+                                    .toString()
+                                    .split(" ")[0];
                               }
+                              return Text(uname2,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    fontFamily: 'Protipo Compact',
+                                    fontSize: globals.h9,
+                                    fontWeight: FontWeight.w300,
+                                  ));
                             })
                       ]),
                 ],
@@ -499,66 +601,39 @@ class _Home2State extends State<Home2Page> {
                           globals.day5 = ((snapshot.data!.day5).toString());
                           globals.day6 = ((snapshot.data!.day6).toString());
                           globals.day7 = ((snapshot.data!.day7).toString());
-                          return ElevatedButton(
-                            style: ButtonStyle(
-                                padding: MaterialStateProperty.all<
-                                    EdgeInsetsGeometry>(
-                                  EdgeInsets.only(
-                                      top: 0.0, left: 0.0, right: 0.0),
-                                ),
-                                shadowColor: MaterialStateProperty.all<Color>(
-                                    Colors.transparent),
-                                backgroundColor:
-                                    MaterialStateProperty.all<Color>(
-                                        Colors.transparent)),
-                            onLongPress: () {
-                              days();
-                              HapticFeedback.heavyImpact();
-                            },
-                            onPressed: () {},
-                            child: Text(
-                              '${showcorrectday(globals.day1)}',
-                              style: TextStyle(
-                                fontFamily: 'Protipo Compact',
-                                color: Colors.black,
-                                fontSize: h4,
-                                fontWeight: FontWeight.w300,
+                        }
+                        return ElevatedButton(
+                          style: ButtonStyle(
+                              padding:
+                                  MaterialStateProperty.all<EdgeInsetsGeometry>(
+                                EdgeInsets.only(
+                                    top: 0.0, left: 0.0, right: 0.0),
                               ),
+                              shadowColor: MaterialStateProperty.all<Color>(
+                                  Colors.transparent),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.transparent)),
+                          onLongPress: () {
+                            days();
+                            HapticFeedback.heavyImpact();
+                          },
+                          onPressed: () {},
+                          child: Text(
+                            '${showcorrectday(globals.day1)}',
+                            style: TextStyle(
+                              fontFamily: 'Protipo Compact',
+                              color: Colors.black,
+                              fontSize: globals.h4,
+                              fontWeight: FontWeight.w300,
                             ),
-                          );
-                        } else
-                          return ElevatedButton(
-                              style: ButtonStyle(
-                                  padding: MaterialStateProperty.all<
-                                      EdgeInsetsGeometry>(
-                                    EdgeInsets.only(
-                                        top: 0.0, left: 0.0, right: 0.0),
-                                  ),
-                                  shadowColor: MaterialStateProperty.all<Color>(
-                                      Colors.transparent),
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          Colors.transparent)),
-                              onLongPress: () {
-                                days();
-                                HapticFeedback.heavyImpact();
-                              },
-                              onPressed: () {},
-                              child: Text(
-                                '${showcorrectday(globals.day1)}',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  color: Colors.black,
-                                  fontSize: h4,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                              ));
+                          ),
+                        );
                       }),
                   Text(DateFormat.MMMEd().format(DateTime.now()),
                       textAlign: TextAlign.left,
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
-                        fontSize: h10,
+                        fontSize: globals.h10,
                         fontWeight: FontWeight.w300,
                       )),
                 ],
@@ -568,37 +643,36 @@ class _Home2State extends State<Home2Page> {
         ),
         body: ListView(padding: EdgeInsets.all(13.0), children: [
           SizedBox(
-            height: h5,
+            height: globals.h5,
           ),
-          Text("Today's Classes:",
+          Text("Upcoming Classes:",
               style: TextStyle(
-                  fontSize: h4,
+                  fontSize: globals.h4,
                   fontFamily: "Protipo Compact",
                   fontWeight: FontWeight.w300)),
           SizedBox(
-            height: h4,
+            height: globals.h4,
           ),
           Card(
               elevation: 39,
               color: Color.fromRGBO(201, 248, 86, 0.8),
-              // color: Colors.transparent,
               shadowColor: Color.fromRGBO(201, 254, 86, 1),
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               child: Container(
                   height: 350,
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
-                  child: Timetable_0copyPage())),
+                  child: perstimetable())),
           SizedBox(
-            height: h1,
+            height: globals.h1,
           ),
           Text("Tasks:",
               style: TextStyle(
-                  fontSize: h4,
+                  fontSize: globals.h4,
                   fontFamily: "Protipo Compact",
                   fontWeight: FontWeight.w300)),
           SizedBox(
-            height: h4,
+            height: globals.h4,
           ),
           Card(
               elevation: 28,
@@ -645,8 +719,6 @@ class _Home2State extends State<Home2Page> {
                             itemCount: snapshot.data!.docs.length,
                             itemBuilder: (context, index) {
                               var tasks = snapshot.data!.docs[index];
-                              // ignore: unused_local_variable
-                              String docID = snapshot.data!.docs[index].id;
                               String title = tasks['title'];
                               String description = DateFormat('EEE, MMM d')
                                   .format(DateTime.parse(tasks['date']));
@@ -685,7 +757,7 @@ class _Home2State extends State<Home2Page> {
                     },
                   ))),
           SizedBox(
-            height: h2,
+            height: globals.h2,
           ),
         ]));
   }

@@ -4,16 +4,8 @@ String day1 = "-",
     day4 = "-",
     day5 = "-",
     day6 = "-",
-    day7 = "-",
-    nickname = "DayTrak User";
+    day7 = "-";
 int? valueOfGrade = 11;
-Map? timetable_0 = {},
-    timetable_1 = {},
-    timetable_2 = {},
-    timetable_3 = {},
-    timetable_4 = {},
-    timetable_5 = {},
-    timetable_6 = {};
 double? h1,
     h2,
     h3,

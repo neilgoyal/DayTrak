@@ -16,7 +16,7 @@ Future<Map<String, dynamic>> personalizedTT() async {
   final response1 = await http.get(Uri.parse(
       'https://tumulrankypanky.pythonanywhere.com/g${globals.valueOfGrade}pers'));
   if (response1.statusCode == 200) {
-    Map<String, dynamic> result = jsonDecode(response1.body);
+    Map<String, dynamic> result = jsonDecode(response1.body)[0];
     return result;
   } else
     throw Exception('Failed to load Day Order Information');
@@ -30,6 +30,17 @@ Future<Day> fetchDay() async {
     return result;
   } else
     throw Exception('Failed to load Day Order Information');
+}
+
+showcorrectday(result) {
+  if (result == '7') {
+    result = 'Break';
+  } else if (result == '8') {
+    result = 'Error';
+  } else {
+    result = "Day $result";
+  }
+  return result;
 }
 
 class Timetable {

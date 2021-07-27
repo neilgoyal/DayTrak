@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
-import '../globals.dart';
+import 'package:schoolcalendar/globals.dart' as globals;
 import '/Provider/theme_provider.dart';
-import '../database.dart';
+import 'package:schoolcalendar/database.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
-import 'dart:async';
 
 class Addtask2Page extends StatefulWidget {
   @override
@@ -131,7 +130,7 @@ class _Addtask2State extends State<Addtask2Page>
             title: Text(
               'Reminders',
               style: TextStyle(
-                fontSize: h6,
+                fontSize: globals.h6,
               ),
             ),
           ),
@@ -151,19 +150,19 @@ class _Addtask2State extends State<Addtask2Page>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               SizedBox(
-                                height: l1,
+                                height: globals.l1,
                               ),
                               Text(
                                 "You're all done!  ",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontFamily: "Protipo Compact",
-                                    fontSize: h6,
+                                    fontSize: globals.h6,
                                     fontWeight: FontWeight.w200),
                               ),
                               Icon(
                                 CupertinoIcons.smiley,
-                                size: h6,
+                                size: globals.h6,
                                 color: Colors.black54,
                               )
                             ]));
@@ -220,14 +219,14 @@ class _Addtask2State extends State<Addtask2Page>
                                     title,
                                     maxLines: 3,
                                     overflow: TextOverflow.visible,
-                                    style: TextStyle(fontSize: h5),
+                                    style: TextStyle(fontSize: globals.h5),
                                   ),
                                   trailing: Text(
                                     description,
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                        fontSize: h10,
+                                        fontSize: globals.h10,
                                         color: concisedate(tasks['date'])[1]),
                                   ),
                                 ),
@@ -326,7 +325,7 @@ class _Addtask2State extends State<Addtask2Page>
                                       },
                                       icon: Icon(
                                         CupertinoIcons.calendar_today,
-                                        size: h4,
+                                        size: globals.h4,
                                       )),
                                   Text(selectedDate != null
                                       ? DateFormat.yMMMMd()
