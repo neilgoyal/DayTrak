@@ -9,12 +9,14 @@ class DatabaseService {
   static Future<void> addItem({
     required String title,
     required String date,
+    required String time,
   }) async {
     DocumentReference documentReferencer =
         _mainCollection.doc(firebaseUser!.uid).collection('tasks').doc();
     Map<String, dynamic> data = <String, dynamic>{
       "title": title,
       "date": date,
+      "time": time
     };
     await documentReferencer
         .set(data)

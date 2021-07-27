@@ -20,6 +20,7 @@ class _Addtask2State extends State<Addtask2Page>
   TextEditingController _todoTitleController = TextEditingController();
   bool validated1 = true;
   DateTime? selectedDate;
+  DateTime? selectedTime;
   late AnimationController _animationController;
   bool isPlaying = false;
 
@@ -52,7 +53,6 @@ class _Addtask2State extends State<Addtask2Page>
             onSubmit: (Object value) {
               if (value is DateTime) {
                 selectedDate = value;
-                print(selectedDate);
                 Navigator.pop(context);
               }
             },
@@ -60,6 +60,50 @@ class _Addtask2State extends State<Addtask2Page>
               Navigator.pop(context);
             },
           ));
+        });
+  }
+
+  selectedTodoTime(BuildContext context) {
+    showModalBottomSheet(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        isScrollControlled: false,
+        context: context,
+        builder: (context) {
+          return Container(
+              height: MediaQuery.of(context).copyWith().size.height / 3,
+              child: Column(children: [
+                Container(
+                    height:
+                        MediaQuery.of(context).copyWith().size.height / 3 - 70,
+                    child: CupertinoDatePicker(
+                        mode: CupertinoDatePickerMode.time,
+                        initialDateTime: DateTime(1969, 1, 1, 4, 20),
+                        minuteInterval: 1,
+                        onDateTimeChanged: (DateTime newDateTime) {
+                          selectedTime = newDateTime;
+                        })),
+                Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  CupertinoButton(
+                      child: Text('OK'),
+                      onPressed: () {
+                        if (selectedTime == null) {
+                          selectedTime = DateTime(1969, 1, 1, 4, 20);
+                        }
+                        if (selectedDate == null) {
+                          selectedDate = DateTime.now();
+                        }
+                        Navigator.pop(context);
+                      }),
+                  CupertinoButton(
+                      child: Text('Cancel'),
+                      onPressed: () {
+                        selectedTime = null;
+                        Navigator.pop(context);
+                      })
+                ])
+              ]));
         });
   }
 
@@ -79,42 +123,46 @@ class _Addtask2State extends State<Addtask2Page>
     } else {
       await DatabaseService.addItem(
           title: _todoTitleController.text,
+          time: (selectedTime != null
+              ? DateFormat('hh:mm a').format(selectedTime!)
+              : "No Time"),
           date: selectedDate != null
               ? DateFormat('yyyy-MM-dd').format(selectedDate!)
               : "No Date");
       _todoTitleController.text = '';
       selectedDate = null;
+      selectedTime = null;
       validated1 = true;
       Navigator.pop(context);
     }
   }
 
-  concisedate(date) {
-    String concise;
-    if (date == "No Date") {
-      Color late = Colors.black45;
-      concise = "";
-      return [concise, late];
-    }
-    DateTime setDate = DateTime.parse(date);
+  concisedate(date, time) {
+    String concisedate = "";
+    String concisetime = "";
     Color late = Colors.black45;
-    if (setDate.difference(DateTime.now()) < Duration(days: -1)) {
-      late = Colors.red;
+    if (date == "No Date") {
+      return [concisedate, concisetime, late];
     }
-    if (date == DateFormat('yyyy-MM-dd').format(DateTime.now())) {
-      concise = 'Today';
+    DateTime fulldate = DateFormat('yyyy-MM-dd', 'en_US').parseLoose('$date');
+    if (concisetime != "no time") {
+      concisetime = time;
+      fulldate =
+          DateFormat('yyyy-MM-dd hh:mm a', 'en_US').parseLoose('$date $time');
+    }
+    if (fulldate.compareTo(DateTime.now()) < 0) {
+      late = Colors.red;
+    } else if (date == DateFormat('yyyy-MM-dd').format(DateTime.now())) {
+      concisedate = 'Today';
     } else if (date ==
         DateFormat('yyyy-MM-dd')
             .format(DateTime.now().add(Duration(days: 1)))) {
-      concise = 'Tomorrow';
-    } else if (date ==
-        DateFormat('yyyy-MM-dd')
-            .format(DateTime.now().add(new Duration(days: -1)))) {
-      concise = 'Yesterday';
+      concisedate = 'Tomorrow';
     } else {
-      concise = DateFormat('E, d MMM').format(setDate);
+      concisedate = DateFormat('E, d MMM').format(DateTime.parse(date));
     }
-    return [concise, late];
+
+    return [concisedate, concisetime, late];
   }
 
   @override
@@ -177,7 +225,10 @@ class _Addtask2State extends State<Addtask2Page>
                           var tasks = snapshot.data!.docs[index];
                           String docID = snapshot.data!.docs[index].id;
                           String title = tasks['title'];
-                          String description = concisedate(tasks['date'])[0];
+                          String description1 =
+                              concisedate(tasks['date'], tasks['time'])[0];
+                          String description2 =
+                              concisedate(tasks['date'], tasks['time'])[1];
                           return Ink(
                             child: Slidable(
                               actionPane: SlidableDrawerActionPane(),
@@ -185,51 +236,60 @@ class _Addtask2State extends State<Addtask2Page>
                               child: Container(
                                 padding: EdgeInsets.all(0.0),
                                 child: ListTile(
-                                  horizontalTitleGap: 7,
-                                  minLeadingWidth: 0,
-                                  // shape: Border(
-                                  //   bottom: BorderSide(
-                                  //       color: Colors.grey, width: 1.5),
-                                  // ),
-                                  leading: AnimatedIconButton(
-                                    size: 30,
-                                    onPressed: () async {
-                                      Future.delayed(
-                                          Duration(milliseconds: 450),
-                                          () async {
-                                        HapticFeedback.heavyImpact();
-                                        await DatabaseService.deleteItem(
-                                            docId: docID);
-                                      });
-                                    },
-                                    duration: const Duration(milliseconds: 300),
-                                    splashColor: Colors.transparent,
-                                    icons: const <AnimatedIconItem>[
-                                      AnimatedIconItem(
-                                        icon: Icon(CupertinoIcons.circle,
-                                            color: Colors.black54),
+                                    horizontalTitleGap: 7,
+                                    minLeadingWidth: 0,
+                                    leading: AnimatedIconButton(
+                                      size: 30,
+                                      onPressed: () async {
+                                        Future.delayed(
+                                            Duration(milliseconds: 450),
+                                            () async {
+                                          HapticFeedback.heavyImpact();
+                                          await DatabaseService.deleteItem(
+                                              docId: docID);
+                                        });
+                                      },
+                                      duration:
+                                          const Duration(milliseconds: 300),
+                                      splashColor: Colors.transparent,
+                                      icons: const <AnimatedIconItem>[
+                                        AnimatedIconItem(
+                                          icon: Icon(CupertinoIcons.circle,
+                                              color: Colors.black54),
+                                        ),
+                                        AnimatedIconItem(
+                                          icon: Icon(
+                                              CupertinoIcons.checkmark_alt,
+                                              color: Colors.green),
+                                        ),
+                                      ],
+                                    ),
+                                    title: Text(
+                                      title,
+                                      maxLines: 3,
+                                      overflow: TextOverflow.visible,
+                                      style: TextStyle(fontSize: globals.h5),
+                                    ),
+                                    trailing: Column(children: [
+                                      Text(
+                                        description1,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: globals.h10,
+                                            color: concisedate(tasks['date'],
+                                                tasks['time'])[2]),
                                       ),
-                                      AnimatedIconItem(
-                                        icon: Icon(CupertinoIcons.checkmark_alt,
-                                            color: Colors.green),
+                                      Text(
+                                        description2,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                            fontSize: globals.h10,
+                                            color: concisedate(tasks['date'],
+                                                tasks['time'])[2]),
                                       ),
-                                    ],
-                                  ),
-                                  title: Text(
-                                    title,
-                                    maxLines: 3,
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(fontSize: globals.h5),
-                                  ),
-                                  trailing: Text(
-                                    description,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontSize: globals.h10,
-                                        color: concisedate(tasks['date'])[1]),
-                                  ),
-                                ),
+                                    ])),
                               ),
                               actions: <Widget>[],
                               secondaryActions: <Widget>[
@@ -289,8 +349,8 @@ class _Addtask2State extends State<Addtask2Page>
         isScrollControlled: false,
         context: context,
         builder: (context) {
-          return StatefulBuilder(builder: (BuildContext context,
-              StateSetter setState /*You can rename this!*/) {
+          return StatefulBuilder(
+              builder: (BuildContext context, StateSetter setState) {
             return Container(
                 padding: EdgeInsets.only(
                     bottom: MediaQuery.of(context).viewInsets.bottom),
@@ -331,12 +391,17 @@ class _Addtask2State extends State<Addtask2Page>
                                       ? DateFormat.yMMMMd()
                                           .format(selectedDate!)
                                       : ''),
-                                  // IconButton(
-                                  //     onPressed: () {},
-                                  //     icon: Icon(
-                                  //       CupertinoIcons.clock,
-                                  //       size: h4,
-                                  //     )),
+                                  IconButton(
+                                      onPressed: () {
+                                        selectedTodoTime(context);
+                                      },
+                                      icon: Icon(
+                                        CupertinoIcons.clock,
+                                        size: globals.h4,
+                                      )),
+                                  Text(selectedTime != null
+                                      ? DateFormat.jm().format(selectedTime!)
+                                      : '')
                                   // IconButton(
                                   //     onPressed: () {},
                                   //     icon: Icon(

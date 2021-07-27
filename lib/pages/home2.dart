@@ -337,6 +337,32 @@ class _Home2State extends State<Home2Page> {
     }
   }
 
+  concisedate(date, time) {
+    String concisedate = "";
+    String concisetime = "";
+    Color late = Colors.black45;
+    if (date == "No Date") {
+      return [concisedate, concisetime, late];
+    }
+    DateTime fulldate =
+        DateFormat('yyyy-MM-dd kk:mm:a', 'en_US').parseLoose('$date $time');
+    if (fulldate.compareTo(DateTime.now()) < 0) {
+      late = Colors.red;
+    } else if (date == DateFormat('yyyy-MM-dd').format(DateTime.now())) {
+      concisedate = 'Today';
+    } else if (date ==
+        DateFormat('yyyy-MM-dd')
+            .format(DateTime.now().add(Duration(days: 1)))) {
+      concisedate = 'Tomorrow';
+    } else {
+      concisedate = DateFormat('E, d MMM').format(DateTime.parse(date));
+    }
+    if (concisetime != "No Time") {
+      concisetime = time;
+    }
+    return [concisedate, concisetime, late];
+  }
+
   perstimetable() {
     return Container(
         child: FutureBuilder<Map<String, dynamic>>(
@@ -697,8 +723,10 @@ class _Home2State extends State<Home2Page> {
                             itemBuilder: (context, index) {
                               var tasks = snapshot.data!.docs[index];
                               String title = tasks['title'];
-                              String description = DateFormat('EEE, MMM d')
-                                  .format(DateTime.parse(tasks['date']));
+                              String description =
+                                  concisedate(tasks['date'], tasks['time'])[0];
+                              String description2 =
+                                  concisedate(tasks['date'], tasks['time'])[1];
                               return Card(
                                 shadowColor: Colors.blue,
                                 elevation: 4,
@@ -715,7 +743,7 @@ class _Home2State extends State<Home2Page> {
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   subtitle: Text(
-                                    description,
+                                    "$description $description2",
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
