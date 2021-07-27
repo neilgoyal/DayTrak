@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
@@ -17,7 +18,7 @@ OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
 );
 OutlineInputBorder focusedborder = OutlineInputBorder(
   borderRadius: BorderRadius.all(Radius.circular(25.0)),
-  borderSide: BorderSide(color: Color.fromRGBO(224, 163, 160, 1), width: 2),
+  borderSide: BorderSide(color: Color.fromRGBO(202, 232, 140, 1), width: 2),
 );
 
 class _SettingsState extends State<SettingsPage> {
@@ -243,20 +244,27 @@ class _SettingsState extends State<SettingsPage> {
                 prefs.setString('B9', myController9.text);
               }
             },
-            child: const Text('Save',
+            child: 
+            Padding(padding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+            child: 
+            Column(children: [
+            
+             Icon(CupertinoIcons.archivebox, size: globals.h8,),
+                Text('Save Changes',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: globals.h9,
                   fontFamily: 'Protipo Compact',
-                )),
+                  fontWeight: FontWeight.w300,
+                ))])),
             style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(119, 227, 134, 1),
-              shadowColor: Color.fromRGBO(223, 164, 160, 1),
+              primary: Colors.deepPurpleAccent[700],
               elevation: 3,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7)),
+                  borderRadius: BorderRadius.circular(12)),
             ),
           ),
+        
           SizedBox(
             height: 30,
           ),
@@ -273,7 +281,7 @@ class _SettingsState extends State<SettingsPage> {
           TextFormField(
               textInputAction: TextInputAction.next,
               textCapitalization: TextCapitalization.sentences,
-              // cursorColor: Colors.black54,
+              cursorColor: Colors.black54,
               validator: (value) {
                 if (value!.isEmpty) {
                   return errmessage;
@@ -282,9 +290,11 @@ class _SettingsState extends State<SettingsPage> {
               },
               controller: myController,
               decoration: InputDecoration(
+
+
                   labelText: 'Block 1',
                   labelStyle: TextStyle(
-                      // color: Colors.black54,
+                      color: Colors.black54,
                       ),
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
@@ -393,7 +403,7 @@ class _SettingsState extends State<SettingsPage> {
                   enabledBorder: textfieldborderenabled,
                   focusedBorder: focusedborder)),
           SizedBox(
-            height: 15,
+            height: 25,
           ),
           ElevatedButton(
             onPressed: () async {
@@ -408,18 +418,24 @@ class _SettingsState extends State<SettingsPage> {
                 prefs.setString('B6', myController6.text);
               }
             },
-            child: const Text('Save',
+            child: 
+            Padding(padding: EdgeInsets.fromLTRB(7, 5, 7, 5),
+            child: 
+            Column(children: [
+            
+             Icon(CupertinoIcons.archivebox, size: globals.h8,),
+                Text('Save Changes',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 22,
+                  fontSize: globals.h9,
                   fontFamily: 'Protipo Compact',
-                )),
+                  fontWeight: FontWeight.w300,
+                ))])),
             style: ElevatedButton.styleFrom(
-              primary: Color.fromRGBO(119, 227, 134, 1),
-              shadowColor: Color.fromRGBO(223, 164, 160, 1),
+              primary: Colors.deepPurpleAccent[700],
               elevation: 3,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7)),
+                  borderRadius: BorderRadius.circular(12)),
             ),
           ),
           SizedBox(
@@ -538,31 +554,7 @@ class _SettingsState extends State<SettingsPage> {
             debugShowCheckedModeBanner: false,
             title: 'DayTrak',
             home: Scaffold(
-                appBar: PreferredSize(
-                    preferredSize: Size.fromHeight(100),
-                    child: AppBar(
-                      elevation: 0,
-                      title: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Settings',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h1,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  ),
-                                ]),
-                          ]),
-                      toolbarHeight: 100.0,
-                    )),
+               
                 resizeToAvoidBottomInset: false,
                 body: SingleChildScrollView(
                     child: Container(
@@ -573,6 +565,14 @@ class _SettingsState extends State<SettingsPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
+                                  Text(
+                                    'Customize',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h2,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
                                   SizedBox(
                                     height: 25,
                                   ),
@@ -583,7 +583,7 @@ class _SettingsState extends State<SettingsPage> {
                                       Text('Choose Grade',
                                           style: TextStyle(
                                             fontFamily: 'Protipo Compact',
-                                            fontSize: globals.h3,
+                                            fontSize: globals.h4,
                                             // color: const Color(0xffbadfca),
                                             fontWeight: FontWeight.w300,
                                           )),
@@ -621,8 +621,8 @@ class _SettingsState extends State<SettingsPage> {
                                                 fontSize: globals.h9,
                                                 fontFamily: 'Protipo Compact'),
                                             elevation: 1,
-                                            isExpanded: true,
-                                            isDense: true,
+                                            isExpanded: false,
+                                            isDense:true,
                                             icon:
                                                 Icon(Icons.keyboard_arrow_down),
                                             value: globals.valueOfGrade,
@@ -664,7 +664,7 @@ class _SettingsState extends State<SettingsPage> {
                                         Text('Add subjects',
                                             style: TextStyle(
                                               fontFamily: 'Protipo Compact',
-                                              fontSize: globals.h3,
+                                              fontSize: globals.h4,
                                               // color: const Color(0xffbadfca),
                                               fontWeight: FontWeight.w300,
                                             )),

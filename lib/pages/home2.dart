@@ -429,13 +429,13 @@ class _Home2State extends State<Home2Page> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding:
-                            EdgeInsets.only(top: 20.0, left: 18.0, right: 18.0),
+                            EdgeInsets.only(top: 20.0, left: 12.0, right: 12.0),
                         child: Card(
                           elevation: 7.5,
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(27)),
                           child: Container(
-                            padding: EdgeInsets.all(8.0),
+                            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
                             child: ListTile(
                                 title: Row(
                                   mainAxisAlignment:
@@ -450,7 +450,7 @@ class _Home2State extends State<Home2Page> {
                                                 '${globals.valueOfGrade}.${(index + buffer + 1)}'])
                                             : "-",
                                         style: TextStyle(
-                                            fontSize: globals.h4,
+                                            fontSize: globals.h5,
                                             fontWeight: FontWeight.w300,
                                             fontFamily: "Protipo Compact"),
                                       ),
@@ -458,18 +458,22 @@ class _Home2State extends State<Home2Page> {
                                   ],
                                 ),
                                 trailing: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      SizedBox(
+                                        width: globals.s4,
+                                        child:
                                       Text(
                                         (timetablePers!.isNotEmpty)
                                             ? timetablePers![
                                                 '${globals.valueOfGrade}.${(index + buffer + 1)}_time']
                                             : "-",
                                         style: TextStyle(color: Colors.grey),
+                                        maxLines: 2,
+                                    overflow: TextOverflow.clip,
+                                        
                                       )
-                                    ])),
+                            )])),
                           ),
                         ),
                       );
