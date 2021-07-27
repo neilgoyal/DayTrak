@@ -9,7 +9,7 @@ Future<Timetable> timetable() async {
     Timetable result = Timetable.fromJson(jsonDecode(response1.body));
     return result;
   } else
-    throw Exception('Failed to load Day Order Information');
+    throw Exception('Failed to load Timetable Information');
 }
 
 Future<Map<String, dynamic>> personalizedTT() async {
@@ -19,7 +19,7 @@ Future<Map<String, dynamic>> personalizedTT() async {
     Map<String, dynamic> result = jsonDecode(response1.body)[0];
     return result;
   } else
-    throw Exception('Failed to load Day Order Information');
+    throw Exception('Failed to load Personal Timetable Information');
 }
 
 Future<Day> fetchDay() async {

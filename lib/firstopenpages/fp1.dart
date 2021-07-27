@@ -100,7 +100,6 @@ class _Fp1State extends State<Fp1Page> {
                                 style: TextStyle(
                                   fontFamily: 'Protipo Compact',
                                   fontSize: globals.h6,
-                                  // color: Colors.black54,
                                   fontWeight: FontWeight.w300,
                                 ),
                                 overflow: TextOverflow.ellipsis,

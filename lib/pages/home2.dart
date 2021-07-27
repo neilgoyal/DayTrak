@@ -417,29 +417,6 @@ class _Home2State extends State<Home2Page> {
                         ]));
               } else {
                 if (snapshot.hasData) {
-                  if (snapshot.data!.isEmpty) {
-                    return Container(
-                        padding:
-                            EdgeInsets.only(top: 30.0, left: 12.0, right: 12.0),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "You're all done!  ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: "Protipo Compact",
-                                    fontSize: globals.h4,
-                                    fontWeight: FontWeight.w200),
-                              ),
-                              Icon(
-                                CupertinoIcons.smiley,
-                                size: globals.h4,
-                                color: Colors.black54,
-                              )
-                            ]));
-                  }
                   timetablePers = snapshot.data;
                   while (timetablePers![
                           '${globals.valueOfGrade}.${(buffer + 1)}'] ==
