@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,6 +8,8 @@ import '../globals.dart';
 import '/Provider/theme_provider.dart';
 import '../database.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:animated_icon_button/animated_icon_button.dart';
+import 'dart:async';
 
 class Addtask2Page extends StatefulWidget {
   @override
@@ -191,17 +192,30 @@ class _Addtask2State extends State<Addtask2Page>
                                   //   bottom: BorderSide(
                                   //       color: Colors.grey, width: 1.5),
                                   // ),
-                                  leading: ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          shadowColor: Colors.transparent,
-                                          primary: Colors.transparent),
-                                      onPressed: () {},
-                                      child: SizedBox(
-                                        height: 60,
-                                        width: 60,
-                                        child: FlareActor("assets/check.flr",
-                                            animation: "Untitled"),
-                                      )),
+                                  leading: AnimatedIconButton(
+                                    size: 30,
+                                    onPressed: () async {
+                                      Future.delayed(
+                                          Duration(milliseconds: 450),
+                                          () async {
+                                        HapticFeedback.heavyImpact();
+                                        await DatabaseService.deleteItem(
+                                            docId: docID);
+                                      });
+                                    },
+                                    duration: const Duration(milliseconds: 300),
+                                    splashColor: Colors.transparent,
+                                    icons: const <AnimatedIconItem>[
+                                      AnimatedIconItem(
+                                        icon: Icon(CupertinoIcons.circle,
+                                            color: Colors.black54),
+                                      ),
+                                      AnimatedIconItem(
+                                        icon: Icon(CupertinoIcons.checkmark_alt,
+                                            color: Colors.green),
+                                      ),
+                                    ],
+                                  ),
                                   title: Text(
                                     title,
                                     maxLines: 3,

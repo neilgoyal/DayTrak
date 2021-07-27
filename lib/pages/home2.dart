@@ -618,8 +618,9 @@ class _Home2State extends State<Home2Page> {
                         if (snapshot.data!.docs.isEmpty) {
                           return Container(
                               padding: EdgeInsets.only(
-                                  top: 0.0, left: 12.0, right: 12.0),
+                                  top: 30.0, left: 12.0, right: 12.0),
                               child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text(

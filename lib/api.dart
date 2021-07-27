@@ -1,16 +1,22 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:encrypt/encrypt.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
-
-final encrypter = Encrypter(
-    Fernet(Key.fromBase64('TuzAS6ZJqkDPwsGhjRTiDzSjp7jWyWVbcVG7cpOqBOQ=')));
 
 Future<Timetable> timetable() async {
   final response1 = await http.get(Uri.parse(
       'https://tumulrankypanky.pythonanywhere.com/g${globals.valueOfGrade}'));
   if (response1.statusCode == 200) {
     Timetable result = Timetable.fromJson(jsonDecode(response1.body));
+    return result;
+  } else
+    throw Exception('Failed to load Day Order Information');
+}
+
+Future<Map<String, dynamic>> personalizedTT() async {
+  final response1 = await http.get(Uri.parse(
+      'https://tumulrankypanky.pythonanywhere.com/g${globals.valueOfGrade}pers'));
+  if (response1.statusCode == 200) {
+    Map<String, dynamic> result = jsonDecode(response1.body);
     return result;
   } else
     throw Exception('Failed to load Day Order Information');
@@ -72,13 +78,13 @@ class Day {
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(
-      day1: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["0"])))),
-      day2: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["1"])))),
-      day3: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["2"])))),
-      day4: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["3"])))),
-      day5: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["4"])))),
-      day6: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["5"])))),
-      day7: int.parse((encrypter.decrypt(Encrypted.fromBase64(json["6"])))),
+      day1: int.parse(json["0"]),
+      day2: int.parse(json["1"]),
+      day3: int.parse(json["2"]),
+      day4: int.parse(json["3"]),
+      day5: int.parse(json["4"]),
+      day6: int.parse(json["5"]),
+      day7: int.parse(json["6"]),
     );
   }
 }
