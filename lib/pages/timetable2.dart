@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:schoolcalendar/firstopenpages/fp2.dart';
 import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:schoolcalendar/pages/settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/api.dart';
 import 'package:intl/intl.dart';
@@ -44,10 +45,12 @@ dayAdjust(BuildContext context) {
       context: context,
       builder: (context) {
         return Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(60), color: Colors.white),
-            child: Padding(
-                padding: EdgeInsets.fromLTRB(4, 20, 0, 4), child: Fp2Page()));
+            // decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(60), color: Colors.transparent),
+           
+               child:
+            Padding(
+                padding: EdgeInsets.fromLTRB(4, 17, 0, 4), child: SettingsPage()));
       });
 }
 
@@ -182,8 +185,10 @@ class _Timetable2State extends State<Timetable2Page>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Card(
-                              elevation: 4,
-                              color: Color.fromRGBO(252, 252, 252, 1),
+                               shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                          elevation: 7.5,
+                          color: Color.fromRGBO(252, 252, 252, 1),
+                             
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(27)),
                               child: Container(
@@ -219,8 +224,11 @@ class _Timetable2State extends State<Timetable2Page>
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Card(
-                              elevation: 4,
-                              color: Color.fromRGBO(252, 252, 252, 1),
+                              
+                              shadowColor: Color.fromRGBO(61, 195, 252, 1),
+                          elevation: 7.5,
+                          color: Color.fromRGBO(252, 252, 252, 1),
+                             
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(27)),
                               child: Container(
