@@ -33,8 +33,8 @@ class Splash extends StatefulWidget {
 class SplashState extends State<Splash> {
   @override
   void initState() {
-    super.initState();
     checkFirstSeen();
+    super.initState();
   }
 
   @override

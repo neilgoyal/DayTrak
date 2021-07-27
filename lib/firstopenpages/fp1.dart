@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
-import '../globals.dart' as globals;
+import 'package:schoolcalendar/globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
-import '../authentication.dart';
-import '../google_sign_in_button.dart';
+import 'package:schoolcalendar/authentication.dart';
+import 'package:schoolcalendar/google_sign_in_button.dart';
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -40,7 +40,6 @@ class _Fp1State extends State<Fp1Page> {
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(50),
               child: AppBar(
-                  // backgroundColor: Color.fromRGBO(250, 250, 250, 1),
                   elevation: 0,
                   title: Container(
                       child: Padding(
@@ -60,7 +59,6 @@ class _Fp1State extends State<Fp1Page> {
                     style: TextStyle(
                       fontFamily: 'Protipo Compact',
                       fontSize: globals.h1,
-                      // color: Colors.black54,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
