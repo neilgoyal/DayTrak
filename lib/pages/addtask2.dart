@@ -137,34 +137,6 @@ class _Addtask2State extends State<Addtask2Page>
     }
   }
 
-  concisedate(date, time) {
-    String concisedate = "";
-    String concisetime = "";
-    Color late = Colors.black45;
-    if (date == "No Date") {
-      return [concisedate, concisetime, late];
-    }
-    DateTime fulldate = DateFormat('yyyy-MM-dd', 'en_US').parseLoose('$date');
-    if (concisetime != "no time") {
-      concisetime = time;
-      fulldate =
-          DateFormat('yyyy-MM-dd hh:mm a', 'en_US').parseLoose('$date $time');
-    }
-    if (fulldate.compareTo(DateTime.now()) < 0) {
-      late = Colors.red;
-    } else if (date == DateFormat('yyyy-MM-dd').format(DateTime.now())) {
-      concisedate = 'Today';
-    } else if (date ==
-        DateFormat('yyyy-MM-dd')
-            .format(DateTime.now().add(Duration(days: 1)))) {
-      concisedate = 'Tomorrow';
-    } else {
-      concisedate = DateFormat('E, d MMM').format(DateTime.parse(date));
-    }
-
-    return [concisedate, concisetime, late];
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -270,26 +242,40 @@ class _Addtask2State extends State<Addtask2Page>
                                       overflow: TextOverflow.visible,
                                       style: TextStyle(fontSize: globals.h5),
                                     ),
-                                    trailing: Column(children: [
-                                      Text(
-                                        description1,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: globals.h10,
-                                            color: concisedate(tasks['date'],
-                                                tasks['time'])[2]),
-                                      ),
-                                      Text(
-                                        description2,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                            fontSize: globals.h10,
-                                            color: concisedate(tasks['date'],
-                                                tasks['time'])[2]),
-                                      ),
-                                    ])),
+                                    trailing: (concisedate(tasks['date'],
+                                                tasks['time'])[0]) !=
+                                            ""
+                                        ? Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                                Text(
+                                                  description1,
+                                                  maxLines: 1,
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: TextStyle(
+                                                      fontSize: globals.h10,
+                                                      color: concisedate(
+                                                          tasks['date'],
+                                                          tasks['time'])[2]),
+                                                ),
+                                                if ((concisedate(tasks['date'],
+                                                        tasks['time'])[1]) !=
+                                                    "")
+                                                  Text(
+                                                    description2,
+                                                    maxLines: 1,
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    style: TextStyle(
+                                                        fontSize: globals.h10,
+                                                        color: concisedate(
+                                                            tasks['date'],
+                                                            tasks['time'])[2]),
+                                                  )
+                                              ])
+                                        : null),
                               ),
                               actions: <Widget>[],
                               secondaryActions: <Widget>[

@@ -337,32 +337,6 @@ class _Home2State extends State<Home2Page> {
     }
   }
 
-  concisedate(date, time) {
-    String concisedate = "";
-    String concisetime = "";
-    Color late = Colors.black45;
-    if (date == "No Date") {
-      return [concisedate, concisetime, late];
-    }
-    DateTime fulldate =
-        DateFormat('yyyy-MM-dd kk:mm:a', 'en_US').parseLoose('$date $time');
-    if (fulldate.compareTo(DateTime.now()) < 0) {
-      late = Colors.red;
-    } else if (date == DateFormat('yyyy-MM-dd').format(DateTime.now())) {
-      concisedate = 'Today';
-    } else if (date ==
-        DateFormat('yyyy-MM-dd')
-            .format(DateTime.now().add(Duration(days: 1)))) {
-      concisedate = 'Tomorrow';
-    } else {
-      concisedate = DateFormat('E, d MMM').format(DateTime.parse(date));
-    }
-    if (concisetime != "No Time") {
-      concisetime = time;
-    }
-    return [concisedate, concisetime, late];
-  }
-
   perstimetable() {
     return Container(
         child: FutureBuilder<Map<String, dynamic>>(
@@ -487,19 +461,18 @@ class _Home2State extends State<Home2Page> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       SizedBox(
-                                        width: globals.s4,
-                                        child:
-                                      Text(
-                                        (timetablePers!.isNotEmpty)
-                                            ? timetablePers![
-                                                '${globals.valueOfGrade}.${(index + buffer + 1)}_time']
-                                            : "-",
-                                        style: TextStyle(color: Colors.grey),
-                                        maxLines: 2,
-                                    overflow: TextOverflow.clip,
-                                        
-                                      )
-                            )])),
+                                          width: globals.s4,
+                                          child: Text(
+                                            (timetablePers!.isNotEmpty)
+                                                ? timetablePers![
+                                                    '${globals.valueOfGrade}.${(index + buffer + 1)}_time']
+                                                : "-",
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.clip,
+                                          ))
+                                    ])),
                           ),
                         ),
                       );
@@ -746,11 +719,19 @@ class _Home2State extends State<Home2Page> {
                                     maxLines: 1,
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                  subtitle: Text(
-                                    "$description $description2",
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
+                                  subtitle: (concisedate(tasks['date'],
+                                              tasks['time'])[0]) !=
+                                          ""
+                                      ? Text(
+                                          "$description  $description2",
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                            color: concisedate(tasks['date'],
+                                                tasks['time'])[2],
+                                          ),
+                                        )
+                                      : null,
                                 ),
                               );
                             },
