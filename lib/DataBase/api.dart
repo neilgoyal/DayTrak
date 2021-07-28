@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 
 Future<Timetable> timetable() async {
   final response1 = await http.get(Uri.parse(

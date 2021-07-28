@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:schoolcalendar/pages/settings.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:schoolcalendar/api.dart';
+import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:intl/intl.dart';
 
 class Timetable2Page extends StatefulWidget {
@@ -35,7 +35,7 @@ Map? timetable_0 = {},
     timetable_5 = {},
     timetable_6 = {};
 
-dayAdjust(BuildContext context) {
+dayAdjust(context) {
   showModalBottomSheet(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
@@ -43,13 +43,13 @@ dayAdjust(BuildContext context) {
       isScrollControlled: false,
       context: context,
       builder: (context) {
-        return Container(
-            // decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.circular(60), color: Colors.transparent),
-
-            child: Padding(
-                padding: EdgeInsets.fromLTRB(4, 17, 0, 4),
-                child: SettingsPage()));
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          return Container(
+              child: Padding(
+                  padding: EdgeInsets.fromLTRB(4, 17, 0, 4),
+                  child: SettingsPage()));
+        });
       });
 }
 

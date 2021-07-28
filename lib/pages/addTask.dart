@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:intl/intl.dart';
-import 'package:schoolcalendar/globals.dart' as globals;
+import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import '/Provider/theme_provider.dart';
-import 'package:schoolcalendar/database.dart';
+import 'package:schoolcalendar/DataBase/database.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
 
@@ -166,26 +167,69 @@ class _Addtask2State extends State<Addtask2Page>
                     return Container(
                         padding:
                             EdgeInsets.only(top: 0.0, left: 12.0, right: 12.0),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                height: globals.l1,
-                              ),
-                              Text(
-                                "You're all done!  ",
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    fontFamily: "Protipo Compact",
-                                    fontSize: globals.h6,
-                                    fontWeight: FontWeight.w200),
-                              ),
-                              Icon(
-                                CupertinoIcons.smiley,
-                                size: globals.h6,
-                                color: Colors.black54,
-                              )
-                            ]));
+                        child: Column(children: [
+                          Stack(children: <Widget>[
+                            Container(
+                                alignment: Alignment.center,
+                                child: Column(children: [
+                                  SizedBox(
+                                    height: globals.l5,
+                                  ),
+                                  SizedBox(
+                                    height: globals.l4,
+                                  ),
+                                  SizedBox(
+                                    height: 150,
+                                    width: 150,
+                                    child: FlareActor("assets/book.flr",
+                                        alignment: Alignment.center,
+                                        fit: BoxFit.contain,
+                                        animation: "Neil"),
+                                  )
+                                ])),
+                            Container(
+                                alignment: Alignment.center,
+                                child: Column(children: [
+                                  SizedBox(
+                                    height: globals.l4,
+                                  ),
+                                  Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "You're all done!  ",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              fontFamily: "Protipo Compact",
+                                              fontSize: globals.h6,
+                                              fontWeight: FontWeight.w200),
+                                        ),
+                                        Icon(
+                                          CupertinoIcons.smiley,
+                                          size: globals.h7,
+                                          color: Colors.black54,
+                                        )
+                                      ]),
+                                  SizedBox(
+                                    height: globals.h6,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Click '+' to add a task",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            fontFamily: "Protipo Compact",
+                                            fontSize: globals.h6,
+                                            fontWeight: FontWeight.w200),
+                                      ),
+                                    ],
+                                  ),
+                                ]))
+                          ])
+                        ]));
                   } else
                     return Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
@@ -214,7 +258,7 @@ class _Addtask2State extends State<Addtask2Page>
                                       size: 30,
                                       onPressed: () async {
                                         Future.delayed(
-                                            Duration(milliseconds: 450),
+                                            Duration(milliseconds: 520),
                                             () async {
                                           HapticFeedback.heavyImpact();
                                           await DatabaseService.deleteItem(
@@ -222,7 +266,7 @@ class _Addtask2State extends State<Addtask2Page>
                                         });
                                       },
                                       duration:
-                                          const Duration(milliseconds: 300),
+                                          const Duration(milliseconds: 370),
                                       splashColor: Colors.transparent,
                                       icons: const <AnimatedIconItem>[
                                         AnimatedIconItem(
