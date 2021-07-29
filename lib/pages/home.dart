@@ -566,7 +566,7 @@ class _Home2State extends State<Home2Page> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25)),
               child: Container(
-                  height: 350,
+                  height: globals.lc,
                   padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: perstimetable())),
           SizedBox(
@@ -588,7 +588,7 @@ class _Home2State extends State<Home2Page> {
                   borderRadius: BorderRadius.circular(35)),
               child: Container(
                   margin: EdgeInsets.all(10),
-                  height: 400,
+                  height: globals.lc,
                   child: StreamBuilder<QuerySnapshot>(
                     stream: DatabaseService.readItems(),
                     builder: (context, snapshot) {

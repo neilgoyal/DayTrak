@@ -2,9 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../DataBase/globals.dart' as globals;
 import 'package:flutter/rendering.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/services.dart';
 import '../pages/tabBar.dart';
+import 'package:schoolcalendar/pages/settings.dart';
 
 String errmessage = "Cannot Be Empty";
 OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
@@ -22,397 +21,6 @@ class Fp2Page extends StatefulWidget {
 }
 
 class _Fp2State extends State<Fp2Page> {
-  final myController = TextEditingController();
-  final myController2 = TextEditingController();
-  final myController3 = TextEditingController();
-  final myController4 = TextEditingController();
-  final myController5 = TextEditingController();
-  final myController6 = TextEditingController();
-  final myController7 = TextEditingController();
-  final myController8 = TextEditingController();
-  final myController9 = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
-
-  grade9() {
-    return Form(
-        key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              cursorColor: Colors.black54,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              controller: myController,
-              decoration: InputDecoration(
-                  labelText: 'Block 1',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              cursorColor: Colors.black54,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              controller: myController2,
-              decoration: InputDecoration(
-                  labelText: 'Block 2',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController3,
-              decoration: InputDecoration(
-                  labelText: 'Block 3',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController4,
-              decoration: InputDecoration(
-                  labelText: 'Block 4',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController5,
-              decoration: InputDecoration(
-                  labelText: 'Block 5',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController6,
-              decoration: InputDecoration(
-                  labelText: 'Block 6',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController7,
-              decoration: InputDecoration(
-                  labelText: 'Block 7',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController8,
-              decoration: InputDecoration(
-                  labelText: 'Block 8',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController9,
-              decoration: InputDecoration(
-                  labelText: 'Block 9',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 15,
-          ),
-        ]));
-  }
-
-  grade11() {
-    return Form(
-        key: _formKey,
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          SizedBox(
-            height: 20,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              cursorColor: Colors.black54,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              controller: myController,
-              decoration: InputDecoration(
-                  labelText: 'Block 1',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              cursorColor: Colors.black54,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              controller: myController2,
-              decoration: InputDecoration(
-                  labelText: 'Block 2',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController3,
-              decoration: InputDecoration(
-                  labelText: 'Block 3',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController4,
-              decoration: InputDecoration(
-                  labelText: 'Block 4',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textInputAction: TextInputAction.next,
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController5,
-              decoration: InputDecoration(
-                  labelText: 'Block 5',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 10,
-          ),
-          TextFormField(
-              textCapitalization: TextCapitalization.sentences,
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return errmessage;
-                }
-              },
-              cursorColor: Colors.black54,
-              controller: myController6,
-              decoration: InputDecoration(
-                  labelText: 'Block 6',
-                  labelStyle: TextStyle(
-                    color: Colors.black54,
-                  ),
-                  enabledBorder: textfieldborderenabled,
-                  focusedBorder: focusedborder)),
-          SizedBox(
-            height: 15,
-          ),
-        ]));
-  }
-
-  nosupport() {
-    return Container(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: globals.s2,
-          ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                    child: Padding(
-                        padding: EdgeInsets.only(
-                            top: 0.0, left: globals.h5!, right: globals.h5!),
-                        child: Container(
-                          child: Text(
-                            'Support Coming Soon!',
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: globals.h5,
-                              color: Colors.black54,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            textDirection: TextDirection.ltr,
-                            textAlign: TextAlign.center,
-                            maxLines: 6,
-                          ),
-                        )))
-              ]),
-        ],
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    myController.dispose();
-    myController2.dispose();
-    myController3.dispose();
-    myController4.dispose();
-    myController5.dispose();
-    myController6.dispose();
-    myController7.dispose();
-    myController8.dispose();
-    myController9.dispose();
-    super.dispose();
-  }
-
-  addIntToSF() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('Value', globals.valueOfGrade!);
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -521,11 +129,11 @@ class _Fp2State extends State<Fp2Page> {
                                                   value: globals.valueOfGrade,
                                                   items: [
                                                     DropdownMenuItem(
-                                                        child: Text("5"),
-                                                        value: 5),
+                                                        child: Text("6A"),
+                                                        value: 61),
                                                     DropdownMenuItem(
-                                                        child: Text("6"),
-                                                        value: 6),
+                                                        child: Text("6B"),
+                                                        value: 62),
                                                     DropdownMenuItem(
                                                         child: Text("7"),
                                                         value: 7),
@@ -576,11 +184,15 @@ class _Fp2State extends State<Fp2Page> {
                                           Column(
                                             children: <Widget>[
                                               if (globals.valueOfGrade == 11)
-                                                grade11()
+                                                grade11(context, false)
                                               else if (globals.valueOfGrade ==
                                                       91 ||
                                                   globals.valueOfGrade == 92)
-                                                grade9()
+                                                grade9(context, false)
+                                              else if (globals.valueOfGrade ==
+                                                      61 ||
+                                                  globals.valueOfGrade == 62)
+                                                grade6(context, false)
                                               else
                                                 nosupport()
                                             ],
@@ -603,59 +215,10 @@ class _Fp2State extends State<Fp2Page> {
                                             Colors.transparent),
                                   ),
                                   onPressed: () async {
-                                    HapticFeedback.heavyImpact();
-                                    if (globals.valueOfGrade == 11) {
-                                      if (_formKey.currentState!.validate()) {
-                                        SharedPreferences prefs =
-                                            await SharedPreferences
-                                                .getInstance();
-                                        prefs.setString(
-                                            'B1', myController.text);
-                                        prefs.setString(
-                                            'B2', myController2.text);
-                                        prefs.setString(
-                                            'B3', myController3.text);
-                                        prefs.setString(
-                                            'B4', myController4.text);
-                                        prefs.setString(
-                                            'B5', myController5.text);
-                                        prefs.setString(
-                                            'B6', myController6.text);
-                                        Navigator.of(context).pushReplacement(
-                                            new MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HomePage()));
-                                      }
-                                    } else if (globals.valueOfGrade == 91 ||
-                                        globals.valueOfGrade == 92) {
-                                      if (_formKey.currentState!.validate()) {
-                                        SharedPreferences prefs =
-                                            await SharedPreferences
-                                                .getInstance();
-                                        prefs.setString(
-                                            'B1', myController.text);
-                                        prefs.setString(
-                                            'B2', myController2.text);
-                                        prefs.setString(
-                                            'B3', myController3.text);
-                                        prefs.setString(
-                                            'B4', myController4.text);
-                                        prefs.setString(
-                                            'B5', myController5.text);
-                                        prefs.setString(
-                                            'B6', myController6.text);
-                                        prefs.setString(
-                                            'B7', myController7.text);
-                                        prefs.setString(
-                                            'B8', myController8.text);
-                                        prefs.setString(
-                                            'B9', myController9.text);
-                                        Navigator.of(context).pushReplacement(
-                                            new MaterialPageRoute(
-                                                builder: (context) =>
-                                                    HomePage()));
-                                      }
-                                    }
+                                    fp2helper();
+                                    Navigator.of(context).pushReplacement(
+                                        new MaterialPageRoute(
+                                            builder: (context) => HomePage()));
                                   },
                                   child: Icon(
                                     CupertinoIcons.checkmark_alt,
