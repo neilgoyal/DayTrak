@@ -25,9 +25,7 @@ class _Fp1State extends State<Fp1Page> {
     globals.h8 = width * 0.055;
     globals.h9 = width * 0.05;
     globals.h10 = width * 0.045;
-    globals.s1 = width * 0.3;
     globals.s2 = width * 0.275;
-    globals.s3 = width * 0.25;
     globals.s4 = width * 0.225;
     globals.s5 = width * 0.13;
     globals.w = width * 0.85;
@@ -40,17 +38,9 @@ class _Fp1State extends State<Fp1Page> {
           appBar: PreferredSize(
               preferredSize: Size.fromHeight(50),
               child: AppBar(
-                  elevation: 0,
-                  title: Container(
-                      child: Padding(
-                    padding: EdgeInsets.only(top: 0.0, left: 0.0, right: 0.0),
-                  )),
-                  toolbarHeight: 50.0)),
+                  elevation: 0, title: Container(), toolbarHeight: 50.0)),
           body: Column(
             children: [
-              SizedBox(
-                height: globals.h10,
-              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -84,31 +74,26 @@ class _Fp1State extends State<Fp1Page> {
               SizedBox(
                 height: globals.s5,
               ),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                        child: Padding(
-                            padding: EdgeInsets.only(
-                                top: 0.0,
-                                left: globals.h5!,
-                                right: globals.h5!),
-                            child: Container(
-                              child: Text(
-                                'DayTrak is designed to help manage your school calendar in simple and easy way',
-                                style: TextStyle(
-                                  fontFamily: 'Protipo Compact',
-                                  fontSize: globals.h6,
-                                  fontWeight: FontWeight.w300,
-                                ),
-                                overflow: TextOverflow.ellipsis,
-                                textDirection: TextDirection.ltr,
-                                textAlign: TextAlign.center,
-                                maxLines: 6,
-                              ),
-                            )))
-                  ]),
+              Row(children: [
+                Expanded(
+                    child: Padding(
+                        padding: EdgeInsets.only(
+                            left: globals.h5!, right: globals.h5!),
+                        child: Container(
+                          child: Text(
+                            'DayTrak is designed to help you manage your school calendar in a simple and easy way.',
+                            style: TextStyle(
+                              fontFamily: 'Protipo Compact',
+                              fontSize: globals.h6,
+                              fontWeight: FontWeight.w300,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                            textDirection: TextDirection.ltr,
+                            textAlign: TextAlign.center,
+                            maxLines: 6,
+                          ),
+                        )))
+              ]),
               SizedBox(
                 height: globals.s5,
               ),

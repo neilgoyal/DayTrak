@@ -342,142 +342,68 @@ class _Home2State extends State<Home2Page> {
         child: FutureBuilder<Map<String, dynamic>>(
             future: futureTimetablepers,
             builder: (context, snapshot) {
-              if (globals.day1 == "7") {
-                return Container(
-                    padding:
-                        EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Card(
-                              elevation: 4,
-                              color: Color.fromRGBO(252, 252, 252, 1),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(27)),
-                              child: Container(
-                                padding: EdgeInsets.all(8.0),
-                                child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          'No School',
-                                          style: TextStyle(
-                                              fontSize: globals.h3,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w300,
-                                              fontFamily: "Protipo Compact"),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ))
-                        ]));
-              }
-              if (globals.day1 == "8") {
-                return Container(
-                    padding:
-                        EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Card(
-                              elevation: 4,
-                              color: Color.fromRGBO(252, 252, 252, 1),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(27)),
-                              child: Container(
-                                padding: EdgeInsets.all(8.0),
-                                child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          'Error',
-                                          style: TextStyle(
-                                              fontSize: globals.h3,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w300,
-                                              fontFamily: "Protipo Compact"),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ))
-                        ]));
-              } else {
-                if (snapshot.hasData) {
-                  timetablePers = snapshot.data;
-                  while (timetablePers![
-                          '${globals.valueOfGrade}.${(buffer + 1)}'] ==
-                      null) {
-                    buffer = buffer + 1;
-                  }
+              if (snapshot.hasData) {
+                timetablePers = snapshot.data;
+                while (
+                    timetablePers!['${globals.valueOfGrade}.${(buffer + 1)}'] ==
+                        null) {
+                  buffer++;
                 }
-                return ListView.builder(
-                    itemCount: timetablePers!.length ~/ 2,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding:
-                            EdgeInsets.only(top: 20.0, left: 12.0, right: 12.0),
-                        child: Card(
-                          elevation: 7.5,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(27)),
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
-                            child: ListTile(
-                                title: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: <Widget>[
-                                    Expanded(
-                                        child: Container(
-                                      child: Text(
-                                        (timetablePers!.isNotEmpty)
-                                            ? blocktoprefrence(timetablePers![
-                                                '${globals.valueOfGrade}.${(index + buffer + 1)}'])
-                                            : "-",
-                                        style: TextStyle(
-                                            fontSize: globals.h5,
-                                            fontWeight: FontWeight.w300,
-                                            fontFamily: "Protipo Compact"),
-                                      ),
-                                    ))
-                                  ],
-                                ),
-                                trailing: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                          width: globals.s4,
-                                          child: Text(
-                                            (timetablePers!.isNotEmpty)
-                                                ? timetablePers![
-                                                    '${globals.valueOfGrade}.${(index + buffer + 1)}_time']
-                                                : "-",
-                                            style:
-                                                TextStyle(color: Colors.grey),
-                                            maxLines: 2,
-                                            overflow: TextOverflow.clip,
-                                          ))
-                                    ])),
-                          ),
-                        ),
-                      );
-                    });
               }
+              return ListView.builder(
+                  itemCount: (timetablePers!.length == 0)
+                      ? 3
+                      : (timetablePers!.length ~/ 2),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding:
+                          EdgeInsets.only(top: 20.0, left: 12.0, right: 12.0),
+                      child: Card(
+                        elevation: 7.5,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(27)),
+                        child: Container(
+                          padding: EdgeInsets.fromLTRB(8, 8, 0, 8),
+                          child: ListTile(
+                              title: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Expanded(
+                                      child: Container(
+                                    child: Text(
+                                      (timetablePers!.isNotEmpty)
+                                          ? blocktoprefrence(timetablePers![
+                                              '${globals.valueOfGrade}.${(index + buffer + 1)}'])
+                                          : "-",
+                                      style: TextStyle(
+                                          fontSize: globals.h5,
+                                          fontWeight: FontWeight.w300,
+                                          fontFamily: "Protipo Compact"),
+                                    ),
+                                  ))
+                                ],
+                              ),
+                              trailing: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    SizedBox(
+                                        width: globals.s4,
+                                        child: Text(
+                                          (timetablePers!.isNotEmpty)
+                                              ? timetablePers![
+                                                  '${globals.valueOfGrade}.${(index + buffer + 1)}_time']
+                                              : "-",
+                                          style: TextStyle(color: Colors.grey),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.clip,
+                                        ))
+                                  ])),
+                        ),
+                      ),
+                    );
+                  });
             }));
   }
 

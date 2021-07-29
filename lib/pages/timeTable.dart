@@ -40,12 +40,13 @@ dayAdjust(context) {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30.0),
       ),
-      isScrollControlled: false,
+      isScrollControlled: true,
       context: context,
       builder: (context) {
         return StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
           return Container(
+              height: MediaQuery.of(context).size.height * 0.85,
               child: Padding(
                   padding: EdgeInsets.fromLTRB(4, 17, 0, 4),
                   child: SettingsPage()));
@@ -175,7 +176,7 @@ class _Timetable2State extends State<Timetable2Page>
         child: FutureBuilder<Timetable>(
             future: futureTimetable,
             builder: (context, snapshot) {
-              if (gloabls[dayord] == "7") {
+              if (gloabls[dayord] == "7" || gloabls[dayord] == "8") {
                 return Container(
                     padding:
                         EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
@@ -199,45 +200,9 @@ class _Timetable2State extends State<Timetable2Page>
                                     children: <Widget>[
                                       Container(
                                         child: Text(
-                                          'No School',
-                                          style: TextStyle(
-                                              fontSize: globals.h3,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w300,
-                                              fontFamily: "Protipo Compact"),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ))
-                        ]));
-              }
-              if (gloabls[dayord] == "8") {
-                return Container(
-                    padding:
-                        EdgeInsets.only(top: 10.0, left: 18.0, right: 18.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Card(
-                              shadowColor: Color.fromRGBO(61, 195, 252, 1),
-                              elevation: 7.5,
-                              color: Color.fromRGBO(252, 252, 252, 1),
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(27)),
-                              child: Container(
-                                padding: EdgeInsets.all(8.0),
-                                child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Container(
-                                        child: Text(
-                                          'Error',
+                                          (gloabls[dayord] == "7")
+                                              ? 'No School'
+                                              : "Error",
                                           style: TextStyle(
                                               fontSize: globals.h3,
                                               color: Colors.black54,

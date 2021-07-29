@@ -419,7 +419,6 @@ class _Fp2State extends State<Fp2Page> {
         debugShowCheckedModeBanner: false,
         title: 'DayTrak',
         home: Scaffold(
-            resizeToAvoidBottomInset: true,
             appBar: PreferredSize(
                 preferredSize: Size.fromHeight(70),
                 child: AppBar(
@@ -427,7 +426,7 @@ class _Fp2State extends State<Fp2Page> {
                     elevation: 0,
                     title: Container(
                         child: Padding(
-                      padding: EdgeInsets.only(top: 0.0, left: 2.0, right: 2.0),
+                      padding: EdgeInsets.only(left: 2.0, right: 2.0),
                       child: Text(
                         'Setup',
                         style: TextStyle(
@@ -441,38 +440,131 @@ class _Fp2State extends State<Fp2Page> {
                     toolbarHeight: 50.0)),
             body: GestureDetector(
                 onTap: () {
-                  FocusScope.of(context).requestFocus(FocusNode());
+                  FocusScope.of(context).unfocus();
                 },
                 child: SingleChildScrollView(
-                    child: Column(children: [
-                  Padding(
-                      padding: EdgeInsets.fromLTRB(20, 15, 20, 10),
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.all(Radius.circular(55)),
-                          ),
-                          child: Column(children: [
-                            Card(
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(35)),
-                                child: Padding(
-                                    padding: EdgeInsets.only(
-                                        top: 0.0, left: 30.0, right: 30.0),
-                                    child: Container(
-                                        child: Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
+                    child: Padding(
+                        padding: EdgeInsets.fromLTRB(20, 15, 20, 10),
+                        child: Column(children: [
+                          Card(
+                              elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(35)),
+                              child: Padding(
+                                  padding:
+                                      EdgeInsets.only(left: 30.0, right: 30.0),
+                                  child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        SizedBox(
+                                          height: globals.h6,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text('Grade: ',
+                                                style: TextStyle(
+                                                  fontFamily: 'Protipo Compact',
+                                                  fontSize: globals.h4,
+                                                  fontWeight: FontWeight.w300,
+                                                )),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: globals.h6,
+                                        ),
+                                        Container(
+                                            child: Center(
+                                                child:
+                                                    Column(children: <Widget>[
+                                          InputDecorator(
+                                              decoration: InputDecoration(
+                                                labelText: 'Grade: ',
+                                                labelStyle: Theme.of(context)
+                                                    .primaryTextTheme
+                                                    .caption!
+                                                    .copyWith(
+                                                        color: Colors.black),
+                                                border:
+                                                    const OutlineInputBorder(
+                                                        gapPadding: 0,
+                                                        borderSide:
+                                                            const BorderSide(
+                                                                width: 1),
+                                                        borderRadius:
+                                                            const BorderRadius
+                                                                    .all(
+                                                                Radius.circular(
+                                                                    25.0))),
+                                              ),
+                                              child:
+                                                  DropdownButtonHideUnderline(
+                                                      child: Listener(
+                                                onPointerDown: (_) =>
+                                                    FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: DropdownButton(
+                                                  style: TextStyle(
+                                                      color: Colors.black,
+                                                      fontWeight:
+                                                          FontWeight.w300,
+                                                      fontSize: globals.h10,
+                                                      fontFamily:
+                                                          'Protipo Compact'),
+                                                  elevation: 1,
+                                                  isExpanded: true,
+                                                  isDense: true,
+                                                  icon: Icon(Icons
+                                                      .keyboard_arrow_down),
+                                                  value: globals.valueOfGrade,
+                                                  items: [
+                                                    DropdownMenuItem(
+                                                        child: Text("5"),
+                                                        value: 5),
+                                                    DropdownMenuItem(
+                                                        child: Text("6"),
+                                                        value: 6),
+                                                    DropdownMenuItem(
+                                                        child: Text("7"),
+                                                        value: 7),
+                                                    DropdownMenuItem(
+                                                        child: Text("8"),
+                                                        value: 8),
+                                                    DropdownMenuItem(
+                                                        child: Text("9A"),
+                                                        value: 91),
+                                                    DropdownMenuItem(
+                                                        child: Text("9B"),
+                                                        value: 92),
+                                                    DropdownMenuItem(
+                                                        child: Text("10"),
+                                                        value: 10),
+                                                    DropdownMenuItem(
+                                                        child: Text("11"),
+                                                        value: 11),
+                                                    DropdownMenuItem(
+                                                        child: Text("12"),
+                                                        value: 12),
+                                                  ],
+                                                  onChanged: (dynamic value) {
+                                                    setState(() {
+                                                      globals.valueOfGrade =
+                                                          value;
+                                                      addIntToSF();
+                                                    });
+                                                  },
+                                                ),
+                                              ))),
                                           SizedBox(
                                             height: globals.h6,
                                           ),
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
                                             children: [
-                                              Text('Grade: ',
+                                              Text('Subjects:',
                                                   style: TextStyle(
                                                     fontFamily:
                                                         'Protipo Compact',
@@ -481,203 +573,100 @@ class _Fp2State extends State<Fp2Page> {
                                                   )),
                                             ],
                                           ),
-                                          SizedBox(
-                                            height: globals.h6,
+                                          Column(
+                                            children: <Widget>[
+                                              if (globals.valueOfGrade == 11)
+                                                grade11()
+                                              else if (globals.valueOfGrade ==
+                                                      91 ||
+                                                  globals.valueOfGrade == 92)
+                                                grade9()
+                                              else
+                                                nosupport()
+                                            ],
                                           ),
-                                          Container(
-                                              child: Center(
-                                                  child:
-                                                      Column(children: <Widget>[
-                                            InputDecorator(
-                                                decoration: InputDecoration(
-                                                  labelText: 'Grade: ',
-                                                  labelStyle: Theme.of(context)
-                                                      .primaryTextTheme
-                                                      .caption!
-                                                      .copyWith(
-                                                          color: Colors.black),
-                                                  border:
-                                                      const OutlineInputBorder(
-                                                          gapPadding: 0,
-                                                          borderSide:
-                                                              const BorderSide(
-                                                                  width: 1),
-                                                          borderRadius:
-                                                              const BorderRadius
-                                                                      .all(
-                                                                  Radius.circular(
-                                                                      25.0))),
-                                                ),
-                                                child:
-                                                    DropdownButtonHideUnderline(
-                                                        child: Listener(
-                                                  onPointerDown: (_) =>
-                                                      FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: DropdownButton(
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.w300,
-                                                        fontSize: globals.h10,
-                                                        fontFamily:
-                                                            'Protipo Compact'),
-                                                    elevation: 1,
-                                                    isExpanded: true,
-                                                    isDense: true,
-                                                    icon: Icon(Icons
-                                                        .keyboard_arrow_down),
-                                                    value: globals.valueOfGrade,
-                                                    items: [
-                                                      DropdownMenuItem(
-                                                          child: Text("5"),
-                                                          value: 5),
-                                                      DropdownMenuItem(
-                                                          child: Text("6"),
-                                                          value: 6),
-                                                      DropdownMenuItem(
-                                                          child: Text("7"),
-                                                          value: 7),
-                                                      DropdownMenuItem(
-                                                          child: Text("8"),
-                                                          value: 8),
-                                                      DropdownMenuItem(
-                                                          child: Text("9A"),
-                                                          value: 91),
-                                                      DropdownMenuItem(
-                                                          child: Text("9B"),
-                                                          value: 92),
-                                                      DropdownMenuItem(
-                                                          child: Text("10"),
-                                                          value: 10),
-                                                      DropdownMenuItem(
-                                                          child: Text("11"),
-                                                          value: 11),
-                                                      DropdownMenuItem(
-                                                          child: Text("12"),
-                                                          value: 12),
-                                                    ],
-                                                    onChanged: (dynamic value) {
-                                                      setState(() {
-                                                        globals.valueOfGrade =
-                                                            value;
-                                                        addIntToSF();
-                                                      });
-                                                    },
-                                                  ),
-                                                ))),
-                                            SizedBox(
-                                              height: globals.h6,
-                                            ),
-                                            Row(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text('Subjects:',
-                                                    style: TextStyle(
-                                                      fontFamily:
-                                                          'Protipo Compact',
-                                                      fontSize: globals.h4,
-                                                      fontWeight:
-                                                          FontWeight.w300,
-                                                    )),
-                                              ],
-                                            ),
-                                            Column(
-                                              children: <Widget>[
-                                                if (globals.valueOfGrade == 11)
-                                                  grade11()
-                                                else if (globals.valueOfGrade ==
-                                                        91 ||
-                                                    globals.valueOfGrade == 92)
-                                                  grade9()
-                                                else
-                                                  nosupport()
-                                              ],
-                                            ),
-                                          ]))),
-                                        ])))),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ElevatedButton(
-                                    style: ButtonStyle(
-                                      backgroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                      foregroundColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                      shadowColor:
-                                          MaterialStateProperty.all<Color>(
-                                              Colors.transparent),
-                                    ),
-                                    onPressed: () async {
-                                      HapticFeedback.heavyImpact();
-                                      if (globals.valueOfGrade == 11) {
-                                        if (_formKey.currentState!.validate()) {
-                                          SharedPreferences prefs =
-                                              await SharedPreferences
-                                                  .getInstance();
-                                          prefs.setString(
-                                              'B1', myController.text);
-                                          prefs.setString(
-                                              'B2', myController2.text);
-                                          prefs.setString(
-                                              'B3', myController3.text);
-                                          prefs.setString(
-                                              'B4', myController4.text);
-                                          prefs.setString(
-                                              'B5', myController5.text);
-                                          prefs.setString(
-                                              'B6', myController6.text);
-                                          Navigator.of(context).pushReplacement(
-                                              new MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      HomePage()));
-                                        }
-                                      } else if (globals.valueOfGrade == 91 ||
-                                          globals.valueOfGrade == 92) {
-                                        if (_formKey.currentState!.validate()) {
-                                          SharedPreferences prefs =
-                                              await SharedPreferences
-                                                  .getInstance();
-                                          prefs.setString(
-                                              'B1', myController.text);
-                                          prefs.setString(
-                                              'B2', myController2.text);
-                                          prefs.setString(
-                                              'B3', myController3.text);
-                                          prefs.setString(
-                                              'B4', myController4.text);
-                                          prefs.setString(
-                                              'B5', myController5.text);
-                                          prefs.setString(
-                                              'B6', myController6.text);
-                                          prefs.setString(
-                                              'B7', myController7.text);
-                                          prefs.setString(
-                                              'B8', myController8.text);
-                                          prefs.setString(
-                                              'B9', myController9.text);
-                                          Navigator.of(context).pushReplacement(
-                                              new MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      HomePage()));
-                                        }
+                                        ]))),
+                                      ]))),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                  style: ButtonStyle(
+                                    backgroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent),
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent),
+                                    shadowColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Colors.transparent),
+                                  ),
+                                  onPressed: () async {
+                                    HapticFeedback.heavyImpact();
+                                    if (globals.valueOfGrade == 11) {
+                                      if (_formKey.currentState!.validate()) {
+                                        SharedPreferences prefs =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        prefs.setString(
+                                            'B1', myController.text);
+                                        prefs.setString(
+                                            'B2', myController2.text);
+                                        prefs.setString(
+                                            'B3', myController3.text);
+                                        prefs.setString(
+                                            'B4', myController4.text);
+                                        prefs.setString(
+                                            'B5', myController5.text);
+                                        prefs.setString(
+                                            'B6', myController6.text);
+                                        Navigator.of(context).pushReplacement(
+                                            new MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePage()));
                                       }
-                                    },
-                                    child: Icon(
-                                      CupertinoIcons.checkmark_alt,
-                                      color: Colors.black54,
-                                      size: globals.h2,
-                                    ))
-                              ],
-                            ),
-                            SizedBox(
-                              height: globals.h6,
-                            ),
-                          ])))
-                ])))));
+                                    } else if (globals.valueOfGrade == 91 ||
+                                        globals.valueOfGrade == 92) {
+                                      if (_formKey.currentState!.validate()) {
+                                        SharedPreferences prefs =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        prefs.setString(
+                                            'B1', myController.text);
+                                        prefs.setString(
+                                            'B2', myController2.text);
+                                        prefs.setString(
+                                            'B3', myController3.text);
+                                        prefs.setString(
+                                            'B4', myController4.text);
+                                        prefs.setString(
+                                            'B5', myController5.text);
+                                        prefs.setString(
+                                            'B6', myController6.text);
+                                        prefs.setString(
+                                            'B7', myController7.text);
+                                        prefs.setString(
+                                            'B8', myController8.text);
+                                        prefs.setString(
+                                            'B9', myController9.text);
+                                        Navigator.of(context).pushReplacement(
+                                            new MaterialPageRoute(
+                                                builder: (context) =>
+                                                    HomePage()));
+                                      }
+                                    }
+                                  },
+                                  child: Icon(
+                                    CupertinoIcons.checkmark_alt,
+                                    color: Colors.black54,
+                                    size: globals.h2,
+                                  ))
+                            ],
+                          ),
+                          SizedBox(
+                            height: globals.h6,
+                          ),
+                        ]))))));
   }
 }
