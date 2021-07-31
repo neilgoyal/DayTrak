@@ -344,11 +344,12 @@ class _Home2State extends State<Home2Page> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 timetablePers = snapshot.data;
-                while (
-                    timetablePers!['${globals.valueOfGrade}.${(buffer + 1)}'] ==
-                        null) {
-                  buffer++;
-                }
+                print(timetablePers);
+                // while (
+                //     timetablePers!['${globals.valueOfGrade}.${(buffer + 1)}'] ==
+                //         null) {
+                //   buffer++;
+                // }
               }
               return ListView.builder(
                   itemCount: (timetablePers!.length == 0)

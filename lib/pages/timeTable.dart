@@ -189,7 +189,7 @@ class _Timetable2State extends State<Timetable2Page>
                                   grade11(context, true)
                                 else if (globals.valueOfGrade == 91 ||
                                     globals.valueOfGrade == 92)
-                                  grade9(context, true)
+                                  grade9and10(context, true)
                                 else
                                   nosupport()
                               ],
