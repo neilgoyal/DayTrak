@@ -10,6 +10,7 @@ import '/Provider/theme_provider.dart';
 import 'package:schoolcalendar/DataBase/database.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:animated_icon_button/animated_icon_button.dart';
+import 'package:animate_icons/animate_icons.dart';
 
 class Addtask2Page extends StatefulWidget {
   @override
@@ -23,11 +24,13 @@ class _Addtask2State extends State<Addtask2Page>
   DateTime? selectedDate;
   DateTime? selectedTime;
   late AnimationController _animationController;
+  late AnimateIconController c1;
   bool isPlaying = false;
 
   @override
   void initState() {
     super.initState();
+    c1 = AnimateIconController();
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 450));
   }
@@ -117,6 +120,12 @@ class _Addtask2State extends State<Addtask2Page>
           : _animationController.reverse();
     });
   }
+
+  // void deleteTask() async {
+  //   String docID = snapshot.data!.docs[index].id;
+  //   HapticFeedback.heavyImpact();
+  //   await DatabaseService.deleteItem(docId: docID);
+  // }
 
   void addatask() async {
     if (_todoTitleController.text.isEmpty) {
@@ -254,31 +263,55 @@ class _Addtask2State extends State<Addtask2Page>
                                 child: ListTile(
                                     horizontalTitleGap: 7,
                                     minLeadingWidth: 0,
-                                    leading: AnimatedIconButton(
+                                    leading:
+                                        // AnimatedIconButton(
+                                        //   size: 30,
+                                        //   onPressed: () async {
+                                        //     Future.delayed(
+                                        //         Duration(milliseconds: 520),
+                                        //         () async {
+                                        //       HapticFeedback.heavyImpact();
+                                        //       await DatabaseService.deleteItem(
+                                        //           docId: docID);
+                                        //     });
+                                        //   },
+                                        //   duration:
+                                        //       const Duration(milliseconds: 370),
+                                        //   splashColor: Colors.transparent,
+                                        //   icons: 
+                                        //   const <AnimatedIconItem>[
+                                        //     AnimatedIconItem(
+                                        //       icon: Icon(CupertinoIcons.circle,
+                                        //           color: Colors.black54),
+                                        //     ),
+                                        //     AnimatedIconItem(
+                                        //       icon: Icon(
+                                        //           CupertinoIcons.checkmark_alt,
+                                        //           color: Colors.green),
+                                        //     ),
+                                        //   ],
+                                        // ),
+                                        AnimateIcons(
+                                      startIcon: CupertinoIcons.circle,
+                                      endIcon: CupertinoIcons.checkmark_alt,
                                       size: 30,
-                                      onPressed: () async {
-                                        Future.delayed(
-                                            Duration(milliseconds: 520),
-                                            () async {
-                                          HapticFeedback.heavyImpact();
-                                          await DatabaseService.deleteItem(
-                                              docId: docID);
-                                        });
+                                      controller: c1,
+                                      // add this tooltip for the start icon
+                                      startTooltip: 'Icons.add_circle',
+                                      // add this tooltip for the end icon
+                                      endTooltip: 'Icons.add_circle_outline',
+                                      onStartIconPress: () {
+                                         print("Clicked on Close Icon");
+                                        return true;
                                       },
-                                      duration:
-                                          const Duration(milliseconds: 370),
-                                      splashColor: Colors.transparent,
-                                      icons: const <AnimatedIconItem>[
-                                        AnimatedIconItem(
-                                          icon: Icon(CupertinoIcons.circle,
-                                              color: Colors.black54),
-                                        ),
-                                        AnimatedIconItem(
-                                          icon: Icon(
-                                              CupertinoIcons.checkmark_alt,
-                                              color: Colors.green),
-                                        ),
-                                      ],
+                                      onEndIconPress: () {
+                                        print("Clicked on Close Icon");
+                                        return true;
+                                      },
+                                      duration: Duration(milliseconds: 370),
+                                      startIconColor: Colors.black54,
+                                      endIconColor: Colors.green,
+                                      clockwise: false,
                                     ),
                                     title: Text(
                                       title,
