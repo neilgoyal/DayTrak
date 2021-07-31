@@ -1,19 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../DataBase/globals.dart' as globals;
+import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:flutter/rendering.dart';
-import '../pages/tabBar.dart';
+import 'package:schoolcalendar/pages/tabBar.dart';
 import 'package:schoolcalendar/pages/settings.dart';
-
-String errmessage = "Cannot Be Empty";
-OutlineInputBorder textfieldborderenabled = OutlineInputBorder(
-  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-  borderSide: BorderSide(color: Colors.black54, width: 1),
-);
-OutlineInputBorder focusedborder = OutlineInputBorder(
-  borderRadius: BorderRadius.all(Radius.circular(25.0)),
-  borderSide: BorderSide(color: Color.fromRGBO(202, 232, 140, 1), width: 2),
-);
 
 class Fp2Page extends StatefulWidget {
   @override
@@ -135,11 +125,20 @@ class _Fp2State extends State<Fp2Page> {
                                                         child: Text("6B"),
                                                         value: 62),
                                                     DropdownMenuItem(
-                                                        child: Text("7"),
-                                                        value: 7),
+                                                        child: Text("7A"),
+                                                        value: 71),
                                                     DropdownMenuItem(
-                                                        child: Text("8"),
-                                                        value: 8),
+                                                        child: Text("7B"),
+                                                        value: 72),
+                                                    DropdownMenuItem(
+                                                        child: Text("8A"),
+                                                        value: 81),
+                                                    DropdownMenuItem(
+                                                        child: Text("8B"),
+                                                        value: 82),
+                                                    DropdownMenuItem(
+                                                        child: Text("8C"),
+                                                        value: 83),
                                                     DropdownMenuItem(
                                                         child: Text("9A"),
                                                         value: 91),
@@ -147,8 +146,14 @@ class _Fp2State extends State<Fp2Page> {
                                                         child: Text("9B"),
                                                         value: 92),
                                                     DropdownMenuItem(
-                                                        child: Text("10"),
-                                                        value: 10),
+                                                        child: Text("9C"),
+                                                        value: 93),
+                                                    DropdownMenuItem(
+                                                        child: Text("10A"),
+                                                        value: 101),
+                                                    DropdownMenuItem(
+                                                        child: Text("10B"),
+                                                        value: 102),
                                                     DropdownMenuItem(
                                                         child: Text("11"),
                                                         value: 11),
@@ -186,13 +191,25 @@ class _Fp2State extends State<Fp2Page> {
                                               if (globals.valueOfGrade == 11)
                                                 grade11(context, false)
                                               else if (globals.valueOfGrade ==
+                                                  12)
+                                                grade12(context, false)
+                                              else if (globals.valueOfGrade ==
                                                       91 ||
-                                                  globals.valueOfGrade == 92)
-                                                grade9(context, false)
+                                                  globals.valueOfGrade == 92 ||
+                                                  globals.valueOfGrade == 101 ||
+                                                  globals.valueOfGrade == 102)
+                                                grade9and10(context, false)
                                               else if (globals.valueOfGrade ==
                                                       61 ||
-                                                  globals.valueOfGrade == 62)
-                                                grade6(context, false)
+                                                  globals.valueOfGrade == 62 ||
+                                                  globals.valueOfGrade == 71 ||
+                                                  globals.valueOfGrade == 72)
+                                                grade6and7(context, false)
+                                              else if (globals.valueOfGrade ==
+                                                      81 ||
+                                                  globals.valueOfGrade == 82 ||
+                                                  globals.valueOfGrade == 83)
+                                                grade8(context, false)
                                               else
                                                 nosupport()
                                             ],
