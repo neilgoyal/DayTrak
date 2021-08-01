@@ -6,11 +6,21 @@ import 'package:schoolcalendar/pages/tabBar.dart';
 import 'package:schoolcalendar/pages/settings.dart';
 
 class Fp2Page extends StatefulWidget {
+  Fp2Page(this.stream);
+  final Stream<int> stream;
   @override
   _Fp2State createState() => _Fp2State();
 }
 
 class _Fp2State extends State<Fp2Page> {
+  @override
+  void initState() {
+    super.initState();
+    widget.stream.listen((index) {
+      setState(() {});
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

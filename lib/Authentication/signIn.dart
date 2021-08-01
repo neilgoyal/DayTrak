@@ -4,6 +4,7 @@ import 'package:schoolcalendar/firstopenpages/fp2.dart';
 import 'package:schoolcalendar/pages/tabBar.dart';
 import 'authentication.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 
 class GoogleSignInButton extends StatefulWidget {
   @override
@@ -87,7 +88,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
       prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => Fp2Page(),
+          builder: (context) => Fp2Page(globals.thirdlangsc.stream),
         ),
       );
     }

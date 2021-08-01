@@ -35,6 +35,7 @@ class _Addtask2State extends State<Addtask2Page>
   @override
   void dispose() {
     super.dispose();
+    _animationController.dispose();
   }
 
   selectedTodoDate(BuildContext context) {

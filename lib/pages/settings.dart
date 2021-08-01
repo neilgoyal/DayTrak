@@ -68,6 +68,7 @@ grade6and7(context, bool g) {
               thirdlang = value;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setInt('thirdlang6and7', thirdlang);
+              globals.thirdlangsc.add(value);
             },
           ),
         ))),
@@ -145,6 +146,7 @@ grade8(context, bool g) {
               batch = value;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setInt('7batchPref', batch);
+              globals.thirdlangsc.add(value);
             },
           ),
         ))),
@@ -186,6 +188,7 @@ grade8(context, bool g) {
               thirdlange = value;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setInt('thirdlang8', thirdlange);
+              globals.thirdlangsc.add(value);
             },
           ),
         ))),
@@ -226,6 +229,7 @@ grade8(context, bool g) {
               histgeo = value;
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setInt('histgeo', histgeo);
+              globals.thirdlangsc.add(value);
             },
           ),
         ))),
