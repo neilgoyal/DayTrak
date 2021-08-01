@@ -32,6 +32,7 @@ dependencies:
   cloud_firestore: ^2.3.0
   syncfusion_flutter_datepicker: ^19.2.47
   animated_icon_button: ^1.0.2
+  animate_icons: ^2.0.0
 
 dev_dependencies:
   flutter_test:
