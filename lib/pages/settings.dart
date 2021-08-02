@@ -660,7 +660,6 @@ g11TT(context) {
   return ElevatedButton(
     onPressed: () async {
       HapticFeedback.heavyImpact();
-      print(myController.text);
       if (_formKey.currentState!.validate()) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('B1', myController.text);
