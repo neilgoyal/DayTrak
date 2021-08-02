@@ -139,14 +139,15 @@ class Timetable {
 class Day {
   final int? day1, day2, day3, day4, day5, day6, day7;
 
-  Day(
-      {this.day1,
-      this.day2,
-      this.day3,
-      this.day4,
-      this.day5,
-      this.day6,
-      this.day7});
+  Day({
+    this.day1,
+    this.day2,
+    this.day3,
+    this.day4,
+    this.day5,
+    this.day6,
+    this.day7,
+  });
 
   factory Day.fromJson(Map<String, dynamic> json) {
     return Day(

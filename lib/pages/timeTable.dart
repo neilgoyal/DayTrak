@@ -8,10 +8,6 @@ import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/pages/home.dart';
 
-selectNumTiles() {
-  numoftiles = 6;
-}
-
 class Timetable2Page extends StatefulWidget {
   Timetable2Page(this.stream);
   final Stream<int> stream;
@@ -24,7 +20,6 @@ Future<Timetable>? futureTimetable;
 late String daytoshow;
 String? ordertoshow;
 
-int? numoftiles;
 List gloabls = [
   globals.day1,
   globals.day2,
@@ -51,13 +46,14 @@ class _Timetable2State extends State<Timetable2Page>
     super.initState();
     futureDay = fetchDay();
     futureTimetable = timetable();
-    selectNumTiles();
     defaultsvals();
     _tabController = TabController(initialIndex: 0, vsync: this, length: 7);
     _handleTabSelection();
     _tabController!.addListener(_handleTabSelection);
     widget.stream.listen((index) {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
   }
 
@@ -177,7 +173,9 @@ class _Timetable2State extends State<Timetable2Page>
                   timetable_6
                 ];
                 return ListView.builder(
-                    itemCount: numoftiles,
+                    itemCount: (titables[dayord].length == 0)
+                        ? 7
+                        : (titables[dayord].length ~/ 2),
                     itemBuilder: (context, index) {
                       return Padding(
                         padding:
@@ -213,18 +211,25 @@ class _Timetable2State extends State<Timetable2Page>
                                     ))
                                   ],
                                 ),
-                                trailing: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        (titables[dayord]!.isNotEmpty)
-                                            ? titables[dayord]![
-                                                '${globals.valueOfGrade}.${(index + 1)}_time']
-                                            : "-",
-                                      )
-                                    ])),
+                                trailing: SizedBox(
+                                    width: globals.superman,
+                                    child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            (titables[dayord]!.isNotEmpty)
+                                                ? titables[dayord]![
+                                                    '${globals.valueOfGrade}.${(index + 1)}_time']
+                                                : "-",
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.clip,
+                                          )
+                                        ]))),
                           ),
                         ),
                       );
@@ -395,10 +400,11 @@ class _MyModalContentState extends State<MyModalContent> {
     defaultsvals();
     widget.stream.listen((index) {
       futureTimetable = timetable();
-      setState(() {
-        selectNumTiles();
-        defaultsvals();
-      });
+      if (mounted) {
+        setState(() {
+          defaultsvals();
+        });
+      }
     });
   }
 

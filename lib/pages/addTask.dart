@@ -91,17 +91,23 @@ class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
                         MediaQuery.of(context).copyWith().size.height / 3 - 70,
                     child: CupertinoDatePicker(
                         mode: CupertinoDatePickerMode.time,
-                        initialDateTime: DateTime(1969, 1, 1, 4, 20),
+                        initialDateTime: DateTime(1969, 1, 1, 16, 20),
                         minuteInterval: 1,
                         onDateTimeChanged: (DateTime newDateTime) {
                           selectedTime = newDateTime;
                         })),
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   CupertinoButton(
-                      child: Text('OK'),
+                      child: Text(
+                        'OK',
+                        style: TextStyle(
+                            fontFamily: "Protipo Compact",
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w300),
+                      ),
                       onPressed: () {
                         if (selectedTime == null) {
-                          selectedTime = DateTime(1969, 1, 1, 4, 20);
+                          selectedTime = DateTime(1969, 1, 1, 16, 20);
                         }
                         if (selectedDate == null) {
                           selectedDate = DateTime.now();
@@ -109,7 +115,13 @@ class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
                         Navigator.pop(context);
                       }),
                   CupertinoButton(
-                      child: Text('Cancel'),
+                      child: Text(
+                        'CANCEL',
+                        style: TextStyle(
+                            fontFamily: "Protipo Compact",
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w300),
+                      ),
                       onPressed: () {
                         selectedTime = null;
                         Navigator.pop(context);
@@ -251,6 +263,7 @@ class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
                     return Container(
                       padding: EdgeInsets.fromLTRB(0, 0, 10, 0),
                       child: ListView.builder(
+                        key: UniqueKey(),
                         shrinkWrap: true,
                         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                         itemCount: snapshot.data!.docs.length,

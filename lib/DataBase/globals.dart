@@ -26,5 +26,6 @@ double? h1,
     w,
     l4,
     l5,
+    superman,
     lc;
 StreamController<int> thirdlangsc = StreamController<int>.broadcast();
