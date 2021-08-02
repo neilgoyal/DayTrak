@@ -39,7 +39,11 @@ class _HomePageState extends State<HomePage> {
       initialIndex: 0,
       child: Scaffold(
         body: TabBarView(
-          children: [Home2Page(), Timetable2Page(), Addtask2Page()],
+          children: [
+            Home2Page(globals.thirdlangsc.stream),
+            Timetable2Page(globals.thirdlangsc.stream),
+            Addtask2Page()
+          ],
         ),
         bottomNavigationBar: Container(
           margin: EdgeInsets.only(bottom: 15),

@@ -1,23 +1,31 @@
+import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:schoolcalendar/pages/settings.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:schoolcalendar/pages/home.dart';
+
+selectNumTiles() {
+  numoftiles = 6;
+}
 
 class Timetable2Page extends StatefulWidget {
+  Timetable2Page(this.stream);
+  final Stream<int> stream;
   @override
   _Timetable2State createState() => _Timetable2State();
 }
 
 Future<Day>? futureDay;
+Future<Timetable>? futureTimetable;
 late String daytoshow;
 String? ordertoshow;
-Future<Timetable>? futureTimetable;
+
 int? numoftiles;
-String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 List gloabls = [
   globals.day1,
   globals.day2,
@@ -42,7 +50,6 @@ class _Timetable2State extends State<Timetable2Page>
   @override
   void initState() {
     super.initState();
-    getIntValuesSF();
     futureDay = fetchDay();
     futureTimetable = timetable();
     selectNumTiles();
@@ -50,6 +57,14 @@ class _Timetable2State extends State<Timetable2Page>
     _tabController = TabController(initialIndex: 0, vsync: this, length: 7);
     _handleTabSelection();
     _tabController!.addListener(_handleTabSelection);
+    widget.stream.listen((index) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   dayAdjust(context) {
@@ -60,221 +75,8 @@ class _Timetable2State extends State<Timetable2Page>
         isScrollControlled: true,
         context: context,
         builder: (context) {
-          return StatefulBuilder(
-              builder: (BuildContext context, StateSetter setState) {
-            return Container(
-                height: MediaQuery.of(context).size.height * 0.85,
-                child: Padding(
-                    padding: EdgeInsets.fromLTRB(4, 17, 0, 4),
-                    child: customform(context)));
-          });
+          return new MyModalContent(globals.thirdlangsc.stream);
         });
-  }
-
-  customform(context) {
-    return Scaffold(
-        resizeToAvoidBottomInset: true,
-        body: SingleChildScrollView(
-            child: Container(
-                child: Padding(
-                    padding: EdgeInsets.only(top: 0.0, left: 25.0, right: 25.0),
-                    child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            'Customize',
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: globals.h2,
-                              fontWeight: FontWeight.w300,
-                            ),
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text('Choose Grade',
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: globals.h4,
-                                    fontWeight: FontWeight.w300,
-                                  )),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Container(
-                              child: Center(
-                                  child: Column(children: <Widget>[
-                            InputDecorator(
-                                decoration: InputDecoration(
-                                  labelText: 'Select Grade',
-                                  labelStyle: Theme.of(context)
-                                      .primaryTextTheme
-                                      .caption!
-                                      .copyWith(color: Colors.black),
-                                  border: const OutlineInputBorder(
-                                      gapPadding: 0,
-                                      borderSide: const BorderSide(width: 1),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(25.0))),
-                                ),
-                                child: DropdownButtonHideUnderline(
-                                    child: Listener(
-                                  onPointerDown: (_) =>
-                                      FocusScope.of(context).unfocus(),
-                                  child: DropdownButton(
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w300,
-                                        fontSize: globals.h9,
-                                        fontFamily: 'Protipo Compact'),
-                                    elevation: 1,
-                                    isExpanded: false,
-                                    isDense: true,
-                                    icon: Icon(Icons.keyboard_arrow_down),
-                                    value: globals.valueOfGrade,
-                                    items: [
-                                      DropdownMenuItem(
-                                          child: Text("5"), value: 5),
-                                      DropdownMenuItem(
-                                          child: Text("6"), value: 6),
-                                      DropdownMenuItem(
-                                          child: Text("7"), value: 7),
-                                      DropdownMenuItem(
-                                          child: Text("8"), value: 8),
-                                      DropdownMenuItem(
-                                          child: Text("9A"), value: 91),
-                                      DropdownMenuItem(
-                                          child: Text("9B"), value: 92),
-                                      DropdownMenuItem(
-                                          child: Text("10"), value: 10),
-                                      DropdownMenuItem(
-                                          child: Text("11"), value: 11),
-                                      DropdownMenuItem(
-                                          child: Text("12"), value: 12),
-                                    ],
-                                    onChanged: (dynamic value) {
-                                      setState(() {
-                                        globals.valueOfGrade = value;
-                                        addIntToSF();
-                                      });
-                                    },
-                                  ),
-                                ))),
-                            SizedBox(
-                              height: 25,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text('Add subjects',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h4,
-                                      // color: const Color(0xffbadfca),
-                                      fontWeight: FontWeight.w300,
-                                    )),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Column(
-                              children: <Widget>[
-                                if (globals.valueOfGrade == 11)
-                                  grade11(context, true)
-                                else if (globals.valueOfGrade == 91 ||
-                                    globals.valueOfGrade == 92)
-                                  grade9and10(context, true)
-                                else
-                                  nosupport()
-                              ],
-                            ),
-                          ]))),
-                        ])))));
-  }
-
-  getIntValuesSF() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      globals.valueOfGrade = prefs.getInt('Value') ?? 12;
-    });
-  }
-
-  blocktoprefrence(userinput) async {
-    if (globals.valueOfGrade == 61 || globals.valueOfGrade == 62) {
-      if (userinput == "Spanish/French") {
-        SharedPreferences prefs = await SharedPreferences.getInstance();
-        if (prefs.getInt('thirdlang6') == 0) {
-          return "Spanish";
-        } else {
-          return "French";
-        }
-      } else {
-        return userinput;
-      }
-    }
-    if (userinput == 'B1') {
-      return (b1 == "Block 1") ? b1 : "B1 $b1";
-    } else if (userinput == 'B2') {
-      return (b2 == "Block 2") ? b2 : "B2 $b2";
-    } else if (userinput == 'B3') {
-      return (b3 == "Block 3") ? b3 : "B3 $b3";
-    } else if (userinput == 'B4') {
-      return (b4 == "Block 4") ? b4 : "B4 $b4";
-    } else if (userinput == 'B5') {
-      return (b5 == "Block 5") ? b5 : "B5 $b5";
-    } else if (userinput == 'B6') {
-      return (b6 == "Block 6") ? b6 : "B6 $b6";
-    } else if (userinput == 'B7') {
-      return (b7 == "Block 7") ? b7 : "B7 $b7";
-    } else if (userinput == 'B8') {
-      return (b8 == "Block 8") ? b8 : "B8 $b8";
-    } else if (userinput == 'B9') {
-      return (b9 == "Block 9") ? b9 : "B9 $b9";
-    } else {
-      return userinput;
-    }
-  }
-
-  defaultsvals() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
-      setState(() {
-        b1 = prefs.getString('B1') ?? "Block 1";
-        b2 = prefs.getString('B2') ?? "Block 2";
-        b3 = prefs.getString('B3') ?? "Block 3";
-        b4 = prefs.getString('B4') ?? "Block 4";
-        b5 = prefs.getString('B5') ?? "Block 5";
-        b6 = prefs.getString('B6') ?? "Block 6";
-      });
-    } else if (globals.valueOfGrade == 91 || globals.valueOfGrade == 92) {
-      setState(() {
-        b1 = prefs.getString('B1') ?? "Block 1";
-        b2 = prefs.getString('B2') ?? "Block 2";
-        b3 = prefs.getString('B3') ?? "Block 3";
-        b4 = prefs.getString('B4') ?? "Block 4";
-        b5 = prefs.getString('B5') ?? "Block 5";
-        b6 = prefs.getString('B6') ?? "Block 6";
-        b7 = prefs.getString('B7') ?? "Block 7";
-        b8 = prefs.getString('B8') ?? "Block 8";
-        b9 = prefs.getString('B9') ?? "Block 9";
-      });
-    }
-  }
-
-  selectNumTiles() {
-    if (globals.valueOfGrade == 11 ||
-        globals.valueOfGrade == 91 ||
-        globals.valueOfGrade == 92) {
-      numoftiles = 6;
-    } else {
-      numoftiles = 0;
-    }
   }
 
   _handleTabSelection() {
@@ -355,14 +157,16 @@ class _Timetable2State extends State<Timetable2Page>
                               ))
                         ]));
               } else {
-                if (snapshot.hasData) {
-                  timetable_0 = snapshot.data!.timetable_0;
-                  timetable_1 = snapshot.data!.timetable_1;
-                  timetable_2 = snapshot.data!.timetable_2;
-                  timetable_3 = snapshot.data!.timetable_3;
-                  timetable_4 = snapshot.data!.timetable_4;
-                  timetable_5 = snapshot.data!.timetable_5;
-                  timetable_6 = snapshot.data!.timetable_6;
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    timetable_0 = snapshot.data!.timetable_0;
+                    timetable_1 = snapshot.data!.timetable_1;
+                    timetable_2 = snapshot.data!.timetable_2;
+                    timetable_3 = snapshot.data!.timetable_3;
+                    timetable_4 = snapshot.data!.timetable_4;
+                    timetable_5 = snapshot.data!.timetable_5;
+                    timetable_6 = snapshot.data!.timetable_6;
+                  }
                 }
                 List titables = [
                   timetable_0,
@@ -575,5 +379,218 @@ class _Timetable2State extends State<Timetable2Page>
               controller: _tabController,
               physics: NeverScrollableScrollPhysics(),
             )));
+  }
+}
+
+class MyModalContent extends StatefulWidget {
+  MyModalContent(this.stream);
+  final Stream<int> stream;
+  @override
+  _MyModalContentState createState() => new _MyModalContentState();
+}
+
+class _MyModalContentState extends State<MyModalContent> {
+  defaultsvals() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      myController.text = prefs.getString('B1') ?? "";
+      myController2.text = prefs.getString('B2') ?? "";
+      myController3.text = prefs.getString('B3') ?? "";
+      myController4.text = prefs.getString('B4') ?? "";
+      myController5.text = prefs.getString('B5') ?? "";
+      myController6.text = prefs.getString('B6') ?? "";
+      myController7.text = prefs.getString('B7') ?? "";
+      myController8.text = prefs.getString('B8') ?? "";
+      myController9.text = prefs.getString('B9') ?? "";
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    defaultsvals();
+    widget.stream.listen((index) {
+      futureTimetable = timetable();
+      setState(() {
+        selectNumTiles();
+        defaultsvals();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: MediaQuery.of(context).size.height * 0.85,
+        child: Padding(
+            padding: EdgeInsets.fromLTRB(4, 17, 0, 4),
+            child: Scaffold(
+                resizeToAvoidBottomInset: true,
+                body: SingleChildScrollView(
+                    child: Container(
+                        child: Padding(
+                            padding: EdgeInsets.only(
+                                top: 0.0, left: 25.0, right: 25.0),
+                            child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(
+                                    'Customize',
+                                    style: TextStyle(
+                                      fontFamily: 'Protipo Compact',
+                                      fontSize: globals.h2,
+                                      fontWeight: FontWeight.w300,
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text('Choose Grade',
+                                          style: TextStyle(
+                                            fontFamily: 'Protipo Compact',
+                                            fontSize: globals.h4,
+                                            fontWeight: FontWeight.w300,
+                                          )),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 25,
+                                  ),
+                                  Container(
+                                      child: Center(
+                                          child: Column(children: <Widget>[
+                                    InputDecorator(
+                                        decoration: InputDecoration(
+                                          labelText: 'Select Grade',
+                                          labelStyle: Theme.of(context)
+                                              .primaryTextTheme
+                                              .caption!
+                                              .copyWith(color: Colors.black),
+                                          border: const OutlineInputBorder(
+                                              gapPadding: 0,
+                                              borderSide:
+                                                  const BorderSide(width: 1),
+                                              borderRadius:
+                                                  const BorderRadius.all(
+                                                      Radius.circular(25.0))),
+                                        ),
+                                        child: DropdownButtonHideUnderline(
+                                            child: Listener(
+                                          onPointerDown: (_) =>
+                                              FocusScope.of(context).unfocus(),
+                                          child: DropdownButton(
+                                            style: TextStyle(
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: globals.h9,
+                                                fontFamily: 'Protipo Compact'),
+                                            elevation: 1,
+                                            isExpanded: false,
+                                            isDense: true,
+                                            icon:
+                                                Icon(Icons.keyboard_arrow_down),
+                                            value: globals.valueOfGrade,
+                                            items: [
+                                              DropdownMenuItem(
+                                                  child: Text("6A"), value: 61),
+                                              DropdownMenuItem(
+                                                  child: Text("6B"), value: 62),
+                                              DropdownMenuItem(
+                                                  child: Text("7A"), value: 71),
+                                              DropdownMenuItem(
+                                                  child: Text("7B"), value: 72),
+                                              DropdownMenuItem(
+                                                  child: Text("8A"), value: 81),
+                                              DropdownMenuItem(
+                                                  child: Text("8B"), value: 82),
+                                              DropdownMenuItem(
+                                                  child: Text("8C"), value: 83),
+                                              DropdownMenuItem(
+                                                  child: Text("9A"), value: 91),
+                                              DropdownMenuItem(
+                                                  child: Text("9B"), value: 92),
+                                              DropdownMenuItem(
+                                                  child: Text("9C"), value: 93),
+                                              DropdownMenuItem(
+                                                  child: Text("10A"),
+                                                  value: 101),
+                                              DropdownMenuItem(
+                                                  child: Text("10B"),
+                                                  value: 102),
+                                              DropdownMenuItem(
+                                                  child: Text("11"), value: 11),
+                                              DropdownMenuItem(
+                                                  child: Text("12"), value: 12),
+                                            ],
+                                            onChanged: (dynamic value) {
+                                              setState(() {
+                                                timetable_0 = {};
+                                                timetable_1 = {};
+                                                timetable_2 = {};
+                                                timetable_3 = {};
+                                                timetable_4 = {};
+                                                timetable_5 = {};
+                                                timetable_6 = {};
+                                                timetablePers = {};
+                                                globals.valueOfGrade = value;
+                                                addIntToSF(value);
+                                              });
+                                              globals.thirdlangsc.add(1);
+                                            },
+                                          ),
+                                        ))),
+                                    SizedBox(
+                                      height: 25,
+                                    ),
+                                    Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text('Add subjects',
+                                            style: TextStyle(
+                                              fontFamily: 'Protipo Compact',
+                                              fontSize: globals.h4,
+                                              fontWeight: FontWeight.w300,
+                                            )),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Column(
+                                      children: <Widget>[
+                                        if (globals.valueOfGrade == 11)
+                                          grade11(context, true)
+                                        else if (globals.valueOfGrade == 12)
+                                          grade12(context, true)
+                                        else if (globals.valueOfGrade == 91 ||
+                                            globals.valueOfGrade == 92 ||
+                                            globals.valueOfGrade == 93 ||
+                                            globals.valueOfGrade == 101 ||
+                                            globals.valueOfGrade == 102)
+                                          grade9and10(context, true)
+                                        else if (globals.valueOfGrade == 61 ||
+                                            globals.valueOfGrade == 62 ||
+                                            globals.valueOfGrade == 71 ||
+                                            globals.valueOfGrade == 72)
+                                          grade6and7(context, true)
+                                        else if (globals.valueOfGrade == 81 ||
+                                            globals.valueOfGrade == 82 ||
+                                            globals.valueOfGrade == 83)
+                                          grade8(context, true)
+                                      ],
+                                    ),
+                                  ]))),
+                                ])))))));
   }
 }
