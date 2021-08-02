@@ -52,7 +52,9 @@ class _Timetable2State extends State<Timetable2Page>
     _handleTabSelection();
     _tabController!.addListener(_handleTabSelection);
     widget.stream.listen((index) {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
   }
 
@@ -414,9 +416,11 @@ class _MyModalContentState extends State<MyModalContent> {
     defaultsvals();
     widget.stream.listen((index) {
       futureTimetable = timetable();
-      setState(() {
-        defaultsvals();
-      });
+      if (mounted) {
+        setState(() {
+          defaultsvals();
+        });
+      }
     });
   }
 
