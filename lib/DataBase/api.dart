@@ -40,25 +40,15 @@ blocktoprefrence(userinput) {
 
 defaultsvals() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
-    b1 = prefs.getString('B1') ?? "Block 1";
-    b2 = prefs.getString('B2') ?? "Block 2";
-    b3 = prefs.getString('B3') ?? "Block 3";
-    b4 = prefs.getString('B4') ?? "Block 4";
-    b5 = prefs.getString('B5') ?? "Block 5";
-    b6 = prefs.getString('B6') ?? "Block 6";
-    b7 = prefs.getString('B7') ?? "Block 7";
-  } else if (globals.valueOfGrade == 91 || globals.valueOfGrade == 92) {
-    b1 = prefs.getString('B1') ?? "Block 1";
-    b2 = prefs.getString('B2') ?? "Block 2";
-    b3 = prefs.getString('B3') ?? "Block 3";
-    b4 = prefs.getString('B4') ?? "Block 4";
-    b5 = prefs.getString('B5') ?? "Block 5";
-    b6 = prefs.getString('B6') ?? "Block 6";
-    b7 = prefs.getString('B7') ?? "Block 7";
-    b8 = prefs.getString('B8') ?? "Block 8";
-    b9 = prefs.getString('B9') ?? "Block 9";
-  }
+  b1 = prefs.getString('B1') ?? "Block 1";
+  b2 = prefs.getString('B2') ?? "Block 2";
+  b3 = prefs.getString('B3') ?? "Block 3";
+  b4 = prefs.getString('B4') ?? "Block 4";
+  b5 = prefs.getString('B5') ?? "Block 5";
+  b6 = prefs.getString('B6') ?? "Block 6";
+  b7 = prefs.getString('B7') ?? "Block 7";
+  b8 = prefs.getString('B8') ?? "Block 8";
+  b9 = prefs.getString('B9') ?? "Block 9";
 }
 
 Future<Timetable> timetable() async {
