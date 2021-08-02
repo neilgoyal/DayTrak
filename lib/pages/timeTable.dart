@@ -210,18 +210,25 @@ class _Timetable2State extends State<Timetable2Page>
                                     ))
                                   ],
                                 ),
-                                trailing: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        (titables[dayord]!.isNotEmpty)
-                                            ? titables[dayord]![
-                                                '${globals.valueOfGrade}.${(index + 1)}_time']
-                                            : "-",
-                                      )
-                                    ])),
+                                trailing: SizedBox(
+                                    width: globals.superman,
+                                    child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          Text(
+                                            (titables[dayord]!.isNotEmpty)
+                                                ? titables[dayord]![
+                                                    '${globals.valueOfGrade}.${(index + 1)}_time']
+                                                : "-",
+                                            style:
+                                                TextStyle(color: Colors.grey),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.clip,
+                                          )
+                                        ]))),
                           ),
                         ),
                       );

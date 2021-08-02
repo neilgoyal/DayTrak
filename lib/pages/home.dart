@@ -269,7 +269,9 @@ class _Home2State extends State<Home2Page> {
     futureTimetablepers = personalizedTT();
     defaultsvals();
     widget.stream.listen((index) {
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
   }
 
@@ -341,7 +343,7 @@ class _Home2State extends State<Home2Page> {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     SizedBox(
-                                        width: globals.s4,
+                                        width: globals.superman,
                                         child: Text(
                                           (timetablePers!.isNotEmpty)
                                               ? timetablePers![
