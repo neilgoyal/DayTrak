@@ -175,7 +175,7 @@ class _Fp2State extends State<Fp2Page> {
                                                     setState(() {
                                                       globals.valueOfGrade =
                                                           value;
-                                                      addIntToSF();
+                                                      addIntToSF(value);
                                                     });
                                                   },
                                                 ),
@@ -206,6 +206,7 @@ class _Fp2State extends State<Fp2Page> {
                                               else if (globals.valueOfGrade ==
                                                       91 ||
                                                   globals.valueOfGrade == 92 ||
+                                                  globals.valueOfGrade == 93 ||
                                                   globals.valueOfGrade == 101 ||
                                                   globals.valueOfGrade == 102)
                                                 grade9and10(context, false)
@@ -220,8 +221,6 @@ class _Fp2State extends State<Fp2Page> {
                                                   globals.valueOfGrade == 82 ||
                                                   globals.valueOfGrade == 83)
                                                 grade8(context, false)
-                                              else
-                                                nosupport()
                                             ],
                                           ),
                                         ]))),

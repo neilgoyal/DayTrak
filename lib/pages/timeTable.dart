@@ -4,9 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:schoolcalendar/Provider/theme_provider.dart';
 import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:schoolcalendar/pages/settings.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:schoolcalendar/pages/home.dart';
+
+selectNumTiles() {
+  numoftiles = 6;
+}
 
 class Timetable2Page extends StatefulWidget {
   Timetable2Page(this.stream);
@@ -16,11 +21,11 @@ class Timetable2Page extends StatefulWidget {
 }
 
 Future<Day>? futureDay;
+Future<Timetable>? futureTimetable;
 late String daytoshow;
 String? ordertoshow;
-Future<Timetable>? futureTimetable;
+
 int? numoftiles;
-String? b1, b2, b3, b4, b5, b6, b7, b8, b9;
 List gloabls = [
   globals.day1,
   globals.day2,
@@ -45,7 +50,6 @@ class _Timetable2State extends State<Timetable2Page>
   @override
   void initState() {
     super.initState();
-    getIntValuesSF();
     futureDay = fetchDay();
     futureTimetable = timetable();
     selectNumTiles();
@@ -53,6 +57,14 @@ class _Timetable2State extends State<Timetable2Page>
     _tabController = TabController(initialIndex: 0, vsync: this, length: 7);
     _handleTabSelection();
     _tabController!.addListener(_handleTabSelection);
+    widget.stream.listen((index) {
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   dayAdjust(context) {
@@ -65,73 +77,6 @@ class _Timetable2State extends State<Timetable2Page>
         builder: (context) {
           return new MyModalContent(globals.thirdlangsc.stream);
         });
-  }
-
-  getIntValuesSF() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      globals.valueOfGrade = prefs.getInt('Value') ?? 12;
-    });
-  }
-
-  blocktoprefrence(userinput) {
-    if (userinput == 'B1') {
-      return (b1 == "Block 1") ? b1 : "B1 $b1";
-    } else if (userinput == 'B2') {
-      return (b2 == "Block 2") ? b2 : "B2 $b2";
-    } else if (userinput == 'B3') {
-      return (b3 == "Block 3") ? b3 : "B3 $b3";
-    } else if (userinput == 'B4') {
-      return (b4 == "Block 4") ? b4 : "B4 $b4";
-    } else if (userinput == 'B5') {
-      return (b5 == "Block 5") ? b5 : "B5 $b5";
-    } else if (userinput == 'B6') {
-      return (b6 == "Block 6") ? b6 : "B6 $b6";
-    } else if (userinput == 'B7') {
-      return (b7 == "Block 7") ? b7 : "B7 $b7";
-    } else if (userinput == 'B8') {
-      return (b8 == "Block 8") ? b8 : "B8 $b8";
-    } else if (userinput == 'B9') {
-      return (b9 == "Block 9") ? b9 : "B9 $b9";
-    } else {
-      return userinput;
-    }
-  }
-
-  defaultsvals() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    if (globals.valueOfGrade == 11 || globals.valueOfGrade == 12) {
-      setState(() {
-        b1 = prefs.getString('B1') ?? "Block 1";
-        b2 = prefs.getString('B2') ?? "Block 2";
-        b3 = prefs.getString('B3') ?? "Block 3";
-        b4 = prefs.getString('B4') ?? "Block 4";
-        b5 = prefs.getString('B5') ?? "Block 5";
-        b6 = prefs.getString('B6') ?? "Block 6";
-      });
-    } else if (globals.valueOfGrade == 91 || globals.valueOfGrade == 92) {
-      setState(() {
-        b1 = prefs.getString('B1') ?? "Block 1";
-        b2 = prefs.getString('B2') ?? "Block 2";
-        b3 = prefs.getString('B3') ?? "Block 3";
-        b4 = prefs.getString('B4') ?? "Block 4";
-        b5 = prefs.getString('B5') ?? "Block 5";
-        b6 = prefs.getString('B6') ?? "Block 6";
-        b7 = prefs.getString('B7') ?? "Block 7";
-        b8 = prefs.getString('B8') ?? "Block 8";
-        b9 = prefs.getString('B9') ?? "Block 9";
-      });
-    }
-  }
-
-  selectNumTiles() {
-    if (globals.valueOfGrade == 11 ||
-        globals.valueOfGrade == 91 ||
-        globals.valueOfGrade == 92) {
-      numoftiles = 6;
-    } else {
-      numoftiles = 0;
-    }
   }
 
   _handleTabSelection() {
@@ -212,14 +157,16 @@ class _Timetable2State extends State<Timetable2Page>
                               ))
                         ]));
               } else {
-                if (snapshot.hasData) {
-                  timetable_0 = snapshot.data!.timetable_0;
-                  timetable_1 = snapshot.data!.timetable_1;
-                  timetable_2 = snapshot.data!.timetable_2;
-                  timetable_3 = snapshot.data!.timetable_3;
-                  timetable_4 = snapshot.data!.timetable_4;
-                  timetable_5 = snapshot.data!.timetable_5;
-                  timetable_6 = snapshot.data!.timetable_6;
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    timetable_0 = snapshot.data!.timetable_0;
+                    timetable_1 = snapshot.data!.timetable_1;
+                    timetable_2 = snapshot.data!.timetable_2;
+                    timetable_3 = snapshot.data!.timetable_3;
+                    timetable_4 = snapshot.data!.timetable_4;
+                    timetable_5 = snapshot.data!.timetable_5;
+                    timetable_6 = snapshot.data!.timetable_6;
+                  }
                 }
                 List titables = [
                   timetable_0,
@@ -443,11 +390,31 @@ class MyModalContent extends StatefulWidget {
 }
 
 class _MyModalContentState extends State<MyModalContent> {
+  defaultsvals() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      myController.text = prefs.getString('B1') ?? "";
+      myController2.text = prefs.getString('B2') ?? "";
+      myController3.text = prefs.getString('B3') ?? "";
+      myController4.text = prefs.getString('B4') ?? "";
+      myController5.text = prefs.getString('B5') ?? "";
+      myController6.text = prefs.getString('B6') ?? "";
+      myController7.text = prefs.getString('B7') ?? "";
+      myController8.text = prefs.getString('B8') ?? "";
+      myController9.text = prefs.getString('B9') ?? "";
+    });
+  }
+
   @override
   void initState() {
     super.initState();
+    defaultsvals();
     widget.stream.listen((index) {
-      setState(() {});
+      futureTimetable = timetable();
+      setState(() {
+        selectNumTiles();
+        defaultsvals();
+      });
     });
   }
 
@@ -567,9 +534,18 @@ class _MyModalContentState extends State<MyModalContent> {
                                             ],
                                             onChanged: (dynamic value) {
                                               setState(() {
+                                                timetable_0 = {};
+                                                timetable_1 = {};
+                                                timetable_2 = {};
+                                                timetable_3 = {};
+                                                timetable_4 = {};
+                                                timetable_5 = {};
+                                                timetable_6 = {};
+                                                timetablePers = {};
                                                 globals.valueOfGrade = value;
-                                                addIntToSF();
+                                                addIntToSF(value);
                                               });
+                                              globals.thirdlangsc.add(1);
                                             },
                                           ),
                                         ))),
@@ -599,6 +575,7 @@ class _MyModalContentState extends State<MyModalContent> {
                                           grade12(context, true)
                                         else if (globals.valueOfGrade == 91 ||
                                             globals.valueOfGrade == 92 ||
+                                            globals.valueOfGrade == 93 ||
                                             globals.valueOfGrade == 101 ||
                                             globals.valueOfGrade == 102)
                                           grade9and10(context, true)
@@ -611,8 +588,6 @@ class _MyModalContentState extends State<MyModalContent> {
                                             globals.valueOfGrade == 82 ||
                                             globals.valueOfGrade == 83)
                                           grade8(context, true)
-                                        else
-                                          nosupport()
                                       ],
                                     ),
                                   ]))),

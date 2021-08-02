@@ -82,6 +82,7 @@ dismiss(context) {
   return ElevatedButton(
     onPressed: () async {
       HapticFeedback.heavyImpact();
+      globals.thirdlangsc.add(1);
       Navigator.pop(context);
     },
     child: Padding(
@@ -145,7 +146,7 @@ grade8(context, bool g) {
             onChanged: (dynamic value) async {
               batch = value;
               SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.setInt('7batchPref', batch);
+              prefs.setInt('8batchPref', batch);
               globals.thirdlangsc.add(value);
             },
           ),
@@ -180,9 +181,9 @@ grade8(context, bool g) {
             icon: Icon(Icons.keyboard_arrow_down),
             value: thirdlange,
             items: [
-              DropdownMenuItem(child: Text("Spanish"), value: 0),
-              DropdownMenuItem(child: Text("French"), value: 1),
-              DropdownMenuItem(child: Text("Hindi"), value: 2)
+              DropdownMenuItem(child: Text("Spanish"), value: 1),
+              DropdownMenuItem(child: Text("French"), value: 2),
+              DropdownMenuItem(child: Text("Hindi"), value: 0)
             ],
             onChanged: (dynamic value) async {
               thirdlange = value;
@@ -456,6 +457,7 @@ g9tt(context) {
         prefs.setString('B7', myController7.text);
         prefs.setString('B8', myController8.text);
         prefs.setString('B9', myController9.text);
+        globals.thirdlangsc.add(1);
         Navigator.pop(context);
       }
     },
@@ -595,6 +597,7 @@ grade11(context, bool g) {
           height: 10,
         ),
         TextFormField(
+            textInputAction: TextInputAction.next,
             textCapitalization: TextCapitalization.sentences,
             validator: (value) {
               if (value!.isEmpty) {
@@ -645,6 +648,7 @@ g11TT(context) {
   return ElevatedButton(
     onPressed: () async {
       HapticFeedback.heavyImpact();
+      print(myController.text);
       if (_formKey.currentState!.validate()) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString('B1', myController.text);
@@ -654,6 +658,7 @@ g11TT(context) {
         prefs.setString('B5', myController5.text);
         prefs.setString('B6', myController6.text);
         prefs.setString('B7', myController7.text);
+        globals.thirdlangsc.add(1);
         Navigator.pop(context);
       }
     },
@@ -834,6 +839,7 @@ g12TT(context) {
         prefs.setString('B4', myController4.text);
         prefs.setString('B5', myController5.text);
         prefs.setString('B6', myController6.text);
+        globals.thirdlangsc.add(1);
         Navigator.pop(context);
       }
     },
@@ -860,47 +866,9 @@ g12TT(context) {
   );
 }
 
-nosupport() {
-  return Container(
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SizedBox(
-          height: globals.s2,
-        ),
-        Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                  child: Padding(
-                      padding: EdgeInsets.only(
-                          top: 0.0, left: globals.h5!, right: globals.h5!),
-                      child: Container(
-                        child: Text(
-                          'Support Coming Soon!',
-                          style: TextStyle(
-                            fontFamily: 'Protipo Compact',
-                            fontSize: globals.h5,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.w300,
-                          ),
-                          overflow: TextOverflow.ellipsis,
-                          textDirection: TextDirection.ltr,
-                          textAlign: TextAlign.center,
-                          maxLines: 6,
-                        ),
-                      )))
-            ]),
-      ],
-    ),
-  );
-}
-
-addIntToSF() async {
+addIntToSF(value) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  prefs.setInt('Value', globals.valueOfGrade!);
+  prefs.setInt('Value', value);
 }
 
 fp2helper() async {

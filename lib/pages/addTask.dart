@@ -9,7 +9,6 @@ import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import '/Provider/theme_provider.dart';
 import 'package:schoolcalendar/DataBase/database.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
-import 'package:animated_icon_button/animated_icon_button.dart';
 import 'package:animate_icons/animate_icons.dart';
 
 class Addtask2Page extends StatefulWidget {
@@ -279,7 +278,7 @@ class _Addtask2State extends State<Addtask2Page>
                                         //   duration:
                                         //       const Duration(milliseconds: 370),
                                         //   splashColor: Colors.transparent,
-                                        //   icons: 
+                                        //   icons:
                                         //   const <AnimatedIconItem>[
                                         //     AnimatedIconItem(
                                         //       icon: Icon(CupertinoIcons.circle,
@@ -302,7 +301,7 @@ class _Addtask2State extends State<Addtask2Page>
                                       // add this tooltip for the end icon
                                       endTooltip: 'Icons.add_circle_outline',
                                       onStartIconPress: () {
-                                         print("Clicked on Close Icon");
+                                        print("Clicked on Close Icon");
                                         return true;
                                       },
                                       onEndIconPress: () {

@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
         body: TabBarView(
           children: [
-            Home2Page(),
+            Home2Page(globals.thirdlangsc.stream),
             Timetable2Page(globals.thirdlangsc.stream),
             Addtask2Page()
           ],
