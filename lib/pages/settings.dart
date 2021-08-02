@@ -115,7 +115,7 @@ grade8(context, bool g) {
     ),
     InputDecorator(
         decoration: InputDecoration(
-          labelText: 'Math and English Batch',
+          labelText: 'Math/English Group',
           labelStyle: Theme.of(context)
               .primaryTextTheme
               .caption!
@@ -140,11 +140,18 @@ grade8(context, bool g) {
             icon: Icon(Icons.keyboard_arrow_down),
             value: batch,
             items: [
-              DropdownMenuItem(child: Text("Batch 1"), value: 0),
-              DropdownMenuItem(child: Text("Batch 2"), value: 1),
+              DropdownMenuItem(child: Text("Group 1"), value: 0),
+              DropdownMenuItem(child: Text("Group 2"), value: 1),
+              DropdownMenuItem(child: Text("Group 3"), value: 2),
+              DropdownMenuItem(child: Text("Group 4"), value: 3),
             ],
             onChanged: (dynamic value) async {
               batch = value;
+              if (batch == 1) {
+                batch = 0;
+              } else if (batch == 2 || batch == 3) {
+                batch = 1;
+              }
               SharedPreferences prefs = await SharedPreferences.getInstance();
               prefs.setInt('8batchPref', batch);
               globals.thirdlangsc.add(value);
@@ -234,6 +241,9 @@ grade8(context, bool g) {
             },
           ),
         ))),
+    Column(children: [
+      Text(''),
+    ]),
     SizedBox(
       height: 30,
     ),

@@ -295,6 +295,10 @@ class _Home2State extends State<Home2Page> {
                           '${globals.valueOfGrade}.${(buffer + 1)}'] ==
                       null) {
                     buffer++;
+                    if (buffer > 6) {
+                      buffer = 0;
+                      break;
+                    }
                   }
                 }
               }
