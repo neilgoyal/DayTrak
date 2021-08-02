@@ -6,7 +6,6 @@ import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:schoolcalendar/pages/settings.dart';
 import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/pages/home.dart';
 
 selectNumTiles() {
@@ -390,21 +389,6 @@ class MyModalContent extends StatefulWidget {
 }
 
 class _MyModalContentState extends State<MyModalContent> {
-  defaultsvals() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      myController.text = prefs.getString('B1') ?? "";
-      myController2.text = prefs.getString('B2') ?? "";
-      myController3.text = prefs.getString('B3') ?? "";
-      myController4.text = prefs.getString('B4') ?? "";
-      myController5.text = prefs.getString('B5') ?? "";
-      myController6.text = prefs.getString('B6') ?? "";
-      myController7.text = prefs.getString('B7') ?? "";
-      myController8.text = prefs.getString('B8') ?? "";
-      myController9.text = prefs.getString('B9') ?? "";
-    });
-  }
-
   @override
   void initState() {
     super.initState();

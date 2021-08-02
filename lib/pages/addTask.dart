@@ -27,7 +27,6 @@ class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
   late AnimateIconController c1;
   bool isPlaying = false;
   bool value = false;
-  bool _value = false;
   bool isChecked = false;
 
   @override
@@ -272,11 +271,8 @@ class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
                                 child: ListTile(
                                     horizontalTitleGap: 7,
                                     minLeadingWidth: 0,
-                                    leading: 
-                                    AnimatedIconButton(
+                                    leading: AnimatedIconButton(
                                       initialIcon: 0,
-                                      // animationController:
-                                      //     _animationController2,
                                       size: 30,
                                       onPressed: () async {
                                         Future.delayed(
@@ -285,11 +281,9 @@ class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
                                           HapticFeedback.heavyImpact();
                                           await DatabaseService.deleteItem(
                                               docId: docID);
-
+                                          setState(() {});
                                         });
                                       },
-                                      // duration:
-                                      //     const Duration(milliseconds: 30),
                                       splashColor: Colors.transparent,
                                       icons: const <AnimatedIconItem>[
                                         AnimatedIconItem(

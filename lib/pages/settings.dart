@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:schoolcalendar/DataBase/globals.dart' as globals;
+import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:flutter/services.dart';
 
 String errmessage = "Cannot Be Empty";
@@ -457,6 +458,7 @@ g9tt(context) {
         prefs.setString('B7', myController7.text);
         prefs.setString('B8', myController8.text);
         prefs.setString('B9', myController9.text);
+        defaultsvals();
         globals.thirdlangsc.add(1);
         Navigator.pop(context);
       }
@@ -658,6 +660,7 @@ g11TT(context) {
         prefs.setString('B5', myController5.text);
         prefs.setString('B6', myController6.text);
         prefs.setString('B7', myController7.text);
+        defaultsvals();
         globals.thirdlangsc.add(1);
         Navigator.pop(context);
       }
@@ -839,6 +842,7 @@ g12TT(context) {
         prefs.setString('B4', myController4.text);
         prefs.setString('B5', myController5.text);
         prefs.setString('B6', myController6.text);
+        defaultsvals();
         globals.thirdlangsc.add(1);
         Navigator.pop(context);
       }
