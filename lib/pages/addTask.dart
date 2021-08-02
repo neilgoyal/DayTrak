@@ -17,20 +17,28 @@ class Addtask2Page extends StatefulWidget {
   _Addtask2State createState() => _Addtask2State();
 }
 
-class _Addtask2State extends State<Addtask2Page>
-    with SingleTickerProviderStateMixin {
+class _Addtask2State extends State<Addtask2Page> with TickerProviderStateMixin {
   TextEditingController _todoTitleController = TextEditingController();
   bool validated1 = true;
   DateTime? selectedDate;
   DateTime? selectedTime;
   late AnimationController _animationController;
+  late AnimationController _animationController2;
   late AnimateIconController c1;
   bool isPlaying = false;
+  bool value = false;
+  bool _value = false;
+  bool isChecked = false;
 
   @override
   void initState() {
     super.initState();
     c1 = AnimateIconController();
+    _animationController2 = AnimationController(
+        animationBehavior: AnimationBehavior.preserve,
+        vsync: this,
+        duration: Duration(milliseconds: 370),
+        reverseDuration: Duration(milliseconds: 10));
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 450));
   }
@@ -38,6 +46,7 @@ class _Addtask2State extends State<Addtask2Page>
   @override
   void dispose() {
     super.dispose();
+    _animationController2.dispose();
   }
 
   selectedTodoDate(BuildContext context) {
@@ -263,55 +272,36 @@ class _Addtask2State extends State<Addtask2Page>
                                 child: ListTile(
                                     horizontalTitleGap: 7,
                                     minLeadingWidth: 0,
-                                    leading:
-                                        // AnimatedIconButton(
-                                        //   size: 30,
-                                        //   onPressed: () async {
-                                        //     Future.delayed(
-                                        //         Duration(milliseconds: 520),
-                                        //         () async {
-                                        //       HapticFeedback.heavyImpact();
-                                        //       await DatabaseService.deleteItem(
-                                        //           docId: docID);
-                                        //     });
-                                        //   },
-                                        //   duration:
-                                        //       const Duration(milliseconds: 370),
-                                        //   splashColor: Colors.transparent,
-                                        //   icons: 
-                                        //   const <AnimatedIconItem>[
-                                        //     AnimatedIconItem(
-                                        //       icon: Icon(CupertinoIcons.circle,
-                                        //           color: Colors.black54),
-                                        //     ),
-                                        //     AnimatedIconItem(
-                                        //       icon: Icon(
-                                        //           CupertinoIcons.checkmark_alt,
-                                        //           color: Colors.green),
-                                        //     ),
-                                        //   ],
-                                        // ),
-                                        AnimateIcons(
-                                      startIcon: CupertinoIcons.circle,
-                                      endIcon: CupertinoIcons.checkmark_alt,
+                                    leading: 
+                                    AnimatedIconButton(
+                                      initialIcon: 0,
+                                      // animationController:
+                                      //     _animationController2,
                                       size: 30,
-                                      controller: c1,
-                                      // add this tooltip for the start icon
-                                      startTooltip: 'Icons.add_circle',
-                                      // add this tooltip for the end icon
-                                      endTooltip: 'Icons.add_circle_outline',
-                                      onStartIconPress: () {
-                                         print("Clicked on Close Icon");
-                                        return true;
+                                      onPressed: () async {
+                                        Future.delayed(
+                                            Duration(milliseconds: 520),
+                                            () async {
+                                          HapticFeedback.heavyImpact();
+                                          await DatabaseService.deleteItem(
+                                              docId: docID);
+
+                                        });
                                       },
-                                      onEndIconPress: () {
-                                        print("Clicked on Close Icon");
-                                        return true;
-                                      },
-                                      duration: Duration(milliseconds: 370),
-                                      startIconColor: Colors.black54,
-                                      endIconColor: Colors.green,
-                                      clockwise: false,
+                                      // duration:
+                                      //     const Duration(milliseconds: 30),
+                                      splashColor: Colors.transparent,
+                                      icons: const <AnimatedIconItem>[
+                                        AnimatedIconItem(
+                                          icon: Icon(CupertinoIcons.circle,
+                                              color: Colors.black54),
+                                        ),
+                                        AnimatedIconItem(
+                                          icon: Icon(
+                                              CupertinoIcons.checkmark_alt,
+                                              color: Colors.green),
+                                        ),
+                                      ],
                                     ),
                                     title: Text(
                                       title,
