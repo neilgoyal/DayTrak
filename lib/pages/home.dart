@@ -27,7 +27,7 @@ String uname = "DayTrak User", uname2 = "DayTrak User";
 class _Home2State extends State<Home2Page> {
   String greeting() {
     int hour = DateTime.now().hour;
-    if (hour < 12) {
+    if (hour < 12 && hour > 6) {
       return 'Morning';
     }
     if (hour < 17) {
@@ -496,8 +496,11 @@ class _Home2State extends State<Home2Page> {
                         fontSize: globals.h10,
                         fontWeight: FontWeight.w300,
                       )),
+                  SizedBox(
+                    height: globals.h10,
+                  )
                 ],
-              )
+              ),
             ],
           ),
         ),
