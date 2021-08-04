@@ -29,12 +29,13 @@ class _HomePageState extends State<HomePage> {
     globals.s4 = width * 0.225;
     globals.s5 = width * 0.13;
     globals.s6 = width * 0.15;
-    globals.s7 = width * 0.17;
+    globals.s7 = width * 0.185;
     globals.w = width * 0.85;
     globals.l4 = lenght * 0.21;
     globals.l5 = lenght * 0.08;
     globals.lc = lenght * 0.41;
     globals.superman = width * 0.2;
+    globals.neil = width * 0.3;
     return DefaultTabController(
       length: 3,
       initialIndex: 0,

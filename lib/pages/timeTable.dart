@@ -7,6 +7,7 @@ import 'package:schoolcalendar/pages/settings.dart';
 import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:intl/intl.dart';
 import 'package:schoolcalendar/pages/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Timetable2Page extends StatefulWidget {
   Timetable2Page(this.stream);
@@ -251,7 +252,18 @@ class _Timetable2State extends State<Timetable2Page>
               child: AppBar(
                 actions: [
                   IconButton(
-                      onPressed: () {
+                      onPressed: () async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        myController.text = prefs.getString('B1') ?? "";
+                        myController2.text = prefs.getString('B2') ?? "";
+                        myController3.text = prefs.getString('B3') ?? "";
+                        myController4.text = prefs.getString('B4') ?? "";
+                        myController5.text = prefs.getString('B5') ?? "";
+                        myController6.text = prefs.getString('B6') ?? "";
+                        myController7.text = prefs.getString('B7') ?? "";
+                        myController8.text = prefs.getString('B8') ?? "";
+                        myController9.text = prefs.getString('B9') ?? "";
                         dayAdjust(context);
                       },
                       icon: Icon(CupertinoIcons.ellipsis))
@@ -421,166 +433,190 @@ class _MyModalContentState extends State<MyModalContent> {
             padding: EdgeInsets.fromLTRB(4, 17, 0, 4),
             child: Scaffold(
                 resizeToAvoidBottomInset: true,
-                body: SingleChildScrollView(
-                    child: Container(
-                        child: Padding(
-                            padding: EdgeInsets.only(
-                                top: 0.0, left: 25.0, right: 25.0),
-                            child: Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    'Customize',
-                                    style: TextStyle(
-                                      fontFamily: 'Protipo Compact',
-                                      fontSize: globals.h2,
-                                      fontWeight: FontWeight.w300,
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    height: 25,
-                                  ),
-                                  Row(
+                body: GestureDetector(
+                    onTap: () {
+                      FocusScope.of(context).unfocus();
+                    },
+                    child: SingleChildScrollView(
+                        child: Container(
+                            child: Padding(
+                                padding: EdgeInsets.only(
+                                    top: 0.0, left: 25.0, right: 25.0),
+                                child: Column(
                                     mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text('Choose Grade',
-                                          style: TextStyle(
-                                            fontFamily: 'Protipo Compact',
-                                            fontSize: globals.h4,
-                                            fontWeight: FontWeight.w300,
-                                          )),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 25,
-                                  ),
-                                  Container(
-                                      child: Center(
-                                          child: Column(children: <Widget>[
-                                    InputDecorator(
-                                        decoration: InputDecoration(
-                                          labelText: 'Select Grade',
-                                          labelStyle: Theme.of(context)
-                                              .primaryTextTheme
-                                              .caption!
-                                              .copyWith(color: Colors.black),
-                                          border: const OutlineInputBorder(
-                                              gapPadding: 0,
-                                              borderSide:
-                                                  const BorderSide(width: 1),
-                                              borderRadius:
-                                                  const BorderRadius.all(
-                                                      Radius.circular(25.0))),
+                                      Text(
+                                        'Customize',
+                                        style: TextStyle(
+                                          fontFamily: 'Protipo Compact',
+                                          fontSize: globals.h2,
+                                          fontWeight: FontWeight.w300,
                                         ),
-                                        child: DropdownButtonHideUnderline(
-                                            child: Listener(
-                                          onPointerDown: (_) =>
-                                              FocusScope.of(context).unfocus(),
-                                          child: DropdownButton(
-                                            style: TextStyle(
-                                                color: Colors.black,
+                                      ),
+                                      SizedBox(
+                                        height: 25,
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text('Choose Grade',
+                                              style: TextStyle(
+                                                fontFamily: 'Protipo Compact',
+                                                fontSize: globals.h4,
                                                 fontWeight: FontWeight.w300,
-                                                fontSize: globals.h9,
-                                                fontFamily: 'Protipo Compact'),
-                                            elevation: 1,
-                                            isExpanded: false,
-                                            isDense: true,
-                                            icon:
-                                                Icon(Icons.keyboard_arrow_down),
-                                            value: globals.valueOfGrade,
-                                            items: [
-                                              DropdownMenuItem(
-                                                  child: Text("6A"), value: 61),
-                                              DropdownMenuItem(
-                                                  child: Text("6B"), value: 62),
-                                              DropdownMenuItem(
-                                                  child: Text("7A"), value: 71),
-                                              DropdownMenuItem(
-                                                  child: Text("7B"), value: 72),
-                                              DropdownMenuItem(
-                                                  child: Text("8A"), value: 81),
-                                              DropdownMenuItem(
-                                                  child: Text("8B"), value: 82),
-                                              DropdownMenuItem(
-                                                  child: Text("8C"), value: 83),
-                                              DropdownMenuItem(
-                                                  child: Text("9A"), value: 91),
-                                              DropdownMenuItem(
-                                                  child: Text("9B"), value: 92),
-                                              DropdownMenuItem(
-                                                  child: Text("9C"), value: 93),
-                                              DropdownMenuItem(
-                                                  child: Text("10A"),
-                                                  value: 101),
-                                              DropdownMenuItem(
-                                                  child: Text("10B"),
-                                                  value: 102),
-                                              DropdownMenuItem(
-                                                  child: Text("11"), value: 11),
-                                              DropdownMenuItem(
-                                                  child: Text("12"), value: 12),
-                                            ],
-                                            onChanged: (dynamic value) {
-                                              setState(() {
-                                                timetable_0 = {};
-                                                timetable_1 = {};
-                                                timetable_2 = {};
-                                                timetable_3 = {};
-                                                timetable_4 = {};
-                                                timetable_5 = {};
-                                                timetable_6 = {};
-                                                timetablePers = {};
-                                                globals.valueOfGrade = value;
-                                                addIntToSF(value);
-                                              });
-                                              globals.thirdlangsc.add(1);
-                                            },
-                                          ),
-                                        ))),
-                                    SizedBox(
-                                      height: 25,
-                                    ),
-                                    Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text('Add subjects',
-                                            style: TextStyle(
-                                              fontFamily: 'Protipo Compact',
-                                              fontSize: globals.h4,
-                                              fontWeight: FontWeight.w300,
-                                            )),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Column(
-                                      children: <Widget>[
-                                        if (globals.valueOfGrade == 11)
-                                          grade11(context, true)
-                                        else if (globals.valueOfGrade == 12)
-                                          grade12(context, true)
-                                        else if (globals.valueOfGrade == 91 ||
-                                            globals.valueOfGrade == 92 ||
-                                            globals.valueOfGrade == 93 ||
-                                            globals.valueOfGrade == 101 ||
-                                            globals.valueOfGrade == 102)
-                                          grade9and10(context, true)
-                                        else if (globals.valueOfGrade == 61 ||
-                                            globals.valueOfGrade == 62 ||
-                                            globals.valueOfGrade == 71 ||
-                                            globals.valueOfGrade == 72)
-                                          grade6and7(context, true)
-                                        else if (globals.valueOfGrade == 81 ||
-                                            globals.valueOfGrade == 82 ||
-                                            globals.valueOfGrade == 83)
-                                          grade8(context, true)
-                                      ],
-                                    ),
-                                  ]))),
-                                ])))))));
+                                              )),
+                                        ],
+                                      ),
+                                      SizedBox(
+                                        height: 25,
+                                      ),
+                                      Container(
+                                          child: Center(
+                                              child: Column(children: <Widget>[
+                                        InputDecorator(
+                                            decoration: InputDecoration(
+                                              labelText: 'Select Grade',
+                                              labelStyle: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .caption!
+                                                  .copyWith(
+                                                      color: Colors.black),
+                                              border: const OutlineInputBorder(
+                                                  gapPadding: 0,
+                                                  borderSide: const BorderSide(
+                                                      width: 1),
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                          Radius.circular(
+                                                              25.0))),
+                                            ),
+                                            child: DropdownButtonHideUnderline(
+                                                child: Listener(
+                                              onPointerDown: (_) =>
+                                                  FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: DropdownButton(
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.w300,
+                                                    fontSize: globals.h9,
+                                                    fontFamily:
+                                                        'Protipo Compact'),
+                                                elevation: 1,
+                                                isExpanded: false,
+                                                isDense: true,
+                                                icon: Icon(
+                                                    Icons.keyboard_arrow_down),
+                                                value: globals.valueOfGrade,
+                                                items: [
+                                                  DropdownMenuItem(
+                                                      child: Text("6A"),
+                                                      value: 61),
+                                                  DropdownMenuItem(
+                                                      child: Text("6B"),
+                                                      value: 62),
+                                                  DropdownMenuItem(
+                                                      child: Text("7A"),
+                                                      value: 71),
+                                                  DropdownMenuItem(
+                                                      child: Text("7B"),
+                                                      value: 72),
+                                                  DropdownMenuItem(
+                                                      child: Text("8A"),
+                                                      value: 81),
+                                                  DropdownMenuItem(
+                                                      child: Text("8B"),
+                                                      value: 82),
+                                                  DropdownMenuItem(
+                                                      child: Text("8C"),
+                                                      value: 83),
+                                                  DropdownMenuItem(
+                                                      child: Text("9A"),
+                                                      value: 91),
+                                                  DropdownMenuItem(
+                                                      child: Text("9B"),
+                                                      value: 92),
+                                                  DropdownMenuItem(
+                                                      child: Text("9C"),
+                                                      value: 93),
+                                                  DropdownMenuItem(
+                                                      child: Text("10A"),
+                                                      value: 101),
+                                                  DropdownMenuItem(
+                                                      child: Text("10B"),
+                                                      value: 102),
+                                                  DropdownMenuItem(
+                                                      child: Text("11"),
+                                                      value: 11),
+                                                  DropdownMenuItem(
+                                                      child: Text("12"),
+                                                      value: 12),
+                                                ],
+                                                onChanged: (dynamic value) {
+                                                  setState(() {
+                                                    timetable_0 = {};
+                                                    timetable_1 = {};
+                                                    timetable_2 = {};
+                                                    timetable_3 = {};
+                                                    timetable_4 = {};
+                                                    timetable_5 = {};
+                                                    timetable_6 = {};
+                                                    timetablePers = {};
+                                                    globals.valueOfGrade =
+                                                        value;
+                                                    addIntToSF(value);
+                                                  });
+                                                  globals.thirdlangsc.add(1);
+                                                },
+                                              ),
+                                            ))),
+                                        SizedBox(
+                                          height: 25,
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text('Add subjects',
+                                                style: TextStyle(
+                                                  fontFamily: 'Protipo Compact',
+                                                  fontSize: globals.h4,
+                                                  fontWeight: FontWeight.w300,
+                                                )),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 5,
+                                        ),
+                                        Column(
+                                          children: <Widget>[
+                                            if (globals.valueOfGrade == 11)
+                                              grade11(context, true)
+                                            else if (globals.valueOfGrade == 12)
+                                              grade12(context, true)
+                                            else if (globals.valueOfGrade ==
+                                                    91 ||
+                                                globals.valueOfGrade == 92 ||
+                                                globals.valueOfGrade == 93 ||
+                                                globals.valueOfGrade == 101 ||
+                                                globals.valueOfGrade == 102)
+                                              grade9and10(context, true)
+                                            else if (globals.valueOfGrade ==
+                                                    61 ||
+                                                globals.valueOfGrade == 62 ||
+                                                globals.valueOfGrade == 71 ||
+                                                globals.valueOfGrade == 72)
+                                              grade6and7(context, true)
+                                            else if (globals.valueOfGrade ==
+                                                    81 ||
+                                                globals.valueOfGrade == 82 ||
+                                                globals.valueOfGrade == 83)
+                                              grade8(context, true)
+                                          ],
+                                        ),
+                                      ]))),
+                                    ]))))))));
   }
 }

@@ -5,9 +5,13 @@ import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:schoolcalendar/Authentication/authentication.dart';
 import 'package:schoolcalendar/Authentication/signIn.dart';
+import 'package:schoolcalendar/pages/tabBar.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '/Provider/authentication_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+
+import 'fp2.dart';
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -101,7 +105,7 @@ class _Fp1State extends State<Fp1Page> {
               height: globals.s5,
             ),
             Padding(
-                padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
+                padding: EdgeInsets.fromLTRB(60, 0, 60, 0),
                 child: Card(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18),
@@ -121,10 +125,11 @@ class _Fp1State extends State<Fp1Page> {
                             style: SignInWithAppleButtonStyle.black,
                             borderRadius: BorderRadius.all(Radius.circular(18)),
                             iconAlignment: IconAlignment.center,
-                            onPressed: () {
-                              context
-                                  .read<AuthenticationProvider>()
-                                  .signInWithApple();
+                            onPressed: () async {
+                              UserCredential user = await signInWithApple();
+                              if (user.user != null) {
+                                checkFirstSeen();
+                              }
                             },
                           );
                         }
@@ -149,5 +154,25 @@ class _Fp1State extends State<Fp1Page> {
         ),
       ),
     );
+  }
+
+  Future checkFirstSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool _seen = (prefs.getBool('seen') ?? false);
+
+    if (_seen) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    } else {
+      prefs.setBool('seen', true);
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => Fp2Page(globals.thirdlangsc.stream),
+        ),
+      );
+    }
   }
 }
