@@ -100,14 +100,27 @@ class _Fp1State extends State<Fp1Page> {
               SizedBox(
                 height: globals.s5,
               ),
-          
-                  SignInWithAppleButton(
+          Padding(padding: EdgeInsets.fromLTRB(70, 0, 70, 0), child:
+          Card(
+             shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(18),
+                ),
+            color: Colors.transparent,
+      elevation: 5,
+            child:
+                 SignInWithAppleButton(
+                   height: 50,
               style: SignInWithAppleButtonStyle.black,
+              borderRadius: BorderRadius.all(Radius.circular(18)),
               iconAlignment: IconAlignment.center,
               onPressed: () {
                 context.read<AuthenticationProvider>().signInWithApple();
               },
-            ),
+              
+            ))),
+             SizedBox(
+                height: globals.h10,
+              ),
                   FutureBuilder(
                     future: Authentication.initializeFirebase(context: context),
                     builder: (context, snapshot) {
@@ -122,8 +135,7 @@ class _Fp1State extends State<Fp1Page> {
                   )
                 ],
               ),
-            ],
           ),
-        ));
+        );
   }
 }

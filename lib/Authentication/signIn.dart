@@ -28,7 +28,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                 shadowColor: Colors.grey,
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(27),
+                  borderRadius: BorderRadius.circular(18),
                 ),
               ),
               onPressed: () async {
@@ -54,7 +54,7 @@ class _GoogleSignInButtonState extends State<GoogleSignInButton> {
                   children: <Widget>[
                     Image(
                       image: AssetImage("assets/google_logo.png"),
-                      height: 35.0,
+                      height: 30.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
