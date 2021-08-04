@@ -19,7 +19,7 @@ String sha256ofString(String input) {
   return digest.toString();
 }
 
-Future<UserCredential> signInWithApple() async {
+Future<User?> signInWithApple() async {
   final rawNonce = generateNonce();
   final nonce = sha256ofString(rawNonce);
   final appleCredential = await SignInWithApple.getAppleIDCredential(
@@ -35,5 +35,16 @@ Future<UserCredential> signInWithApple() async {
     rawNonce: rawNonce,
   );
 
-  return await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+  UserCredential firebaseResult =
+      await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+  User? user = firebaseResult.user;
+
+  final displayName =
+      '${appleCredential.givenName} ${appleCredential.familyName}';
+  final userEmail = '${appleCredential.email}';
+
+  await user!.updateDisplayName(displayName);
+  await user.updateEmail(userEmail);
+
+  return user;
 }

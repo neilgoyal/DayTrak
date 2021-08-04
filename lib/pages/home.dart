@@ -387,16 +387,31 @@ class _Home2State extends State<Home2Page> {
                                   builder: (context, snapshot) {
                                     if (snapshot.hasData) {
                                       User? user = snapshot.data;
-                                      return Ink.image(
-                                        image: NetworkImage(user!.photoURL!),
-                                        fit: BoxFit.cover,
-                                        width: globals.s5,
-                                        height: globals.s5,
-                                        child: InkWell(
-                                          onTap: () {
-                                            signOut();
-                                          },
+                                      // return Ink.image(
+                                      //   image: NetworkImage(user!.photoURL!),
+                                      //   fit: BoxFit.cover,
+                                      //   width: globals.s5,
+                                      //   height: globals.s5,
+                                      //   child: InkWell(
+                                      //     onTap: () {
+                                      //       signOut();
+                                      //     },
+                                      //   ),
+                                      return ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                          elevation: 0,
+                                          padding: EdgeInsets.all(4),
+                                          primary: Colors.transparent,
+                                          onSurface: Colors.transparent,
                                         ),
+                                        child: Icon(
+                                          CupertinoIcons.person_alt_circle,
+                                          color: Colors.grey[500],
+                                          size: globals.s6,
+                                        ),
+                                        onPressed: () {
+                                          signOut();
+                                        },
                                       );
                                     } else {
                                       return ElevatedButton(

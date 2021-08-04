@@ -126,8 +126,8 @@ class _Fp1State extends State<Fp1Page> {
                             borderRadius: BorderRadius.all(Radius.circular(18)),
                             iconAlignment: IconAlignment.center,
                             onPressed: () async {
-                              UserCredential user = await signInWithApple();
-                              if (user.user != null) {
+                              User? user = await signInWithApple();
+                              if (user != null) {
                                 checkFirstSeen();
                               }
                             },
