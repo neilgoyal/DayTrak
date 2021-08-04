@@ -5,6 +5,9 @@ import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:schoolcalendar/Authentication/authentication.dart';
 import 'package:schoolcalendar/Authentication/signIn.dart';
+import '/Provider/authentication_provider.dart';
+import 'package:provider/provider.dart';
+import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -97,9 +100,14 @@ class _Fp1State extends State<Fp1Page> {
               SizedBox(
                 height: globals.s5,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+          
+                  SignInWithAppleButton(
+              style: SignInWithAppleButtonStyle.black,
+              iconAlignment: IconAlignment.center,
+              onPressed: () {
+                context.read<AuthenticationProvider>().signInWithApple();
+              },
+            ),
                   FutureBuilder(
                     future: Authentication.initializeFirebase(context: context),
                     builder: (context, snapshot) {

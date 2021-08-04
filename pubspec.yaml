@@ -33,6 +33,9 @@ dependencies:
   syncfusion_flutter_datepicker: ^19.2.47
   animated_icon_button: ^1.0.2
   animate_icons: ^2.0.0
+  sign_in_with_apple: ^3.0.0
+  crypto: ^3.0.1
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
