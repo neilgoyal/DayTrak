@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:math';
-
 import 'package:crypto/crypto.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +33,7 @@ class AuthenticationProvider with ChangeNotifier {
     return digest.toString();
   }
 
-  Future<User?> signInWithApple() async {
+  Future<User?> signInWithApple({BuildContext? context}) async {
     // To prevent replay attacks with the credential returned from Apple, we
     // include a nonce in the credential request. When signing in in with
     // Firebase, the nonce in the id token returned by Apple, is expected to
@@ -71,7 +70,7 @@ class AuthenticationProvider with ChangeNotifier {
 
       final firebaseUser = authResult.user;
       print(displayName);
-      await firebaseUser!.updateProfile(displayName: displayName);
+      await firebaseUser!.updateDisplayName(displayName);
       await firebaseUser.updateEmail(userEmail);
 
       return firebaseUser;

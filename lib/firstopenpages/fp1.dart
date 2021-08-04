@@ -33,109 +33,121 @@ class _Fp1State extends State<Fp1Page> {
     globals.s5 = width * 0.13;
     globals.w = width * 0.85;
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'DayTrak',
-        themeMode: ThemeMode.system,
-        theme: MyThemes.lightTheme,
-        home: Scaffold(
-          appBar: PreferredSize(
-              preferredSize: Size.fromHeight(50),
-              child: AppBar(
-                  elevation: 0, title: Container(), toolbarHeight: 50.0)),
-          body: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Get Started',
-                    style: TextStyle(
-                      fontFamily: 'Protipo Compact',
-                      fontSize: globals.h1,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: globals.s5,
-              ),
-              Column(children: [
-                SizedBox(
-                  width: globals.w,
-                  height: 225,
-                  child: Stack(children: <Widget>[
-                    Positioned.fill(
-                      child: FlareActor("assets/connection.flr",
-                          alignment: Alignment.center,
-                          fit: BoxFit.contain,
-                          animation: "conn"),
-                    )
-                  ]),
-                ),
-              ]),
-              SizedBox(
-                height: globals.s5,
-              ),
-              Row(children: [
-                Expanded(
-                    child: Padding(
-                        padding: EdgeInsets.only(
-                            left: globals.h5!, right: globals.h5!),
-                        child: Container(
-                          child: Text(
-                            'DayTrak is designed to help you manage your school calendar in a simple and easy way.',
-                            style: TextStyle(
-                              fontFamily: 'Protipo Compact',
-                              fontSize: globals.h6,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                            textDirection: TextDirection.ltr,
-                            textAlign: TextAlign.center,
-                            maxLines: 6,
-                          ),
-                        )))
-              ]),
-              SizedBox(
-                height: globals.s5,
-              ),
-          Padding(padding: EdgeInsets.fromLTRB(70, 0, 70, 0), child:
-          Card(
-             shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(18),
-                ),
-            color: Colors.transparent,
-      elevation: 5,
+      debugShowCheckedModeBanner: false,
+      title: 'DayTrak',
+      themeMode: ThemeMode.system,
+      theme: MyThemes.lightTheme,
+      home: Scaffold(
+        appBar: PreferredSize(
+            preferredSize: Size.fromHeight(50),
             child:
-                 SignInWithAppleButton(
-                   height: 50,
-              style: SignInWithAppleButtonStyle.black,
-              borderRadius: BorderRadius.all(Radius.circular(18)),
-              iconAlignment: IconAlignment.center,
-              onPressed: () {
-                context.read<AuthenticationProvider>().signInWithApple();
-              },
-              
-            ))),
-             SizedBox(
-                height: globals.h10,
-              ),
-                  FutureBuilder(
-                    future: Authentication.initializeFirebase(context: context),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasError) {
-                        return Text('Error initializing Firebase');
-                      } else if (snapshot.connectionState ==
-                          ConnectionState.done) {
-                        return GoogleSignInButton();
-                      }
-                      return CircularProgressIndicator();
-                    },
+                AppBar(elevation: 0, title: Container(), toolbarHeight: 50.0)),
+        body: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Get Started',
+                  style: TextStyle(
+                    fontFamily: 'Protipo Compact',
+                    fontSize: globals.h1,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: globals.s5,
+            ),
+            Column(children: [
+              SizedBox(
+                width: globals.w,
+                height: 225,
+                child: Stack(children: <Widget>[
+                  Positioned.fill(
+                    child: FlareActor("assets/connection.flr",
+                        alignment: Alignment.center,
+                        fit: BoxFit.contain,
+                        animation: "conn"),
                   )
-                ],
+                ]),
               ),
-          ),
-        );
+            ]),
+            SizedBox(
+              height: globals.s5,
+            ),
+            Row(children: [
+              Expanded(
+                  child: Padding(
+                      padding: EdgeInsets.only(
+                          left: globals.h5!, right: globals.h5!),
+                      child: Container(
+                        child: Text(
+                          'DayTrak is designed to help you manage your school calendar in a simple and easy way.',
+                          style: TextStyle(
+                            fontFamily: 'Protipo Compact',
+                            fontSize: globals.h6,
+                            fontWeight: FontWeight.w300,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                          textDirection: TextDirection.ltr,
+                          textAlign: TextAlign.center,
+                          maxLines: 6,
+                        ),
+                      )))
+            ]),
+            SizedBox(
+              height: globals.s5,
+            ),
+            Padding(
+                padding: EdgeInsets.fromLTRB(70, 0, 70, 0),
+                child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(18),
+                    ),
+                    color: Colors.transparent,
+                    elevation: 5,
+                    child: FutureBuilder(
+                      future:
+                          Authentication.initializeFirebase(context: context),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Text('Error initializing Firebase');
+                        } else if (snapshot.connectionState ==
+                            ConnectionState.done) {
+                          return SignInWithAppleButton(
+                            height: 50,
+                            style: SignInWithAppleButtonStyle.black,
+                            borderRadius: BorderRadius.all(Radius.circular(18)),
+                            iconAlignment: IconAlignment.center,
+                            onPressed: () {
+                              context
+                                  .read<AuthenticationProvider>()
+                                  .signInWithApple();
+                            },
+                          );
+                        }
+                        return CircularProgressIndicator();
+                      },
+                    ))),
+            SizedBox(
+              height: globals.h10,
+            ),
+            FutureBuilder(
+              future: Authentication.initializeFirebase(context: context),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Error initializing Firebase');
+                } else if (snapshot.connectionState == ConnectionState.done) {
+                  return GoogleSignInButton();
+                }
+                return CircularProgressIndicator();
+              },
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
