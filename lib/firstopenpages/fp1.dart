@@ -55,14 +55,14 @@ class _Fp1State extends State<Fp1Page> {
                   'Get Started',
                   style: TextStyle(
                     fontFamily: 'Protipo Compact',
-                    fontSize: globals.h1,
+                    fontSize: globals.a1,
                     fontWeight: FontWeight.w500,
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: globals.s5,
+              height: globals.a1,
             ),
             Column(children: [
               SizedBox(

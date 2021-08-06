@@ -15,6 +15,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double lenght = MediaQuery.of(context).size.height;
+    double area = width * lenght;
+    globals.a1 = area * 0.001;
     globals.h1 = width * 0.115;
     globals.h2 = width * 0.1;
     globals.h3 = width * 0.09;

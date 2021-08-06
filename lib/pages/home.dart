@@ -385,7 +385,7 @@ class _Home2State extends State<Home2Page> {
                               child: FutureBuilder<User>(
                                   future: usersetup,
                                   builder: (context, snapshot) {
-                                    if (snapshot.hasData) {
+                                    if (snapshot.hasData|| snapshot.data != null) {
                                       User? user = snapshot.data;
                                       // return Ink.image(
                                       //   image: NetworkImage(user!.photoURL!),
