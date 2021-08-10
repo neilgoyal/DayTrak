@@ -3,18 +3,35 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
-import 'package:schoolcalendar/firstopenpages/fp1.dart';
 import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:schoolcalendar/DataBase/api.dart';
-import 'package:schoolcalendar/Authentication/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:schoolcalendar/DataBase/database.dart';
+import 'package:schoolcalendar/firstopenpages/fp1.dart';
 
 class Home2Page extends StatefulWidget {
   Home2Page(this.stream);
   final Stream<int> stream;
   @override
   _Home2State createState() => _Home2State();
+}
+
+Route _routeToSignInScreen() {
+  return PageRouteBuilder(
+    pageBuilder: (context, animation, secondaryAnimation) => Fp1Page(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      var begin = Offset(-1.0, 0.0);
+      var end = Offset.zero;
+      var curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(
+        position: animation.drive(tween),
+        child: child,
+      );
+    },
+  );
 }
 
 Future<Day>? futureDay;
@@ -38,26 +55,6 @@ class _Home2State extends State<Home2Page> {
 
   bool _isSigningOut = false;
   Future<User>? usersetup;
-
-  Route _routeToSignInScreen() {
-    return PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) => Fp1Page(),
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        var begin = Offset(-1.0, 0.0);
-        var end = Offset.zero;
-        var curve = Curves.ease;
-
-        var tween =
-            Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-        return SlideTransition(
-          position: animation.drive(tween),
-          child: child,
-        );
-      },
-    );
-  }
-
   Widget signOut() {
     showDialog(
         context: context,
@@ -129,16 +126,14 @@ class _Home2State extends State<Home2Page> {
                                       ),
                                     ),
                                     onPressed: () async {
-                                      setState(() {
-                                        _isSigningOut = true;
-                                      });
-                                      await Authentication.signOut(
-                                          context: context);
-                                      setState(() {
-                                        _isSigningOut = false;
-                                      });
-                                      Navigator.of(context).pushReplacement(
-                                          _routeToSignInScreen());
+                                      await FirebaseAuth.instance.signOut();
+                                      setState(() {});
+                                      Navigator.pushAndRemoveUntil(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => Fp1Page(),
+                                          ),
+                                          (route) => false);
                                     },
                                     child: Padding(
                                       padding: EdgeInsets.only(
@@ -385,34 +380,19 @@ class _Home2State extends State<Home2Page> {
                               child: FutureBuilder<User>(
                                   future: usersetup,
                                   builder: (context, snapshot) {
-                                    if (snapshot.hasData|| snapshot.data != null) {
+                                    if (snapshot.hasData ||
+                                        snapshot.data != null) {
                                       User? user = snapshot.data;
-                                      // return Ink.image(
-                                      //   image: NetworkImage(user!.photoURL!),
-                                      //   fit: BoxFit.cover,
-                                      //   width: globals.s5,
-                                      //   height: globals.s5,
-                                      //   child: InkWell(
-                                      //     onTap: () {
-                                      //       signOut();
-                                      //     },
-                                      //   ),
-                                      return ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          elevation: 0,
-                                          padding: EdgeInsets.all(4),
-                                          primary: Colors.transparent,
-                                          onSurface: Colors.transparent,
-                                        ),
-                                        child: Icon(
-                                          CupertinoIcons.person_alt_circle,
-                                          color: Colors.grey[500],
-                                          size: globals.s6,
-                                        ),
-                                        onPressed: () {
-                                          signOut();
-                                        },
-                                      );
+                                      return Ink.image(
+                                          image: NetworkImage(user!.photoURL!),
+                                          fit: BoxFit.cover,
+                                          width: globals.s5,
+                                          height: globals.s5,
+                                          child: InkWell(
+                                            onTap: () {
+                                              signOut();
+                                            },
+                                          ));
                                     } else {
                                       return ElevatedButton(
                                         style: ElevatedButton.styleFrom(

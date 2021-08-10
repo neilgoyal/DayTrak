@@ -43,6 +43,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.6.1"
+  auth_buttons:
+    dependency: "direct main"
+    description:
+      name: auth_buttons
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.1+4"
   boolean_selector:
     dependency: transitive
     description:
@@ -121,7 +128,7 @@ packages:
     source: hosted
     version: "1.0.3"
   crypto:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: crypto
       url: "https://pub.dartlang.org"
@@ -310,6 +317,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.1"
+  logger:
+    dependency: transitive
+    description:
+      name: logger
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   logging:
     dependency: transitive
     description:
@@ -335,13 +349,6 @@ packages:
     dependency: transitive
     description:
       name: mime
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  nested:
-    dependency: transitive
-    description:
-      name: nested
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
@@ -422,13 +429,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.2.3"
-  provider:
-    dependency: "direct main"
-    description:
-      name: provider
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.0.0"
   pub_semver:
     dependency: transitive
     description:
@@ -514,7 +514,7 @@ packages:
     source: hosted
     version: "1.0.1"
   sign_in_with_apple:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: sign_in_with_apple
       url: "https://pub.dartlang.org"
@@ -553,6 +553,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.10.0"
+  stacked_firebase_auth:
+    dependency: "direct main"
+    description:
+      name: stacked_firebase_auth
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.2.8"
   stream_channel:
     dependency: transitive
     description:
