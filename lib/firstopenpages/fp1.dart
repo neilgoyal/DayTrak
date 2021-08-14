@@ -5,9 +5,9 @@ import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:schoolcalendar/pages/tabBar.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:auth_buttons/auth_buttons.dart';
-import 'package:stacked_firebase_auth/stacked_firebase_auth.dart';
 import 'fp2.dart';
+import 'SignIn.dart';
+import 'SignUp.dart';
 
 class Fp1Page extends StatefulWidget {
   @override
@@ -15,7 +15,6 @@ class Fp1Page extends StatefulWidget {
 }
 
 class _Fp1State extends State<Fp1Page> {
-  final firebaseAuthenticationService = FirebaseAuthenticationService();
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -53,18 +52,15 @@ class _Fp1State extends State<Fp1Page> {
                       'Get Started',
                       style: TextStyle(
                         fontFamily: 'Protipo Compact',
-                        fontSize: 10,
+                        fontSize: globals.h1,
                         fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: globals.a1,
-                ),
                 Column(children: [
                   SizedBox(
-                    width: globals.h2,
+                    width: globals.w,
                     height: 225,
                     child: Stack(children: <Widget>[
                       Positioned.fill(
@@ -100,30 +96,90 @@ class _Fp1State extends State<Fp1Page> {
                           )))
                 ]),
                 SizedBox(
-                  height: globals.s5,
-                ),
-                AppleAuthButton(
-                  onPressed: () async {
-                    // ignore: unused_local_variable
-                    final result =
-                        await firebaseAuthenticationService.signInWithApple(
-                      appleClientId: '',
-                      appleRedirectUri: '',
-                    );
-                    checkFirstSeen();
-                  },
-                ),
-                SizedBox(
                   height: globals.h10,
                 ),
-                GoogleAuthButton(
-                    onPressed: () async {
-                      // ignore: unused_local_variable
-                      final result = await firebaseAuthenticationService
-                          .signInWithGoogle();
-                      checkFirstSeen();
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(0),
+                      primary: Colors.transparent,
+                      shadowColor: Colors.black,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(35)),
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => Login()));
                     },
-                    style: AuthButtonStyle())
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(35)),
+                        // color: Color.fromRGBO(245, 245, 245, 1),
+                        color: Colors.black,
+                        child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Icon(
+                                        CupertinoIcons.hare,
+                                        size: globals.h4,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "Sign In",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: globals.h5,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ]))))),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.all(0),
+                      primary: Colors.transparent,
+                      shadowColor: Colors.black,
+                      elevation: 10,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(35)),
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => Signup()));
+                    },
+                    child: Card(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(35)),
+                        // color: Color.fromRGBO(245, 245, 245, 1),
+                        color: Colors.black,
+                        child: SizedBox(
+                            height: MediaQuery.of(context).size.height * 0.07,
+                            width: MediaQuery.of(context).size.width * 0.5,
+                            child: Padding(
+                                padding: EdgeInsets.all(5),
+                                child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Icon(
+                                        CupertinoIcons.scope,
+                                        size: globals.h4,
+                                        color: Colors.white,
+                                      ),
+                                      Text(
+                                        "Sign Up",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                            color: Colors.white,
+                                            fontSize: globals.h5,
+                                            fontWeight: FontWeight.w900),
+                                      ),
+                                    ])))))
               ],
             ),
           ),

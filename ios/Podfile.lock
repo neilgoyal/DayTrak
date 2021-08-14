@@ -1,9 +1,4 @@
 PODS:
-  - AppAuth (1.4.0):
-    - AppAuth/Core (= 1.4.0)
-    - AppAuth/ExternalUserAgent (= 1.4.0)
-  - AppAuth/Core (1.4.0)
-  - AppAuth/ExternalUserAgent (1.4.0)
   - cloud_firestore (2.4.0):
     - Firebase/Firestore (= 8.3.0)
     - firebase_core
@@ -13,6 +8,9 @@ PODS:
     - FirebaseAuth (~> 8.3.0)
   - Firebase/CoreOnly (8.3.0):
     - FirebaseCore (= 8.3.0)
+  - Firebase/DynamicLinks (8.3.0):
+    - Firebase/CoreOnly
+    - FirebaseDynamicLinks (~> 8.3.0)
   - Firebase/Firestore (8.3.0):
     - Firebase/CoreOnly
     - FirebaseFirestore (~> 8.3.0)
@@ -22,6 +20,9 @@ PODS:
     - Flutter
   - firebase_core (1.4.0):
     - Firebase/CoreOnly (= 8.3.0)
+    - Flutter
+  - firebase_dynamic_links (0.1.0):
+    - Firebase/DynamicLinks
     - Flutter
   - FirebaseAuth (8.3.0):
     - FirebaseCore (~> 8.0)
@@ -37,6 +38,8 @@ PODS:
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
     - nanopb (~> 2.30908.0)
+  - FirebaseDynamicLinks (8.3.0):
+    - FirebaseCore (~> 8.0)
   - FirebaseFirestore (8.3.0):
     - FirebaseFirestore/AutodetectLeveldb (= 8.3.0)
   - FirebaseFirestore/AutodetectLeveldb (8.3.0):
@@ -46,17 +49,10 @@ PODS:
   - FirebaseFirestore/WithLeveldb (8.3.0):
     - FirebaseFirestore/Base
   - Flutter (1.0.0)
-  - google_sign_in (0.0.1):
-    - Flutter
-    - GoogleSignIn (~> 5.0)
   - GoogleDataTransport (9.1.0):
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (< 3.0, >= 1.2)
-  - GoogleSignIn (5.0.2):
-    - AppAuth (~> 1.2)
-    - GTMAppAuth (~> 1.0)
-    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (7.5.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -72,9 +68,6 @@ PODS:
   - "GoogleUtilities/NSData+zlib (7.5.0)"
   - GoogleUtilities/Reachability (7.5.0):
     - GoogleUtilities/Logger
-  - GTMAppAuth (1.2.2):
-    - AppAuth/Core (~> 1.4)
-    - GTMSessionFetcher/Core (~> 1.5)
   - GTMSessionFetcher/Core (1.6.1)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -84,30 +77,25 @@ PODS:
   - PromisesObjC (2.0.0)
   - shared_preferences (0.0.1):
     - Flutter
-  - sign_in_with_apple (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
+  - firebase_dynamic_links (from `.symlinks/plugins/firebase_dynamic_links/ios`)
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `8.3.0`)
   - Flutter (from `Flutter`)
-  - google_sign_in (from `.symlinks/plugins/google_sign_in/ios`)
   - shared_preferences (from `.symlinks/plugins/shared_preferences/ios`)
-  - sign_in_with_apple (from `.symlinks/plugins/sign_in_with_apple/ios`)
 
 SPEC REPOS:
   trunk:
-    - AppAuth
     - Firebase
     - FirebaseAuth
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseDynamicLinks
     - GoogleDataTransport
-    - GoogleSignIn
     - GoogleUtilities
-    - GTMAppAuth
     - GTMSessionFetcher
     - nanopb
     - PromisesObjC
@@ -119,17 +107,15 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_auth/ios"
   firebase_core:
     :path: ".symlinks/plugins/firebase_core/ios"
+  firebase_dynamic_links:
+    :path: ".symlinks/plugins/firebase_dynamic_links/ios"
   FirebaseFirestore:
     :git: https://github.com/invertase/firestore-ios-sdk-frameworks.git
     :tag: 8.3.0
   Flutter:
     :path: Flutter
-  google_sign_in:
-    :path: ".symlinks/plugins/google_sign_in/ios"
   shared_preferences:
     :path: ".symlinks/plugins/shared_preferences/ios"
-  sign_in_with_apple:
-    :path: ".symlinks/plugins/sign_in_with_apple/ios"
 
 CHECKOUT OPTIONS:
   FirebaseFirestore:
@@ -137,27 +123,24 @@ CHECKOUT OPTIONS:
     :tag: 8.3.0
 
 SPEC CHECKSUMS:
-  AppAuth: 31bcec809a638d7bd2f86ea8a52bd45f6e81e7c7
   cloud_firestore: d6c77e2b33f00576fed2b070fec1be58d7e5f276
   Firebase: 817b9171d0d51dccc458b94a5e8edff6b1dd323d
   firebase_auth: 3b08d67bda60758347d15584fd0a7a4cf5f6496f
   firebase_core: 72374607c8c6f5a0adc0559e5c5bf57deda975e3
+  firebase_dynamic_links: 6aa278fc5e6e8cca17d5aa4c7aa46283f2b94749
   FirebaseAuth: fd12c82de44e7ad3b821610c387b8251f03aa0f9
   FirebaseCore: a6dba751680d7033b9d3831e1cfc95ead0605118
   FirebaseCoreDiagnostics: cad03be1904b975f845e632f2720c3337da27faf
+  FirebaseDynamicLinks: 5ab1f7988e31b5b267a2e034659e43cef4fff613
   FirebaseFirestore: 190fe35f122c058493884e066acc233283519150
   Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
-  google_sign_in: de494e5e993986afae63e22a32441e30c35c9823
   GoogleDataTransport: 85fd18ff3019bb85d3f2c551d04c481dedf71fc9
-  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: eea970f4a389963963bffe8d8fabe43540678b9c
-  GTMAppAuth: ad5c2b70b9a8689e1a04033c9369c4915bfcbe89
   GTMSessionFetcher: 36689134877faeb055b27dfa4ccc9ceaa42e029e
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
-  sign_in_with_apple: 34f3f5456a45fd7ac5fb42905e2ad31dae061b4a
 
 PODFILE CHECKSUM: ef67aa94a6d2adbe61bf91c4c057bdb5d55c7810
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.10.1

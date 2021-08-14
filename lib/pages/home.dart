@@ -7,6 +7,7 @@ import 'package:schoolcalendar/DataBase/globals.dart' as globals;
 import 'package:schoolcalendar/DataBase/api.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:schoolcalendar/DataBase/database.dart';
+import 'package:schoolcalendar/authentication.dart';
 import 'package:schoolcalendar/firstopenpages/fp1.dart';
 
 class Home2Page extends StatefulWidget {
@@ -14,24 +15,6 @@ class Home2Page extends StatefulWidget {
   final Stream<int> stream;
   @override
   _Home2State createState() => _Home2State();
-}
-
-Route _routeToSignInScreen() {
-  return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) => Fp1Page(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      var begin = Offset(-1.0, 0.0);
-      var end = Offset.zero;
-      var curve = Curves.ease;
-
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-
-      return SlideTransition(
-        position: animation.drive(tween),
-        child: child,
-      );
-    },
-  );
 }
 
 Future<Day>? futureDay;
@@ -126,7 +109,7 @@ class _Home2State extends State<Home2Page> {
                                       ),
                                     ),
                                     onPressed: () async {
-                                      await FirebaseAuth.instance.signOut();
+                                      AuthenticationHelper().signOut();
                                       setState(() {});
                                       Navigator.pushAndRemoveUntil(
                                           context,
@@ -374,72 +357,38 @@ class _Home2State extends State<Home2Page> {
                           padding:
                               EdgeInsets.only(top: 0.0, left: 0.0, right: 9.0),
                           child: Material(
-                              shape: CircleBorder(),
-                              clipBehavior: Clip.hardEdge,
-                              color: Colors.transparent,
-                              child: FutureBuilder<User>(
-                                  future: usersetup,
-                                  builder: (context, snapshot) {
-                                    if (snapshot.hasData ||
-                                        snapshot.data != null) {
-                                      User? user = snapshot.data;
-                                      return Ink.image(
-                                          image: NetworkImage(user!.photoURL!),
-                                          fit: BoxFit.cover,
-                                          width: globals.s5,
-                                          height: globals.s5,
-                                          child: InkWell(
-                                            onTap: () {
-                                              signOut();
-                                            },
-                                          ));
-                                    } else {
-                                      return ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          elevation: 0,
-                                          padding: EdgeInsets.all(4),
-                                          primary: Colors.transparent,
-                                          onSurface: Colors.transparent,
-                                        ),
-                                        child: Icon(
-                                          CupertinoIcons.person_alt_circle,
-                                          color: Colors.grey[500],
-                                          size: globals.s6,
-                                        ),
-                                        onPressed: () {
-                                          signOut();
-                                        },
-                                      );
-                                    }
-                                  })))
+                            shape: CircleBorder(),
+                            clipBehavior: Clip.hardEdge,
+                            color: Colors.transparent,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                elevation: 0,
+                                padding: EdgeInsets.all(4),
+                                primary: Colors.transparent,
+                                onSurface: Colors.transparent,
+                              ),
+                              child: Icon(
+                                CupertinoIcons.person_alt_circle,
+                                color: Colors.grey[500],
+                                size: globals.s6,
+                              ),
+                              onPressed: () {
+                                signOut();
+                              },
+                            ),
+                          ))
                     ],
                   ),
                   Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Good " '${greeting()},',
+                        Text("Good " '${greeting()}',
                             style: TextStyle(
                               fontFamily: 'Protipo Compact',
                               fontSize: globals.h9,
                               fontWeight: FontWeight.w300,
-                            )),
-                        FutureBuilder<User>(
-                            future: usersetup,
-                            builder: (context, snapshot) {
-                              if (snapshot.hasData) {
-                                uname2 = snapshot.data!.displayName
-                                    .toString()
-                                    .split(" ")[0];
-                              }
-                              return Text(uname2,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontFamily: 'Protipo Compact',
-                                    fontSize: globals.h9,
-                                    fontWeight: FontWeight.w300,
-                                  ));
-                            })
+                            ))
                       ]),
                 ],
               ),

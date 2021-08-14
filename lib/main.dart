@@ -7,6 +7,16 @@ import 'package:firebase_core/firebase_core.dart';
 
 void main() => runApp(MyApp());
 
+Future checkFirstSeen(context) async {
+  FirebaseApp firebaseApp = await Firebase.initializeApp();
+  if (FirebaseAuth.instance.currentUser != null) {
+    Navigator.pushReplacementNamed(context, "/main");
+  } else {
+    Navigator.pushReplacementNamed(context, "/first");
+  }
+  return firebaseApp;
+}
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -33,23 +43,13 @@ class Splash extends StatefulWidget {
 class SplashState extends State<Splash> {
   @override
   void initState() {
-    checkFirstSeen();
+    checkFirstSeen(context);
     super.initState();
   }
 
   @override
   void dispose() {
     super.dispose();
-  }
-
-  Future checkFirstSeen() async {
-    FirebaseApp firebaseApp = await Firebase.initializeApp();
-    if (FirebaseAuth.instance.currentUser != null) {
-      Navigator.pushReplacementNamed(context, "/main");
-    } else {
-      Navigator.pushReplacementNamed(context, "/first");
-    }
-    return firebaseApp;
   }
 
   @override
